@@ -1,0 +1,192 @@
+p{
+	font-size: 15px;
+	Font family: Roboto;
+    Font style: Regular;
+}
+
+.bgHome{
+	 background: #12133D;
+}
+.spnColor{
+	color: rgba(250, 250, 250, 0.501961);
+}
+.bg-orange{
+background: #FF5000;
+}
+.navbar-toggler{
+	background-color: #fff !important;
+	border: 1px #fff important;
+}
+.itemCustom a{
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 23px;
+	color: #FFFFFF;
+}
+.logo-img{
+	position: absolute;
+	top: -34px;
+}
+.navmate{
+	background: #12133D;
+	width: 100%;
+
+}
+.bou{
+	padding: 8px 15px !important;
+	margin-left: 6%;
+	margin-top: 3%;
+	font-size: 16px; 
+	padding: 1.5%;
+	border-radius: 25px;
+	background: #FF5000;
+	color: white;
+	border: none;
+
+}
+.boutton{
+	padding: 8px 25px;
+	border-radius: 25px;
+	background-color: #FF5000;
+	border: none;
+	color: white;
+}
+.boutton1{
+	padding: 12px;
+	border-radius: 25px;
+	background-color: #FF5000;
+	border: none;
+	color: white;
+}
+.boutt{
+	margin-top: 3%;
+	padding: 8px 25px;
+	border-radius: 20px;
+	border: none;
+	color: white;
+	background: #2A2B50;
+
+
+}
+.boutt1{
+	padding: 8px 25px;
+	border-radius: 20px;
+	border: none;
+	color: white;
+	background: #FF5000;
+}
+.img-position img{
+	position: absolute;
+
+}
+.menuNav{
+  	padding: 0px 187px !important;
+  }
+
+@media screen and (max-width: 480px) {
+  .menuNav{
+  	padding: 0px 0px !important;
+  }
+  .logo-img{
+  	position: absolute;
+	top: -8px;
+	width: 100px;
+	left: 0;
+	}
+	.sideImg img{ 
+		  padding: 0px;
+  position: absolute;
+  margin: 160px 0px;
+		height: 278px !important;
+	}
+}
+.agjustHome{
+	margin: 15% 0;
+}
+.sideImg{
+	height: 250px;
+	padding: 0px;
+}
+.heading{
+	font-size: 45px;
+}
+.pregraph{
+	font-size: 20px;
+}
+.pregraph1{
+	font-size: 20px;
+}
+.rightSide img{
+  right: 0;
+  position: absolute;
+  margin-top: -94px;
+  height: 445px;
+}
+.form-control{
+	color: black;
+	border-radius: 20px;
+
+}
+.mtfuter{
+	margin-left: 30%;
+}
+.bgcolorinput{
+	background-color: #2A2B50;
+	width: 100%;
+}
+.leftSide::before{
+  content:'';
+  background: url(../img/Pattern.png);
+  width: 190px;
+  height: 602px;
+  background-size: cover;
+}
+
+
+.leftSide::before{
+   position:absolute;
+   margin-top: -293px;
+}
+.btnColor{
+background-color: #FF5000;
+	border: none;
+	color: white;
+}
+.marginl{
+	margin-left: 22%;
+}
+.Auto{
+	border-radius: 20px;
+	width: 50%;
+	padding: 1%;
+	background-color:#12133D;
+	color: white;
+}
+
+
+
+.rightSide1 img{
+  right: 0;
+  position: absolute;
+  margin-top: -224px;
+  height: 445px;
+}
+.rightSide2 img{
+  right: 0;
+  position: absolute;
+  margin-top: 450px;
+  height: 445px;
+}
+.butget{
+	color: #fff;
+ padding: 10px 135px;
+	background-color: #FF5000;
+	border-radius: 20px;
+
+}
+.butget:hover{
+	color: #fff;
+	text-decoration: none;
+}
+

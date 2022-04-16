@@ -1,0 +1,226 @@
+.fa {
+    display: inline-block;
+    font: normal normal normal 10px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 6rem;
+    padding: 0.2rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+}
+.poolbtn{
+    background-color: #008CBA;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 80%;
+  margin-bottom: 15px;
+  background-color:#2A2B50; border-radius: 10px;
+  margin-left: 10%;
+}
+
+.icon {
+  padding-top: 13px;
+  color: #DCDCDC;
+  min-width: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-radius: 0px 30px 30px 0px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+     border-bottom: none;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.75rem;
+    border-top: none;
+    border-bottom-right-radius: calc(0.3rem - 1px);
+    border-bottom-left-radius: calc(0.3rem - 1px);
+}
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem;
+    border-bottom: none;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+.CreatePost{
+    border-radius:20px;padding:6px 15px;background-color: #FF5000;border: none;color: white;
+}
+.PublicPools{
+    background-color:#2A2B50;border-radius: 10px;margin-top: 4%;
+}
+.EntryAmount{
+    font-size:12px;color:red;
+}
+.PublicPools{
+    margin-left:8%;padding: 0px;
+}
+.Users{
+    color:#fff;border-radius: 10px; border: 1px solid #ddd;background-color: #2A2B50;padding: 10px 40px;
+}
+.Joinpool{
+    background-color:#2A2B50;border: 1px solid red;border-radius: 30px;padding: 6px 15px;color: red;
+}
+.inputcolor:hover{
+     color: #fff;
+}
+.inputcolor{
+    color: #fff;
+}
+.btn-default1{
+    background-color: #FF5000;
+    border: none;
+    border-radius: 30px;
+    width: 80%;
+    color: #fff;
+    padding: 7px;
+}
+
+.featuredBtn.active {
+        background-color: #2A2B50;
+        color: white;
+      }
+      .featuredBtn {
+        width: 100%;
+        height: 50px;
+        color: #fff;
+        font-weight: 700;
+        background-color: #3B3C5E;
+        border: none;
+        letter-spacing: 2px;
+        outline: none;
+      }
+      .featuredBtn1.active1 {
+        background-color: #2A2B50;
+        color: white;
+      }
+      .featuredBtn1 {
+        width: 100%;
+        height: 50px;
+        color: #fff;
+        font-weight: 700;
+        background-color: #3B3C5E;
+        border: none;
+        letter-spacing: 2px;
+        outline: none;
+      }
+    .bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #2A2B50 !important;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+ 
+    font-weight: bold;
+}
+.input-container.sdhnd87.sdsdsde44 {
+  background: transparent;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #FF5000 !important;
+}
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: box-shadow .15s ease-in-out;
+}
+.nav-link{
+      padding: 2px 15px !important;
+}
+
+.poolpding{
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+   padding: 0px 15px 0px 15px !important;
+}
+ th{
+    background-color: #FF5000;
+    padding: 1%;
+}
+table, td{
+    background-color: #3B3C5E;
+    padding: 10px;
+}
+tr{
+  border-bottom: 1px solid #8B3C5E; 
+}
+.bull{
+    padding: 5px 15px !important;
+    font-size: 3vw !important;
+    border-radius: 20px !important;
+}
+
+
+
+
+
+
+

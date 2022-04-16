@@ -1,0 +1,158 @@
+body{
+	background-color: #FF5000;
+	color: #fff;
+padding: 4%;
+}
+
+.text-top{
+	margin-top: 12%;
+}
+.input-reis{
+	border-radius: 15px;
+	border: 1px solid #C8C8C8;
+    padding: 1% 2%;
+	width: 85%;
+	margin-left: 35px;
+	font-size: 12px;
+}
+.position_image{
+	position: relative;
+	bottom: 18px;
+}
+.bgcolor{background-color: #12133D;
+	padding-top: 10%;
+	border-radius: 20px 0px 0px 20px;
+	height: 100%;
+	}
+	.but{
+	 background: #FF5000;
+	 border-radius: 20px;
+	 border: none;
+	padding: 2%;
+	width: 85%;
+	margin-left: 5px;
+	font-size: 12px;
+	color: #fff;
+	}
+.bgcolor-log{
+	background-color: #fff;
+	padding: 1px 0px 8% 0px;
+	border-radius: 0px 20px 20px 0px;
+}
+/* .input-group-addon{
+	background-color: #fff;
+	border-radius: 15px 15px 15px 15px;
+	border: 1px 0px 1px 0px solid #C8C8C8;
+} */
+.input-group-text{
+	background-color: #fff;
+	border-radius: 15px 15px 15px 15px;
+	border: 1px 0px 1px 0px solid #C8C8C8;
+	width: 39px	;
+}
+.input-login{
+	border-radius: 20px;
+	border: 1px 1px 1px 0px solid #C8C8C8;
+	padding: 2%;
+	width: 50%;
+	
+	font-size: 12px;
+	min-height: 34px;
+}
+.input-group{
+	width: 85%;
+	border-radius: 20px;
+	margin-left: 35px;
+	border: 1px 1px 1px 0px solid #C8C8C8;
+}
+.but2{
+	 background: #fff;
+	 border-radius: 20px;
+	 border: none;
+	padding: 2%;
+	width: 85%;
+	margin-left: 5px;
+	font-size: 12px;
+	color: #FF5000;
+	border: 1px solid #FF5000;
+	}
+	.spnColor{
+		color: rgba(250, 250, 250, 0.501961);
+		font-size: 17px;
+	}
+	.nav-link{
+		color: #fff;
+		font-size: 20px;
+	}
+	.login-deb1{
+		padding-bottom: 27.3%;
+	}
+	
+	.havea1{
+		color: #828282;
+	}
+	.posting-img{
+		margin-left: 10%;
+	}
+	.p21{
+		padding-bottom: 14.7%;
+	}
+	.p11{
+		padding-bottom: 35%;
+	}
+	button.close.close-x {
+		padding: 0;
+		background-color: transparent;
+		border: 0;
+		position: absolute;
+		right: 20px;
+		top: 0px;
+		line-height: inherit;
+		opacity: 1;
+		text-shadow: none;
+		color: #fff;
+		font-weight: 500;
+		font-size: 60px;
+		margin: 0;
+		
+	}
+	.close-x span {
+		line-height: 60px;
+	}
+
+	@media (max-width: 767px) { 
+		button.close.close-x {
+			
+			right: 10px;
+			top: 0px;
+			font-size: 40px;
+			}
+			.close-x span {
+				line-height: 40px;
+			}
+			.bgcolor {
+				background-color: #12133D;
+				padding-top: 10%;
+				border-radius: 20px 20px 0px 0px;
+				height: 100%;
+			}
+			.bgcolor-log {
+				border-radius: 0px 0px 20px 20px;
+			}
+			.bgcolor h3 {
+				font-size: 1.35rem;
+			}
+			.bgcolor  h1 {
+				font-size: 2.1rem;
+			}
+
+
+	}
+
+	@media (max-width: 575px) { 
+	.bgcolor-log>div {
+		padding-bottom: 48px !important;
+	}
+
+
+}
