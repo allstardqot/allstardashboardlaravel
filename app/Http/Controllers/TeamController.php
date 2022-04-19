@@ -31,11 +31,34 @@ class TeamController extends Controller
 
     public function createTeam(Request $request)
     {
+        $selected=['14685598','37539577','37558562','37614138','37625409','37418693','37525682'];
+        $selectedData=Player::query()->whereIn('id',$selected)->get();
+        $forwardData=$midfielderData=$defenderData=$goalkeeperData=[];
+        foreach($selectedData as $playerValue){
+            if($playerValue->position_id==1){
+                $goalkeeperData=$playerValue;
+            }
+            if($playerValue->position_id==2){
+                $defenderData[]=$playerValue;
+            }
+            if($playerValue->position_id==3){
+                $midfielderData[]=$playerValue;
+            }
+            if($playerValue->position_id==4){
+                $forwardData[]=$playerValue;
+            }
+        }
+        return view('users/managesquad/managesquadone',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData]);
+
+
+
+
+
         $searchData=$request->searchData;
         $type=$request->type;
 
         $goalkeeperQuery=Player::query();
-        $goalkeeperData=$goalkeeperQuery->where(['position_id'=>1])->with('Team')->get();     
+        $goalkeeperData=$goalkeeperQuery->where(['position_id'=>1])->with('Team')->get();
 
         $defenderQuery=Player::query();
         $defenderData=$defenderQuery->where(['position_id'=>2])->with('Team')->get();
@@ -54,17 +77,18 @@ class TeamController extends Controller
                     $midfielderData=$midfielderQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>3])->with('Team')->get();
                 }elseif($type='forward'){
                     $forwardData=$forwardQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>4])->with('Team')->get();
-                }else{
-                    $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
             }
+            //pr($goalkeeperData);
             return view('users/createteamajax',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData,'type'=>$type]);
         }
         return view('users/createTeam');
     }
 
-    public function managesquadone(){
-        return view('users/managesquad/managesquadone');
+    public function managesquadone(Request $request){
+        $selected=$request->selected;
+        $selected=['14685598','37539577','37558562','37614138','37625409','37418693','37525682'];
+        return view('users/managesquad/managesquadone',['selected'=>$selected]);
     }
 
     public function managesquatwo(){

@@ -1,11 +1,11 @@
 @extends('layouts.user')
 @section('title','My Team')
 @section('content')
- 
+
  <main>
     <div class="managing">
       <div class="container-fluid">
-        <h3 class="text-white mt-5 text-center">Managing Squad</h3>
+        <h3 class="text-white mt-5 text-center">Managing Squad<?php //pr($midfielderData); ?></h3>
         <ul class="progressbar text-white jsdhsjdh">
           <li class="active">Step - 1</li>
           <li>Step - 2</li>
@@ -20,10 +20,10 @@
           <div class="first-row-check">
             <h5>Goalkeeper</h5>
             <div class="playerspot">
-              <img src="{{asset('public/assets/image/image.png')}}" />
+              <img src="{{$goalkeeperData['image_path']}}" />
               <div class="aboutplayer">
-                <h4>Tammy Johnson</h4>
-                <p>Forward</p>
+                <h4>{{$goalkeeperData['fullname']}}</h4>
+                <p>Goalkeeper</p>
                 <div class="playerdetails">
                   <p>18 CGW Point</p>
                   <p>104 T F Points</p>
@@ -39,12 +39,13 @@
               >
             </div>
           </div>
+
           <div class="second-row-check">
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$defenderData[0]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$defenderData[0]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>
@@ -61,12 +62,13 @@
                 >
               </div>
             </div>
+
             <div class="area-title hide-mob"><h5>Defenders</h5></div>
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$defenderData[1]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$defenderData[1]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>
@@ -89,9 +91,9 @@
           <div class="third-row-check">
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$midfielderData[0]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$midfielderData[0]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>
@@ -111,9 +113,9 @@
             <div class="area-title hide-mob"><h5>Midfielders</h5></div>
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$midfielderData[1]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$midfielderData[1]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>
@@ -135,9 +137,9 @@
           <div class="fourth-row-check">
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$forwardData[0]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$forwardData[0]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>
@@ -157,9 +159,9 @@
             <div class="area-title hide-mob"><h5>Forward</h5></div>
             <div class="greatplayer">
               <div class="playerspot">
-                <img src="{{asset('public/assets/image/image.png')}}" />
+                <img src="{{$forwardData[1]['image_path']}}" />
                 <div class="aboutplayer">
-                  <h4>Tammy Johnson</h4>
+                  <h4>{{$forwardData[1]['fullname']}}</h4>
                   <p>Forward</p>
                   <div class="playerdetails">
                     <p>18 CGW Point</p>

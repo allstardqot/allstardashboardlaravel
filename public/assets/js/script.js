@@ -49,31 +49,34 @@ nextBtn.addEventListener("click", (e) => {
                     $.notify("Please select 7 Players.","info");
                 }else{
                     console.log(selected+"ttttttttttttttttttttttttttttt");
-                // $.ajax({
-                //     url: "create-team",
-                //     method: "GET",
-                //     data: {
-                //         'searchData': data,'type':type
-                //     },
-                //     success: function(result) {
-                //         $("#myTabContent").html(result);
-                //     }
-                // });
+                    $.ajax({
+                        url: "manage-squad",
+                        method: "GET",
+                        data: {
+                            'selected': yourArray
+                        },
+                        success: function(result) {
+                            $("#create_team_main").hide()
+                            $("#manage_squad").show()
+                            $("#manage_squad").html(result);
+                        }
+                    });
                 }
             }
             if (i === 2) {
                 nextBtn.innerHTML = "SAVE"
-                
+
 
             }
+            if($("#" + createTeamBtns.eq(i + 1)[0].id)){
+                let nextId = $("#" + createTeamBtns.eq(i + 1)[0].id)
+                elem.removeClass("active")
 
-            let nextId = $("#" + createTeamBtns.eq(i + 1)[0].id)
-            elem.removeClass("active")
+                $("." + e.id).removeClass("show active")
 
-            $("." + e.id).removeClass("show active")
-            
-            $("." + createTeamBtns.eq(i + 1)[0].id).addClass("show active")
-            nextId.addClass("active")
+                $("." + createTeamBtns.eq(i + 1)[0].id).addClass("show active")
+                nextId.addClass("active")
+            }
             return false;
         }
     })
@@ -108,11 +111,7 @@ backBtn.addEventListener("click", (e) => {
 //  }
 
 
-$(document).ready(function () {
-    $("#hideShow").click(function () {
-        $(".commentArea").toggleClass("active");
-    });
-});
+
 
 (function ($) {
     $(document).ready(function () {

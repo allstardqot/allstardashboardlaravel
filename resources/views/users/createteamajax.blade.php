@@ -17,7 +17,7 @@
     role="tabpanel" aria-labelledby="home-tab">
     <div class="form-outer">
         <div class="page slide-page">
-            
+
 
             <div class="nsd79">
                 <div class="row">
@@ -32,19 +32,19 @@
                             <div class="team-player">
                                 <img class="sdhdh7h8" src="{{ asset('public/assets/image/star-new-1.png') }}" />
                                 <div class="bh8j7h7">
-                                    <img src="{{ asset('public/assets/image/image _1.png') }}" />
+                                    <img id="goalkeeper_img" src="{{ asset('public/assets/image/image _1.png') }}" />
                                 </div>
                                 <div class="sdjd7jh89">
                                     <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
                                     <div class="j7hs89">
-                                        <h6 class="h7bhsh8y6">Tammy Johnson</h6>
-                                        <p class="fjf78h7">Forward</p>
+                                        <h6 class="h7bhsh8y6" id="goalkeeper_name">Tammy Johnson</h6>
+                                        <p class="fjf78h7">goalkeeper</p>
                                         <div class="dfhfj7j">
                                             <div class="djhfhd8h89">
-                                                <p class="sdbdj76">18 CGW Point</p>
+                                                <p class="sdbdj76 goalkeeper_cg_point">18 CGW Point</p>
                                             </div>
                                             <div class="djhfhd8h89">
-                                                <p class="sdbdj76">104 T F Points</p>
+                                                <p class="sdbdj76 goalkeeper_tf_point">104 T F Points</p>
                                             </div>
                                         </div>
                                         <p class="sxjmndkod78">
@@ -71,15 +71,15 @@
                             <table class="table">
                                 @foreach ($goalkeeperData as $goakkeeperValue)
                                     <tr>
-                                        <td>
+                                        <td class="imagetd">
                                             <img class="imgsize" src="{{ $goakkeeperValue['image_path'] }}" />
                                         </td>
                                         <td>
-                                            <p>{{ $goakkeeperValue['fullname'] }}</p>
+                                            <p class="goalkep_fullname">{{ $goakkeeperValue['fullname'] }}</p>
                                             <p class="sdjd6">Goalkeeper</p>
                                         </td>
                                         <td>
-                                            <strong>{{ $goakkeeperValue['team']['name'] }}</strong>
+                                            <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
                                         </td>
                                         <td>
                                             <p>18 Goals</p>
@@ -90,8 +90,11 @@
                                         <td>
                                             <p class="hsksk78">5.25 M</p>
                                         </td>
-                                        <td>
-                                            <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox" value="{{ $goakkeeperValue['id'] }}" onclick="goalKeepercheckbox(event)" id="flexCheckDefault">
+                                        <td class="checkboxtd">
+                                            <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox"
+                                                value="{{ $goakkeeperValue['id'] }}"
+                                                onclick="goalKeepercheckbox(event)"
+                                                id="flexCheckDefault">
                                         </td>
                                     </tr>
                                 @endforeach
@@ -135,15 +138,16 @@
                     </div>
                     <div class="col-sm-7 d-none d-md-block sd8j97j">
                         <div class="d-flex">
+                            @for($i=0;$i<2;$i++)
                             <div class="team-player">
                                 <img class="sdhdh7h8" src="{{ asset('public/assets/image/star-new-1.png') }}" />
                                 <div class="bh8j7h7">
-                                    <img src="{{ asset('public/assets/image/image _1.png') }}" />
+                                    <img id="defender_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
                                 </div>
                                 <div class="sdjd7jh89">
                                     <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
                                     <div class="j7hs89">
-                                        <h6 class="h7bhsh8y6">Tammy Johnson</h6>
+                                        <h6 class="h7bhsh8y6" id='defender_name{{$i}}'>Tammy Johnson</h6>
                                         <p class="fjf78h7">Defender</p>
                                         <div class="dfhfj7j">
                                             <div class="djhfhd8h89">
@@ -159,7 +163,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="team-player">
+                            @endfor
+                            {{-- <div class="team-player">
                                 <img class="sdhdh7h8"
                                     src="{{ asset('public/assets/image/star-new-1.png') }}" />
                                 <div class="bh8j7h7">
@@ -184,7 +189,7 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="input-container sdhnd87 sdsdsde44">
@@ -250,11 +255,11 @@
                                             <img class="imgsize" src="{{ $defenderValue['image_path'] }}" />
                                         </td>
                                         <td>
-                                            <p>{{ $defenderValue['fullname'] }}</p>
+                                            <p class="defender_fullname">{{ $defenderValue['fullname'] }}</p>
                                             <p class="sdjd6">Defender</p>
                                         </td>
                                         <td>
-                                            <strong>{{ $defenderValue['team']['name'] }}</strong>
+                                            <strong>{{ isset($defenderValue['team']['name']) ? $defenderValue['team']['name'] : '' }}</strong>
                                         </td>
                                         <td>
                                             <p>18 Goals</p>
@@ -266,7 +271,9 @@
                                             <p class="hsksk78">5.25 M</p>
                                         </td>
                                         <td>
-                                            <input class="form-check-input tem-chekbox defendercheck" type="checkbox" value="{{ $defenderValue['id'] }}" id="flexCheckDefault" onclick="defendercheckbox(event)">
+                                            <input class="form-check-input tem-chekbox defendercheck" type="checkbox"
+                                                value="{{ $defenderValue['id'] }}" id="flexCheckDefault"
+                                                onclick="defendercheckbox(event)">
                                         </td>
                                     </tr>
                                 @endforeach
@@ -314,15 +321,17 @@
                         </div>
                         <div class="col-sm-7 d-none d-md-block sd8j97j">
                             <div class="d-flex">
+                                @for($i = 0; $i < 2; $i++)
                                 <div class="team-player">
-                                    <img class="sdhdh7h8" src="{{ asset('public/assets/image/star-new-1.png') }}" />
+                                    <img class="sdhdh7h8"
+                                        src="{{ asset('public/assets/image/star-new-1.png') }}" />
                                     <div class="bh8j7h7">
-                                        <img src="{{ asset('public/assets/image/image _1.png') }}" />
+                                        <img id="midfielder_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
                                     </div>
                                     <div class="sdjd7jh89">
                                         <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
                                         <div class="j7hs89">
-                                            <h6 class="h7bhsh8y6">Tammy Johnson</h6>
+                                            <h6 class="h7bhsh8y6" id="midfielder_name{{$i}}">Tammy Johnson</h6>
                                             <p class="fjf78h7">Defender</p>
                                             <div class="dfhfj7j">
                                                 <div class="djhfhd8h89">
@@ -338,32 +347,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="team-player">
-                                    <img class="sdhdh7h8"
-                                        src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                    <div class="bh8j7h7">
-                                        <img src="{{ asset('public/assets/image/image _1.png') }}" />
-                                    </div>
-                                    <div class="sdjd7jh89">
-                                        <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                        <div class="j7hs89">
-                                            <h6 class="h7bhsh8y6">Tammy Johnson</h6>
-                                            <p class="fjf78h7">Forward</p>
-                                            <div class="dfhfj7j">
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">18 CGW Point</p>
-                                                </div>
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">104 T F Points
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p class="sxjmndkod78">
-                                                <b>$5.25 M</b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endfor
+
                             </div>
                         </div>
                         <div class="input-container sdhnd87 sdsdsde44">
@@ -427,14 +412,15 @@
                                     @foreach ($midfielderData as $midfielderValue)
                                         <tr>
                                             <td>
-                                                <img class="imgsize" src="{{ $midfielderValue['image_path'] }}" />
+                                                <img class="imgsize"
+                                                    src="{{ $midfielderValue['image_path'] }}" />
                                             </td>
                                             <td>
-                                                <p>{{ $midfielderValue['fullname'] }}</p>
+                                                <p class="midfielder_fullname">{{ $midfielderValue['fullname'] }}</p>
                                                 <p class="sdjd6">Midfielder</p>
                                             </td>
                                             <td>
-                                                <strong>{{ $midfielderValue['team']['name'] }}</strong>
+                                                <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
                                             </td>
                                             <td>
                                                 <p>18 Goals</p>
@@ -446,7 +432,9 @@
                                                 <p class="hsksk78">5.25 M</p>
                                             </td>
                                             <td>
-                                                <input class="form-check-input tem-chekbox midfieldercheck" type="checkbox" value="{{ $midfielderValue['id'] }}"                                             id="flexCheckDefault" onclick="midfieldercheckbox(event)">
+                                                <input class="form-check-input tem-chekbox midfieldercheck"
+                                                    type="checkbox" value="{{ $midfielderValue['id'] }}"
+                                                    id="flexCheckDefault" onclick="midfieldercheckbox(event)">
 
                                             </td>
                                         </tr>
@@ -494,59 +482,36 @@
                         </div>
                         <div class="col-sm-7 d-none d-md-block sd8j97j">
                             <div class="d-flex">
-                                <div class="team-player">
-                                    <img class="sdhdh7h8" src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                    <div class="bh8j7h7">
-                                        <img src="{{ asset('public/assets/image/image _1.png') }}" />
-                                    </div>
-                                    <div class="sdjd7jh89">
-                                        <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                        <div class="j7hs89">
-                                            <h6 class="h7bhsh8y6">Tammy Johnson</h6>
-                                            <p class="fjf78h7">Defender</p>
-                                            <div class="dfhfj7j">
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">18 CGW Point</p>
+                                @for ($i=0;$i<2;$i++)
+                                    <div class="team-player">
+                                        <img class="sdhdh7h8"
+                                            src="{{ asset('public/assets/image/star-new-1.png') }}" />
+                                        <div class="bh8j7h7">
+                                            <img id="forward_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
+                                        </div>
+                                        <div class="sdjd7jh89">
+                                            <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
+                                            <div class="j7hs89">
+                                                <h6 class="h7bhsh8y6" id="forward_name{{$i}}">Tammy Johnson</h6>
+                                                <p class="fjf78h7">Defender</p>
+                                                <div class="dfhfj7j">
+                                                    <div class="djhfhd8h89">
+                                                        <p class="sdbdj76">18 CGW Point</p>
+                                                    </div>
+                                                    <div class="djhfhd8h89">
+                                                        <p class="sdbdj76">104 T F Points</p>
+                                                    </div>
                                                 </div>
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">104 T F Points</p>
-                                                </div>
+                                                <p class="sxjmndkod78">
+                                                    <b>$5.25 M</b>
+                                                </p>
                                             </div>
-                                            <p class="sxjmndkod78">
-                                                <b>$5.25 M</b>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="team-player">
-                                    <img class="sdhdh7h8"
-                                        src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                    <div class="bh8j7h7">
-                                        <img src="{{ asset('public/assets/image/image _1.png') }}" />
-                                    </div>
-                                    <div class="sdjd7jh89">
-                                        <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                        <div class="j7hs89">
-                                            <h6 class="h7bhsh8y6">Tammy Johnson</h6>
-                                            <p class="fjf78h7">Forward</p>
-                                            <div class="dfhfj7j">
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">18 CGW Point</p>
-                                                </div>
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">104 T F Points
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p class="sxjmndkod78">
-                                                <b>$5.25 M</b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endfor
                             </div>
                         </div>
-                        
+
                         <div class="input-container sdhnd87 sdsdsde44">
                             <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm"
                                 id="forward" />
@@ -608,14 +573,15 @@
                                     @foreach ($forwardData as $forwardValue)
                                         <tr>
                                             <td>
-                                                <img class="imgsize" src="{{ $forwardValue['image_path'] }}" />
+                                                <img class="imgsize"
+                                                    src="{{ $forwardValue['image_path'] }}" />
                                             </td>
                                             <td>
-                                                <p>{{ $forwardValue['fullname'] }}</p>
+                                                <p class="forward_fullname">{{ $forwardValue['fullname'] }}</p>
                                                 <p class="sdjd6">Forward</p>
                                             </td>
                                             <td>
-                                                <strong>{{ $forwardValue['team']['name'] }}</strong>
+                                                <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
                                             </td>
                                             <td>
                                                 <p>18 Goals</p>
@@ -627,11 +593,14 @@
                                                 <p class="hsksk78">5.25 M</p>
                                             </td>
                                             <td>
-                                                <input class="form-check-input tem-chekbox forwardcheck" name="checkbox_forward" type="checkbox" value="{{ $forwardValue['id'] }}" id="flexCheckDefault" onclick="forwardcheckbox(event)"">
+                                                <input class="form-check-input tem-chekbox forwardcheck"
+                                                    name="checkbox_forward" type="checkbox"
+                                                    value="{{ $forwardValue['id'] }}" id="flexCheckDefault"
+                                                    onclick="forwardcheckbox(event)"">
 
                                             </td>
                                         </tr>
-                                    @endforeach
+ @endforeach
                                 </table>
                             </div>
                         </div>
@@ -641,63 +610,92 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" >
-            function goalKeepercheckbox(e){
-                var select=0;
-                $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function () {
-                   select+=1;
-                });
-                if (e.target.checked && select>=1) {
-                    $("input.goalkeepercheck").attr("disabled", true);
-                    $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                } else {
-                    $("input.goalkeepercheck").removeAttr("disabled");
-                    $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+<script type="text/javascript">
+    function goalKeepercheckbox(e) {
+        //$("#goalkeeper_img").attr('src', image.image_path);
+        //$("#goalkeeper_name").html(image.fullname);
 
-                }
-            }
+        var select = 0;
+        var image = '';
+        var full_name = '';
+        // var src=$(this).parent().prevAll().first().children();
+        //console.log(image.image_path);
+        $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+            image=$(this).closest('tr').find('img').attr("src");
+            full_name=$(this).closest('tr').find('.goalkep_fullname').html();
+            select += 1;
+        });
+        if (e.target.checked && select >= 1) {
+            $("#goalkeeper_img").attr('src', image);
+            $("#goalkeeper_name").html(full_name);
+            $("input.goalkeepercheck").attr("disabled", true);
+            $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+        } else {
+            $("input.goalkeepercheck").removeAttr("disabled");
+            $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
 
-            function defendercheckbox(e){
-                var select=0;
-                $(".defendercheck:checkbox[type=checkbox]:checked").each(function () {
-                   select+=1;
-                });
-                if (e.target.checked && select>=2) {
-                    $("input.defendercheck").attr("disabled", true);
-                    $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                } else {
-                    $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                    $("input.defendercheck").removeAttr("disabled");
-                }
-            }
-            
-            function midfieldercheckbox(e){
-                var select=0;
-                $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function () {
-                   select+=1;
-                });
-                if (e.target.checked && select>=2) {
-                    $("input.midfieldercheck").attr("disabled", true);
-                    $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                } else {
-                    $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                    $("input.midfieldercheck").removeAttr("disabled");
-                }
-            }
+        }
+    }
 
-            function forwardcheckbox(e){
-                var select=0;
-                $(".forwardcheck:checkbox[type=checkbox]:checked").each(function () {
-                   select+=1;
-                });
-                if (e.target.checked && select>=2) {
-                    $("input.forwardcheck").attr("disabled", true);
-                    $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                } else {
-                    $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-                    $("input.forwardcheck").removeAttr("disabled");
-                }
-            }
-            
-            
-    </script>
+    function defendercheckbox(e) {
+        var select = 0;
+
+        $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
+            image=$(this).closest('tr').find('img').attr("src");
+            full_name=$(this).closest('tr').find('.defender_fullname').html();
+            $("#defender_img"+select).attr('src', image);
+            $("#defender_name"+select).html(full_name);
+            select += 1;
+        });
+
+        if (e.target.checked && select >= 2) {
+            //$("#defender_img"+select).attr('src', "{{ asset('public/assets/image/image _1.png') }}");
+
+            $("input.defendercheck").attr("disabled", true);
+            $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+        } else {
+            //$("#defender_img"+select).attr('src', "{{ asset('public/assets/image/image _1.png') }}");
+
+            $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+            $("input.defendercheck").removeAttr("disabled");
+        }
+    }
+
+    function midfieldercheckbox(e) {
+        var select = 0;
+        $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
+            image=$(this).closest('tr').find('img').attr("src");
+            full_name=$(this).closest('tr').find('.midfielder_fullname').html();
+            $("#midfielder_img"+select).attr('src', image);
+            $("#midfielder_name"+select).html(full_name);
+
+            select += 1;
+        });
+
+        if (e.target.checked && select >= 2) {
+            $("input.midfieldercheck").attr("disabled", true);
+            $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+        } else {
+            $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+            $("input.midfieldercheck").removeAttr("disabled");
+        }
+    }
+
+    function forwardcheckbox(e) {
+        var select = 0;
+        $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
+            image=$(this).closest('tr').find('img').attr("src");
+            full_name=$(this).closest('tr').find('.forward_fullname').html();
+            $("#forward_img"+select).attr('src', image);
+            $("#forward_name"+select).html(full_name);
+            select += 1;
+        });
+        if (e.target.checked && select >= 2) {
+            $("input.forwardcheck").attr("disabled", true);
+            $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+        } else {
+            $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+            $("input.forwardcheck").removeAttr("disabled");
+        }
+    }
+</script>
