@@ -1,4 +1,4 @@
-@extends('layouts.user') @section('title',"Manager's Lounge")
+@extends('layouts.user') @section('title', "Manager's Lounge")
 @section('content')
 
 <main>
@@ -63,9 +63,16 @@
                       </div>
                     @endforeach
 
+                                    <div class="hsdkdf97">
+                                        <a class="mt-2 sdjnhcfn90874">Submit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
 
+<<<<<<< HEAD
             <div class="col-lg-4">
                 <div class="htavb">
                     <h4 class="mt-3 mkuytg">Trending Feeds</h4>
@@ -76,26 +83,81 @@
                     <hr />
                     @endforeach
                 </div>
+=======
+                <div class="col-lg-4">
+                    <div class="htavb">
+                        <h4 class="mt-3 mkuytg">Trending Feeds</h4>
+                        <div class="news-col-content">
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <div class="like_share">
+                                    <a class="hyujh45" href="#">2 Comment</a>
+                                    <a class="jkyts778" href="#">Share</a>
+                                </div>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <div class="like_share">
+                                    <a class="hyujh45" href="#">2 Comment</a>
+                                    <a class="jkyts778" href="#">Share</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> be755d1916c837eb32d2831a9db86afc927b0eea
 
-                <div class="htavb">
-                    <h4 class="mt-3 mkuytg">Latest Feeds</h4>
-                    {{-- <h6 class="mt-3 assx45">NestleVera</h6>
-                    <p class="jsdx58">
-                        There are many variations of passages of Lorem Ipsum available,but
-                        the majority have suffered alteration.
-                    </p>
-                    <a class="hyujh45" href="#">2 Comment</a>
-                    <a class="jkyts778" href="#">Share</a> --}}
+                    <div class="htavb">
+                        <h4 class="mt-3 mkuytg">Latest Feeds</h4>
+                        <div class="news-col-content">
+                            @foreach ($post as $key => $value)
+                                {!! $value->description !!}
+                                <div class="like_share">
+                                    <a class="hyujh45" href="#">2 Comment</a>
+                                    <a class="jkyts778" href="#">Share</a>
+                                </div>
+                                <hr />
+                            @endforeach
+                        </div>
 
+<<<<<<< HEAD
                     @foreach($latest as $key => $value)
                      {!! $value->description !!}
                      <a class="hyujh45" href="#">{{$value->comment}} Comment</a>
                     <a class="jkyts778" href="#">Share</a>
                     <hr />
                    @endforeach
+=======
+
+                    </div>
+>>>>>>> be755d1916c837eb32d2831a9db86afc927b0eea
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 @endsection

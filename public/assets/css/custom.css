@@ -23,6 +23,35 @@ display: flex; width: 80%; margin-left: 10%;
 }
 .latest-image-sec {
 padding: 20px;
+max-height: 593px;
+    overflow-y: auto;
+}
+.news-col {
+  border-bottom: 1px solid;
+  padding-bottom: 14px;
+  margin-bottom: 23px;
+}
+.news-col-content h1, h2, h3, h4, h5, h6 {
+  margin-top: 0 !important;
+  margin-bottom: 7px;
+  font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
+.news-col-content {
+  padding: 15px 20px;
+  max-height: 554px;
+  overflow-y: auto;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+  display: block;
+}
+.news-col-content p, span, small, strong {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 8px;
+  line-height: 18px;
 }
 .dsfhfhj894{
 display: flex; width: 80%; margin-left: 10%;
@@ -136,12 +165,21 @@ padding: 6px 15px;
 background-color: #ff5000;
 border: none;
 color: white;
+margin-bottom: 32px;
 }
 .sdjdhjkdnk{
 display: flex; width: 100%;
 }
 .sdjjhd87{
 width: 50%;
+}
+.comments p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.comments:nth-child(1) {
+  margin-bottom: 16px;
 }
 .sdhdj89{
 color: #ff5000; text-decoration: none;
@@ -888,17 +926,20 @@ font-size: 12px; color: #cacaca;
  .mkuytg{
   background-color:#FF5000; padding: 2% 2% 2% 5%;width: 100%; border-radius: 10px 10px 0px 0px;
  }
- .assx45{
-  margin-left:5%;
- }
- .jsdx58{
-  margin-left: 5%;font-size: 13px;
- }
+ 
+ 
  .hyujh45{
-  text-decoration: none;margin-left:5%;color: #0EA5E0;
+  text-decoration: none;    color: #0EA5E0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+
  }
  .jkyts778{
   text-decoration: none;padding-left: 30px;color: #FF5000;
+  font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
  }
  .jyth78{
   margin-left:5%;
@@ -924,7 +965,14 @@ font-size: 12px; color: #cacaca;
  .njkas985{
   background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
   height: 100%;
+  max-height: 1299px;
+  overflow-y: auto;
+  overflow-x: hidden;
  }
+ .managers-tab .tab-pane {
+  max-height: 1232px;
+  overflow-y: auto;
+}
  .lpoi951{
   display: flex;width: 100%;text-align: center;
  }
