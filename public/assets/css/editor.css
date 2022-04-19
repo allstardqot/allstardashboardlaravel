@@ -603,12 +603,12 @@ div.code-toolbar > .toolbar {
 	margin-top: 1.5rem;
 	margin-bottom: 3rem;
 }
-
+/* 
 .tab-pane {
 	max-height: 700px;
 	overflow-y: auto;
 	overflow-x: hidden;
-}
+} */
 
 	.tab-pane pre {
 		margin: 0;

@@ -27,5 +27,23 @@
     <script src="{{asset('public/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('public/js/script.js')}}"></script>
+    <script>
+         $("#show-pass").click(function (e) {
+        e.preventDefault();
+        var type = $("#password").attr('type');
+        switch (type) {
+            case 'password':
+            {
+                $("#password").attr('type', 'text');
+                return;
+            }
+            case 'text':
+            {
+                $("#password").attr('type', 'password');
+                return;
+            }
+        }
+    });
+    </script>
 </body>
 </html>

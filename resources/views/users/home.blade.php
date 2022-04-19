@@ -7,29 +7,46 @@
                 <div class="col-lg-3 ">
                     <div class="htavb">
                         <h4 class="mt-3 mkuytg">Trending Feeds</h4>
-                        <h6 class="mt-3 assx45">NestleVera</h6>
-                        <p class="jsdx58">There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="hyujh45" href="#">2 Comment</a>
-                        <a class="jkyts778" href="#">Share</a>
-
-                        <hr>
-                        <h6 class="jyth78">NestleVera</h6>
-                        <p class="lkuh456">There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="hyujh45" href="#">2 Comment</a>
-                        <a class="jlopnn" href="#">Share</a>
-                        <hr>
-                        <h6 class="jyth78">NestleVera</h6>
-                        <p class="lkuh456">There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="hyujh45" href="#">2 Comment</a>
-                        <a class="jlopnn" href="#">Share</a>
-                        <hr>
+                        <div class="news-col-content">
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                            <div class="news-col">
+                                <h6 class="mt-3 assx45">NestleVera</h6>
+                                <p class="jsdx58">
+                                    There are many variations of passages of Lorem Ipsum
+                                    available,but the majority have suffered alteration.
+                                </p>
+                                <a class="hyujh45" href="#">2 Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="hjuy4589">
                         <h4 class="mt-5 mkuytg">Premier League News</h4>
                         <div class="latest-image-sec">

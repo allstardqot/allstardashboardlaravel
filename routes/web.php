@@ -11,6 +11,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +80,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/email/resend', [VerificationController::class,'resend'])->name('verification.resend');
    
 });
+
+Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
+Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
+Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
 Route::get('/logout', function(){
     Auth::logout();
     return Redirect::to('login');
