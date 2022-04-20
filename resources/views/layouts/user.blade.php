@@ -34,6 +34,7 @@
 @include('element/users/footer')
 
 @show
+
 <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/script.js') }}"></script>
@@ -41,6 +42,7 @@
 <script src="{{ asset('public/assets/js/user_script.js') }}"></script>
 <script src="{{ asset('public/assets/js/rte.js') }}"></script>
 <script src="{{ asset('public/assets/js/all_plugins.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
     var editor1 = new RichTextEditor("#div_editor1");
@@ -112,7 +114,7 @@
     });
 
 
-   
+
 </script>
 
 </body>

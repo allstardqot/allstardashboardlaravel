@@ -1,6 +1,6 @@
 <div class="sdjsd689">
     <div class="sdjsd789">
-        <h1 class="sdhn485"><span id="selected_count">01</span>/07</h1>
+        <h1 class="sdhn485" id="selected_count">0/07</h1>
         <p class="sxdjhd767">
             <b>Players <br />Selected</b>
         </p>
@@ -48,7 +48,7 @@
                                             </div>
                                         </div>
                                         <p class="sxjmndkod78">
-                                            <b>$5.25 M</b>
+                                            <b id="goalkeepersell_price">$5.25 M</b>
                                         </p>
                                     </div>
                                 </div>
@@ -70,31 +70,31 @@
                         <div class="table-responsive sdchsdsdh">
                             <table class="table">
                                 @foreach ($goalkeeperData as $goakkeeperValue)
+                                    {{-- <tr class="goalkeeper_tr" onclick="goalKeepercheckbox()"> --}}
                                     <tr>
-                                        <td class="imagetd">
+                                        <td class="imagetd goalkeeper_td">
                                             <img class="imgsize" src="{{ $goakkeeperValue['image_path'] }}" />
                                         </td>
-                                        <td>
+                                        <td class="goalkeeper_td">
                                             <p class="goalkep_fullname">{{ $goakkeeperValue['fullname'] }}</p>
                                             <p class="sdjd6">Goalkeeper</p>
                                         </td>
-                                        <td>
+                                        <td class="goalkeeper_td">
                                             <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
                                         </td>
-                                        <td>
+                                        <td class="goalkeeper_td">
                                             <p>18 Goals</p>
                                         </td>
-                                        <td>
+                                        <td class="goalkeeper_td">
                                             <p>104 Points</p>
                                         </td>
-                                        <td>
-                                            <p class="hsksk78">5.25 M</p>
+                                        <td class="goalkeeper_td">
+                                            <p class="hsksk78 goalkeeper_sell_price">
+                                                {{ $goakkeeperValue['sell_price'] }} M</p>
                                         </td>
                                         <td class="checkboxtd">
                                             <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox"
-                                                value="{{ $goakkeeperValue['id'] }}"
-                                                onclick="goalKeepercheckbox(event)"
-                                                id="flexCheckDefault">
+                                                value="{{ $goakkeeperValue['id'] }}" id="flexCheckDefault" onclick="goalKeepercheckbox(event)">
                                         </td>
                                     </tr>
                                 @endforeach
@@ -112,21 +112,6 @@
     aria-labelledby="profile-tab">
     <div class="form-outer">
         <div class="page slide-page">
-            {{-- <div class="sdjsd689">
-                <div class="sdjsd789">
-                    <h1 class="sdhn485">01/07</h1>
-                    <p class="sxdjhd767">
-                        <b>Players <br />Selected</b>
-                    </p>
-                </div>
-                <div class="sxdhdcn9908">
-                    <h1 class="sdhsdks87">94.5 M</h1>
-                    <p class="sdjhs7tyh">
-                        <b>Money<br />
-                            Remaining</b>
-                    </p>
-                </div>
-            </div> --}}
 
             <div class="nsd79">
                 <div class="row">
@@ -138,58 +123,36 @@
                     </div>
                     <div class="col-sm-7 d-none d-md-block sd8j97j">
                         <div class="d-flex">
-                            @for($i=0;$i<2;$i++)
-                            <div class="team-player">
-                                <img class="sdhdh7h8" src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                <div class="bh8j7h7">
-                                    <img id="defender_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
-                                </div>
-                                <div class="sdjd7jh89">
-                                    <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                    <div class="j7hs89">
-                                        <h6 class="h7bhsh8y6" id='defender_name{{$i}}'>Tammy Johnson</h6>
-                                        <p class="fjf78h7">Defender</p>
-                                        <div class="dfhfj7j">
-                                            <div class="djhfhd8h89">
-                                                <p class="sdbdj76">18 CGW Point</p>
+                            @for ($i = 0; $i < 2; $i++)
+                                <div class="team-player">
+                                    <img class="sdhdh7h8"
+                                        src="{{ asset('public/assets/image/star-new-1.png') }}" />
+                                    <div class="bh8j7h7">
+                                        <img id="defender_img{{ $i }}"
+                                            src="{{ asset('public/assets/image/image _1.png') }}" />
+                                    </div>
+                                    <div class="sdjd7jh89">
+                                        <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
+                                        <div class="j7hs89">
+                                            <h6 class="h7bhsh8y6" id='defender_name{{ $i }}'>Tammy
+                                                Johnson</h6>
+                                            <p class="fjf78h7">Defender</p>
+                                            <div class="dfhfj7j">
+                                                <div class="djhfhd8h89">
+                                                    <p class="sdbdj76">18 CGW Point</p>
+                                                </div>
+                                                <div class="djhfhd8h89">
+                                                    <p class="sdbdj76">104 T F Points</p>
+                                                </div>
                                             </div>
-                                            <div class="djhfhd8h89">
-                                                <p class="sdbdj76">104 T F Points</p>
-                                            </div>
+                                            <p class="sxjmndkod78">
+                                                <b id="defendersell_price{{ $i }}">$5.25 M</b>
+                                            </p>
                                         </div>
-                                        <p class="sxjmndkod78">
-                                            <b>$5.25 M</b>
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
                             @endfor
-                            {{-- <div class="team-player">
-                                <img class="sdhdh7h8"
-                                    src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                <div class="bh8j7h7">
-                                    <img src="{{ asset('public/assets/image/image _1.png') }}" />
-                                </div>
-                                <div class="sdjd7jh89">
-                                    <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                    <div class="j7hs89">
-                                        <h6 class="h7bhsh8y6">Tammy Johnson</h6>
-                                        <p class="fjf78h7">Forward</p>
-                                        <div class="dfhfj7j">
-                                            <div class="djhfhd8h89">
-                                                <p class="sdbdj76">18 CGW Point</p>
-                                            </div>
-                                            <div class="djhfhd8h89">
-                                                <p class="sdbdj76">104 T F Points
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="sxjmndkod78">
-                                            <b>$5.25 M</b>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> --}}
+
                         </div>
                     </div>
                     <div class="input-container sdhnd87 sdsdsde44">
@@ -251,24 +214,25 @@
                             <table class="table">
                                 @foreach ($defenderData as $defenderValue)
                                     <tr>
-                                        <td>
+                                        <td class="defender_td">
                                             <img class="imgsize" src="{{ $defenderValue['image_path'] }}" />
                                         </td>
-                                        <td>
+                                        <td class="defender_td">
                                             <p class="defender_fullname">{{ $defenderValue['fullname'] }}</p>
                                             <p class="sdjd6">Defender</p>
                                         </td>
-                                        <td>
+                                        <td class="defender_td">
                                             <strong>{{ isset($defenderValue['team']['name']) ? $defenderValue['team']['name'] : '' }}</strong>
                                         </td>
-                                        <td>
+                                        <td class="defender_td">
                                             <p>18 Goals</p>
                                         </td>
-                                        <td>
+                                        <td class="defender_td">
                                             <p>104 Points</p>
                                         </td>
-                                        <td>
-                                            <p class="hsksk78">5.25 M</p>
+                                        <td class="defender_td">
+                                            <p class="hsksk78 defender_sell_price">
+                                                {{ $defenderValue['sell_price'] }}</p>
                                         </td>
                                         <td>
                                             <input class="form-check-input tem-chekbox defendercheck" type="checkbox"
@@ -314,39 +278,41 @@
                         <div class="col-sm-5 sxdhd789">
                             <div class="nhj89hn9">
                                 <p class="h7h8j7">
-                                    Pick atleast 1 midfielder
+                                    Pick atleast 2 midfielder
                                 </p>
                                 <h1 class="dhcbn87">Midfielder</h1>
                             </div>
                         </div>
                         <div class="col-sm-7 d-none d-md-block sd8j97j">
                             <div class="d-flex">
-                                @for($i = 0; $i < 2; $i++)
-                                <div class="team-player">
-                                    <img class="sdhdh7h8"
-                                        src="{{ asset('public/assets/image/star-new-1.png') }}" />
-                                    <div class="bh8j7h7">
-                                        <img id="midfielder_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
-                                    </div>
-                                    <div class="sdjd7jh89">
-                                        <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
-                                        <div class="j7hs89">
-                                            <h6 class="h7bhsh8y6" id="midfielder_name{{$i}}">Tammy Johnson</h6>
-                                            <p class="fjf78h7">Defender</p>
-                                            <div class="dfhfj7j">
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">18 CGW Point</p>
+                                @for ($i = 0; $i < 2; $i++)
+                                    <div class="team-player">
+                                        <img class="sdhdh7h8"
+                                            src="{{ asset('public/assets/image/star-new-1.png') }}" />
+                                        <div class="bh8j7h7">
+                                            <img id="midfielder_img{{ $i }}"
+                                                src="{{ asset('public/assets/image/image _1.png') }}" />
+                                        </div>
+                                        <div class="sdjd7jh89">
+                                            <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
+                                            <div class="j7hs89">
+                                                <h6 class="h7bhsh8y6" id="midfielder_name{{ $i }}">
+                                                    Tammy Johnson</h6>
+                                                <p class="fjf78h7">Midfielder</p>
+                                                <div class="dfhfj7j">
+                                                    <div class="djhfhd8h89">
+                                                        <p class="sdbdj76">18 CGW Point</p>
+                                                    </div>
+                                                    <div class="djhfhd8h89">
+                                                        <p class="sdbdj76">104 T F Points</p>
+                                                    </div>
                                                 </div>
-                                                <div class="djhfhd8h89">
-                                                    <p class="sdbdj76">104 T F Points</p>
-                                                </div>
+                                                <p class="sxjmndkod78">
+                                                    <b id="midfieldersell_price{{ $i }}">$5.25 M</b>
+                                                </p>
                                             </div>
-                                            <p class="sxjmndkod78">
-                                                <b>$5.25 M</b>
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
                                 @endfor
 
                             </div>
@@ -411,25 +377,27 @@
                                 <table class="table">
                                     @foreach ($midfielderData as $midfielderValue)
                                         <tr>
-                                            <td>
+                                            <td class="midfielder_td">
                                                 <img class="imgsize"
                                                     src="{{ $midfielderValue['image_path'] }}" />
                                             </td>
-                                            <td>
-                                                <p class="midfielder_fullname">{{ $midfielderValue['fullname'] }}</p>
+                                            <td class="midfielder_td">
+                                                <p class="midfielder_fullname">{{ $midfielderValue['fullname'] }}
+                                                </p>
                                                 <p class="sdjd6">Midfielder</p>
                                             </td>
-                                            <td>
-                                                <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
+                                            <td class="midfielder_td">
+                                                <strong>{{ isset($midfielderValue['team']['name']) ? $midfielderValue['team']['name'] : '' }}</strong>
                                             </td>
-                                            <td>
+                                            <td class="midfielder_td">
                                                 <p>18 Goals</p>
                                             </td>
-                                            <td>
+                                            <td class="midfielder_td">
                                                 <p>104 Points</p>
                                             </td>
-                                            <td>
-                                                <p class="hsksk78">5.25 M</p>
+                                            <td class="midfielder_td">
+                                                <p class="hsksk78 midfielder_sell_price">
+                                                    {{ $midfielderValue['sell_price'] }}</p>
                                             </td>
                                             <td>
                                                 <input class="form-check-input tem-chekbox midfieldercheck"
@@ -482,17 +450,19 @@
                         </div>
                         <div class="col-sm-7 d-none d-md-block sd8j97j">
                             <div class="d-flex">
-                                @for ($i=0;$i<2;$i++)
+                                @for ($i = 0; $i < 2; $i++)
                                     <div class="team-player">
                                         <img class="sdhdh7h8"
                                             src="{{ asset('public/assets/image/star-new-1.png') }}" />
                                         <div class="bh8j7h7">
-                                            <img id="forward_img{{$i}}" src="{{ asset('public/assets/image/image _1.png') }}" />
+                                            <img id="forward_img{{ $i }}"
+                                                src="{{ asset('public/assets/image/image _1.png') }}" />
                                         </div>
                                         <div class="sdjd7jh89">
                                             <img src="{{ asset('public/assets/image/Vector_115.png') }}" />
                                             <div class="j7hs89">
-                                                <h6 class="h7bhsh8y6" id="forward_name{{$i}}">Tammy Johnson</h6>
+                                                <h6 class="h7bhsh8y6" id="forward_name{{ $i }}">Tammy
+                                                    Johnson</h6>
                                                 <p class="fjf78h7">Defender</p>
                                                 <div class="dfhfj7j">
                                                     <div class="djhfhd8h89">
@@ -503,7 +473,7 @@
                                                     </div>
                                                 </div>
                                                 <p class="sxjmndkod78">
-                                                    <b>$5.25 M</b>
+                                                    <b id="forwardsell_price{{ $i }}">$5.25 M</b>
                                                 </p>
                                             </div>
                                         </div>
@@ -572,25 +542,26 @@
                                 <table class="table">
                                     @foreach ($forwardData as $forwardValue)
                                         <tr>
-                                            <td>
+                                            <td class="forward_td">
                                                 <img class="imgsize"
                                                     src="{{ $forwardValue['image_path'] }}" />
                                             </td>
-                                            <td>
+                                            <td class="forward_td">
                                                 <p class="forward_fullname">{{ $forwardValue['fullname'] }}</p>
                                                 <p class="sdjd6">Forward</p>
                                             </td>
-                                            <td>
+                                            <td class="forward_td">
                                                 <strong>{{ isset($goakkeeperValue['team']['name']) ? $goakkeeperValue['team']['name'] : '' }}</strong>
                                             </td>
-                                            <td>
+                                            <td class="forward_td">
                                                 <p>18 Goals</p>
                                             </td>
-                                            <td>
+                                            <td class="forward_td">
                                                 <p>104 Points</p>
                                             </td>
-                                            <td>
-                                                <p class="hsksk78">5.25 M</p>
+                                            <td class="forward_td">
+                                                <p class="hsksk78 forward_sell_price">
+                                                    {{ $forwardValue['sell_price'] }}</p>
                                             </td>
                                             <td>
                                                 <input class="form-check-input tem-chekbox forwardcheck"
@@ -611,23 +582,200 @@
     </div>
 </div>
 <script type="text/javascript">
-    function goalKeepercheckbox(e) {
-        //$("#goalkeeper_img").attr('src', image.image_path);
-        //$("#goalkeeper_name").html(image.fullname);
 
+    $("body").on("click", ".goalkeeper_td", function() {
+        if ($(this).closest('tr').find('input[type=checkbox]').prop('checked') == true) {
+            $(this).closest('tr').find('input[type=checkbox]').prop('checked', false);
+            $("input.goalkeepercheck").removeAttr('disabled');
+
+            console.log("removeee");
+        } else {
+            var select = 0;
+            var image = '';
+            var full_name = '';
+            var sell_price = '';
+
+            $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+                select += 1;
+            });
+
+            if (select >= 1) {
+                $("input.goalkeepercheck").prop("disabled",true);
+            } else {
+                $("input.goalkeepercheck").removeAttr("disabled");
+                $(this).closest('tr').find('input[type=checkbox]').prop('checked', true);
+            }
+            newselect=0;
+            $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+                newselect += 1;
+            });
+            if(newselect>=1){
+                $("input.goalkeepercheck").prop("disabled",true);
+            }
+
+            $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+                $(this).removeAttr('disabled');
+                image = $(this).closest('tr').find('img').attr("src");
+                full_name = $(this).closest('tr').find('.goalkep_fullname').html();
+                sell_price = $(this).closest('tr').find('.goalkeeper_sell_price').html();
+                $("#goalkeeper_img").attr('src', image);
+                $("#goalkeeper_name").html(full_name);
+                $("#goalkeepersell_price").html(sell_price);
+                select += 1;
+            });
+        }
+        selectCount()
+    })
+
+    $("body").on("click", ".defender_td", function() {
+        if ($(this).closest('tr').find('input[type=checkbox]').prop('checked') == true) {
+            $(this).closest('tr').find('input[type=checkbox]').prop('checked', false);
+            $("input.defendercheck").removeAttr('disabled');
+
+        } else {
+            var select = 0;
+            var image = '';
+            var full_name = '';
+            var sell_price = '';
+
+            $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
+                select += 1;
+            });
+            if (select >= 2) {
+                $("input.defendercheck").prop("disabled",true);
+            } else {
+                $("input.defendercheck").removeAttr("disabled");
+                $(this).closest('tr').find('input[type=checkbox]').prop('checked', true);
+            }
+            newselect=0;
+            $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
+                newselect += 1;
+            });
+            if (newselect >= 2) {
+                $("input.defendercheck").prop("disabled",true);
+            }
+            var n = 0;
+            $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
+                $(this).removeAttr('disabled');
+                image = $(this).closest('tr').find('img').attr("src");
+                full_name = $(this).closest('tr').find('.defender_fullname').html();
+                sell_price = $(this).closest('tr').find('.defender_sell_price').html();
+                $("#defender_img"+ n).attr('src', image);
+                $("#defender_name"+ n).html(full_name);
+                $("#defendersell_price"+ n).html(sell_price);
+                n += 1;
+            });
+        }
+        selectCount()
+    })
+
+    $("body").on("click", ".midfielder_td", function() {
+        if ($(this).closest('tr').find('input[type=checkbox]').prop('checked') == true) {
+            $(this).closest('tr').find('input[type=checkbox]').prop('checked', false);
+            $("input.midfieldercheck").removeAttr('disabled');
+
+        } else {
+            var select = 0;
+            var image = '';
+            var full_name = '';
+            var sell_price = '';
+
+            $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
+                select += 1;
+            });
+            if (select >= 2) {
+                $("input.midfieldercheck").prop("disabled",true);
+            } else {
+                $("input.midfieldercheck").removeAttr("disabled");
+                $(this).closest('tr').find('input[type=checkbox]').prop('checked', true);
+            }
+            newselect=0;
+            $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
+                newselect += 1;
+            });
+            if (newselect >= 2) {
+                $("input.midfieldercheck").prop("disabled",true);
+            }
+            var n = 0;
+            $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
+                $(this).removeAttr('disabled');
+                image = $(this).closest('tr').find('img').attr("src");
+                full_name = $(this).closest('tr').find('.midfielder_fullname').html();
+                sell_price = $(this).closest('tr').find('.midfielder_sell_price').html();
+                $("#midfielder_img"+ n).attr('src', image);
+                $("#midfielder_name"+ n).html(full_name);
+                $("#midfieldersell_price"+ n).html(sell_price);
+                n += 1;
+            });
+        }
+        selectCount()
+    })
+
+    $("body").on("click", ".forward_td", function() {
+        if ($(this).closest('tr').find('input[type=checkbox]').prop('checked') == true) {
+            $(this).closest('tr').find('input[type=checkbox]').prop('checked', false);
+            $("input.forwardcheck").removeAttr('disabled');
+
+        } else {
+            var select = 0;
+            var image = '';
+            var full_name = '';
+            var sell_price = '';
+
+            $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
+                select += 1;
+            });
+            if (select >= 2) {
+                $("input.forwardcheck").prop("disabled",true);
+            } else {
+                $("input.forwardcheck").removeAttr("disabled");
+                $(this).closest('tr').find('input[type=checkbox]').prop('checked', true);
+            }
+            newselect=0;
+            $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
+                newselect += 1;
+            });
+            if (newselect >= 2) {
+                $("input.forwardcheck").prop("disabled",true);
+            }
+            var n = 0;
+            $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
+                $(this).removeAttr('disabled');
+                image = $(this).closest('tr').find('img').attr("src");
+                full_name = $(this).closest('tr').find('.forward_fullname').html();
+                sell_price = $(this).closest('tr').find('.forward_sell_price').html();
+                $("#forward_img"+ n).attr('src', image);
+                $("#forward_name"+ n).html(full_name);
+                $("#forwardsell_price"+ n).html(sell_price);
+                n += 1;
+            });
+        }
+        selectCount()
+    })
+
+    function selectCount() {
+        var selected = 0;
+        $('.form-check-input:checkbox[type=checkbox]:checked').each(function(e) {
+            selected += 1;
+        });
+        $("#selected_count").html(selected + "/07")
+    }
+
+    function goalKeepercheckbox() {
         var select = 0;
         var image = '';
         var full_name = '';
-        // var src=$(this).parent().prevAll().first().children();
-        //console.log(image.image_path);
+        var sell_price='';
         $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
             image=$(this).closest('tr').find('img').attr("src");
             full_name=$(this).closest('tr').find('.goalkep_fullname').html();
+            sell_price=$(this).closest('tr').find('.goalkeeper_sell_price').html();
             select += 1;
         });
-        if (e.target.checked && select >= 1) {
+        if (select >= 1) {
             $("#goalkeeper_img").attr('src', image);
             $("#goalkeeper_name").html(full_name);
+            $("#goalkeepersell_price").html(sell_price);
             $("input.goalkeepercheck").attr("disabled", true);
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
         } else {
@@ -641,21 +789,19 @@
         var select = 0;
 
         $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
-            image=$(this).closest('tr').find('img').attr("src");
-            full_name=$(this).closest('tr').find('.defender_fullname').html();
-            $("#defender_img"+select).attr('src', image);
-            $("#defender_name"+select).html(full_name);
+            image = $(this).closest('tr').find('img').attr("src");
+            full_name = $(this).closest('tr').find('.defender_fullname').html();
+            sell_price = $(this).closest('tr').find('.defender_sell_price').html();
+            $("#defender_img" + select).attr('src', image);
+            $("#defender_name" + select).html(full_name);
+            $("#defendersell_price" + select).html(sell_price);
             select += 1;
         });
 
         if (e.target.checked && select >= 2) {
-            //$("#defender_img"+select).attr('src', "{{ asset('public/assets/image/image _1.png') }}");
-
             $("input.defendercheck").attr("disabled", true);
             $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
         } else {
-            //$("#defender_img"+select).attr('src', "{{ asset('public/assets/image/image _1.png') }}");
-
             $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
             $("input.defendercheck").removeAttr("disabled");
         }
@@ -664,11 +810,12 @@
     function midfieldercheckbox(e) {
         var select = 0;
         $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
-            image=$(this).closest('tr').find('img').attr("src");
-            full_name=$(this).closest('tr').find('.midfielder_fullname').html();
-            $("#midfielder_img"+select).attr('src', image);
-            $("#midfielder_name"+select).html(full_name);
-
+            image = $(this).closest('tr').find('img').attr("src");
+            full_name = $(this).closest('tr').find('.midfielder_fullname').html();
+            sell_price = $(this).closest('tr').find('.midfielder_sell_price').html();
+            $("#midfielder_img" + select).attr('src', image);
+            $("#midfielder_name" + select).html(full_name);
+            $("#midfieldersell_price" + select).html(sell_price);
             select += 1;
         });
 
@@ -684,10 +831,12 @@
     function forwardcheckbox(e) {
         var select = 0;
         $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
-            image=$(this).closest('tr').find('img').attr("src");
-            full_name=$(this).closest('tr').find('.forward_fullname').html();
-            $("#forward_img"+select).attr('src', image);
-            $("#forward_name"+select).html(full_name);
+            image = $(this).closest('tr').find('img').attr("src");
+            full_name = $(this).closest('tr').find('.forward_fullname').html();
+            sell_price = $(this).closest('tr').find('.forward_sell_price').html();
+            $("#forward_img" + select).attr('src', image);
+            $("#forward_name" + select).html(full_name);
+            $("#forwardsell_price" + select).html(sell_price);
             select += 1;
         });
         if (e.target.checked && select >= 2) {

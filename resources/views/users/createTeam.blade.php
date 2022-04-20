@@ -230,7 +230,6 @@
     </style>
     <main>
         <div id="manage_squad" style="display: none">
-
         </div>
         <div class="container jsdbdhsol" id="create_team_main">
             <div class="asdjd76">
@@ -285,6 +284,7 @@
     <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            cookiesCheck();
             fetchData("Search");
 
             function fetchData(data, type = null) {
@@ -380,7 +380,7 @@
                     //alert(e);
                     selected += 1;
                 });
-                $("#selected_count").html(selected)
+                $("#selected_count").html(selected+"/07")
                 //alert(selected);
             });
 

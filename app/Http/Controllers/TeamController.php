@@ -31,29 +31,6 @@ class TeamController extends Controller
 
     public function createTeam(Request $request)
     {
-        $selected=['14685598','37539577','37558562','37614138','37625409','37418693','37525682'];
-        $selectedData=Player::query()->whereIn('id',$selected)->get();
-        $forwardData=$midfielderData=$defenderData=$goalkeeperData=[];
-        foreach($selectedData as $playerValue){
-            if($playerValue->position_id==1){
-                $goalkeeperData=$playerValue;
-            }
-            if($playerValue->position_id==2){
-                $defenderData[]=$playerValue;
-            }
-            if($playerValue->position_id==3){
-                $midfielderData[]=$playerValue;
-            }
-            if($playerValue->position_id==4){
-                $forwardData[]=$playerValue;
-            }
-        }
-        return view('users/managesquad/managesquadone',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData]);
-
-
-
-
-
         $searchData=$request->searchData;
         $type=$request->type;
 
@@ -86,9 +63,24 @@ class TeamController extends Controller
     }
 
     public function managesquadone(Request $request){
-        $selected=$request->selected;
-        $selected=['14685598','37539577','37558562','37614138','37625409','37418693','37525682'];
-        return view('users/managesquad/managesquadone',['selected'=>$selected]);
+        $selected=is_array($request->selected)?$request->selected:explode(',',$request->selected);
+        $selectedData=Player::query()->whereIn('id',$selected)->get();
+        $forwardData=$midfielderData=$defenderData=$goalkeeperData=[];
+        foreach($selectedData as $playerValue){
+            if($playerValue->position_id==1){
+                $goalkeeperData=$playerValue;
+            }
+            if($playerValue->position_id==2){
+                $defenderData[]=$playerValue;
+            }
+            if($playerValue->position_id==3){
+                $midfielderData[]=$playerValue;
+            }
+            if($playerValue->position_id==4){
+                $forwardData[]=$playerValue;
+            }
+        }
+        return view('users/managesquad/managesquadone',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData]);
     }
 
     public function managesquatwo(){
