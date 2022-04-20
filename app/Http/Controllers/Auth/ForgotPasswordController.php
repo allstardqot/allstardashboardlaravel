@@ -56,7 +56,7 @@ class ForgotPasswordController extends Controller
     public function ResetPassword($token) {
         return view('auth.forget-password-link', ['token' => $token]);
     }
-    
+
     public function ResetPasswordStore(Request $request) {
         $request->validate([
             'email' => 'required|email|exists:users',

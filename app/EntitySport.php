@@ -157,6 +157,17 @@ class EntitySport
         return [];
     }
 
+    public function getMacthScore($params = []): array
+    {
+        $response = $this->httpParameter('fixtures', $params);
+
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+        return [];
+    }
+
     public function getLineup(Fixture $fixture)
     {
         // https://doc.entitysport.com/#match-squads-api

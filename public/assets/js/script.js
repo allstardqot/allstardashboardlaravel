@@ -26,11 +26,43 @@ $(".create-team-nav").each((i, e) => {
     e.addEventListener("click", (c) => {
         if (c.target.id !== "contact-tab2") {
             return nextBtn.innerHTML = "NEXT";
-        }else{
+        } else {
             return nextBtn.innerHTML = "SAVE";
         }
     })
 })
+
+$("body").on("click", "#step1_back", function () {
+    $.cookie('selected_player', null)
+    $("#create_team_main").show()
+    $("#manage_squad").hide()
+})
+
+function manageSquad(yourArray) {
+    $.ajax({
+        url: "manage-squad",
+        method: "GET",
+        data: {
+            'selected': yourArray
+        },
+        success: function (result) {
+            $("#create_team_main").hide()
+            $("#manage_squad").show()
+            $("#manage_squad").html(result);
+            $.cookie('selected_player', yourArray);
+        }
+    });
+}
+
+function cookiesCheck() {
+    if ($.cookie('selected_player')) {
+        var yourArray = $.cookie('selected_player');
+        manageSquad(yourArray);
+    } else {
+        console.log("cookies not get")
+
+    }
+}
 
 nextBtn.addEventListener("click", (e) => {
     e.preventDefault()
@@ -40,40 +72,44 @@ nextBtn.addEventListener("click", (e) => {
         if (elem.hasClass("active")) {
             btnHtml = nextBtn.innerHTML
             if (btnHtml == "SAVE") {
-                yourArray = [];
-                $("input:checkbox[type=checkbox]:checked").each(function () {
-                    yourArray.push($(this).val());
-                });
-                let selected=$("#selected_count").html();
-                if(selected<7){
-                    $.notify("Please select 7 Players.","info");
-                }else{
-                    console.log(selected+"ttttttttttttttttttttttttttttt");
-                // $.ajax({
-                //     url: "create-team",
-                //     method: "GET",
-                //     data: {
-                //         'searchData': data,'type':type
-                //     },
-                //     success: function(result) {
-                //         $("#myTabContent").html(result);
-                //     }
+                // yourArray = [];
+                // $("input:checkbox[type=checkbox]:checked").each(function () {
+                //     yourArray.push($(this).val());
                 // });
-                }
+                // let selected = $("#selected_count").html();
+
+                // if (selected.indexOf('7/07') == -1) {
+                //     $.notify("Please select 7 Players.", "info");
+                // } else {
+                //     manageSquad(yourArray);
+                //     // $.ajax({
+                //     //     url: "manage-squad",
+                //     //     method: "GET",
+                //     //     data: {
+                //     //         'selected': yourArray
+                //     //     },
+                //     //     success: function(result) {
+                //     //         $("#create_team_main").hide()
+                //     //         $("#manage_squad").show()
+                //     //         $("#manage_squad").html(result);
+                //     //     }
+                //     // });
+                // }
             }
             if (i === 2) {
                 nextBtn.innerHTML = "SAVE"
-                
+
 
             }
-
+            // if($("#" + createTeamBtns.eq(i + 1)[0].id)){
             let nextId = $("#" + createTeamBtns.eq(i + 1)[0].id)
             elem.removeClass("active")
 
             $("." + e.id).removeClass("show active")
-            
+
             $("." + createTeamBtns.eq(i + 1)[0].id).addClass("show active")
             nextId.addClass("active")
+            //}
             return false;
         }
     })
@@ -102,38 +138,34 @@ backBtn.addEventListener("click", (e) => {
     })
 })
 
-// function myAdd() {
-//     var element = document.getElementById("commentArea");
-//     element.classList.toggle("active");
-//  }
+    // function myAdd() {
+    //     var element = document.getElementById("commentArea");
+    //     element.classList.toggle("active");
+    //  }
 
 
-$(document).ready(function () {
-    $("#hideShow").click(function () {
-        $(".commentArea").toggleClass("active");
-    });
-});
 
-(function ($) {
-    $(document).ready(function () {
 
-        $('button').click(function () {
-            $('button').removeClass('comments');
-            $(this).addClass('active');
+    (function ($) {
+        $(document).ready(function () {
+
+            $('button').click(function () {
+                $('button').removeClass('comments');
+                $(this).addClass('active');
+            });
+
+            // When the user clicks on div, open the popup
+            function myFunction() {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+
         });
 
-        // When the user clicks on div, open the popup
-        function myFunction() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-        }
 
 
-    });
-
-
-
-})(jQuery);
+    })(jQuery);
 
 function ShowAndHide() {
     var x = document.getElementById('SectionName');

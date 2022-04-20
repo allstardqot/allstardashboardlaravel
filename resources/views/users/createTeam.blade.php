@@ -168,9 +168,9 @@
             animation: animate 0.3s linear forwards;
         }
 
-        .imgsize{
-            width:50px;
-            height:50px;
+        .imgsize {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
         }
 
@@ -229,7 +229,9 @@
 
     </style>
     <main>
-        <div class="container jsdbdhsol">
+        <div id="manage_squad" style="display: none">
+        </div>
+        <div class="container jsdbdhsol" id="create_team_main">
             <div class="asdjd76">
                 <header>Select Team Player</header>
                 <div class="row">
@@ -268,7 +270,7 @@
                         </div>
 
                         <div class="tab-content" id="myTabContent">
-                            
+
                         </div>
                         <div class="field">
                             <a href="#" class="firstNext1 next" id="BackBtn">back </a>
@@ -279,17 +281,19 @@
             </div>
         </div>
     </main>
-    <script src="{{asset('public/assets/js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
+            cookiesCheck();
             fetchData("Search");
-            
-            function fetchData(data,type=null){
+
+            function fetchData(data, type = null) {
                 $.ajax({
                     url: "create-team",
                     method: "GET",
                     data: {
-                        'searchData': data,'type':type
+                        'searchData': data,
+                        'type': type
                     },
                     success: function(result) {
                         $("#myTabContent").html(result);
@@ -297,89 +301,90 @@
                 });
             }
 
-            $("body").on('keyup',"#goal_keeper", function (e) {
+            $("body").on('keyup', "#goal_keeper", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     searchData = $("#goal_keeper").val();
-                    if(!searchData){
-                        searchData='Search'
+                    if (!searchData) {
+                        searchData = 'Search'
                     }
-                    fetchData(searchData,"goalkeeper");
+                    fetchData(searchData, "goalkeeper");
                 }
             })
 
-            $("body").on('click',"#goal_keeper_search", function (e) {
+            $("body").on('click', "#goal_keeper_search", function(e) {
                 searchData = $("#goal_keeper").val();
-                if(!searchData){
-                    searchData='Search'
+                if (!searchData) {
+                    searchData = 'Search'
                 }
-                fetchData(searchData,"goalkeeper");
+                fetchData(searchData, "goalkeeper");
             })
-            
 
-            $("body").on('keyup',"#defender", function (e) {
+
+            $("body").on('keyup', "#defender", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     searchData = $("#defender").val();
-                    if(!searchData){
-                        searchData='Search'
+                    if (!searchData) {
+                        searchData = 'Search'
                     }
-                    fetchData(searchData,"defender");
+                    fetchData(searchData, "defender");
                 }
             })
 
-            $("body").on('click',"#defender_search", function (e) {
+            $("body").on('click', "#defender_search", function(e) {
                 searchData = $("#defender").val();
-                if(!searchData){
-                    searchData='Search'
+                if (!searchData) {
+                    searchData = 'Search'
                 }
-                fetchData(searchData,"defender");
+                fetchData(searchData, "defender");
             })
 
-            $("body").on('keyup',"#midfielder", function (e) {
+            $("body").on('keyup', "#midfielder", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     searchData = $("#midfielder").val();
-                    if(!searchData){
-                        searchData='Search'
+                    if (!searchData) {
+                        searchData = 'Search'
                     }
-                    fetchData(searchData,"midfielder");
+                    fetchData(searchData, "midfielder");
                 }
             })
 
-            $("body").on('click',"#midfielder_search", function (e) {
+            $("body").on('click', "#midfielder_search", function(e) {
                 searchData = $("#midfielder").val();
-                if(!searchData){
-                    searchData='Search'
+                if (!searchData) {
+                    searchData = 'Search'
                 }
-                fetchData(searchData,"midfielder");
+                fetchData(searchData, "midfielder");
             })
 
-            $("body").on('keyup',"#forward", function (e) {
+            $("body").on('keyup', "#forward", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     searchData = $("#forward").val();
-                    if(!searchData){
-                        searchData='Search'
+                    if (!searchData) {
+                        searchData = 'Search'
                     }
-                    fetchData(searchData,"forward");
+                    fetchData(searchData, "forward");
                 }
             })
 
-            $("body").on('click',"#forward_search", function (e) {
+            $("body").on('click', "#forward_search", function(e) {
                 searchData = $("#forward").val();
-                if(!searchData){
-                    searchData='Search'
+                if (!searchData) {
+                    searchData = 'Search'
                 }
-                fetchData(searchData,"forward");
+                fetchData(searchData, "forward");
             })
 
-            $('body').on("click",".form-check-input",function(){
-                var selected=0;
-                $('.form-check-input:checkbox[type=checkbox]:checked').each(function(e){
+            $('body').on("click", ".form-check-input", function() {
+                var selected = 0;
+                $('.form-check-input:checkbox[type=checkbox]:checked').each(function(e) {
                     //alert(e);
-                    selected+=1;
+                    selected += 1;
                 });
-                $("#selected_count").html(selected)
+                $("#selected_count").html(selected+"/07")
                 //alert(selected);
             });
+
+
         })
-       
     </script>
 @endsection
