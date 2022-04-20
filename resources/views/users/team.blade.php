@@ -56,8 +56,10 @@
           <hr class="htguy78">
           <a href="#" class="hjuy87">Go to manage Squad</a>
 
+          {{-- <a href="{{ url('/leaderboard') }}"> --}}
+            <h4 class="ihnik8978">Fantasy Point 900</h4>
 
-          <h4 class="ihnik8978">Fantasy Point 900</h4>
+          {{-- </a> --}}
 
 
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\PoolController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\LeaderboardController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',function(){
 //     echo "fineee";die;
 // });
-
+// 
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 
@@ -73,6 +74,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');
         Route::post('/store-post', [ManagerController::class, 'store'])->name('store-post');
+
+        Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
 // });
     
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
@@ -89,5 +92,9 @@ Route::get('/logout', function(){
     Auth::logout();
     return Redirect::to('login');
  });
+
+ Route::get("/{slug}", function () {
+    return view('page/error_404');
+});
 
 
