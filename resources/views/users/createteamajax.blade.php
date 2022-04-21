@@ -6,7 +6,7 @@
         </p>
     </div>
     <div class="sxdhdcn9908">
-        <h1 class="sdhsdks87">94.5 M</h1>
+        <h1 class="sdhsdks87">50 M</h1>
         <p class="sdjhs7tyh">
             <b>Money<br />
                 Remaining</b>
@@ -257,22 +257,6 @@
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="form-outer">
             <div class="page slide-page">
-                {{-- <div class="sdjsd689">
-                    <div class="sdjsd789">
-                        <h1 class="sdhn485" id="selected_now">01/07</h1>
-                        <p class="sxdjhd767">
-                            <b>Players <br />Selected</b>
-                        </p>
-                    </div>
-                    <div class="sxdhdcn9908">
-                        <h1 class="sdhsdks87">94.5 M</h1>
-                        <p class="sdjhs7tyh">
-                            <b>Money<br />
-                                Remaining</b>
-                        </p>
-                    </div>
-                </div> --}}
-
                 <div class="nsd79">
                     <div class="row">
                         <div class="col-sm-5 sxdhd789">
@@ -422,21 +406,6 @@
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="form-outer">
             <div class="page slide-page">
-                {{-- <div class="sdjsd689">
-                    <div class="sdjsd789">
-                        <h1 class="sdhn485">01/07</h1>
-                        <p class="sxdjhd767">
-                            <b>Players <br />Selected</b>
-                        </p>
-                    </div>
-                    <div class="sxdhdcn9908">
-                        <h1 class="sdhsdks87">94.5 M</h1>
-                        <p class="sdjhs7tyh">
-                            <b>Money<br />
-                                Remaining</b>
-                        </p>
-                    </div>
-                </div> --}}
 
                 <div class="nsd79">
                     <div class="row">

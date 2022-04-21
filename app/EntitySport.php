@@ -85,6 +85,17 @@ class EntitySport
         return [];
     }
 
+    public function getLeagueSeason($params = []): array
+    {
+        $response = $this->http('leagues', $params);
+
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+
+        return [];
+    }
 
     public function getSquad($params = []): array
     {

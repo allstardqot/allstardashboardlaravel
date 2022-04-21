@@ -28,7 +28,7 @@
 }
 .how-play-in{
 	text-align: center;color: white;padding: 2%;
-}	
+}
 .consectetur-main{
 	background-color:#2A2B50;padding-bottom: 4%;
 }
@@ -87,7 +87,7 @@
 .faq-qustion .dropdown>a{
 	color: #fff;
 	font-size: 15px;
-	
+
 }
 .faq-qustion .drop-menu-1{
 	background-color:#2A2B50;width: 100%;border-radius: 0px 0px 30px 30px;margin-right: .8%;padding: 2%;
@@ -266,11 +266,11 @@
     color: #fff;
 }
 .about-common {
-    
+
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
-  
+
     border: 10px solid #fff;
   min-height: 500px;
   margin-bottom: 74px;
@@ -298,7 +298,7 @@
     max-width: 565px;
     padding: 20px 52px 20px;
 	text-align: left;
-	
+
 }
 .about-common .content h3 {
     font-weight: 700;
@@ -327,11 +327,11 @@ header .hsakdjh56 {
 	font-size: 3.5em;
 }
 .team-head {
-   
+
     color: #fff;
 	padding-top: 1.5rem;
 }
-@media (max-width: 1400px) { 
+@media (max-width: 1400px) {
 	.menuNav {
 		padding: 0px 0px !important;
 	}
@@ -349,7 +349,7 @@ header .hsakdjh56 {
 	}
 }
 
-@media (max-width: 1199px) { 
+@media (max-width: 1199px) {
 	header .navbar-nav .mx-3{
 		margin: 0px 5px !important;
 	}
@@ -361,12 +361,12 @@ header .hsakdjh56 {
 		width: 150px;
 		height: 475px;
 		}
-	
+
 
 }
-@media (max-width: 991px) { 
+@media (max-width: 991px) {
 	.about-us-section {
-		
+
 		padding-left: 0px;
 		padding-right: 0px;
 	}
@@ -374,7 +374,7 @@ header .hsakdjh56 {
 		width: 100%;
 		}
 		.input-two {
-			
+
 			width: 100%;
 				}
 				.input-three {
@@ -406,7 +406,7 @@ header .hsakdjh56 {
 	}
 
 }
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
 	.sdhnsk7 {
 		font-size: 2.5em;
 	}
@@ -421,7 +421,7 @@ header .hsakdjh56 {
 		margin-top: -107px;
 		height: 163px;
 	}
-	
+
 	.dfjdfjk .pregraph {
 		font-size: 17px;
 	}
@@ -471,7 +471,7 @@ header .hsakdjh56 {
 			font-size: 26px;
 		}
 		.rightSide1 img {
-		
+
 			margin-top: -90px;
 			height: 171px;
 		}
@@ -486,13 +486,13 @@ header .hsakdjh56 {
 				margin-top: 45px;
 			}
 			.about-common {
-				
+
 				margin-bottom: 45px;
 				min-height: 475px;
 				}
 
-			
-		
+
+
 
 
  }

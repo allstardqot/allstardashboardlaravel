@@ -231,6 +231,10 @@
     <main>
         <div id="manage_squad" style="display: none">
         </div>
+        <div id="manage_squad2" style="display: none">
+        </div>
+        <div id="manage_squad3" style="display: none">
+        </div>
         <div class="container jsdbdhsol" id="create_team_main">
             <div class="asdjd76">
                 <header>Select Team Player</header>
@@ -384,7 +388,48 @@
                 //alert(selected);
             });
 
+            $('body').on("click",".choose_substitude",function(e) {
+                if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
+                    $.notify("Can not selecte goalkeeper.", "info");
+                }else{
+                    $(this).find('.aboutplayer').toggleClass("active");
+                    var selectId=[];
+                    var categorie=[];
+                    $(".choose_substitude .active").each(function() {
+                        var categorieHtml=$(this).closest('div').find('.categorie').html();
+                        if(selectId.length>=2){
+                            $.notify("Select only 2 substituted.", "info");
+                            $(this).removeClass("active");
+                        }else if($.inArray(categorieHtml,categorie)<0 || categorie.length === 0){
+                            selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+                            categorie.push($(this).closest('div').find('.categorie').html());
+                        }else{
+                            $(this).removeClass("active");
+                            $.notify("Can not select 2 categorie.", "info");
+                        }
+                    })
+                }
+            });
 
+            $('body').on("click",".choose_captain",function(e) {
+                if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
+                    $.notify("Can not select goalkeeper.", "info");
+                }else{
+                    $(this).find('.aboutplayer').toggleClass("active");
+                    var selectId=[];
+                    $(".choose_captain .active").each(function() {
+                        if(selectId.length>=1){
+                            $.notify("Select only 1 captain.", "info");
+                            $(this).removeClass("active");
+                        }else if(selectId.length === 0){
+                            selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+                        }else{
+                            $(this).removeClass("active");
+                            $.notify("Can not select 2 categorie.", "info");
+                        }
+                    })
+                }
+            });
         })
     </script>
 @endsection

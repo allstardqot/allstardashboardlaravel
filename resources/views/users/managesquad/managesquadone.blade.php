@@ -15,11 +15,11 @@
         <div class="m-bg text-white sdjkdxjnh">
             <div class="first-row-check">
                 <h5>Goalkeeper</h5>
-                <div class="playerspot">
+                <div class="playerspot choose_substitude">
                     <img src="{{ $goalkeeperData['image_path'] }}" />
                     <div class="aboutplayer">
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
-                        <p>Goalkeeper</p>
+                        <p class="categorie" data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
                             <p>18 CGW Point</p>
                             <p>104 T F Points</p>
@@ -32,11 +32,11 @@
 
             <div class="second-row-check">
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $defenderData[0]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $defenderData[0]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defenders</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -52,11 +52,11 @@
                     <h5>Defenders</h5>
                 </div>
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $defenderData[1]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie" data-id="{{ $defenderData[1]['id'] }}">Defenders</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -74,11 +74,11 @@
 
             <div class="third-row-check">
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $midfielderData[0]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $midfielderData[0]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie" data-id="{{ $midfielderData[0]['id'] }}">Midfielders</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -93,11 +93,11 @@
                     <h5>Midfielders</h5>
                 </div>
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $midfielderData[1]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $midfielderData[1]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie" data-id="{{ $midfielderData[1]['id'] }}">Midfielders</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -114,11 +114,11 @@
             </div>
             <div class="fourth-row-check">
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $forwardData[0]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $forwardData[0]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie" data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -133,11 +133,11 @@
                     <h5>Forward</h5>
                 </div>
                 <div class="greatplayer">
-                    <div class="playerspot">
+                    <div class="playerspot choose_substitude">
                         <img src="{{ $forwardData[1]['image_path'] }}" />
                         <div class="aboutplayer">
                             <h4>{{ $forwardData[1]['fullname'] }}</h4>
-                            <p>Forward</p>
+                            <p class="categorie" data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                             <div class="playerdetails">
                                 <p>18 CGW Point</p>
                                 <p>104 T F Points</p>
@@ -162,7 +162,7 @@
             </div>
 
             <div class="col-lg-4 col-4 text-lg-right text-right">
-                <a href="#" class="form-control btnColor mt-4 sdjhsdjh ml-auto">
+                <a id="managesquad_one_submit" href="#" class="form-control btnColor mt-4 sdjhsdjh ml-auto">
                     Next</a>
             </div>
         </div>

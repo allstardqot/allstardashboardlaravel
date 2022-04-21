@@ -83,7 +83,48 @@ class TeamController extends Controller
         return view('users/managesquad/managesquadone',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData]);
     }
 
-    public function managesquatwo(){
-        return view('users/mangesquad/managesquadthree');
+    public function managesquadtwo(Request $request){
+        $selected=is_array($request->selected)?$request->selected:explode(',',$request->selected);
+        $substitude=is_array($request->selectData)?$request->selectData:explode(',',$request->selectData);
+
+        $selectedData=Player::query()->whereIn('id',$selected)->get();
+        $forwardData=$midfielderData=$defenderData=$goalkeeperData=[];
+        foreach($selectedData as $playerValue){
+            if($playerValue->position_id==1){
+                $goalkeeperData=$playerValue;
+            }
+            if($playerValue->position_id==2){
+                $defenderData[]=$playerValue;
+            }
+            if($playerValue->position_id==3){
+                $midfielderData[]=$playerValue;
+            }
+            if($playerValue->position_id==4){
+                $forwardData[]=$playerValue;
+            }
+        }
+        return view('users/managesquad/managesquadtwo',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData,'substitude'=>$substitude]);
+    }
+
+    public function managesquadthree(Request $request){
+        $selected=is_array($request->selected)?$request->selected:explode(',',$request->selected);
+        $substitude=is_array($request->substitude)?$request->substitude:explode(',',$request->substitude);
+        $finalArray=array_diff($selected,$substitude);
+
+        $captain=$request->captain;
+        $selectedData=Player::query()->whereIn('id',$selected)->with('position')->get();
+        $captainData=$substitudeData=$defenderData=$goalkeeperData=[];
+        foreach($selectedData as $playerValue){
+            if($playerValue->id==$captain){
+                $captainData=$playerValue;
+            }
+            if(in_array($playerValue->id,$substitude)){
+                $substitudeData[]=$playerValue;
+            }
+            if(in_array($playerValue->id,$selected)){
+                $playerData[]=$playerValue;
+            }
+        }
+        return view('users/managesquad/managesquadthree',['playerData'=>$playerData,'captainData'=>$captainData,'substitudeData'=>$substitudeData]);
     }
 }

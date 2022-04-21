@@ -38,6 +38,89 @@ $("body").on("click", "#step1_back", function () {
     $("#manage_squad").hide()
 })
 
+$("body").on("click", "#step2_back", function () {
+    $.cookie('step', "first");
+    $("#create_team_main").hide()
+    $("#manage_squad2").hide()
+    $("#manage_squad").show()
+})
+
+$("body").on("click", "#step3_back", function () {
+    $.cookie('step', "second");
+    $("#create_team_main").hide()
+    $("#manage_squad").hide()
+    $("#manage_squad3").hide()
+    $("#manage_squad2").show()
+})
+
+
+
+$("body").on("click", "#managesquad_one_submit", function () {
+    var selectId=[];
+    var categorie=[];
+    $(".playerspot .active").each(function() {
+        selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+        //categorie.push($(this).closest('div').find('.categorie').html());
+    })
+    var yourArray = $.cookie('selected_player');
+    $.cookie('substitude', selectId);
+
+    manageSquadTwo(yourArray,selectId);
+})
+
+$("body").on("click", "#managesquad_two_submit", function () {
+    var selectId=[];
+    var captain='';
+    $(".choose_captain .active").each(function() {
+        captain=$(this).closest('div').find('.categorie').attr('data-id');
+    })
+    if(!captain){
+        $.notify("Please select a captain.", "info");
+    }else{
+    var substitude = $.cookie('substitude');
+    //$.cookie('substitude', selectId);
+    var yourArray = $.cookie('selected_player');
+    manageSquadThree(yourArray,substitude,captain);
+    }
+})
+
+function manageSquadThree(yourArray,substitude,captain) {
+    $.ajax({
+        url: "manage-squad-thr",
+        method: "GET",
+        data: {
+            'selected': yourArray,'substitude':substitude,'captain':captain
+        },
+        success: function (result) {
+            $("#create_team_main").hide()
+            $("#manage_squad").hide()
+            $("#manage_squad2").hide()
+            $("#manage_squad3").html(result);
+            $("#manage_squad3").show();
+            $.cookie('step', "third");
+            $.cookie('captain', captain);
+        }
+    });
+}
+
+function manageSquadTwo(yourArray,selectData) {
+    $.ajax({
+        url: "manage-squad-sec",
+        method: "GET",
+        data: {
+            'selected': yourArray,'selectData':selectData
+        },
+        success: function (result) {
+            $("#create_team_main").hide()
+            $("#manage_squad").hide()
+            $("#manage_squad2").html(result);
+            $("#manage_squad2").show();
+            $.cookie('step', "second");
+            $.cookie('selected_player', yourArray);
+        }
+    });
+}
+
 function manageSquad(yourArray) {
     $.ajax({
         url: "manage-squad",
@@ -50,6 +133,7 @@ function manageSquad(yourArray) {
             $("#manage_squad").show()
             $("#manage_squad").html(result);
             $.cookie('selected_player', yourArray);
+            $.cookie('step', "first");
         }
     });
 }
@@ -57,7 +141,17 @@ function manageSquad(yourArray) {
 function cookiesCheck() {
     if ($.cookie('selected_player')) {
         var yourArray = $.cookie('selected_player');
-        manageSquad(yourArray);
+        var substitude = $.cookie('substitude');
+        var captain = $.cookie('captain', captain);
+
+
+        if($.cookie('step')=="first"){
+            manageSquad(yourArray);
+        }else if($.cookie('step')=="second"){
+            manageSquadTwo(yourArray,substitude);
+        }else if($.cookie('step')=="third"){
+            manageSquadThree(yourArray,substitude,captain);
+        }
     } else {
         console.log("cookies not get")
 
@@ -72,29 +166,17 @@ nextBtn.addEventListener("click", (e) => {
         if (elem.hasClass("active")) {
             btnHtml = nextBtn.innerHTML
             if (btnHtml == "SAVE") {
-                // yourArray = [];
-                // $("input:checkbox[type=checkbox]:checked").each(function () {
-                //     yourArray.push($(this).val());
-                // });
-                // let selected = $("#selected_count").html();
+                yourArray = [];
+                $("input:checkbox[type=checkbox]:checked").each(function () {
+                    yourArray.push($(this).val());
+                });
+                let selected = $("#selected_count").html();
 
-                // if (selected.indexOf('7/07') == -1) {
-                //     $.notify("Please select 7 Players.", "info");
-                // } else {
-                //     manageSquad(yourArray);
-                //     // $.ajax({
-                //     //     url: "manage-squad",
-                //     //     method: "GET",
-                //     //     data: {
-                //     //         'selected': yourArray
-                //     //     },
-                //     //     success: function(result) {
-                //     //         $("#create_team_main").hide()
-                //     //         $("#manage_squad").show()
-                //     //         $("#manage_squad").html(result);
-                //     //     }
-                //     // });
-                // }
+                if (selected.indexOf('7/07') == -1) {
+                    $.notify("Please select 7 Players.", "info");
+                } else {
+                    manageSquad(yourArray);
+                }
             }
             if (i === 2) {
                 nextBtn.innerHTML = "SAVE"
