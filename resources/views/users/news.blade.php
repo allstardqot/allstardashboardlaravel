@@ -28,7 +28,7 @@
                 Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <a href="#" class="mt-2 hgft432">Edit Team</a>
+              <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
             <div class="news-big">
               <img class="mt-4 yhgt678" src="{{asset('public/assets/image/Rectangle%20308.png')}}" />
@@ -45,7 +45,7 @@
                 Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <a href="#" class="mt-2 hgft432">Edit Team</a>
+              <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
             <div class="news-big">
               <img
@@ -65,7 +65,7 @@
                 Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <a href="#" class="mt-2 hgft432">Edit Team</a>
+              <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
             <div class="news-big">
               <img
@@ -85,7 +85,7 @@
                 Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <a href="#" class="mt-2 hgft432">Edit Team</a>
+              <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
           </div>
         </div>

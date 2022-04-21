@@ -6,7 +6,7 @@
         </p>
     </div>
     <div class="sxdhdcn9908">
-        <h1 class="sdhsdks87">94.5 M</h1>
+        <h1 class="sdhsdks87">50M</h1>
         <p class="sdjhs7tyh">
             <b>Money<br />
                 Remaining</b>
