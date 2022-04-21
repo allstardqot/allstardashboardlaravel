@@ -6,7 +6,11 @@
         </p>
     </div>
     <div class="sxdhdcn9908">
+<<<<<<< HEAD
         <h1 class="sdhsdks87">50 M</h1>
+=======
+        <h1 class="sdhsdks87">50M</h1>
+>>>>>>> 3423911bad432e26605c2fc0585af2e87258a456
         <p class="sdjhs7tyh">
             <b>Money<br />
                 Remaining</b>

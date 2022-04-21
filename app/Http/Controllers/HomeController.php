@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserPool;
+use App\Models\Team;
 
 
 class HomeController extends Controller
@@ -29,6 +30,8 @@ class HomeController extends Controller
         $type=$request->type;
         $publicQuery=UserPool::query();
         $privateQuery=UserPool::query();
+        $team = Team::get();
+        // p($team);
 
         $publicData=$publicQuery->where(['pool_type'=>0])->get();
         $privateData=$privateQuery->where(['pool_type'=>1])->get();
@@ -40,10 +43,10 @@ class HomeController extends Controller
                     $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
             }
-            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type]);
+            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team]);
         }
         // echo 'sljhf';die;
-        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type]);
+        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team]);
     }
 
     public function news()

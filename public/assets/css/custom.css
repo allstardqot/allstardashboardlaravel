@@ -5,6 +5,10 @@ a:hover{
 color: #FF5000;
 text-decoration: none;
 }
+.sdchsdsdh{
+  overflow-y: auto;
+  max-height: 550px;
+}
 a{
 text-decoration: none;
 }
@@ -26,6 +30,7 @@ padding: 20px;
 max-height: 593px;
     overflow-y: auto;
 }
+
 .news-col {
   border-bottom: 1px solid;
   padding-bottom: 14px;
@@ -237,6 +242,7 @@ border-radius: 0px 0px 12px 12px;
 .richtexteditor.rte-modern {
 border: 1px solid #292a50;
 border-radius: 10px;
+min-width: 100% !important;
 }
 .jsdbdhsol .tab-pane {
   max-height: 100%;
@@ -884,7 +890,6 @@ font-size: 12px; color: #cacaca;
   -webkit-background-clip: text;
   font-weight: bold;
   font-size: 24px;
-  margin-top: -8px;
  }
  .djfjdf{
   margin-left: 24%;
@@ -969,12 +974,16 @@ font-size: 12px; color: #cacaca;
  .njkas985{
   background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
   height: 100%;
-  max-height: 1299px;
+
+ }
+ .dash-data{
+  max-height: 1078px;
   overflow-y: auto;
   overflow-x: hidden;
  }
  .managers-tab .tab-pane {
-  max-height: 1232px;
+  height: 100%;
+  max-height: 1060px;
   overflow-y: auto;
 }
  .lpoi951{
@@ -1113,10 +1122,12 @@ font-size: 12px; color: #cacaca;
  }
  .bgcxhdb78{
   background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
+  height: 100%;
  }
  .hdbnd76{
   display: flex;width: 100%;text-align: center;
  }
+
  .vbhgvb678{
   width: 50%;border-radius: 10px 0px 0px 0px;
  }
@@ -1901,6 +1912,7 @@ text-align: center;
 .ihnik8978{
 background-color:#04B000;margin-top: 5%;padding: 2%;border-radius: 10px;
 text-align: center;
+color: #FFFFFF;
 }
 .ijuyk0898{
 background-color:#2A2B50;border-radius: 20px;
@@ -2106,9 +2118,25 @@ margin-left:1em;
     padding-right: 0px;
     padding-left: 12px;
 }
+
+.djfd765 .greatplayer {
+  width: 30% !important;
+}
+.djfd765 .playerspot {
+  width: 30% !important;
+ 
+}
 header .navbar-brand img {
   width: 100%;
   max-width: 90px;
+}
+.djfd765 .second-row-check .second-first .greatplayer {
+  width: 50% !important;
+  margin-bottom: 30px;
+  
+}
+.greatplayer .playerspot {
+  width: 100% !important;
 }
 header .nav-link {
 padding: 2px 10px !important;
@@ -2117,6 +2145,10 @@ header .navbar-toggler {
 padding: 0.1rem 0.25rem;
 
 }
+.navbar-toggler-icon {
+  margin-bottom: 0px !important;
+}
+
 
 }
 
@@ -2318,8 +2350,8 @@ text-align: center;
   background-repeat: no-repeat;
   text-align: center;
   margin: 0 auto;
-  width: 19%;
-  background-position: top center;
+  width: 20%;
+    background-position: top center !important;
 }
 .djfd765  .first-row-check h5 {
   text-align: center;
@@ -2402,6 +2434,7 @@ text-align: center;
   text-transform: uppercase;
   opacity: 0.5;
   text-align: center;
+  font-weight: 700;
 }
 .djfd765 .second-row-check .playerspot,
 .third-row-check .playerspot,
@@ -2425,6 +2458,7 @@ text-align: center;
   background: url("../image/newbg.png"), #079b08;
   background-repeat: no-repeat;
   background-position: top center;
+  background-size: cover;
 }
 .djfd765  .popup .popuptext {
   visibility: hidden;
@@ -2475,9 +2509,11 @@ text-align: center;
   width: 100%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .djfd765 .second-row-check .second-first .greatplayer {
-  width: 40%;
+  width: 25%;
+  padding: 0px 15px;
 }
 
 /* Add animation (fade in the popup) */
@@ -2607,17 +2643,35 @@ border-radius: 0px 10px 0px 0px;
 
 background-color: #2A2B50;
     border-radius: 10px;
-    padding-bottom: 19px;
-    margin-top: 5%;}
+    padding: 20px;
+   }
 
 .managers-tab .sdkdj {display: flex;
-    width: 100%;}
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    border-bottom: 1px solid #ffffff52;}
 
-.managers-tab .sdksdlk {width: 20%;
-    margin-left: 5%;}
+    .sdksdlk img {
+      width: 50px;
+      height: 50%;
+      border-radius: 100%;
+      object-fit: cover;
+      object-position: center;
+  }
 
-.managers-tab .sdkjsdj {width: 80%;
-    margin-top: 4%;}
+    .user-invite {
+      flex: 0 0 auto;
+      width: 30%;
+      text-align: right;
+  }
+  .sdkjsdj {
+    display: inline-block;
+}
+.sdksdlk {
+  display: inline-block;
+}
 
 .managers-tab .sdlsdjk {display: flex;
     width: 100%;}
@@ -2634,13 +2688,24 @@ background-color: #2A2B50;
 .managers-tab a.sdjsjuy {color: #fff;
     text-decoration: none;}
 
-.managers-tab a.sjsdjk78 {text-decoration: none;
-    color: #fff;}
+    .managers-tab a.sjsdjk78 {
+      text-decoration: none;
+      color: #fff;
+      border-radius: 20px;
+      padding: 4px 15px;
+      background-color: #FF5000;
+      border: none;
+      color: white;
+      font-size: 15px;
+  }
+  .user-details {
+    flex: 0 0 auto;
+    width: 70%;
+}
 
-.managers-tab i.fa.fa-user-plus.sdjkdjkd {background-color: #FF5000;
+.managers-tab i.fa.fa-user-plus.sdjkdjkd {
     border-radius: 50px;
-    padding: 4% 3.8%;
-    margin-left: 5%;}
+    }
 
     .managers-tab .sdbndbnuj {
       background-color: #2A2B50;
@@ -2760,8 +2825,9 @@ form .page .field button {
   }
 
   .djfd765 .second-row-check .second-first .greatplayer {
-    width: 46%;
-  }
+    width: 34% !important;
+    margin-bottom: 30px;
+}
   .djfd765   .playerspot img {
     margin-top: 14px;
   }
@@ -2803,6 +2869,19 @@ form .page .field button {
   header .navbar-brand img {
     max-width: 75px;
 }
+.news-big p {
+  font-size: 14px;
+}
+.sdchsdsdh .table {
+ 
+  width: 170%;
+}
+.sdchsdsdh tr p {
+  font-size: 14px;
+}
+.field a {
+  height: calc(100% + 0px);
+ }
 .sdhjdl {
   font-size: 1.6em;
 }
@@ -2987,6 +3066,9 @@ margin-left: 0%;
 }
 .asunht56 {
 padding: 10px 25px;
+padding: 3px 13px;
+    border-radius: 3px;
+    font-size: 14px;
 }
 .hgtfr56 {
 width: 95%;
@@ -3051,3 +3133,28 @@ padding: 6px;
 text-align: center;
 }
 }
+
+@media screen and (max-width: 400px){
+  
+  .djfd765 .second-row-check .second-first .greatplayer {
+    width: 50% !important;
+
+  }
+  .djfd765 .greatplayer {
+    width: 50% !important;
+    padding: 0px 15px;
+}
+.djfd765 .first-row-check  .playerspot {
+  width: 50% !important;
+}
+.djfd765 .aboutplayer h4 {
+  font-size: 14px !important;
+
+  padding: 6px !important;
+}
+.first-row-check {
+  margin-bottom: 20px;
+}
+
+}
+

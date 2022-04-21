@@ -1,4 +1,6 @@
-    <div class="njkas985">
+    
+     
+     <div class="njkas985">
 
         <div class="dashboard-tab">
             <ul class="nav nav-pills mb-3" id="pools-tab" role="tablist">
@@ -47,16 +49,17 @@
                                     Create Pool</a></div>
                         </div>
                     </div>
-
+                    <div class="dash-data">
                     @if (count($privateData) != 0)
                         @foreach ($publicData as $publicValue)
+                     
                             <div class="mkpiuh">
                                 <div class="row">
                                     <div class="col-sm-7 mt-3 ">
                                         <div class="lkpoioubn">
                                             <div>
                                                 <h6>{{ $publicValue['pool_name'] }}</h6>
-                                                <p class="yhji2365">Entry Amount $
+                                                <p class="yhji2365">Entry Amount <img src="{{ asset('public/assets/image/coin-img.png') }}" width="20" class="img-fluid" alt="">
                                                     {{ $publicValue['entry_fees'] }}</p>
                                             </div>
                                             <div class="jhgyu56">
@@ -64,11 +67,14 @@
                                                     Users</button>
                                             </div>
                                         </div>
+                                        @if($_SERVER['REMOTE_ADDR'] =='49.204.161.179')
+                                            
+                                        @endif
                                     </div>
                                     <div class="col-sm-5 mt-4 w-90 pb-3">
                                         <div class="okiuj456">
                                             <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                data-bs-target="#myModal">+Join this pool</a>
+                                                data-bs-target="#myModal" onclick="showmodel({{ $publicValue['id'] }},{{ $publicValue['pool_type'] }})">+Join this pool</a>
                                             <a class="ahjl458" href="#">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
                                             </a>
@@ -76,7 +82,9 @@
                                     </div>
                                 </div>
                             </div>
+                          
                         @endforeach
+                        </div>
                     @else
                         <h5 class="sdksdjdj">No Record</h5>
                     @endif
@@ -91,6 +99,7 @@
                         <i class="fa fa-search icon" id="private_search"></i>
 
                     </div>
+                    <div class="dash-data">
                     @if (count($privateData) != 0)
                         @foreach ($privateData as $privateValue)
                             <div class="mkpiuh">
@@ -112,7 +121,7 @@
                                     <div class="col-sm-5 mt-4 w-90 pb-3">
                                         <div class="okiuj456">
                                             <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                data-bs-target="#myModal">+Join this pool</a>
+                                                data-bs-target="#myModal" onclick="showmodel({{ $privateValue['id'] }},{{ $privateValue['pool_type'] }})">+Join this pool</a>
                                             <a class="ahjl458" href="#">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
                                             </a>
@@ -122,9 +131,26 @@
                             </div>
                 </div>
                 @endforeach
+                </div>
             @else
                 <h5 class="sdksdjdj">No Record</h5>
                 @endif
             </div>
         </div>
     </div>
+
+    <script>
+        function showmodel(id,type){
+            //    alert(type)
+               if(type == 0){
+                document.getElementById('pooltypebtn').hidden=true;
+                document.getElementById('joinPass').hidden=true;
+                document.getElementById('passLabel').hidden=true;
+               }else{
+                document.getElementById('pooltypebtn').hidden=false;
+                document.getElementById('joinPass').hidden=false;
+                document.getElementById('passLabel').hidden=false;
+               }
+               document.getElementById("join_user_id").value = id;
+           }
+    </script>

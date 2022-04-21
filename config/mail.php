@@ -36,14 +36,14 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'host' => env('MAIL_HOST','smtp.sendgrid.net'),
+            'port' => env('MAIL_PORT',587),
+            'encryption' => env('MAIL_ENCRYPTION','tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
-            'from' => array('address' => 'myusername@gmail.com', 'name' => 'All Star'),
+            'from' => array('name' => 'All Star'),
         ],
 
         'ses' => [
