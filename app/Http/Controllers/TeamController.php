@@ -29,7 +29,19 @@ class TeamController extends Controller
     {
         // echo 'sljhf';die;
         
-        return view('users/team');
+        // if($_SERVER['REMOTE_ADDR'] == '49.204.161.179'){
+            $userTeam = UserTeam::where(['user_id'=>Auth::user()->id])->get()->toArray();
+
+            foreach($userTeam as $data){
+                $players = $data['players'];
+            }
+            $plyArr = json_decode($players);
+
+            $result = Player::whereIn('id', $plyArr)->get()->toArray();
+            // pr($result);
+
+        
+        return view('users/team',['result'=>$result]);
     }
 
     public function createTeam(Request $request)
