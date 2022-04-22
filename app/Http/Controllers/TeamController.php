@@ -28,6 +28,7 @@ class TeamController extends Controller
     public function index()
     {
         // echo 'sljhf';die;
+        
         return view('users/team');
     }
 
