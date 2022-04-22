@@ -1483,7 +1483,7 @@ margin-top: 3%; margin-left: 5%;
 width: 80%; margin: auto; margin-top: 60px;
 }
 .sdjskldj{
-margin: auto; width: 80%; margin-top: 75px;
+margin: auto; width: 80%; margin-top: 75px !important;
 }
 .sdjkdxjnh{
 width: 80%; margin-left: 10%
@@ -2124,7 +2124,7 @@ margin-left:1em;
 }
 .djfd765 .playerspot {
   width: 30% !important;
- 
+
 }
 header .navbar-brand img {
   width: 100%;
@@ -2133,7 +2133,7 @@ header .navbar-brand img {
 .djfd765 .second-row-check .second-first .greatplayer {
   width: 50% !important;
   margin-bottom: 30px;
-  
+
 }
 .greatplayer .playerspot {
   width: 100% !important;
@@ -2873,7 +2873,7 @@ form .page .field button {
   font-size: 14px;
 }
 .sdchsdsdh .table {
- 
+
   width: 170%;
 }
 .sdchsdsdh tr p {
@@ -3135,7 +3135,7 @@ text-align: center;
 }
 
 @media screen and (max-width: 400px){
-  
+
   .djfd765 .second-row-check .second-first .greatplayer {
     width: 50% !important;
 

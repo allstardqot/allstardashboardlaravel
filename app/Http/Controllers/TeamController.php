@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\UserTeam;
+use Auth;
 
 
 class TeamController extends Controller
@@ -31,35 +33,56 @@ class TeamController extends Controller
 
     public function createTeam(Request $request)
     {
-        $searchData=$request->searchData;
-        $type=$request->type;
-
-        $goalkeeperQuery=Player::query();
-        $goalkeeperData=$goalkeeperQuery->where(['position_id'=>1])->with('Team')->get();
-
-        $defenderQuery=Player::query();
-        $defenderData=$defenderQuery->where(['position_id'=>2])->with('Team')->get();
-
-        $midfielderQuery=Player::query();
-        $midfielderData=$midfielderQuery->where(['position_id'=>3])->with('Team')->get();
-        $forwardQuery=Player::query();
-        $forwardData=$forwardQuery->where(['position_id'=>4])->with('Team')->get();
-        if(!empty($searchData)){
-            if($searchData!="Search"){
-                if($type=="goalkeeper"){
-                    $goalkeeperData=$goalkeeperQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>1])->with('Team')->get();
-                }elseif($type=='defender'){
-                    $defenderData=$defenderQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>2])->with('Team')->get();
-                }elseif($type=='midfielder'){
-                    $midfielderData=$midfielderQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>3])->with('Team')->get();
-                }elseif($type='forward'){
-                    $forwardData=$forwardQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>4])->with('Team')->get();
-                }
+        if(!empty($request->selected) && !empty($request->teamName)){
+            $selected=is_array($request->selected)?$request->selected:explode(',',$request->selected);
+            $substitude=is_array($request->substitude)?$request->substitude:explode(',',$request->substitude);
+            //$finalPlay=array_diff($selected,$substitude);
+            $captain=$request->captain;
+            // if (($key = array_search($captain, $finalPlay)) !== false) {
+            //     unset($finalPlay[$key]);
+            // }
+            $teamName=$request->teamName;
+            $userTeam = new UserTeam;
+            $userTeam->user_id=Auth::user()->id;
+            $userTeam->captain=$captain;
+            $userTeam->substitude=json_encode($substitude);
+            $userTeam->players=json_encode($selected);
+            $userTeam->name=$teamName;
+            if($userTeam->save()){
+                return true;
             }
-            //pr($goalkeeperData);
-            return view('users/createteamajax',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData,'type'=>$type]);
+
+        }else{
+            $searchData=$request->searchData;
+            $type=$request->type;
+
+            $goalkeeperQuery=Player::query();
+            $goalkeeperData=$goalkeeperQuery->where(['position_id'=>1])->with('Team')->get();
+
+            $defenderQuery=Player::query();
+            $defenderData=$defenderQuery->where(['position_id'=>2])->with('Team')->get();
+
+            $midfielderQuery=Player::query();
+            $midfielderData=$midfielderQuery->where(['position_id'=>3])->with('Team')->get();
+            $forwardQuery=Player::query();
+            $forwardData=$forwardQuery->where(['position_id'=>4])->with('Team')->get();
+            if(!empty($searchData)){
+                if($searchData!="Search"){
+                    if($type=="goalkeeper"){
+                        $goalkeeperData=$goalkeeperQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>1])->with('Team')->get();
+                    }elseif($type=='defender'){
+                        $defenderData=$defenderQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>2])->with('Team')->get();
+                    }elseif($type=='midfielder'){
+                        $midfielderData=$midfielderQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>3])->with('Team')->get();
+                    }elseif($type='forward'){
+                        $forwardData=$forwardQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>4])->with('Team')->get();
+                    }
+                }
+                //pr($goalkeeperData);
+                return view('users/createteamajax',['goalkeeperData'=>$goalkeeperData,'defenderData'=>$defenderData,'midfielderData'=>$midfielderData,'forwardData'=>$forwardData,'type'=>$type]);
+            }
+            return view('users/createTeam');
         }
-        return view('users/createTeam');
     }
 
     public function managesquadone(Request $request){
@@ -113,15 +136,16 @@ class TeamController extends Controller
 
         $captain=$request->captain;
         $selectedData=Player::query()->whereIn('id',$selected)->with('position')->get();
-        $captainData=$substitudeData=$defenderData=$goalkeeperData=[];
+        $captainData=$substitudeData=$playerData=$goalkeeperData=[];
         foreach($selectedData as $playerValue){
             if($playerValue->id==$captain){
                 $captainData=$playerValue;
+                continue;
             }
             if(in_array($playerValue->id,$substitude)){
                 $substitudeData[]=$playerValue;
             }
-            if(in_array($playerValue->id,$selected)){
+            if(in_array($playerValue->id,$finalArray)){
                 $playerData[]=$playerValue;
             }
         }

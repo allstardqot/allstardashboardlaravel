@@ -3,7 +3,7 @@
         <h3 class="text-white mt-5 text-center">Managing Squad</h3>
         <ul class="progressbar text-white jsdhsjdh">
             <li class="active">Step - 1</li>
-            <li>Step - 2</li>
+            <li class="active">Step - 2</li>
             <li>Step - 3</li>
         </ul>
         <h4 class="text-white text-center sdjskldj">
