@@ -17,6 +17,7 @@
 
 
     <link href="{{ asset('public/assets/css/fantasy-allstars.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/css/fantasy-allstars1.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/f-a.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/rte_theme_default.css') }}" rel="stylesheet">
@@ -48,7 +49,7 @@
     var editor1 = new RichTextEditor("#div_editor1");
     $(document).ready(function() {
 
-        
+
 
         $(".hideShow").click(function(e) {
             var keyId = $(this).data('keyid');

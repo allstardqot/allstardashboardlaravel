@@ -84,6 +84,41 @@ $("body").on("click", "#managesquad_two_submit", function () {
     }
 })
 
+$("body").on("click", "#managesquad_three_submit", function () {
+    var selectId=[];
+    var captain='';
+
+    // $(".choose_captain .active").each(function() {
+    //     captain=$(this).closest('div').find('.categorie').attr('data-id');
+    // })
+    if(!$("#team_name_enter").val()){
+        $.notify("Please enter team name.", "info");
+    }else{
+        var teamName=$("#team_name_enter").val();
+        var substitude = $.cookie('substitude');
+        var captain=$.cookie('captain');
+        var yourArray = $.cookie('selected_player');
+        manageSquadFinal(yourArray,substitude,captain,teamName);
+    }
+})
+
+function manageSquadFinal(yourArray,substitude,captain,teamName) {
+    $.ajax({
+        url: "create-team",
+        method: "GET",
+        data: {
+            'selected': yourArray,'substitude':substitude,'captain':captain,'teamName':teamName
+        },
+        success: function (result) {
+            $.cookie('step', "");
+            $.cookie('captain',"");
+            $.cookie('substitude',"");
+            $.cookie('selected_player',"");
+            window.location.href = "team";
+        }
+    });
+}
+
 function manageSquadThree(yourArray,substitude,captain) {
     $.ajax({
         url: "manage-squad-thr",

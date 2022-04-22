@@ -26,6 +26,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+
+
         $searchData=$request->searchData;
         $type=$request->type;
         $publicQuery=UserPool::query();
