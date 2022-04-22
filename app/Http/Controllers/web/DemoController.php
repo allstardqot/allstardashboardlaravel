@@ -74,6 +74,16 @@ class DemoController extends Controller
     public function fixtureData(){
 
         $api = new EntitySport();
+        $team=Team::select('current_season_id')->get()->toArray();
+        if(in_array("18366",$team)){
+            p("fineee");
+        }
+        pr($team);
+        $getSeason=$api->getLeagueSeason("Premier League");
+        foreach($getSeason as $seasonValue){
+            pr($seasonValue);
+        }
+        pr($getSeason);
 
         $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString());
         //$fixtures=json_decode($fixtures_data,true);

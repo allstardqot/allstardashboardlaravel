@@ -29,10 +29,10 @@ class GetTeam implements ShouldQueue
      * @param $fixtureId
      * @param bool $autoSet
      */
-    public function __construct($season_id)
+    public function __construct()
     {
         $this->queue = 'squad';
-        $this->season_id = $season_id;
+        //$this->season_id = $season_id;
     }
 
     /**
@@ -43,26 +43,28 @@ class GetTeam implements ShouldQueue
     public function handle()
     {
         $api = new EntitySport();
-        $getSeason=$api->getLeagueSeason($this->season_id);
-        if($getSeason['current_season_id']){
-            $teams = $api->getTeam($getSeason['current_season_id']);
-            $setCountry = '';
-            foreach ($teams as $teamData) {
-                $teamQuery = Team::query()->updateOrCreate([
-                    'id' => $teamData['id'],
-                ], [
-                    'name' => $teamData['name'],
-                    'legacy_id' => $teamData['legacy_id'],
-                    'short_code' => $teamData['short_code'],
-                    'twitter' => $teamData['twitter'],
-                    'country_id' => $teamData['country_id'],
-                    'national_team' => $teamData['national_team'],
-                    'founded' => $teamData['founded'],
-                    'logo_path' => $teamData['logo_path'],
-                    'venue_id' => $teamData['venue_id'],
-                    'current_season_id' => $teamData['current_season_id'],
-                    'is_placeholder' => $teamData['is_placeholder'],
-                ]);
+        $getSeason=$api->getLeagueSeason("Premier League");
+        foreach($getSeason as $seasonValue){
+            if($seasonValue['current_season_id']){
+                $teams = $api->getTeam($seasonValue['current_season_id']);
+                $setCountry = '';
+                foreach ($teams as $teamData) {
+                    $teamQuery = Team::query()->updateOrCreate([
+                        'id' => $teamData['id'],
+                    ], [
+                        'name' => $teamData['name'],
+                        'legacy_id' => $teamData['legacy_id'],
+                        'short_code' => $teamData['short_code'],
+                        'twitter' => $teamData['twitter'],
+                        'country_id' => $teamData['country_id'],
+                        'national_team' => $teamData['national_team'],
+                        'founded' => $teamData['founded'],
+                        'logo_path' => $teamData['logo_path'],
+                        'venue_id' => $teamData['venue_id'],
+                        'current_season_id' => $teamData['current_season_id'],
+                        'is_placeholder' => $teamData['is_placeholder'],
+                    ]);
+                }
             }
         }
     }
