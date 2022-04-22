@@ -12,14 +12,14 @@ class EntitySport
 {
     public function http($url, $params = []): Response
     {
-        $token = 'd4yUkubCa17GvW17MXtNjAhYokiXlNQeRnYhLscpMa1zfH8JkS2b42plhu6X';
+        $token = 'ibXid00Vo8GJc3BqCW7laSehfNkNUWBaCB4ZhxcYzCvA0z92LgKshco4Zao0';
         //pr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
         return Http::get('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
     }
 
     public function httpParameter($url, $params = []): Response
     {
-        $token = 'd4yUkubCa17GvW17MXtNjAhYokiXlNQeRnYhLscpMa1zfH8JkS2b42plhu6X';
+        $token = 'ibXid00Vo8GJc3BqCW7laSehfNkNUWBaCB4ZhxcYzCvA0z92LgKshco4Zao0';
         //pr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
         return Http::get('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'&api_token='.$token);
     }
@@ -87,7 +87,7 @@ class EntitySport
 
     public function getLeagueSeason($params = []): array
     {
-        $response = $this->http('leagues', $params);
+        $response = $this->http('leagues/search', $params);
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);

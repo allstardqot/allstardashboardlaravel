@@ -109,7 +109,7 @@ class GetFixture implements ShouldQueue
                     }
 
                     if($setSeasonId=='' || $setSeasonId!=$value['season_id']){
-                        GetTeam::dispatch($value['league_id']);
+                        //GetTeam::dispatch($value['league_id']);
                         GetSquad::dispatch($value['id']);
                         $setSeasonId=$value['season_id'];
                     }
