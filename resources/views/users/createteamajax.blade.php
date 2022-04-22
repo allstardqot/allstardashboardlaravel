@@ -6,11 +6,7 @@
         </p>
     </div>
     <div class="sxdhdcn9908">
-<<<<<<< HEAD
-        <h1 class="sdhsdks87">50 M</h1>
-=======
         <h1 class="sdhsdks87">50M</h1>
->>>>>>> f17ff6ad35af52e0c664a94cb5a66549bf9df0f2
         <p class="sdjhs7tyh">
             <b>Money<br />
                 Remaining</b>
@@ -66,6 +62,49 @@
                         <a class="sdjndk7" href="">
                             <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
                         </a>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-sm-7 mt-3">
+                        <div class="sxdjdj87">
+                            <div class="sdjd787">
+                                <h6 class="sdjnd78">Short By</h6>
+                            </div>
+                            <div class="text-white text-center sdjnd890j">
+                                <div class="jnsjsd87">
+                                    <select class="inputcolor jjhn90k7">
+                                        <option class="hd7h89">Team</option>
+                                        <option class="hd7h89">2</option>
+                                        <option class="hd7h89">3</option>
+                                        <option class="hd7h89">4</option>
+                                    </select>
+                                </div>
+                                <select class="inputcolor kdjdkl8">
+                                    <option class="hd7h89">Point</option>
+                                    <option class="hd7h89">2</option>
+                                    <option class="hd7h89">3</option>
+                                    <option class="hd7h89">4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 mt-3">
+                        <div class="sdjbd76">
+                            <p class="asdhd76">Cost Bar</p>
+                            <div class="d-flex w-100">
+                                <div class="sdkndn50">
+                                    <p class="asdh76">$0</p>
+                                </div>
+                                <div class="sadnnj7">
+                                    <p class="kjsdhn78">$100</p>
+                                </div>
+                            </div>
+                            <div class="w3-light-grey w3-round-xlarge">
+                                <div class="w3-container w3-blue w3-round-xlarge"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
