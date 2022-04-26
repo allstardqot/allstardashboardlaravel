@@ -785,7 +785,7 @@
                       name="checkbox_forward" type="checkbox" value="{{
                         $forwardValue["id"]
                       }}" id="flexCheckDefault"
-                      onclick="forwardcheckbox(event)"">
+                      onclick="forwardcheckbox(event)">
                     </td>
                   </tr>
                   @endforeach

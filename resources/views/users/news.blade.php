@@ -13,6 +13,7 @@
               Nullam lectus magna, dignissim tempus est in, volutpat
               scelerisque tortor. Curabitur nec ex risus.
             </p>
+            {{-- @foreach ($newsdata as $newsValue) --}}
             <div class="news-big">
               <img class="yhgt678" src="{{asset('public/assets/image/Rectangle%20308.jpg')}}" />
               <h3 class="text-white mt-3">
@@ -30,6 +31,7 @@
               </p>
               <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
+            {{-- @endforeach --}}
             <div class="news-big">
               <img class="mt-4 yhgt678" src="{{asset('public/assets/image/Rectangle%20308.png')}}" />
               <h3 class="text-white mt-3">

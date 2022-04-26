@@ -83,6 +83,8 @@ class GetSquad implements ShouldQueue
                             'team_id' => $teamValue,
                         ], [
                             'team_id' => $teamValue,
+                            'rating' => $playerData['rating'],
+                            'card' => json_encode(['yellowcards' => $playerData['yellowcards'], 'redcards' => $playerData['redcards'], 'yellowredcards' => $playerData['yellowred']])
                         ]);
                     }
                 }
