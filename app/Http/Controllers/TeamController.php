@@ -27,21 +27,20 @@ class TeamController extends Controller
      */
     public function index()
     {
-        // echo 'sljhf';die;
+        $userTeam = UserTeam::where(['user_id'=>Auth::user()->id])->get()->toArray();
+
+        foreach($userTeam as $data){
+            $players = $data['players'];
+        }
+        $plyArr = json_decode($players);
+
+        $result = Player::whereIn('id', $plyArr)->get()->toArray();
+        // pr($result);
+        // $result = Player::join('Position', 'Position.id', '=', 'Player.position_id')->whereIn('id', $plyArr)->get()->toArray();
+        // pr($result);
+
         
-        // if($_SERVER['REMOTE_ADDR'] == '49.204.161.179'){
-            // $userTeam = UserTeam::where(['user_id'=>Auth::user()->id])->get()->toArray();
-
-            // foreach($userTeam as $data){
-            //     $players = $data['players'];
-            // }
-            // $plyArr = json_decode($players);
-
-            // $result = Player::whereIn('id', $plyArr)->get()->toArray();
-            // pr($result);
-
-        
-        return view('users/team');
+        return view('users/team',compact('result'));
     }
 
     public function createTeam(Request $request)

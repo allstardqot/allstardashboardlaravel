@@ -13,8 +13,10 @@
 
   <div class="container-">
     <div class="row mjkoitbh col-lg-12 col-12 mx-auto py-0 text-white">
-      <div class="col-lg-4 text-white mt-3 ml-3	">
 
+      @foreach($result as $key => $value)
+      {{-- {{ p($value) }} --}}
+      <div class="col-lg-4 text-white mt-3 ml-3	">
         <div class="sklddnk">
           <ul class="nav mt-4 skdjnm">
             <li class="nav-item ml-3 mt-2">
@@ -24,7 +26,7 @@
               <a href="#" class="mt-2 jhuionh">Edit Team</a>
 
             </li>
-
+                    {{-- {{ $result }} --}}
 
           </ul>
           <h6 class="mt-3 ml-4 jhjkhkl77"><b>GOALKEEPER</b></h6>
@@ -66,8 +68,12 @@
         </div>
       </div>
 
+      @endforeach
+     
 
-      <div class="col-lg-4 mt-auto ml-auto text-white">
+
+
+      {{-- <div class="col-lg-4 mt-auto ml-auto text-white">
         <div class="ijuyk0898">
           <ul class="nav mt-4 skdjnm">
             <li class="nav-item ml-3 mt-2">
@@ -166,7 +172,7 @@
 
 
         </div>
-      </div>
+      </div> --}}
     </div>
 </main>
 

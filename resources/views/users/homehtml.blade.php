@@ -38,13 +38,13 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-8">
                             <div class="dash-tab">
                                 <h5>Open Pools of this Game Week 13M-19M2021</h5>
                                 <p>13th March 2021 - 19th March 2021 GAMEWEEK</p>
                             </div>
                         </div>
-                        <div class="col-sm-3 pb-2">
+                        <div class="col-sm-4 pb-2">
                             <div class="text-center"><a href="{{ url('/create-pool') }}" class="btn-01">+
                                     Create Pool</a></div>
                         </div>

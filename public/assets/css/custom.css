@@ -9,6 +9,10 @@ text-decoration: none;
   overflow-y: auto;
   max-height: 550px;
 }
+table.table th h6 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 a{
 text-decoration: none;
 }
@@ -61,33 +65,19 @@ line-height: 18px;
 .dsfhfhj894{
 display: flex; width: 80%; margin-left: 10%;
 }
-.latest-card img {width: 100%;height: 186px;object-fit: cover;object-position: top;border-radius: 10px;}
+.latest-card img {width: 100%;height: 186px;object-fit: cover;object-position: top;    border-radius: 10px 10px 0px 0px;}
 
-.latest-card a {display: block;position: relative;border-radius: 10px;transition: 0.3s all ease-in-out; margin-bottom: 20px;}
-.latest-card a:before{
-content: '';
-position: absolute;
-left: 0;
-right: 0;
-top: 0;
-bottom: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(360deg, #000000 3%, rgba(0, 0, 0, 0.63) 41.49%, rgba(0, 0, 0, 0) 100%);
-z-index: 0;
-border-radius: 10px;
-}
+.latest-card .latest-anchor {display: block;position: relative;border-radius: 10px;transition: 0.3s all ease-in-out; margin-bottom: 20px;}
+
 .hgft432:hover {
 color: #fff;
 }
-.latest-card a:hover h4{
-color: #FF5000;
-}
+
 .news-content h4 {
 font-weight: 700;
 font-size: 16px;
 line-height: 24px;
-color: #fff;
+color: #ff5000;
 margin-bottom: 0px;
 transition: 0.3s all ease-in-out;
 overflow: hidden;
@@ -97,26 +87,25 @@ display: -webkit-box;
 line-clamp: 2;
 -webkit-box-orient: vertical;
 }
-.news-content small {
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 18px;
-color: #FF5000;
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 1;
-line-clamp: 1;
--webkit-box-orient: vertical;
+.news-content .latest-anchor small {
+  color: #0EA5E0;
+}
+
+.news-content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #333;
 }
 .news-content {
-position: absolute;
-width: 100%;
-bottom: 0;
-left: 0;
-right: 0;
-padding: 0px 19px 9px;
+  background: #fff;
+  border-radius: 0px 0px 10px 10px;
+  padding: 5px;
 }
 .sdjd787{
 width: 25%;
@@ -2118,6 +2107,17 @@ margin-left:1em;
     padding-right: 0px;
     padding-left: 12px;
 }
+.managers-tab a.sjsdjk78 {
+  padding: 4px 8px !important;
+  font-size: 14px !important;
+}
+.managers-tab .hsdhsd {
+  padding: 20px 10px !important;
+}
+.sdksdlk img {
+  width: 35px !important;
+  height: 35px !important;
+ }
 
 .djfd765 .greatplayer {
   width: 30% !important;
@@ -2579,6 +2579,7 @@ text-align: center;
 }
 .sdchsdsdh .table{
 vertical-align: middle !important;
+color: #fff;
 }
 .hsdkdf97{
   text-align: right;
@@ -2655,7 +2656,7 @@ background-color: #2A2B50;
 
     .sdksdlk img {
       width: 50px;
-      height: 50%;
+      height: 50px;
       border-radius: 100%;
       object-fit: cover;
       object-position: center;
@@ -2663,11 +2664,12 @@ background-color: #2A2B50;
 
     .user-invite {
       flex: 0 0 auto;
-      width: 30%;
+      width: 40%;
       text-align: right;
   }
   .sdkjsdj {
     display: inline-block;
+    margin-left: 8px;
 }
 .sdksdlk {
   display: inline-block;
@@ -2700,7 +2702,9 @@ background-color: #2A2B50;
   }
   .user-details {
     flex: 0 0 auto;
-    width: 70%;
+    width: 60%;
+    display: flex;
+    align-items: center;
 }
 
 .managers-tab i.fa.fa-user-plus.sdjkdjkd {
@@ -2765,6 +2769,9 @@ padding: 1%;
 .jsdbdhsol{
 width: 100% !important;
 
+}
+.htavb {
+  display: none;
 }
 
 

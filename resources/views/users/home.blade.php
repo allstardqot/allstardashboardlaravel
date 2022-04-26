@@ -4,7 +4,10 @@
 <main>
     <div class="container-fluid p-4 text-white sdjdjh">
         <div class="row">
-            <div class="col-lg-3 d-none d-lg-block">
+        <div class="col-lg-6 mt-3 pool_data order-lg-2">
+
+</div>
+            <div class="col-lg-3 order-lg-1">
                 <div class="htavb">
                     <h4 class="mt-3 mkuytg">Trending Feeds</h4>
                     <div class="news-col-content">
@@ -51,31 +54,37 @@
                     <h4 class="mt-5 mkuytg">Premier League News</h4>
                     <div class="latest-image-sec">
                         <div class="latest-card">
-                            <a href="#">
+                            <a href="#" class="latest-anchor">
                                 <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
                                     <h4>Proin laoreet ornare quam</h4>
-                                    <small>Placerat mauris</small>
+                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
+                               
+                                <small>Read More..</small>
                                 </div>
 
                             </a>
                         </div>
                         <div class="latest-card">
-                            <a href="#">
-                                <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
+                            <a href="#" class="latest-anchor">
+                                <img src="{{ asset('public/assets/image/pexels-photo-7188095.jpeg') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
                                     <h4>Proin laoreet ornare quam</h4>
-                                    <small>Placerat mauris</small>
+                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
+                               
+                                <small>Read More..</small>
                                 </div>
 
                             </a>
                         </div>
                         <div class="latest-card">
-                            <a href="#">
-                                <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
+                            <a href="#" class="latest-anchor">
+                                <img src="{{ asset('public/assets/image/pexels-photo-264312.jpeg') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
                                     <h4>Proin laoreet ornare quam</h4>
-                                    <small>Placerat mauris</small>
+                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
+                               
+                                <small>Read More..</small>
                                 </div>
 
                             </a>
@@ -84,10 +93,8 @@
 
                 </div>
             </div>
-            <div class="col-lg-6 mt-3 pool_data">
-
-            </div>
-            <div class="col-lg-3  mt-3 d-none d-lg-block">
+            
+            <div class="col-lg-3  mt-3 d-none d-lg-block order-lg-3">
                 <div class="bgcxhdb78">
 
                     <div class="managers-tab">
