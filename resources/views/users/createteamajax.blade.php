@@ -1,6 +1,6 @@
 <div class="sdjsd689">
     <div class="sdjsd789">
-        <h1 class="sdhn485" id="selected_count">0/07</h1>
+        <h1 class="sdhn485" id="selected_count">0/7</h1>
         <p class="sxdjhd767">
             <b>Players <br />Selected</b>
         </p>
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-sm-5 sxdhd789">
                         <div class="nhj89hn9">
-                            <p class="h7h8j7">Pick atleast 1 goalkeeper</p>
+                            <p class="h7h8j7">Pick 1 goalkeeper</p>
                             <h1 class="dhcbn87">Goalkeeper</h1>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                 <div class="row">
                     <div class="col-sm-5 sxdhd789">
                         <div class="nhj89hn9">
-                            <p class="h7h8j7">Pick atleast 2 Defender</p>
+                            <p class="h7h8j7">Pick 2 Defender</p>
                             <h1 class="dhcbn87">Defender</h1>
                         </div>
                     </div>
@@ -305,7 +305,7 @@
                         <div class="col-sm-5 sxdhd789">
                             <div class="nhj89hn9">
                                 <p class="h7h8j7">
-                                    Pick atleast 2 midfielder
+                                    Pick 2 midfielder
                                 </p>
                                 <h1 class="dhcbn87">Midfielder</h1>
                             </div>
@@ -455,7 +455,7 @@
                         <div class="col-sm-5 sxdhd789">
                             <div class="nhj89hn9">
                                 <p class="h7h8j7">
-                                    Pick atleast 2 forward
+                                    Pick 2 forward
                                 </p>
                                 <h1 class="dhcbn87">Forward</h1>
                             </div>
@@ -599,8 +599,6 @@
         if ($(this).closest('tr').find('input[type=checkbox]').prop('checked') == true) {
             $(this).closest('tr').find('input[type=checkbox]').prop('checked', false);
             $("input.goalkeepercheck").removeAttr('disabled');
-
-            console.log("removeee");
         } else {
             var select = 0;
             var image = '';
@@ -636,6 +634,8 @@
                 select += 1;
             });
         }
+        $(".goalkeepercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
         selectCount()
     })
 
@@ -678,6 +678,8 @@
                 n += 1;
             });
         }
+        $(".defendercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".defendercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
         selectCount()
     })
 
@@ -717,9 +719,12 @@
                 $("#midfielder_img"+ n).attr('src', image);
                 $("#midfielder_name"+ n).html(full_name);
                 $("#midfieldersell_price"+ n).html(sell_price);
+                $(this).closest('tr').css('backgroundColor','#0ea5e0')
                 n += 1;
             });
         }
+        $(".midfieldercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".midfieldercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
         selectCount()
     })
 
@@ -762,6 +767,8 @@
                 n += 1;
             });
         }
+        $(".forwardcheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".forwardcheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
         selectCount()
     })
 
@@ -770,7 +777,7 @@
         $('.form-check-input:checkbox[type=checkbox]:checked').each(function(e) {
             selected += 1;
         });
-        $("#selected_count").html(selected + "/07")
+        $("#selected_count").html(selected + "/7")
     }
 
     function goalKeepercheckbox() {
@@ -790,11 +797,14 @@
             $("#goalkeepersell_price").html(sell_price);
             $("input.goalkeepercheck").attr("disabled", true);
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
+
         } else {
             $("input.goalkeepercheck").removeAttr("disabled");
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
-
         }
+        $(".goalkeepercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
+
     }
 
     function defendercheckbox(e) {
@@ -817,6 +827,8 @@
             $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
             $("input.defendercheck").removeAttr("disabled");
         }
+        $(".defendercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".defendercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     }
 
     function midfieldercheckbox(e) {
@@ -838,6 +850,8 @@
             $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
             $("input.midfieldercheck").removeAttr("disabled");
         }
+        $(".midfieldercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".midfieldercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     }
 
     function forwardcheckbox(e) {
@@ -858,5 +872,7 @@
             $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
             $("input.forwardcheck").removeAttr("disabled");
         }
+        $(".forwardcheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
+        $(".forwardcheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     }
 </script>

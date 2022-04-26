@@ -8,6 +8,7 @@ use App\Models\League;
 use App\Models\Player;
 use App\EntitySport;
 use App\Models\Fixture;
+use App\Models\News;
 use App\Models\Season;
 use App\Models\Team;
 use Illuminate\Http\Request;
@@ -74,18 +75,30 @@ class DemoController extends Controller
     public function fixtureData(){
 
         $api = new EntitySport();
-        $team=Team::select('current_season_id')->get()->toArray();
-        if(in_array("18366",$team)){
-            p("fineee");
+        // $team=Team::select('current_season_id')->get()->toArray();
+        // if(in_array("18366",$team)){
+        //     p("fineee");
+        // }
+        // pr($team);
+        // $getSeason=$api->getLeagueSeason("Premier League");
+        // foreach($getSeason as $seasonValue){
+        //     pr($seasonValue);
+        // }
+        // pr($getSeason);
+        $getNews = $api->getAllNews('');
+        foreach($getNews as $newsData){
+            $fixtureQuery = News::query()->updateOrCreate([
+                'fixture_id' => $newsData['fixture_id'],
+            ], [
+                'title' => $newsData['introduction'],
+                'localteam' => $newsData['localteam'],
+                'visitorteam' => $newsData['visitorteam']
+            ]);
         }
-        pr($team);
-        $getSeason=$api->getLeagueSeason("Premier League");
-        foreach($getSeason as $seasonValue){
-            pr($seasonValue);
-        }
-        pr($getSeason);
+        pr($getNews);
 
-        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString());
+        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news');
+        pr($fixtures);
         //$fixtures=json_decode($fixtures_data,true);
         $setSeasonId='';
         foreach($fixtures as $value){

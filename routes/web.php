@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',function(){
 //     echo "fineee";die;
 // });
-// 
+//
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/my-pool', [PoolController::class, 'index'])->name('my-pool');
         Route::get('/create-pool', [PoolController::class, 'createPool'])->name('create-pool');
         Route::post('/insert', [PoolController::class, 'insert'])->name('insert');
-        Route::get('/latest-news', [App\Http\Controllers\HomeController::class, 'news'])->name('latest-news');
+        Route::get('/latest-news', [App\Http\Controllers\NewsController::class, 'index'])->name('latest-news');
 
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');

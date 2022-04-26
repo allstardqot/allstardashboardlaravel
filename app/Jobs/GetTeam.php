@@ -6,6 +6,7 @@ use App\EntitySport;
 use App\Models\Player;
 use App\Models\Squad;
 use Illuminate\Bus\Queueable;
+use App\Models\League;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -31,7 +32,7 @@ class GetTeam implements ShouldQueue
      */
     public function __construct()
     {
-        $this->queue = 'squad';
+        $this->queue = 'getteam';
         //$this->season_id = $season_id;
     }
 
@@ -45,6 +46,24 @@ class GetTeam implements ShouldQueue
         $api = new EntitySport();
         $getSeason=$api->getLeagueSeason("Premier League");
         foreach($getSeason as $seasonValue){
+            $leagueQuery = League::query()->updateOrCreate([
+                'id' => $seasonValue['id'],
+            ], [
+                'name' => $seasonValue['name'],
+                'active' => $seasonValue['active'],
+                'type' => $seasonValue['type'],
+                'legacy_id' => $seasonValue['legacy_id'],
+                'country_id' => $seasonValue['country_id'],
+                'is_cup' => $seasonValue['is_cup'],
+                'logo_path' => $seasonValue['logo_path'],
+                'is_friendly' => $seasonValue['is_friendly'],
+                'current_season_id' => $seasonValue['current_season_id'],
+                'current_round_id' => $seasonValue['current_round_id'],
+                'current_stage_id' => $seasonValue['current_stage_id'],
+                'live_standings' => $seasonValue['live_standings'],
+                'coverage' => json_encode($seasonValue['coverage']),
+
+            ]);
             if($seasonValue['current_season_id']){
                 $teams = $api->getTeam($seasonValue['current_season_id']);
                 $setCountry = '';

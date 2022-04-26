@@ -50,7 +50,7 @@ class EntitySport
     public function getFixture($params = []): array
     {
         // https://doc.entitysport.com/#matches-list-api
-        $response = $this->http('fixtures/between', $params);
+        $response = $this->httpParameter('fixtures/between', $params);
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
@@ -171,6 +171,16 @@ class EntitySport
     public function getMacthScore($params = []): array
     {
         $response = $this->httpParameter('fixtures', $params);
+
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+        return [];
+    }
+    public function getAllNews()
+    {
+        $response = $this->http('news','fixtures');
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
