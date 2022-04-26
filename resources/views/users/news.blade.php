@@ -28,8 +28,15 @@
                 Fusce non elit vitae arcu dictum dapibus sit amet in enim.
                 Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            
               </p>
-              <a href="#" class="mt-2 hgft432">Read More</a>
+              <a href="javascript:void(0)" class="mt-2 hgft432 newshideShow">Read More</a>
+              <p class="hidepara">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.
+                Fusce non elit vitae arcu dictum dapibus sit amet in enim.
+                Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
+                ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.</p>
             </div>
             {{-- @endforeach --}}
             <div class="news-big">
@@ -233,4 +240,5 @@
     </div>
   </div>
 </main>
+
 @endsection
