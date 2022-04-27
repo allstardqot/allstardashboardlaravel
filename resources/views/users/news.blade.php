@@ -13,26 +13,24 @@
               Nullam lectus magna, dignissim tempus est in, volutpat
               scelerisque tortor. Curabitur nec ex risus.
             </p>
-            {{-- @foreach ($newsdata as $newsValue) --}}
+            @foreach ($newsdata as $newsValue)
             <div class="news-big">
               <img class="yhgt678" src="{{asset('public/assets/image/Rectangle%20308.jpg')}}" />
               <h3 class="text-white mt-3">
                 <b>Lorem ipsum dolor sit amet</b>
               </h3>
               <h6 class="hgyu7889">
-                May 31, 2019 l by User l Comments (2)
+                {{$newsValue['updated_at']}}
+
+                {{-- May 31, 2019 l by User l Comments (2) --}}
               </h6>
               <p class="text-white mt-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.
-                Fusce non elit vitae arcu dictum dapibus sit amet in enim.
-                Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
-                ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {{$newsValue['title']}}
               </p>
               <a href="#" class="mt-2 hgft432">Read More</a>
             </div>
-            {{-- @endforeach --}}
-            <div class="news-big">
+            @endforeach
+            {{-- <div class="news-big">
               <img class="mt-4 yhgt678" src="{{asset('public/assets/image/Rectangle%20308.png')}}" />
               <h3 class="text-white mt-3">
                 <b>Lorem ipsum dolor sit amet</b>
@@ -88,7 +86,7 @@
                 ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
               <a href="#" class="mt-2 hgft432">Read More</a>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="col-lg-4 text-white hgtyr56">
