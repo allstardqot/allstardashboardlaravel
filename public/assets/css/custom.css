@@ -1,6 +1,12 @@
 body{
   background-color:#12133D;
 }
+.hidepara{
+  display: none;
+}
+.hidepara.active{
+  display: block;
+}
 a:hover{
 color: #FF5000;
 text-decoration: none;

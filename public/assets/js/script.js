@@ -1,4 +1,10 @@
 console.log("Script is loading.......")
+
+  $(".newshideShow").click(function(e) {
+    //var keyId = $(this).data('keyid');
+    $(".hidepara").toggleClass("active");
+});
+
 $('#poolpassword').hide();
 $("#poolType").change(function () {
     // alert("The text has been changed.");
