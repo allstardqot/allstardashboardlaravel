@@ -291,19 +291,43 @@
             cookiesCheck();
             fetchData("Search");
 
-            function fetchData(data, type = null) {
+            function fetchData(data, type = null,status=null,team=null) {
+                var point=''
+                if(status=='filter'){
+                    point=data;
+                    data="Search";
+                }
+                showLoader();
                 $.ajax({
                     url: "create-team",
                     method: "GET",
                     data: {
                         'searchData': data,
-                        'type': type
+                        'type': type,
+                        'point':point,
+                        'team':team,
                     },
                     success: function(result) {
                         $("#myTabContent").html(result);
+                        hideLoader();
                     }
                 });
             }
+
+            $("body").on('click', "#goalkeeper_filt", function(e) {
+                point=$("#goal_keeper_point").val();
+                team=$("#goal_keeper_team").val();
+                fetchData(point,'goalkeeper',"filter",team)
+            })
+
+            $("body").on('click', "#defender_filt", function(e) {
+                point=$("#defender_point").val();
+                team=$("#defender_team").val();
+                fetchData(point,'defender',"filter",team)
+            })
+
+
+
 
             $("body").on('keyup', "#goal_keeper", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {

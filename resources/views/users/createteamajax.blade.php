@@ -77,10 +77,10 @@
               type="text"
               placeholder="search"
               name="usrnm"
-              id="goal_keeper"
+              id="goal_keeper" value="{{!empty($request['searchData'])?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="goal_keeper_search"></i>
-            <a class="sdjndk7" href="">
+            <a class="sdjndk7" href="javascript:void(0)" id="goalkeeper_filt">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
           </div>
@@ -94,18 +94,22 @@
               </div>
               <div class="text-white text-center sdjnd890j">
                 <div class="jnsjsd87">
-                  <select class="inputcolor jjhn90k7">
-                    <option class="hd7h89">Team</option>
-                    <option class="hd7h89">2</option>
-                    <option class="hd7h89">3</option>
-                    <option class="hd7h89">4</option>
+                  <select class="inputcolor jjhn90k7" id="goal_keeper_team">
+                    <option class="hd7h89" value="">Team</option>
+                    @foreach ($team as $key=>$teamValue)
+                    {{$select=''}}
+                        @if(!empty($request['type']) && $request['type']=='goalkeeper')
+                            {{ $select=!empty($request['team']) && $request['team']==$key?"selected":''}}
+
+                        @endif
+                        <option class="hd7h89" value="{{$key}}" {{$select}}>{{$teamValue}}</option>
+                    @endforeach
                   </select>
                 </div>
-                <select class="inputcolor kdjdkl8">
-                  <option class="hd7h89">Point</option>
-                  <option class="hd7h89">2</option>
-                  <option class="hd7h89">3</option>
-                  <option class="hd7h89">4</option>
+                <select class="inputcolor kdjdkl8" id="goal_keeper_point">
+                  <option class="hd7h89" value="">Point</option>
+                  <option class="hd7h89" value="desc" {{ !empty($request['point']) && $request['point']=='desc'?"selected":''}}>High to Low</option>
+                  <option class="hd7h89" value="asc" {{ !empty($request['point']) && $request['point']=='asc'?"selected":''}}>Low to High</option>
                 </select>
               </div>
             </div>
@@ -154,7 +158,11 @@
                   </th>
                 </thead>
                 <tbody>
-                  @foreach ($goalkeeperData as $goakkeeperValue) {{--
+                  @foreach ($goalkeeperData as $goakkeeperValue)
+                  @if(empty($goakkeeperValue["team"]["name"]))
+                      @continue;
+                  @endif
+                  {{--
 
                   <tr class="goalkeeper_tr" onclick="goalKeepercheckbox()">
                     --}}
@@ -170,7 +178,7 @@
                       <p class="goalkep_fullname">
                         {{ $goakkeeperValue["fullname"] }}
                       </p>
-                      <p class="sdjd6">Goalkeeper</p>
+                      <p class="sdjd6">{{$goakkeeperValue["Position"]["name"]}}</p>
                     </td>
                     <td class="goalkeeper_td">
                       <strong>{{
@@ -183,7 +191,7 @@
                       <p>18 Goals</p>
                     </td>
                     <td class="goalkeeper_td">
-                      <p>104 Points</p>
+                      <p>{{ $goakkeeperValue["total_point"] }} Points</p>
                     </td>
                     <td class="goalkeeper_td">
                       <p class="hsksk78 goalkeeper_sell_price">
@@ -276,7 +284,7 @@
               id="defender"
             />
             <i class="fa fa-search icon sdcjd8" id="defender_search"></i>
-            <a class="sdjndk7" href="">
+            <a class="sdjndk7" href="javascript:void(0)" id="defender_filt">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
           </div>
@@ -290,18 +298,17 @@
               </div>
               <div class="text-white text-center sdjnd890j">
                 <div class="jnsjsd87">
-                  <select class="inputcolor jjhn90k7">
-                    <option class="hd7h89">Team</option>
-                    <option class="hd7h89">2</option>
-                    <option class="hd7h89">3</option>
-                    <option class="hd7h89">4</option>
+                  <select class="inputcolor jjhn90k7" id="defender_team">
+                    <option class="hd7h89" value="">Team</option>
+                    @foreach ($team as $key=>$teamValue)
+                        <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                    @endforeach
                   </select>
                 </div>
-                <select class="inputcolor kdjdkl8">
+                <select class="inputcolor kdjdkl8"  id="defender_point">
                   <option class="hd7h89">Point</option>
-                  <option class="hd7h89">2</option>
-                  <option class="hd7h89">3</option>
-                  <option class="hd7h89">4</option>
+                  <option class="hd7h89" value="desc">High to Low</option>
+                  <option class="hd7h89" value="asc">Low to High</option>
                 </select>
               </div>
             </div>
@@ -350,6 +357,9 @@
                   </th>
                 </thead>
                 @foreach ($defenderData as $defenderValue)
+                @if(empty($defenderValue["team"]["name"]))
+                      @continue;
+                  @endif
                 <tr>
                   <td class="defender_td">
                     <img
@@ -361,7 +371,7 @@
                     <p class="defender_fullname">
                       {{ $defenderValue["fullname"] }}
                     </p>
-                    <p class="sdjd6">Defender</p>
+                    <p class="sdjd6">{{$defenderValue["Position"]["name"]}}</p>
                   </td>
                   <td class="defender_td">
                     <strong>{{
@@ -374,7 +384,7 @@
                     <p>18 Goals</p>
                   </td>
                   <td class="defender_td">
-                    <p>104 Points</p>
+                    <p>{{ $defenderValue["total_point"] }} Points</p>
                   </td>
                   <td class="defender_td">
                     <p class="hsksk78 defender_sell_price">
@@ -472,7 +482,7 @@
                 id="midfielder"
               />
               <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
-              <a class="sdjndk7" href="">
+              <a class="sdjndk7" href="javascript:void(0)">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
             </div>
@@ -486,18 +496,17 @@
                 </div>
                 <div class="text-white text-center sdjnd890j">
                   <div class="jnsjsd87">
-                    <select class="inputcolor jjhn90k7">
-                      <option class="hd7h89">Team</option>
-                      <option class="hd7h89">2</option>
-                      <option class="hd7h89">3</option>
-                      <option class="hd7h89">4</option>
+                    <select class="inputcolor jjhn90k7" id="midfielder_team">
+                        <option class="hd7h89" value="">Team</option>
+                        @foreach ($team as $key=>$teamValue)
+                            <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                        @endforeach
                     </select>
                   </div>
-                  <select class="inputcolor kdjdkl8">
+                  <select class="inputcolor kdjdkl8" id="midfielder_filt">
                     <option class="hd7h89">Point</option>
-                    <option class="hd7h89">2</option>
-                    <option class="hd7h89">3</option>
-                    <option class="hd7h89">4</option>
+                    <option class="hd7h89" value="desc">High to Low</option>
+                  <option class="hd7h89" value="asc">Low to High</option>
                   </select>
                 </div>
               </div>
@@ -549,6 +558,9 @@
                     </th>
                   </thead>
                   @foreach ($midfielderData as $midfielderValue)
+                  @if(empty($midfielderValue["team"]["name"]))
+                  @continue;
+              @endif
                   <tr>
                     <td class="midfielder_td">
                       <img
@@ -560,7 +572,7 @@
                       <p class="midfielder_fullname">
                         {{ $midfielderValue["fullname"] }}
                       </p>
-                      <p class="sdjd6">Midfielder</p>
+                      <p class="sdjd6">{{$midfielderValue["Position"]["name"]}}</p>
                     </td>
                     <td class="midfielder_td">
                       <strong>{{
@@ -573,7 +585,7 @@
                       <p>18 Goals</p>
                     </td>
                     <td class="midfielder_td">
-                      <p>104 Points</p>
+                      <p>{{ $midfielderValue["total_point"] }} Points</p>
                     </td>
                     <td class="midfielder_td">
                       <p class="hsksk78 midfielder_sell_price">
@@ -644,7 +656,7 @@
                       <h6 class="h7bhsh8y6" id="forward_name{{ $i }}">
                         Tammy Johnson
                       </h6>
-                      <p class="fjf78h7">Defender</p>
+                      <p class="fjf78h7">Forward</p>
                       <div class="dfhfj7j">
                         <div class="djhfhd8h89">
                           <p class="sdbdj76">18 CGW Point</p>
@@ -672,7 +684,7 @@
                 id="forward"
               />
               <i class="fa fa-search icon sdcjd8" id="forward_search"></i>
-              <a class="sdjndk7" href="">
+              <a class="sdjndk7" href="javascript:void(0)">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
             </div>
@@ -686,18 +698,17 @@
                 </div>
                 <div class="text-white text-center sdjnd890j">
                   <div class="jnsjsd87">
-                    <select class="inputcolor jjhn90k7">
-                      <option class="hd7h89">Team</option>
-                      <option class="hd7h89">2</option>
-                      <option class="hd7h89">3</option>
-                      <option class="hd7h89">4</option>
+                    <select class="inputcolor jjhn90k7" id="forward_team">
+                        <option class="hd7h89" value="">Team</option>
+                        @foreach ($team as $key=>$teamValue)
+                            <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                        @endforeach
                     </select>
                   </div>
-                  <select class="inputcolor kdjdkl8">
+                  <select class="inputcolor kdjdkl8" id="forward_filt">
                     <option class="hd7h89">Point</option>
-                    <option class="hd7h89">2</option>
-                    <option class="hd7h89">3</option>
-                    <option class="hd7h89">4</option>
+                    <option class="hd7h89" value="desc">High to Low</option>
+                  <option class="hd7h89" value="asc">Low to High</option>
                   </select>
                 </div>
               </div>
@@ -749,6 +760,9 @@
                     </th>
                   </thead>
                   @foreach ($forwardData as $forwardValue)
+                  @if(empty($forwardValue["team"]["name"]))
+                  @continue;
+              @endif
                   <tr>
                     <td class="forward_td">
                       <img
@@ -760,12 +774,12 @@
                       <p class="forward_fullname">
                         {{ $forwardValue["fullname"] }}
                       </p>
-                      <p class="sdjd6">Forward</p>
+                      <p class="sdjd6">{{$forwardValue["Position"]["name"]}}</p>
                     </td>
                     <td class="forward_td">
                       <strong>{{
-                        isset($goakkeeperValue["team"]["name"])
-                          ? $goakkeeperValue["team"]["name"]
+                        isset($forwardValue["team"]["name"])
+                          ? $forwardValue["team"]["name"]
                           : ""
                       }}</strong>
                     </td>
@@ -773,7 +787,7 @@
                       <p>18 Goals</p>
                     </td>
                     <td class="forward_td">
-                      <p>104 Points</p>
+                      <p>{{ $forwardValue["total_point"] }} Points</p>
                     </td>
                     <td class="forward_td">
                       <p class="hsksk78 forward_sell_price">

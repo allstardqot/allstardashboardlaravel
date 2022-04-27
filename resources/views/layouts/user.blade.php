@@ -26,6 +26,9 @@
 </head>
 
 <body>
+    <div class="loading">
+        <div class="circle"> </div>
+      </div>
 
 @include('element/users/header') @show
 

@@ -48,9 +48,6 @@ class GetFixture implements ShouldQueue
         //$fixtures=json_decode($fixtures_data,true);
         $setSeasonId='';
         foreach($fixtures as $value){
-            //pr($value);
-            //pr($value['time']['starting_at']['date_time']);
-            if($value['league_id']=='501'){
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [
@@ -69,20 +66,20 @@ class GetFixture implements ShouldQueue
                     'starting_at' => $value['time']['starting_at']['date_time']
                 ]);
                 if($fixtureQuery->wasRecentlyCreated){
-                    if(!Season::find($value['season_id'])){
-                        $seasonData = $api->getSeason('');
-                        foreach ($seasonData as $season) {
-                            $competition = Season::query()->updateOrCreate([
-                                'id' => $season['id'],
-                            ], [
-                                'name' => $season['name'],
-                                'league_id' => $season['league_id'],
-                                'is_current_season' => $season['is_current_season'],
-                                'current_round_id' => $season['current_round_id'],
-                                'current_stage_id' => $season['current_stage_id'],
-                            ]);
-                        }
-                    }
+                    // if(!Season::find($value['season_id'])){
+                    //     $seasonData = $api->getSeason('');
+                    //     foreach ($seasonData as $season) {
+                    //         $competition = Season::query()->updateOrCreate([
+                    //             'id' => $season['id'],
+                    //         ], [
+                    //             'name' => $season['name'],
+                    //             'league_id' => $season['league_id'],
+                    //             'is_current_season' => $season['is_current_season'],
+                    //             'current_round_id' => $season['current_round_id'],
+                    //             'current_stage_id' => $season['current_stage_id'],
+                    //         ]);
+                    //     }
+                    // }
 
                     // if(!League::find($value['league_id'])){
                     //     $leagueData = $api->getLeague('');
@@ -114,7 +111,6 @@ class GetFixture implements ShouldQueue
                         $setSeasonId=$value['season_id'];
                     }
                 }
-            }
         }
     }
 }

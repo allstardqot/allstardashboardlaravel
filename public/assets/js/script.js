@@ -18,6 +18,14 @@ $("#poolType").change(function () {
     }
 
 });
+function showLoader(){
+    $(".loading").addClass("active");
+}
+
+function hideLoader(){
+    $("div.loading").removeClass("active");
+
+}
 
 // manage Lounge Save Data
 // $('#storePost').onclick(function(){
