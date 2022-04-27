@@ -11,9 +11,13 @@
     <title>All Stars @yield('title')</title>
 
     <!-- Styles -->
+    <link href="{{ asset('public/assets/css/calendar.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
+  
 
+
+    
 
 
     <link href="{{ asset('public/assets/css/fantasy-allstars.css') }}" rel="stylesheet">
@@ -43,6 +47,7 @@
 <script src="{{ asset('public/assets/js/user_script.js') }}"></script>
 <script src="{{ asset('public/assets/js/rte.js') }}"></script>
 <script src="{{ asset('public/assets/js/all_plugins.js') }}"></script>
+<script src="{{ asset('public/assets/js/calendar.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>

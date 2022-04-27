@@ -27,20 +27,33 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $userTeam = UserTeam::where(['user_id'=>Auth::user()->id])->get()->toArray();
+        $userTeam = UserTeam::where(['user_id'=>Auth::user()->id])->orderBy('user_teams.id','DESC')->limit(3)->get()->toArray();
 
-        foreach($userTeam as $data){
-            $players = $data['players'];
+        if(empty($userTeam)){
+            return redirect()->route('create-team')->with('info','plz first create team!');
         }
-        $plyArr = json_decode($players);
 
-        $result = Player::whereIn('id', $plyArr)->get()->toArray();
-        // pr($result);
+            $mainData = [];
+        foreach($userTeam as $data){
+            $result=[];
+            $players = $data['players'];
+            $plyArr = json_decode($players,true);
+
+            $result = Player::join('positions','positions.id','=','players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id','ASC')->get()->toArray();
+            $result['team_name']=$data['name'];
+            
+            array_push($mainData,$result);
+            //$result['team_name']=$data['name'];
+        }
+        
+
+        
+         //pr($mainData);
         // $result = Player::join('Position', 'Position.id', '=', 'Player.position_id')->whereIn('id', $plyArr)->get()->toArray();
         // pr($result);
 
         
-        return view('users/team',compact('result'));
+        return view('users/team',compact('mainData','userTeam'));
     }
 
     public function createTeam(Request $request)
