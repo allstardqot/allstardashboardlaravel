@@ -277,6 +277,7 @@
                                     </button>
                                 </li>
                             </ul>
+                            <input type="hidden" value="{{$editId}}" id="edit_id">
                         </div>
 
                         <div class="tab-content" id="myTabContent">
@@ -299,6 +300,7 @@
 
             function fetchData(data, type = null,status=null,team=null) {
                 var point=''
+                var editId=$("#edit_id").val();
                 if(status=='filter'){
                     point=data;
                     data="Search";
@@ -312,6 +314,7 @@
                         'type': type,
                         'point':point,
                         'team':team,
+                        'editId':editId
                     },
                     success: function(result) {
                         $("#myTabContent").html(result);
@@ -444,11 +447,11 @@
             $('body').on("click", ".form-check-input", function() {
                 var selected = 0;
                 $('.form-check-input:checkbox[type=checkbox]:checked').each(function(e) {
-                    //alert(e);
+
                     selected += 1;
                 });
-                $("#selected_count").html(selected+"/07")
-                //alert(selected);
+                $("#selected_count").html(selected+"/7")
+
             });
 
             $('body').on("click",".choose_substitude",function(e) {
@@ -488,7 +491,7 @@
                             selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
                         }else{
                             $(this).removeClass("active");
-                            $.notify("Can not select 2 categorie.", "info");
+                            $.notify("Can not select 2 captain.", "info");
                         }
                     })
                 }

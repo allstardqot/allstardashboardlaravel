@@ -159,6 +159,10 @@
                 </thead>
                 <tbody>
                   @foreach ($goalkeeperData as $goakkeeperValue)
+                  {{$check=''}}
+                  @if(!empty($user_selected_player) && in_array($goakkeeperValue["id"],$user_selected_player))
+                    {{$check="checked"}}
+                  @endif
                   @if(empty($goakkeeperValue["team"]["name"]))
                       @continue;
                   @endif
@@ -201,7 +205,7 @@
                     <td class="checkboxtd">
                       <input
                         class="form-check-input tem-chekbox goalkeepercheck"
-                        type="checkbox"
+                        type="checkbox" {{$check}}
                         value="{{ $goakkeeperValue['id'] }}"
                         id="flexCheckDefault"
                         onclick="goalKeepercheckbox(event)"
@@ -362,6 +366,10 @@
                   </th>
                 </thead>
                 @foreach ($defenderData as $defenderValue)
+                {{$check=''}}
+                  @if(!empty($user_selected_player) && in_array($defenderValue["id"],$user_selected_player))
+                    {{$check="checked"}}
+                  @endif
                 @if(empty($defenderValue["team"]["name"]))
                       @continue;
                   @endif
@@ -401,8 +409,8 @@
                       class="form-check-input tem-chekbox defendercheck"
                       type="checkbox"
                       value="{{ $defenderValue['id'] }}"
-                      id="flexCheckDefault"
-                      onclick="defendercheckbox(event)"
+                      id="flexCheckDefault" {{$check}}
+                      onclick="defendercheckbox()"
                     />
                   </td>
                 </tr>
@@ -568,9 +576,13 @@
                     </th>
                   </thead>
                   @foreach ($midfielderData as $midfielderValue)
+                  {{$check=''}}
+                  @if(!empty($user_selected_player) && in_array($midfielderValue["id"],$user_selected_player))
+                    {{$check="checked"}}
+                  @endif
                   @if(empty($midfielderValue["team"]["name"]))
-                  @continue;
-              @endif
+                        @continue;
+                    @endif
                   <tr>
                     <td class="midfielder_td">
                       <img
@@ -607,8 +619,8 @@
                         class="form-check-input tem-chekbox midfieldercheck"
                         type="checkbox"
                         value="{{ $midfielderValue['id'] }}"
-                        id="flexCheckDefault"
-                        onclick="midfieldercheckbox(event)"
+                        id="flexCheckDefault" {{$check}}
+                        onclick="midfieldercheckbox()"
                       />
                     </td>
                   </tr>
@@ -775,9 +787,13 @@
                     </th>
                   </thead>
                   @foreach ($forwardData as $forwardValue)
+                  {{$check=''}}
+                  @if(!empty($user_selected_player) && in_array($forwardValue["id"],$user_selected_player))
+                    {{$check="checked"}}
+                  @endif
                   @if(empty($forwardValue["team"]["name"]))
-                  @continue;
-              @endif
+                        @continue;
+                    @endif
                   <tr>
                     <td class="forward_td">
                       <img
@@ -813,8 +829,8 @@
                       <input class="form-check-input tem-chekbox forwardcheck"
                       name="checkbox_forward" type="checkbox" value="{{
                         $forwardValue["id"]
-                      }}" id="flexCheckDefault"
-                      onclick="forwardcheckbox(event)">
+                      }}" id="flexCheckDefault" {{$check}}
+                      onclick="forwardcheckbox()">
                     </td>
                   </tr>
                   @endforeach
@@ -828,6 +844,12 @@
   </div>
 </div>
 <script type="text/javascript">
+selectCount()
+goalKeepercheckbox();
+defendercheckbox();
+midfieldercheckbox();
+forwardcheckbox();
+
   $("body").on("click", ".goalkeeper_td", function () {
     if (
       $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
@@ -1034,8 +1056,9 @@
     $(".form-check-input:checkbox[type=checkbox]:checked").each(function (e) {
       selected += 1;
     });
-    $("#selected_count").html(selected + "/07");
+    $("#selected_count").html(selected + "/7");
   }
+
 
   function goalKeepercheckbox() {
     var select = 0;
@@ -1066,7 +1089,7 @@
     $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
   }
 
-  function defendercheckbox(e) {
+  function defendercheckbox() {
     var select = 0;
 
     $(".defendercheck:checkbox[type=checkbox]:checked").each(function () {
@@ -1079,7 +1102,7 @@
       select += 1;
     });
 
-    if (e.target.checked && select >= 2) {
+    if (select >= 2) {
       $("input.defendercheck").attr("disabled", true);
       $(".defendercheck:checkbox[type=checkbox]:checked").removeAttr(
         "disabled"
@@ -1094,7 +1117,7 @@
     $(".defendercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
   }
 
-  function midfieldercheckbox(e) {
+  function midfieldercheckbox() {
     var select = 0;
     $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function () {
       image = $(this).closest("tr").find("img").attr("src");
@@ -1106,7 +1129,7 @@
       select += 1;
     });
 
-    if (e.target.checked && select >= 2) {
+    if (select >= 2) {
       $("input.midfieldercheck").attr("disabled", true);
       $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr(
         "disabled"
@@ -1121,7 +1144,7 @@
     $(".midfieldercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
   }
 
-  function forwardcheckbox(e) {
+  function forwardcheckbox() {
     var select = 0;
     $(".forwardcheck:checkbox[type=checkbox]:checked").each(function () {
       image = $(this).closest("tr").find("img").attr("src");
@@ -1132,7 +1155,7 @@
       $("#forwardsell_price" + select).html(sell_price);
       select += 1;
     });
-    if (e.target.checked && select >= 2) {
+    if (select >= 2) {
       $("input.forwardcheck").attr("disabled", true);
       $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
     } else {

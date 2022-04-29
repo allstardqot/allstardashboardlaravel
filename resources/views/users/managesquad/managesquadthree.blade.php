@@ -8,7 +8,7 @@
         </ul>
         <h4 class="text-white text-center sdjskldj">Enter Team Name</h4>
         <div class="team-name-field">
-            <input class="team-name-input" type="text" id="team_name_enter" name="team name" placeholder="Enter team name" />
+            <input class="team-name-input" type="text" value="{{$user_team_name}}" id="team_name_enter" name="team name" placeholder="Enter team name" />
         </div>
 
         <div class="m-bg text-white djkdxjnh">
@@ -108,7 +108,7 @@
             </div>
 
             <div id="managesquad_three_submit" class="col-lg-4 col-4 text-lg-right text-right">
-                <a href="#" class="form-control btnColor mt-4 sdjhsdjh ml-auto">
+                <a href="javascript:void(0)" class="form-control btnColor mt-4 sdjhsdjh ml-auto">
                     Next</a>
             </div>
         </div>

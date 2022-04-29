@@ -64,10 +64,16 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/team', [TeamController::class, 'index'])->name('team');
 
         Route::get('/manage-squad', [TeamController::class, 'managesquadone'])->name('manage-squad');
+        Route::get('/edit-team/manage-squad', [TeamController::class, 'managesquadone'])->name('manage-squad');
         Route::get('/manage-squad-sec', [TeamController::class, 'managesquadtwo'])->name('manage-squad-sec');
+        Route::get('/edit-team/manage-squad-sec', [TeamController::class, 'managesquadtwo'])->name('manage-squad-sec');
         Route::get('/manage-squad-thr', [TeamController::class, 'managesquadthree'])->name('manage-squad-thr');
+        Route::get('/edit-team/manage-squad-thr', [TeamController::class, 'managesquadthree'])->name('manage-squad-thr');
+
+        Route::get('/edit-team/{id}', [TeamController::class, 'createTeam'])->name('edit-team');
+        Route::get('/edit-team/create-team', [TeamController::class, 'createTeam'])->name('create-team');
         Route::get('/create-team', [TeamController::class, 'createTeam'])->name('create-team');
-        Route::get('/edit-team/{id}', [TeamController::class, 'editteam'])->name('edit-team');
+        Route::get('/edit-team/create-team', [TeamController::class, 'createTeam'])->name('create-team');
         Route::get('/my-pool', [PoolController::class, 'index'])->name('my-pool');
         Route::get('/create-pool', [PoolController::class, 'createPool'])->name('create-pool');
         Route::post('/insert', [PoolController::class, 'insert'])->name('insert');
@@ -83,7 +89,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', [VerificationController::class,'resend'])->name('verification.resend');
-    
+
 
     Route::get('/fixture-data',function(){
         return view('users/fixture');

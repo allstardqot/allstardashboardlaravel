@@ -13,7 +13,7 @@
 
   <div class="container-">
     <div class="row mjkoitbh col-lg-12 col-12 mx-auto py-0 text-white">
-      
+
       @foreach($mainData as $key => $data)
       <div class="col-lg-4 text-white mt-3 ml-3	">
         <div class="sklddnk">
@@ -39,7 +39,7 @@
           <hr class="htguy78">
           @endforeach
 
-          
+
           <a href="#" class="hjuy87">Go to manage Squad</a>
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}

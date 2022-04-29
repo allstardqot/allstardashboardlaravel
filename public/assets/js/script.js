@@ -78,8 +78,9 @@ $("body").on("click", "#managesquad_one_submit", function () {
     })
     var yourArray = $.cookie('selected_player');
     $.cookie('substitude', selectId);
+    var editId=$.cookie('editId');
 
-    manageSquadTwo(yourArray,selectId);
+    manageSquadTwo(yourArray,selectId,editId);
 })
 
 $("body").on("click", "#managesquad_two_submit", function () {
@@ -94,17 +95,14 @@ $("body").on("click", "#managesquad_two_submit", function () {
     var substitude = $.cookie('substitude');
     //$.cookie('substitude', selectId);
     var yourArray = $.cookie('selected_player');
-    manageSquadThree(yourArray,substitude,captain);
+    var editId=$.cookie('editId');
+    manageSquadThree(yourArray,substitude,captain,editId);
     }
 })
 
 $("body").on("click", "#managesquad_three_submit", function () {
     var selectId=[];
     var captain='';
-
-    // $(".choose_captain .active").each(function() {
-    //     captain=$(this).closest('div').find('.categorie').attr('data-id');
-    // })
     if(!$("#team_name_enter").val()){
         $.notify("Please enter team name.", "info");
     }else{
@@ -112,33 +110,36 @@ $("body").on("click", "#managesquad_three_submit", function () {
         var substitude = $.cookie('substitude');
         var captain=$.cookie('captain');
         var yourArray = $.cookie('selected_player');
-        manageSquadFinal(yourArray,substitude,captain,teamName);
+        var editId = $.cookie('editId');
+        manageSquadFinal(yourArray,substitude,captain,teamName,editId);
     }
 })
 
-function manageSquadFinal(yourArray,substitude,captain,teamName) {
+function manageSquadFinal(yourArray,substitude,captain,teamName,editId) {
     $.ajax({
         url: "create-team",
         method: "GET",
         data: {
-            'selected': yourArray,'substitude':substitude,'captain':captain,'teamName':teamName
+            'selected': yourArray,'substitude':substitude,'captain':captain,'teamName':teamName,'editId':editId
         },
         success: function (result) {
             $.cookie('step', "");
             $.cookie('captain',"");
             $.cookie('substitude',"");
             $.cookie('selected_player',"");
-            window.location.href = "team";
+            $.cookie('editId',"");
+            //history.go(-1);
+            window.location = "team";
         }
     });
 }
 
-function manageSquadThree(yourArray,substitude,captain) {
+function manageSquadThree(yourArray,substitude,captain,editId) {
     $.ajax({
         url: "manage-squad-thr",
         method: "GET",
         data: {
-            'selected': yourArray,'substitude':substitude,'captain':captain
+            'selected': yourArray,'substitude':substitude,'captain':captain,'editId':editId
         },
         success: function (result) {
             $("#create_team_main").hide()
@@ -152,12 +153,12 @@ function manageSquadThree(yourArray,substitude,captain) {
     });
 }
 
-function manageSquadTwo(yourArray,selectData) {
+function manageSquadTwo(yourArray,selectData,editId) {
     $.ajax({
         url: "manage-squad-sec",
         method: "GET",
         data: {
-            'selected': yourArray,'selectData':selectData
+            'selected': yourArray,'selectData':selectData,'editId':editId
         },
         success: function (result) {
             $("#create_team_main").hide()
@@ -170,12 +171,14 @@ function manageSquadTwo(yourArray,selectData) {
     });
 }
 
-function manageSquad(yourArray) {
+function manageSquad(yourArray,editId) {
+    //console.log("werewrwrwerrrrrrrrrrrr"+history.go(-2));
     $.ajax({
         url: "manage-squad",
         method: "GET",
         data: {
-            'selected': yourArray
+            'selected': yourArray,
+            'editId':editId
         },
         success: function (result) {
             $("#create_team_main").hide()
@@ -189,17 +192,23 @@ function manageSquad(yourArray) {
 
 function cookiesCheck() {
     if ($.cookie('selected_player')) {
+
         var yourArray = $.cookie('selected_player');
+        var editId = $.cookie('editId');
         var substitude = $.cookie('substitude');
         var captain = $.cookie('captain', captain);
 
 
         if($.cookie('step')=="first"){
-            manageSquad(yourArray);
+            var editId=$("#edit_id").val();
+            if(editId){
+                $.cookie('editId', editId);
+            }
+            manageSquad(yourArray,editId);
         }else if($.cookie('step')=="second"){
-            manageSquadTwo(yourArray,substitude);
+            manageSquadTwo(yourArray,substitude,editId);
         }else if($.cookie('step')=="third"){
-            manageSquadThree(yourArray,substitude,captain);
+            manageSquadThree(yourArray,substitude,captain,editId);
         }
     } else {
         console.log("cookies not get")
@@ -221,10 +230,14 @@ nextBtn.addEventListener("click", (e) => {
                 });
                 let selected = $("#selected_count").html();
 
-                if (selected.indexOf('7/07') == -1) {
+                if (selected.indexOf('7/7') == -1) {
                     $.notify("Please select 7 Players.", "info");
                 } else {
-                    manageSquad(yourArray);
+                    var editId=$("#edit_id").val();
+                    if(editId){
+                        $.cookie('editId', editId);
+                    }
+                    manageSquad(yourArray,editId);
                 }
             }
             if (i === 2) {
@@ -250,7 +263,6 @@ backBtn.addEventListener("click", (e) => {
     e.preventDefault()
     var createTeamBtns = $(".create-team-nav")
     createTeamBtns.each((i, e) => {
-        console.log(i, "dklajfsldkjlk")
         if (i === 0) {
             return;
         }
@@ -261,7 +273,7 @@ backBtn.addEventListener("click", (e) => {
             }
             let nextId = $("#" + createTeamBtns.eq(i - 1)[0].id)
             elem.removeClass("active")
-            console.log(nextId.addClass("active"))
+            //console.log(nextId.addClass("active"))
             $("." + e.id).removeClass("show active")
             $("." + createTeamBtns.eq(i - 1)[0].id).addClass("show active")
             return false;
