@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserPool;
 use App\Models\Team;
 use App\Models\UserTeam;
+use App\Models\News;
 use Auth;
 
 class HomeController extends Controller
@@ -28,7 +29,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-
+        $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $searchData=$request->searchData;
         $type=$request->type;
         $publicQuery=UserPool::query();
@@ -47,9 +48,9 @@ class HomeController extends Controller
                     $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
             }
-            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team]);
+            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata]);
         }
         // echo 'sljhf';die;
-        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team]);
+        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata]);
     }
 }

@@ -19,7 +19,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $newsdata=News::query()->get();
+        $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
         return view('users/news',['newsdata'=>$newsdata]);
 
     }

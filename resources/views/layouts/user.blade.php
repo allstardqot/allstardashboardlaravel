@@ -57,6 +57,8 @@
     var editor1 = new RichTextEditor("#div_editor1");
     $(document).ready(function() {
 
+        
+
 
 
         $(".hideShow").click(function(e) {

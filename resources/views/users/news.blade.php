@@ -9,9 +9,9 @@
         <div class="col-lg-8 mt-4">
           <div class="jhyt67">
             <h3 class="text-white mt-3"><b>Latest News</b></h3>
-            
+            {{ $i=1; }}
             @foreach ($newsdata as $newsValue)
-            <p class="text-white mt-3">
+                        <p class="text-white mt-3">
               {{ $newsValue['title'] }}
             </p>
             {{-- {{ pr($newsValue) }} --}}
@@ -28,11 +28,13 @@
                
 
               </p>
-              
-              <p class="hidepara text-white">
+              <span id="dots_{{ $i }}">...</span>
+              <p class=" text-white" id="more_{{ $i }}" style="display:  none;">
                 {{$newsValue['visitorteam']}}</p>
-                <a href="javascript:void(0)" class="mt-2 hgft432 newshideShow" >Read More</a>
+                <button  class="mt-2 hgft432 " onclick="myFunction({{ $i }})" id="myBtn_{{ $i }}">Read More</button>
             </div>
+            {{ $i++ }}
+
             @endforeach
             {{-- <div class="news-big">
               <img class="mt-4 yhgt678" src="{{asset('public/assets/image/Rectangle%20308.png')}}" />
@@ -235,5 +237,23 @@
     </div>
   </div>
 </main>
+<script>
+  function myFunction(i) {
+    // alert(i);
+            var dots = document.getElementById("dots_"+i);
+            var moreText = document.getElementById("more_"+i);
+            var btnText = document.getElementById("myBtn_"+i);
+
+            if (dots.style.display === "none") {
+                dots.style.display = "block";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "block";
+            }
+        }
+</script>
 
 @endsection
