@@ -14,5 +14,6 @@ class News extends Model
         'title',
         'localteam',
         'visitorteam',
+        'news_created_At'
     ];
 }

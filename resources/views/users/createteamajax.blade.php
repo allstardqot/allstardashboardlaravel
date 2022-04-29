@@ -77,7 +77,7 @@
               type="text"
               placeholder="search"
               name="usrnm"
-              id="goal_keeper" value="{{!empty($request['searchData'])?$request['searchData']:''}}"
+              id="goal_keeper" value="{{!empty($request['searchData']) && $request['type']=='goalkeeper'?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="goal_keeper_search"></i>
             <a class="sdjndk7" href="javascript:void(0)" id="goalkeeper_filt">
@@ -281,7 +281,7 @@
               type="text"
               placeholder="search"
               name="usrnm"
-              id="defender"
+              id="defender" value="{{!empty($request['searchData']) && $request['type']=='defender'?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="defender_search"></i>
             <a class="sdjndk7" href="javascript:void(0)" id="defender_filt">
@@ -301,14 +301,19 @@
                   <select class="inputcolor jjhn90k7" id="defender_team">
                     <option class="hd7h89" value="">Team</option>
                     @foreach ($team as $key=>$teamValue)
-                        <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                        {{$select=''}}
+                        @if(!empty($request['type']) && $request['type']=='defender')
+                            {{ $select=!empty($request['team']) && $request['team']==$key?"selected":''}}
+
+                        @endif
+                        <option class="hd7h89" value="{{$key}}" {{$select}}>{{$teamValue}}</option>
                     @endforeach
                   </select>
                 </div>
                 <select class="inputcolor kdjdkl8"  id="defender_point">
-                  <option class="hd7h89">Point</option>
-                  <option class="hd7h89" value="desc">High to Low</option>
-                  <option class="hd7h89" value="asc">Low to High</option>
+                    <option class="hd7h89" value="">Point</option>
+                    <option class="hd7h89" value="desc" {{ !empty($request['point']) && $request['point']=='desc'?"selected":''}}>High to Low</option>
+                    <option class="hd7h89" value="asc" {{ !empty($request['point']) && $request['point']=='asc'?"selected":''}}>Low to High</option>
                 </select>
               </div>
             </div>
@@ -479,10 +484,10 @@
                 type="text"
                 placeholder="search"
                 name="usrnm"
-                id="midfielder"
+                id="midfielder" value="{{!empty($request['searchData']) && $request['type']=='midfielder'?$request['searchData']:''}}"
               />
               <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
-              <a class="sdjndk7" href="javascript:void(0)">
+              <a class="sdjndk7" href="javascript:void(0)" id="midfielder_filt">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
             </div>
@@ -499,14 +504,19 @@
                     <select class="inputcolor jjhn90k7" id="midfielder_team">
                         <option class="hd7h89" value="">Team</option>
                         @foreach ($team as $key=>$teamValue)
-                            <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                        {{$select=''}}
+                        @if(!empty($request['type']) && $request['type']=='midfielder')
+                            {{ $select=!empty($request['team']) && $request['team']==$key?"selected":''}}
+
+                        @endif
+                            <option class="hd7h89" value="{{$key}}" {{$select}}>{{$teamValue}}</option>
                         @endforeach
                     </select>
                   </div>
-                  <select class="inputcolor kdjdkl8" id="midfielder_filt">
-                    <option class="hd7h89">Point</option>
-                    <option class="hd7h89" value="desc">High to Low</option>
-                  <option class="hd7h89" value="asc">Low to High</option>
+                  <select class="inputcolor kdjdkl8" id="midfielder_point">
+                    <option class="hd7h89" value="">Point</option>
+                  <option class="hd7h89" value="desc" {{ !empty($request['point']) && $request['point']=='desc'?"selected":''}}>High to Low</option>
+                  <option class="hd7h89" value="asc" {{ !empty($request['point']) && $request['point']=='asc'?"selected":''}}>Low to High</option>
                   </select>
                 </div>
               </div>
@@ -681,10 +691,10 @@
                 type="text"
                 placeholder="search"
                 name="usrnm"
-                id="forward"
+                id="forward" value="{{!empty($request['searchData']) && $request['type']=='forward'?$request['searchData']:''}}"
               />
               <i class="fa fa-search icon sdcjd8" id="forward_search"></i>
-              <a class="sdjndk7" href="javascript:void(0)">
+              <a class="sdjndk7" href="javascript:void(0)" id="forward_filt">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
             </div>
@@ -701,14 +711,19 @@
                     <select class="inputcolor jjhn90k7" id="forward_team">
                         <option class="hd7h89" value="">Team</option>
                         @foreach ($team as $key=>$teamValue)
-                            <option class="hd7h89" value="{{$key}}">{{$teamValue}}</option>
+                        {{$select=''}}
+                        @if(!empty($request['type']) && $request['type']=='forward')
+                            {{ $select=!empty($request['team']) && $request['team']==$key?"selected":''}}
+
+                        @endif
+                            <option class="hd7h89" value="{{$key}}" {{$select}}>{{$teamValue}}</option>
                         @endforeach
                     </select>
                   </div>
-                  <select class="inputcolor kdjdkl8" id="forward_filt">
-                    <option class="hd7h89">Point</option>
-                    <option class="hd7h89" value="desc">High to Low</option>
-                  <option class="hd7h89" value="asc">Low to High</option>
+                  <select class="inputcolor kdjdkl8" id="forward_point">
+                    <option class="hd7h89" value="">Point</option>
+                  <option class="hd7h89" value="desc" {{ !empty($request['point']) && $request['point']=='desc'?"selected":''}}>High to Low</option>
+                  <option class="hd7h89" value="asc" {{ !empty($request['point']) && $request['point']=='asc'?"selected":''}}>Low to High</option>
                   </select>
                 </div>
               </div>
