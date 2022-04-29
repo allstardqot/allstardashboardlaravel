@@ -4,8 +4,10 @@
 
 <main>
   @if(session()->has('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-one" id="alert">
         {{ session()->get('message') }}
+
+        <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
     </div>
 @endif
   <div class="container sdhdjhsio">
@@ -59,5 +61,11 @@
       value="Grand Leader Board"
     />
   </div>
+  <script>
+    function closeAlert() {
+  var element = document.getElementById("alert");
+  element.classList.add("active");
+}
+  </script>
 </main>
 @endsection

@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/manage-squad-sec', [TeamController::class, 'managesquadtwo'])->name('manage-squad-sec');
         Route::get('/manage-squad-thr', [TeamController::class, 'managesquadthree'])->name('manage-squad-thr');
         Route::get('/create-team', [TeamController::class, 'createTeam'])->name('create-team');
+        Route::get('/edit-team/{id}', [TeamController::class, 'editteam'])->name('edit-team');
         Route::get('/my-pool', [PoolController::class, 'index'])->name('my-pool');
         Route::get('/create-pool', [PoolController::class, 'createPool'])->name('create-pool');
         Route::post('/insert', [PoolController::class, 'insert'])->name('insert');
