@@ -137,6 +137,10 @@ display: none;
   border-radius: 50px;
   padding: 8px 20px;
   margin-left: 5px;
+  display: none;
+}
+.fixture-sec .tean-show img {
+  width: 35px;
 }
 .news-col-content p, span, small, strong {
   font-weight: 400;
@@ -216,6 +220,12 @@ display: flex;
 font-size: 16px;
 margin-left: 13px;
 margin-bottom: 0;
+
+}
+.input-container.sdhnd87.sdsdsde44 {
+  background: transparent;
+  position: relative;
+  z-index: 40;
 }
 .nsd79{
 background-color: #3b3c5e;
@@ -430,6 +440,36 @@ padding: 7px 35px;
 border-radius: 30px;
 color: #fff;
 }
+.fixture-sec .fropdown-bar-menu .btn {
+  width: auto;
+  background: transparent;
+  padding: 0px 10px;
+
+}
+.fixture-sec .fropdown-bar-menu .btn[aria-expanded="true"]{
+  transform: rotate(180deg);
+}
+.fixture-sec .fropdown-bar-menu .btn:hover {
+color: #d5480f;
+
+}
+.fixture-sec .fropdown-bar-menu .btn i {
+  font-size: 30px;
+}
+.fixture-sec .fropdown-bar-menu {
+  text-align: right;
+}
+.alert-success .btn-close {
+
+  float: right ;
+
+}
+.alert-one{
+  transition: 0.3s all ease-in-out;
+}
+.alert-one.active{
+display: none;
+}
 .hd7h89{
 color: #fff;
 }
@@ -534,6 +574,7 @@ border: 1px solid #ff5000;
 
 .managing .playerspot img {
   margin-top: 36px;
+  border-radius: 100%;
 }
 .managing .playerdetails {
   display: flex;
@@ -845,8 +886,9 @@ margin: 0px -21px -16px;
 }
 .fixture-body {
   overflow: auto;
-  min-height: 500px;
+  min-height: 600px;
   margin-top: 40px;
+  max-height: 600px;
 }
 .fixture-body table {
   background-color: #3B3C5E;
@@ -864,10 +906,12 @@ margin: 0px -21px -16px;
 .fixture-body .table thead th {
   padding: 15px 6px;
   border-bottom: 1px solid #fff;
+  vertical-align: middle;
 }
 .fixture-body .table tbody td {
   
   border-bottom: 1px solid #2a2b50;
+  vertical-align: middle;
 }
 
 .fixture-card .fixture-body h3 {
@@ -1775,7 +1819,10 @@ font-size: 13px;
 }
 
 .djdndnn .playerspot img {
-margin-top: 36px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 130px;
+  border-radius: 100%;
 }
 
 .djdndnn   .playerdetails {
@@ -1807,7 +1854,7 @@ clip-path: polygon(
   0% 60%,
   0 0
 );
-margin-top: -57px;
+margin-top: -48px;
 transition: 0.3s;
 }
 
@@ -2375,7 +2422,8 @@ text-align: center;
     width: 90%;
   }
   .managing .greatplayer {
-    width: 100%;
+    width: 50%;
+    padding: 0px 3px;
   }
   .managing .greatplayer .playerspot {
     background-size: 90%;
@@ -2397,18 +2445,23 @@ text-align: center;
   .managing .second-row-check .area-title.hide-mob {
     display: none;
   }
-
+  .managing .playerspot a {
+    
+    margin-top: 20px !important;
+    }
   .managing .second-row-check .playerspot img {
     margin-top: 10px;
   }
   .managing .playerspot img {
     margin-top: 10px;
+    width: 100%;
+    max-width: 90px;
   }
   .managing .second-row-check .aboutplayer,
   .first-row-check .aboutplayer,
   .third-row-check .aboutplayer,
   .fourth-row-check .aboutplayer {
-    margin-top: -40px;
+    margin-top: -15px;
   }
   .managing .area-title.hide-desk {
     text-align: center;
@@ -2473,12 +2526,15 @@ text-align: center;
   }
   .djdndnn  .playerspot img {
     margin-top: 10px;
+    border-radius: 100%;
+    width: 100%;
+    max-width: 90px;
   }
   .djdndnn .second-row-check .aboutplayer,
   .first-row-check .aboutplayer,
   .third-row-check .aboutplayer,
   .fourth-row-check .aboutplayer {
-    margin-top: -40px;
+    margin-top: -15px;
   }
   .djdndnn  .area-title.hide-desk {
     text-align: center;
@@ -2541,8 +2597,11 @@ text-align: center;
   font-size: 13px;
 }
 
-.djfd765  .playerspot img {
-  margin-top: 36px;
+.djfd765 .playerspot img {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 130px;
+  border-radius: 100%;
 }
 .djfd765  .playerdetails {
   display: flex;
@@ -2569,7 +2628,7 @@ text-align: center;
     0% 60%,
     0 0
   );
-  margin-top: -57px;
+  margin-top: -45px;
   transition: 0.3s;
 }
 .djfd765  .aboutplayer:hover {
@@ -3005,14 +3064,33 @@ form .page .field button {
   }
 
   .djfd765 .second-row-check .second-first .greatplayer {
-    width: 34% !important;
-    margin-bottom: 30px;
+    width: 50% !important;
+    padding: 0px 10px !important;
 }
+.djfd765  .second-row-check .playerspot {
+  width: 100% !important;
+}
+.djfd765  .third-row-check .playerspot {
+  width: 100% !important;
+}
+.djfd765 .greatplayer {
+  width: 50% !important;
+  padding: 0px 10px;
+}
+.djfd765 .playerspot {
+  width: 45% !important;
+}
+.djfd765 .playerspot a {
+  margin-top: 32px !important;
+ }
   .djfd765   .playerspot img {
     margin-top: 14px;
+    border-radius: 100%;
+    width: 100%;
+    max-width: 90px;
   }
   .djfd765  .aboutplayer {
-    margin-top: -36px;
+    margin-top: -15px;
   }
   .djfd765  .third-row-check {
     flex-wrap: nowrap;
@@ -3033,6 +3111,9 @@ form .page .field button {
   .djfd765  .area-title.\34 rep {
     margin-top: 11px;
   }
+  .djkdxjnh .playerspot .area-title {
+    margin-top: 36px !important;
+}
   .djfd765   .first-row-check .playerspot.orangebg {
     background-size: 100%;
   }
@@ -3056,8 +3137,24 @@ form .page .field button {
   justify-content: start;
   margin-top: 10px;
 }
-.fixture-body .table {
-  width: 120%;
+.date-aprial p {
+  font-size: 14px;
+}
+.fixture-sec .fropdown-bar-menu .btn i {
+  font-size: 26px;
+}
+.fixture-sec .fropdown-bar-menu .btn {
+  padding: 0px 0px;
+}
+.fixture-body .table tbody td {
+  width: 72%;
+}
+.fixture-sec .tean-show img {
+  width: 28px;
+}
+.tean-show .vs-icon svg {
+  width: 60px;
+  
 }
 .fixture-sec .calendor-btn .btn-danger {
   padding: 10px;
@@ -3347,7 +3444,7 @@ text-align: center;
 .djfd765 .aboutplayer h4 {
   font-size: 14px !important;
 
-  padding: 6px !important;
+  padding: 6px 6px 0px !important;
 }
 .first-row-check {
   margin-bottom: 20px;

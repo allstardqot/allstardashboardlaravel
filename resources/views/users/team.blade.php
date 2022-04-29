@@ -22,7 +22,7 @@
               <a><b class="jsdh89">{{ $data['team_name'] }}</b></a>
             </li>
             <li class="nav-item hjkuygb">
-              <a href="#" class="mt-2 jhuionh">Edit Team</a>
+              <a href="{{ route('edit-team',$data['id'])  }}" class="mt-2 jhuionh">Edit Team</a>
 
             </li>
 

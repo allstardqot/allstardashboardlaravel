@@ -66,41 +66,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -119,41 +90,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -161,28 +103,680 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample"
                           aria-expanded="false"
+                          aria-controls="collapseExample"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="collapse" id="collapseExample">
+                  <td colspan="2">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="tean-show">
+                              <div class="tem-one">
+                                <span>BRE</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+
+                              <div class="vs-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="icon"
+                                  height="512"
+                                  viewBox="0 0 1024 1024"
+                                  version="1.1"
+                                >
+                                  <path
+                                    d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                                  />
+                                </svg>
+                              </div>
+
+                              <div class="tem-one tem-two">
+                                <span>Two</span>
+                                <img
+                                  class="img-fluid"
+                                  src="{{
+                                    asset(
+                                      'public/assets/image/tshirt-1-svg2.svg'
+                                    )
+                                  }}"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fropdown-bar-menu">
+                              <div class="dropdown">
+                                <button
+                                  class="btn"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseExample1"
+                                  aria-expanded="false"
+                                  aria-controls="collapseExample1"
+                                >
+                                 <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="tean-show">
+                      <div class="tem-one">
+                        <span>BRE</span>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
+                      </div>
+
+                      <div class="vs-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon"
+                          height="512"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
                         >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
+                          <path
+                            d="M480 64C215.04 64 0 279.04 0 544 0 808.96 215.04 1024 480 1024S960 808.96 960 544C960 279.04 744.96 64 480 64zM448 364.16l-127.36 381.44c-4.48 12.8-16.64 21.76-30.08 21.76s-25.6-8.96-30.08-21.76L133.12 364.16C127.36 347.52 136.32 329.6 152.96 323.84c16.64-5.76 34.56 3.2 40.32 19.84l97.28 291.2 97.28-291.2c5.76-16.64 23.68-25.6 40.32-19.84C444.16 329.6 453.76 347.52 448 364.16zM608.64 512.64C704 512.64 768 563.84 768 640c0 78.08-60.8 127.36-159.36 127.36-92.16 0-159.36-53.76-159.36-127.36 0-17.28 14.08-32 32-32 17.92 0 32 14.08 32 32 0 37.12 39.04 63.36 95.36 63.36 35.84 0 95.36-8.32 95.36-63.36 0-60.8-79.36-63.36-95.36-63.36-95.36 0-159.36-51.2-159.36-127.36 0-78.72 60.8-127.36 159.36-127.36 92.16 0 159.36 53.76 159.36 127.36 0 17.28-14.08 32-32 32S704 467.2 704 449.28c0-37.12-39.04-63.36-95.36-63.36-35.84 0-95.36 8.32-95.36 63.36C513.28 510.08 592.64 512.64 608.64 512.64z"
+                          />
+                        </svg>
+                      </div>
+
+                      <div class="tem-one tem-two">
+                        <span>Two</span>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fropdown-bar-menu">
+                      <div class="dropdown">
+                        <button
+                          class="btn"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
+                          aria-expanded="false"
+                          aria-controls="collapseExample2"
+                        >
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
+                        </button>
                       </div>
                     </div>
                   </td>
@@ -192,41 +786,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -245,41 +810,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -287,28 +823,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>
@@ -318,41 +842,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -371,41 +866,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -413,28 +879,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>
@@ -444,41 +898,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -497,41 +922,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -539,28 +935,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>
@@ -570,41 +954,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -623,41 +978,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -665,28 +991,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>
@@ -696,41 +1010,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -749,41 +1034,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -791,28 +1047,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>
@@ -822,41 +1066,12 @@
                     <div class="tean-show">
                       <div class="tem-one">
                         <span>BRE</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg.svg')
+                          }}"
+                        />
                       </div>
 
                       <div class="vs-icon">
@@ -875,41 +1090,12 @@
 
                       <div class="tem-one tem-two">
                         <span>Two</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          version="1.1"
-                          id="Capa_1"
-                          x="0px"
-                          y="0px"
-                          viewBox="0 0 295.526 295.526"
-                          style="enable-background: new 0 0 295.526 295.526"
-                          xml:space="preserve"
-                        >
-                          <g>
-                            <path
-                              d="M147.763,44.074c12.801,0,23.858-8.162,27.83-20.169c-7.578,2.086-17.237,3.345-27.83,3.345   c-10.592,0-20.251-1.259-27.828-3.345C123.905,35.911,134.961,44.074,147.763,44.074z"
-                            />
-                            <path
-                              d="M295.158,58.839c-0.608-1.706-1.873-3.109-3.521-3.873l-56.343-26.01c-11.985-4.06-24.195-7.267-36.524-9.611   c-0.434-0.085-0.866-0.126-1.292-0.126c-3.052,0-5.785,2.107-6.465,5.197c-4.502,19.82-22.047,34.659-43.251,34.659   c-21.203,0-38.749-14.838-43.25-34.659c-0.688-3.09-3.416-5.197-6.466-5.197c-0.426,0-0.858,0.041-1.292,0.126   c-12.328,2.344-24.538,5.551-36.542,9.611L3.889,54.965c-1.658,0.764-2.932,2.167-3.511,3.873   c-0.599,1.726-0.491,3.589,0.353,5.217l24.46,48.272c1.145,2.291,3.474,3.666,5.938,3.666c0.636,0,1.281-0.092,1.917-0.283   l27.167-8.052v161.97c0,3.678,3.001,6.678,6.689,6.678h161.723c3.678,0,6.67-3.001,6.67-6.678V107.66l27.186,8.052   c0.636,0.191,1.28,0.283,1.915,0.283c2.459,0,4.779-1.375,5.94-3.666l24.469-48.272C295.629,62.428,295.747,60.565,295.158,58.839z   "
-                            />
-                          </g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                          <g></g>
-                        </svg>
+                        <img
+                          class="img-fluid"
+                          src="{{
+                            asset('public/assets/image/tshirt-1-svg2.svg')
+                          }}"
+                        />
                       </div>
                     </div>
                   </td>
@@ -917,28 +1103,16 @@
                     <div class="fropdown-bar-menu">
                       <div class="dropdown">
                         <button
-                          class="btn btn-primary dropdown-toggle"
+                          class="btn"
                           type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseExample2"
                           aria-expanded="false"
+                          aria-controls="collapseExample2"
                         >
-                          Close
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+
                         </button>
-                        <ul
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </td>

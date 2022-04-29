@@ -64,6 +64,9 @@
 
             $(".commentArea" + keyId).toggleClass("active");
         });
+
+
+        
         $(".submit_comment").click(function(e) {
             var keyId = $(this).data('keyid');
             var textData = $(".comment_text" + keyId).val();
