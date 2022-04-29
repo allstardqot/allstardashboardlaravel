@@ -53,19 +53,22 @@
                 <div class="hjuy4589">
                     <h4 class="mt-5 mkuytg">Premier League News</h4>
                     <div class="latest-image-sec">
+                        @foreach($newsdata as $key => $value)
                         <div class="latest-card">
-                            <a href="#" class="latest-anchor">
+                            <a href="{{ url('/latest-news') }}" class="latest-anchor">
                                 <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
-                                    <h4>Proin laoreet ornare quam</h4>
-                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
+                                    <h4>{{ $value['title'] }}</h4>
+                                <p>{!! $value['localteam']!!}</p>
                                
                                 <small>Read More..</small>
                                 </div>
 
                             </a>
                         </div>
-                        <div class="latest-card">
+                        @endforeach
+                        
+                        {{-- <div class="latest-card">
                             <a href="#" class="latest-anchor">
                                 <img src="{{ asset('public/assets/image/pexels-photo-7188095.jpeg') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
@@ -88,7 +91,7 @@
                                 </div>
 
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
