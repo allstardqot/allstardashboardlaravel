@@ -332,6 +332,17 @@
                 fetchData(point,'defender',"filter",team)
             })
 
+            $("body").on('click', "#midfielder_filt", function(e) {
+                point=$("#midfielder_point").val();
+                team=$("#midfielder_team").val();
+                fetchData(point,'midfielder',"filter",team)
+            })
+
+            $("body").on('click', "#forward_filt", function(e) {
+                point=$("#forward_point").val();
+                team=$("#forward_team").val();
+                fetchData(point,'forward',"filter",team)
+            })
 
 
 
@@ -345,6 +356,28 @@
                 }
             })
 
+            $("body").on('click', "#goal_keeper_search", function(e) {
+                searchData = $("#goal_keeper").val();
+                if (!searchData) {
+                    searchData = 'Search'
+                }
+                fetchData(searchData, "goalkeeper");
+            })
+
+            $("body").on('click', "#defender_search", function(e) {
+                searchData = $("#defender").val();
+                if (!searchData) {
+                    searchData = 'Search'
+                }
+                fetchData(searchData, "defender");
+            })
+            $("body").on('click', "#goal_keeper_search", function(e) {
+                searchData = $("#goal_keeper").val();
+                if (!searchData) {
+                    searchData = 'Search'
+                }
+                fetchData(searchData, "goalkeeper");
+            })
             $("body").on('click', "#goal_keeper_search", function(e) {
                 searchData = $("#goal_keeper").val();
                 if (!searchData) {

@@ -49,7 +49,8 @@ class NewsData implements ShouldQueue
             ], [
                 'title' => $newsData['introduction'],
                 'localteam' => $newsData['localteam'],
-                'visitorteam' => $newsData['visitorteam']
+                'visitorteam' => $newsData['visitorteam'],
+                'news_created_At' => $newsData['created_at']
             ]);
         }
     }

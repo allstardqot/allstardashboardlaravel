@@ -11,6 +11,9 @@
               <a class="nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
+              </li>
+            <li class="nav-item">
               <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}">Create Team</a>
             </li>
             <li class="nav-item dropdown">

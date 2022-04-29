@@ -169,6 +169,7 @@ class TeamController extends Controller
                     }elseif($type='forward'){
                         $forwardData=$playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id'=>4])->with('Team','Position')->get();
                     }
+                    //pr($goalkeeperData);
                 }
                 if(!empty($point) || !empty($teamfilter)){
                     if($type=="goalkeeper"){
