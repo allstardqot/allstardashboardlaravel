@@ -62,7 +62,7 @@ class TeamController extends Controller
     {
         $editId = !empty($request->editId) ? $request->editId : $editId;
         preg_match_all('!\d+!', $editId, $matches);
-        if(empty($matches[0])){
+        if(!empty($editId) && empty($matches[0])){
             return redirect(route("team"));
         }
         if (!empty($request->selected) && !empty($request->teamName)) {
