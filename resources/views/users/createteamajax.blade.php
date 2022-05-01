@@ -116,26 +116,22 @@
           </div>
 
           <div class="col-sm-4 mt-3">
-           
-
             <div class="range-slider">
-    
-      <p class="range-slider__subtitle">Cost Bar
 
-</p>
-      <div class="value-data"><p class="o-value">$0</p> <p class="range-slider__value">$100</p></div>
-      
-      <div class="range-slider__slider">
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value="100"
-          class="slider"
-          id="rangeSlider"
-        />
-      </div>
-    </div>
+                <p class="range-slider__subtitle">Cost Bar</p>
+                <div class="value-data"><p class="o-value">$0</p> <p class="goalkeeper_range range-slider__value">$100</p></div>
+
+                <div class="range-slider__slider">
+                    <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="100"
+                    class="slider"
+                    id="rangeSlider"
+                    />
+                </div>
+            </div>
           </div>
         </div>
 
@@ -324,19 +320,21 @@
           </div>
 
           <div class="col-sm-4 mt-3">
-            <div class="sdjbd76">
-              <p class="asdhd76">Cost Bar</p>
-              <div class="d-flex w-100">
-                <div class="sdkndn50">
-                  <p class="asdh76">$0</p>
+            <div class="range-slider">
+
+                <p class="range-slider__subtitle">Cost Bar</p>
+                <div class="value-data"><p class="o-value">$0</p> <p class="defender_range range-slider__value">$100</p></div>
+
+                <div class="range-slider__slider">
+                    <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="100"
+                    class="slider"
+                    id="defender_rangeSlider"
+                    />
                 </div>
-                <div class="sadnnj7">
-                  <p class="kjsdhn78">$100</p>
-                </div>
-              </div>
-              <div class="w3-light-grey w3-round-xlarge">
-                <div class="w3-container w3-blue w3-round-xlarge"></div>
-              </div>
             </div>
           </div>
         </div>
@@ -531,24 +529,23 @@
             </div>
 
             <div class="col-sm-4 mt-3">
-              <div class="sdjbd76">
-                <p class="asdhd76">Cost Bar</p>
-                <div class="d-flex w-100">
-                  <div class="sdkndn50">
-                    <p class="asdh76">$0</p>
-                  </div>
-                  <div class="sadnnj7">
-                    <p class="kjsdhn78">$100</p>
-                  </div>
-                </div>
-                <div class="w3-light-grey w3-round-xlarge">
-                  <div
-                    class="w3-container w3-blue w3-round-xlarge"
-                    class="sdjd787"
-                  ></div>
+                <div class="range-slider">
+
+                    <p class="range-slider__subtitle">Cost Bar</p>
+                    <div class="value-data"><p class="o-value">$0</p> <p class="midfielder_range range-slider__value">$100</p></div>
+
+                    <div class="range-slider__slider">
+                        <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="100"
+                        class="slider"
+                        id="midfielder_rangeSlider"
+                        />
+                    </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <div class="row mt-5">
@@ -742,24 +739,23 @@
             </div>
 
             <div class="col-sm-4 mt-3">
-              <div class="sdjbd76">
-                <p class="asdhd76">Cost Bar</p>
-                <div class="d-flex w-100">
-                  <div class="sdkndn50">
-                    <p class="asdh76">$0</p>
-                  </div>
-                  <div class="sadnnj7">
-                    <p class="kjsdhn78">$100</p>
-                  </div>
-                </div>
-                <div class="w3-light-grey w3-round-xlarge">
-                  <div
-                    class="w3-container w3-blue w3-round-xlarge"
-                    class="sdjd787"
-                  ></div>
+                <div class="range-slider">
+
+                    <p class="range-slider__subtitle">Cost Bar</p>
+                    <div class="value-data"><p class="o-value">$0</p> <p class="forward_range range-slider__value">$100</p></div>
+
+                    <div class="range-slider__slider">
+                        <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="100"
+                        class="slider"
+                        id="forward_rangeSlider"
+                        />
+                    </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <div class="row mt-5">
@@ -844,20 +840,34 @@
   </div>
 </div>
 <script>
-  let slider = document.getElementById("rangeSlider");
-let outputEl = document.querySelector(".range-slider__value");
+let slider = document.getElementById("rangeSlider");
+let outputEl = document.querySelector(".goalkeeper_range");
+sliderShow(slider,outputEl);
 
-function decimalSeparator(number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+let slider1 = document.getElementById("defender_rangeSlider");
+let outputEl1 = document.querySelector(".defender_range");
+sliderShow(slider1,outputEl1);
+
+let slider2 = document.getElementById("midfielder_rangeSlider");
+let outputEl2 = document.querySelector(".midfielder_range");
+sliderShow(slider2,outputEl2);
+
+let slider3 = document.getElementById("midfielder_rangeSlider");
+let outputEl3 = document.querySelector(".midfielder_range");
+sliderShow(slider3,outputEl3);
+
+function sliderShow(slider,outputEl){
+    function decimalSeparator(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    outputEl.textContent = `$ ${decimalSeparator(slider.value)} `; // Display the default slider value
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function () {
+    outputEl.textContent = `$ ${decimalSeparator(this.value)} `;
+    };
 }
 
-// outputEl.textContent = `${initialValue} €`;
-outputEl.textContent = `$ ${decimalSeparator(slider.value)} `; // Display the default slider value
 
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function () {
-  outputEl.textContent = `$ ${decimalSeparator(this.value)} `;
-};
 
 </script>
 <script type="text/javascript">

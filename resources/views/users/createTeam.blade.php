@@ -298,7 +298,7 @@
             cookiesCheck();
             fetchData("Search");
 
-            function fetchData(data, type = null,status=null,team=null) {
+            function fetchData(data, type = null,status=null,team=null,cost_range=null) {
                 var point=''
                 var editId=$("#edit_id").val();
                 if(status=='filter'){
@@ -314,7 +314,8 @@
                         'type': type,
                         'point':point,
                         'team':team,
-                        'editId':editId
+                        'editId':editId,
+                        'cost_range':cost_range
                     },
                     success: function(result) {
                         $("#myTabContent").html(result);
@@ -325,26 +326,30 @@
 
             $("body").on('click', "#goalkeeper_filt", function(e) {
                 point=$("#goal_keeper_point").val();
+                cost_range=$("#rangeSlider").val();
                 team=$("#goal_keeper_team").val();
-                fetchData(point,'goalkeeper',"filter",team)
+                fetchData(point,'goalkeeper',"filter",team,cost_range)
             })
 
             $("body").on('click', "#defender_filt", function(e) {
                 point=$("#defender_point").val();
                 team=$("#defender_team").val();
-                fetchData(point,'defender',"filter",team)
+                cost_range=$("#defender_rangeSlider").val();
+                fetchData(point,'defender',"filter",team,cost_range)
             })
 
             $("body").on('click', "#midfielder_filt", function(e) {
                 point=$("#midfielder_point").val();
                 team=$("#midfielder_team").val();
-                fetchData(point,'midfielder',"filter",team)
+                cost_range=$("#midfielder_rangeSlider").val();
+                fetchData(point,'midfielder',"filter",team,cost_range)
             })
 
             $("body").on('click', "#forward_filt", function(e) {
                 point=$("#forward_point").val();
                 team=$("#forward_team").val();
-                fetchData(point,'forward',"filter",team)
+                cost_range=$("#forward_rangeSlider").val();
+                fetchData(point,'forward',"filter",team,cost_range)
             })
 
 

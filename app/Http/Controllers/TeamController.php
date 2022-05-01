@@ -89,6 +89,7 @@ class TeamController extends Controller
             $searchData = $request->searchData;
             $point = $request->point;
             $teamfilter = $request->team;
+            $cost_range = $request->cost_range;
             $type = $request->type;
             $team = Team::pluck('name', 'id');
             if (!empty($searchData)) {
@@ -127,7 +128,7 @@ class TeamController extends Controller
                     }
                     //pr($goalkeeperData);
                 }
-                if (!empty($point) || !empty($teamfilter)) {
+                if (!empty($point) || !empty($teamfilter) || !empty($cost_range)) {
                     if ($type == "goalkeeper") {
                         if (!empty($point) && !empty($teamfilter)) {
                             $goalkeeperData = $playerQuery->where([['players.position_id', 1], ['players.team_id', $teamfilter]])->with('Team', 'Position')->orderBy('total_point', $point)->get();
