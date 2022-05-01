@@ -36,7 +36,7 @@
                         <img src="{{ $defenderData[0]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($defenderData[0]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $defenderData[0]['fullname'] }}</h4>
@@ -61,7 +61,7 @@
                         <img src="{{ $defenderData[1]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($defenderData[1]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
@@ -87,7 +87,7 @@
                         <img src="{{ $midfielderData[0]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($midfielderData[0]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $midfielderData[0]['fullname'] }}</h4>
@@ -110,7 +110,7 @@
                         <img src="{{ $midfielderData[1]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($midfielderData[1]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $midfielderData[1]['fullname'] }}</h4>
@@ -135,7 +135,7 @@
                         <img src="{{ $forwardData[0]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($forwardData[0]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $forwardData[0]['fullname'] }}</h4>
@@ -158,7 +158,7 @@
                         <img src="{{ $forwardData[1]['image_path'] }}" />
                         {{$extraClass=''}}
                         @if (in_array($forwardData[1]['id'],$user_selected_substitude))
-                            {{$extraClass='active'}}
+                            @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
                             <h4>{{ $forwardData[1]['fullname'] }}</h4>

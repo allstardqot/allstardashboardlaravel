@@ -90,7 +90,7 @@
           <div class="col-sm-7 mt-3">
             <div class="sxdjdj87">
               <div class="sdjd787">
-                <h6 class="sdjnd78">Short By</h6>
+                <h6 class="sdjnd78">Sort By</h6>
               </div>
               <div class="text-white text-center sdjnd890j">
                 <div class="jnsjsd87">
@@ -161,7 +161,7 @@
                   @foreach ($goalkeeperData as $goakkeeperValue)
                   {{$check=''}}
                   @if(!empty($user_selected_player) && in_array($goakkeeperValue["id"],$user_selected_player))
-                    {{$check="checked"}}
+                    @php $check="checked"; @endphp
                   @endif
                   @if(empty($goakkeeperValue["team"]["name"]))
                       @continue;
@@ -203,13 +203,7 @@
                       </p>
                     </td>
                     <td class="checkboxtd">
-                      <input
-                        class="form-check-input tem-chekbox goalkeepercheck"
-                        type="checkbox" {{$check}}
-                        value="{{ $goakkeeperValue['id'] }}"
-                        id="flexCheckDefault"
-                        onclick="goalKeepercheckbox(event)"
-                      />
+                      <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox" {{$check}} value="{{ $goakkeeperValue['id'] }}" id="flexCheckDefault" onclick="goalKeepercheckbox(event)"/>
                     </td>
                   </tr>
 
@@ -298,7 +292,7 @@
           <div class="col-sm-7 mt-3">
             <div class="sxdjdj87">
               <div class="sdjd787">
-                <h6 class="sdjnd78">Short By</h6>
+                <h6 class="sdjnd78">Sort By</h6>
               </div>
               <div class="text-white text-center sdjnd890j">
                 <div class="jnsjsd87">
@@ -368,7 +362,7 @@
                 @foreach ($defenderData as $defenderValue)
                 {{$check=''}}
                   @if(!empty($user_selected_player) && in_array($defenderValue["id"],$user_selected_player))
-                    {{$check="checked"}}
+                    @php $check="checked"; @endphp
                   @endif
                 @if(empty($defenderValue["team"]["name"]))
                       @continue;
@@ -505,7 +499,7 @@
             <div class="col-sm-7 mt-3">
               <div class="sxdjdj87">
                 <div class="sdjd787">
-                  <h6 class="sdjnd78">Short By</h6>
+                  <h6 class="sdjnd78">Sort By</h6>
                 </div>
                 <div class="text-white text-center sdjnd890j">
                   <div class="jnsjsd87">
@@ -578,7 +572,7 @@
                   @foreach ($midfielderData as $midfielderValue)
                   {{$check=''}}
                   @if(!empty($user_selected_player) && in_array($midfielderValue["id"],$user_selected_player))
-                    {{$check="checked"}}
+                    @php $check="checked"; @endphp
                   @endif
                   @if(empty($midfielderValue["team"]["name"]))
                         @continue;
@@ -716,7 +710,7 @@
             <div class="col-sm-7 mt-3">
               <div class="sxdjdj87">
                 <div class="sdjd787">
-                  <h6 class="sdjnd78">Short By</h6>
+                  <h6 class="sdjnd78">Sort By</h6>
                 </div>
                 <div class="text-white text-center sdjnd890j">
                   <div class="jnsjsd87">
@@ -789,7 +783,7 @@
                   @foreach ($forwardData as $forwardValue)
                   {{$check=''}}
                   @if(!empty($user_selected_player) && in_array($forwardValue["id"],$user_selected_player))
-                    {{$check="checked"}}
+                    @php $check="checked"; @endphp
                   @endif
                   @if(empty($forwardValue["team"]["name"]))
                         @continue;
@@ -850,14 +844,33 @@ defendercheckbox();
 midfieldercheckbox();
 forwardcheckbox();
 
+    function playerTeamCheck(){
+        var teamArray = [];
+        $(".form-check-input:checkbox[type=checkbox]:checked").each(function (e) {
+            var teamname=$(this).closest("tr").find("strong").html();
+            if(teamArray[teamname]===undefined){
+                teamArray[teamname]=1
+            }else{
+                teamArray[teamname]=parseInt(teamArray[teamname])+1
+            }
+            if(teamArray[teamname]>2){
+                $.notify("You can only select 2 maximum players from one team.", "info");
+                $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
+                $(this).closest('tr').css('backgroundColor','');
+                //$("#NextBtn").attr("class","firstNext next adisable");
+            }else{
+                //$("#NextBtn").attr("class","firstNext next");
+            }
+        });
+        selectCount();
+    }
+
   $("body").on("click", ".goalkeeper_td", function () {
     if (
       $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
     ) {
       $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
       $("input.goalkeepercheck").removeAttr("disabled");
-
-      console.log("removeee");
     } else {
       var select = 0;
       var image = "";
@@ -902,6 +915,7 @@ forwardcheckbox();
     $(".goalkeepercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
     $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     selectCount();
+    playerTeamCheck();
   });
 
   $("body").on("click", ".defender_td", function () {
@@ -950,6 +964,8 @@ forwardcheckbox();
     $(".defendercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
     $(".defendercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     selectCount();
+    playerTeamCheck();
+
   });
 
   $("body").on("click", ".midfielder_td", function () {
@@ -1001,6 +1017,7 @@ forwardcheckbox();
     $(".midfieldercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
     $(".midfieldercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     selectCount();
+    playerTeamCheck();
   });
 
   $("body").on("click", ".forward_td", function () {
@@ -1049,6 +1066,7 @@ forwardcheckbox();
     $(".forwardcheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor','#0ea5e0');
     $(".forwardcheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor','');
     selectCount();
+    playerTeamCheck();
   });
 
   function selectCount() {
