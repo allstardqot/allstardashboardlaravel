@@ -33,7 +33,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
+              <a class="nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('latest-news')) ? 'active' : '' }}" href="{{ url('/latest-news') }}">News</a>

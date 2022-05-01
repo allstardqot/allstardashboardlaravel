@@ -48,7 +48,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $defenderData[0]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif
@@ -75,7 +75,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $defenderData[1]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif
@@ -105,7 +105,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif
@@ -132,7 +132,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif
@@ -161,7 +161,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $forwardData[0]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif
@@ -188,7 +188,7 @@
                 @else
                     <div class="greatplayer">
                         <div class="playerspot changestar">
-                            <h4>Tammy Johnson</h4>
+                            <h4>{{ $forwardData[1]['fullname'] }}</h4>
                         </div>
                     </div>
                 @endif

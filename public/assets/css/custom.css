@@ -122,6 +122,10 @@ body{
 .hidepara{
   display: none;
 }
+a.adisable {
+    pointer-events: none;
+    cursor: default;
+  }
 .hidepara.active{
   display: block;
 }
@@ -190,8 +194,9 @@ line-height: 18px;
   color: #fff;
   margin-bottom: 0;
 }
+
 .fixture-sec .head-content small {
-  color: #6C6C86;
+  color: #ff5000;
   font-size: 15px;
   font-weight: 600;
 }
@@ -1001,7 +1006,7 @@ margin: 0px -21px -16px;
   vertical-align: middle;
 }
 .fixture-body .table tbody td {
-  
+
   border-bottom: 1px solid #2a2b50;
   vertical-align: middle;
 }
@@ -1015,7 +1020,7 @@ margin: 0px -21px -16px;
   width: 65px;
   height: auto;
   border: 0px;
- 
+
   fill: #ffffff;
 }
 .fixture-card .fropdown-bar-menu .btn-primary {
@@ -1862,7 +1867,7 @@ color: #fff;
 margin-top: 15px;
 }
 .djdndnn   .playerspot.changestar h4 {
-padding: 94px 0px 94px 18px;
+padding: 94px 0px 94px 55px;
 font-size: 11px;
 }
 .djdndnn   .playerspot {
@@ -2022,7 +2027,7 @@ margin-top: 6px;
 
 
 .djdndnn   .playerspot.changestar {
-background: url("../image/star1.png") no-repeat;
+background: url("../image/Star 1.png") no-repeat;
 background-position: top right;
 }
 
@@ -2538,7 +2543,7 @@ text-align: center;
     display: none;
   }
   .managing .playerspot a {
-    
+
     margin-top: 20px !important;
     }
   .managing .second-row-check .playerspot img {
@@ -3254,13 +3259,13 @@ form .page .field button {
 }
 .tean-show .vs-icon svg {
   width: 60px;
-  
+
 }
 .fixture-sec .calendor-btn .btn-danger {
   padding: 10px;
 }
 .fixture-sec .head-content .btn-danger {
- 
+
   margin-top: 10px;
 }
 .news-big p {

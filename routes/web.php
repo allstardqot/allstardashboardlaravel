@@ -12,6 +12,7 @@ use App\Http\Controllers\PoolController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\LeaderboardController;
 
 use Illuminate\Support\Facades\Route;
@@ -89,11 +90,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', [VerificationController::class,'resend'])->name('verification.resend');
+    Route::get('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
+    Route::post('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
 
 
-    Route::get('/fixture-data',function(){
-        return view('users/fixture');
-    });
+    // Route::get('/fixture-data',function(){
+    //     return view('users/fixture');
+    // });
 });
 
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
