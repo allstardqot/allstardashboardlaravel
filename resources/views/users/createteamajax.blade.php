@@ -116,20 +116,26 @@
           </div>
 
           <div class="col-sm-4 mt-3">
-            <div class="sdjbd76">
-              <p class="asdhd76">Cost Bar</p>
-              <div class="d-flex w-100">
-                <div class="sdkndn50">
-                  <p class="asdh76">$0</p>
-                </div>
-                <div class="sadnnj7">
-                  <p class="kjsdhn78">$100</p>
-                </div>
-              </div>
-              <div class="w3-light-grey w3-round-xlarge">
-                <div class="w3-container w3-blue w3-round-xlarge"></div>
-              </div>
-            </div>
+           
+
+            <div class="range-slider">
+    
+      <p class="range-slider__subtitle">Cost Bar
+
+</p>
+      <div class="value-data"><p class="o-value">$0</p> <p class="range-slider__value">$100</p></div>
+      
+      <div class="range-slider__slider">
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="100"
+          class="slider"
+          id="rangeSlider"
+        />
+      </div>
+    </div>
           </div>
         </div>
 
@@ -837,6 +843,23 @@
     </div>
   </div>
 </div>
+<script>
+  let slider = document.getElementById("rangeSlider");
+let outputEl = document.querySelector(".range-slider__value");
+
+function decimalSeparator(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+// outputEl.textContent = `${initialValue} €`;
+outputEl.textContent = `$ ${decimalSeparator(slider.value)} `; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function () {
+  outputEl.textContent = `$ ${decimalSeparator(this.value)} `;
+};
+
+</script>
 <script type="text/javascript">
 selectCount()
 goalKeepercheckbox();

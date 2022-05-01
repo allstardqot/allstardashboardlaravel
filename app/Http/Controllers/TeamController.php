@@ -165,7 +165,7 @@ class TeamController extends Controller
                         $forwardData = $playerQuery->where(['position_id' => 4])->orderBy('total_point', $point)->with('Team', 'Position')->get();
                     }
                 }
-
+                //pr($goalkeeperData);
                 return view('users/createteamajax', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'type' => $type, 'team' => $team, 'request' => $request, 'user_selected_player' => $user_selected_player, 'editId' => $editId]);
             }
             return view('users/createTeam', ['editId' => $editId]);
