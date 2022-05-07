@@ -501,6 +501,34 @@
                     })
                 }
             });
+
+            $('body').on("click","#goalkeeper_detail",function(e){
+                var category_name=$(this).closest('div').find(".categorie").html();
+                var player_name=$(this).closest('div').find("h4").html();
+                $("#category_model").html(category_name);
+                $("#player_name_model").html(player_name);
+            })
+
+            $('body').on("click","#defender_detail",function(e){
+                var category_name=$(this).closest('div').find(".categorie").html();
+                var player_name=$(this).closest('div').find("h4").html();
+                $("#category_model").html(category_name);
+                $("#player_name_model").html(player_name);
+            })
+
+            $('body').on("click","#midfielder_detail",function(e){
+                var category_name=$(this).closest('div').find(".categorie").html();
+                var player_name=$(this).closest('div').find("h4").html();
+                $("#category_model").html(category_name);
+                $("#player_name_model").html(player_name);
+            })
+
+            $('body').on("click","#forward_detail",function(e){
+                var category_name=$(this).closest('div').find(".categorie").html();
+                var player_name=$(this).closest('div').find("h4").html();
+                $("#category_model").html(category_name);
+                $("#player_name_model").html(player_name);
+            })
         })
     </script>
 @endsection

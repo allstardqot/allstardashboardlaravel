@@ -119,14 +119,14 @@
             <div class="range-slider">
 
                 <p class="range-slider__subtitle">Cost Bar</p>
-                <div class="value-data"><p class="o-value">$0</p> <p class="goalkeeper_range range-slider__value">$100</p></div>
+                <div class="value-data"><p class="o-value">$0</p> <p class="goalkeeper_range range-slider__value">${{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}</p></div>
 
                 <div class="range-slider__slider">
                     <input
                     type="range"
                     min="0"
                     max="100"
-                    value="100"
+                    value="{{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}"
                     class="slider"
                     id="rangeSlider"
                     />
@@ -323,14 +323,14 @@
             <div class="range-slider">
 
                 <p class="range-slider__subtitle">Cost Bar</p>
-                <div class="value-data"><p class="o-value">$0</p> <p class="defender_range range-slider__value">$100</p></div>
+                <div class="value-data"><p class="o-value">$0</p> <p class="defender_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}</p></div>
 
                 <div class="range-slider__slider">
                     <input
                     type="range"
                     min="0"
                     max="100"
-                    value="100"
+                    value="{{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}"
                     class="slider"
                     id="defender_rangeSlider"
                     />
@@ -532,14 +532,14 @@
                 <div class="range-slider">
 
                     <p class="range-slider__subtitle">Cost Bar</p>
-                    <div class="value-data"><p class="o-value">$0</p> <p class="midfielder_range range-slider__value">$100</p></div>
+                    <div class="value-data"><p class="o-value">$0</p> <p class="midfielder_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}</p></div>
 
                     <div class="range-slider__slider">
                         <input
                         type="range"
                         min="0"
                         max="100"
-                        value="100"
+                        value="{{!empty($request['type']=='midfielder') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}"
                         class="slider"
                         id="midfielder_rangeSlider"
                         />
@@ -742,14 +742,14 @@
                 <div class="range-slider">
 
                     <p class="range-slider__subtitle">Cost Bar</p>
-                    <div class="value-data"><p class="o-value">$0</p> <p class="forward_range range-slider__value">$100</p></div>
+                    <div class="value-data"><p class="o-value">$0</p> <p class="forward_range range-slider__value">${{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}</p></div>
 
                     <div class="range-slider__slider">
                         <input
                         type="range"
                         min="0"
                         max="100"
-                        value="100"
+                        value="{{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'100' }}"
                         class="slider"
                         id="forward_rangeSlider"
                         />

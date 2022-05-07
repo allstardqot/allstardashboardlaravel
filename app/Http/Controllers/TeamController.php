@@ -31,7 +31,7 @@ class TeamController extends Controller
         $userTeam = UserTeam::where(['user_id' => Auth::user()->id])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();
 
         if (empty($userTeam)) {
-            return redirect()->route('create-team')->with('info', 'plz first create team!');
+            return redirect()->route('create-team')->with('info', 'Please first create team!');
         }
 
         $mainData = [];
@@ -130,43 +130,55 @@ class TeamController extends Controller
                 }
                 if (!empty($point) || !empty($teamfilter) || !empty($cost_range)) {
                     if ($type == "goalkeeper") {
-                        if (!empty($point) && !empty($teamfilter)) {
-                            $goalkeeperData = $playerQuery->where([['players.position_id', 1], ['players.team_id', $teamfilter]])->with('Team', 'Position')->orderBy('total_point', $point)->get();
-                        } elseif (!empty($teamfilter)) {
-                            $goalkeeperData = $playerQuery->where([['players.position_id', 1], ['players.team_id', $teamfilter]])->with('Team', 'Position')->get();
-                        } elseif (!empty($point)) {
-                            $goalkeeperData = $playerQuery->where(['players.position_id' => 1])->with('Team', 'Position')->orderBy('total_point', $point)->get();
+                        $playerQuery->where('players.position_id', 1);
+                        if(!empty($teamfilter)){
+                            $playerQuery->where('players.team_id', $teamfilter);
                         }
+                        if(!empty($cost_range)){
+                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        }
+                        if (!empty($point)) {
+                            $playerQuery->orderBy('total_point', $point);
+                        }
+                        $goalkeeperData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'defender') {
-                        if (!empty($point) && !empty($teamfilter)) {
-                            $defenderData = $playerQuery->where([['players.position_id', 2], ['players.team_id', $teamfilter]])->with('Team', 'Position')->orderBy('total_point', $point)->get();
-                        } elseif (!empty($teamfilter)) {
-                            $defenderData = $playerQuery->where([['players.position_id', 2], ['players.team_id', $teamfilter]])->with('Team', 'Position')->get();
-                        } elseif (!empty($point)) {
-                            $defenderData = $playerQuery->where(['players.position_id' => 2])->with('Team', 'Position')->orderBy('total_point', $point)->get();
+                        $playerQuery->where('players.position_id', 2);
+                        if(!empty($teamfilter)){
+                            $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        //$defenderData=$playerQuery->where(['position_id'=>2])->orderBy('total_point',$point)->with('Team','Position')->get();
+                        if(!empty($cost_range)){
+                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        }
+                        if (!empty($point)) {
+                            $playerQuery->orderBy('total_point', $point);
+                        }
+                        $defenderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'midfielder') {
-                        if (!empty($point) && !empty($teamfilter)) {
-                            $midfielderData = $playerQuery->where([['players.position_id', 3], ['players.team_id', $teamfilter]])->with('Team', 'Position')->orderBy('total_point', $point)->get();
-                        } elseif (!empty($teamfilter)) {
-                            $midfielderData = $playerQuery->where([['players.position_id', 3], ['players.team_id', $teamfilter]])->with('Team', 'Position')->get();
-                        } elseif (!empty($point)) {
-                            $midfielderData = $playerQuery->where(['players.position_id' => 3])->with('Team', 'Position')->orderBy('total_point', $point)->get();
+                        $playerQuery->where('players.position_id', 3);
+                        if(!empty($teamfilter)){
+                            $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        //$midfielderData=$playerQuery->where(['position_id'=>3])->orderBy('total_point',$point)->with('Team','Position')->get();
+                        if(!empty($cost_range)){
+                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        }
+                        if (!empty($point)) {
+                            $playerQuery->orderBy('total_point', $point);
+                        }
+                        $midfielderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type = 'forward') {
-                        if (!empty($point) && !empty($teamfilter)) {
-                            $forwardData = $playerQuery->where([['players.position_id', 4], ['players.team_id', $teamfilter]])->with('Team', 'Position')->orderBy('total_point', $point)->get();
-                        } elseif (!empty($teamfilter)) {
-                            $forwardData = $playerQuery->where([['players.position_id', 4], ['players.team_id', $teamfilter]])->with('Team', 'Position')->get();
-                        } elseif (!empty($point)) {
-                            $forwardData = $playerQuery->where(['players.position_id' => 4])->with('Team', 'Position')->orderBy('total_point', $point)->get();
+                        $playerQuery->where('players.position_id', 4);
+                        if(!empty($teamfilter)){
+                            $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        $forwardData = $playerQuery->where(['position_id' => 4])->orderBy('total_point', $point)->with('Team', 'Position')->get();
+                        if(!empty($cost_range)){
+                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        }
+                        if (!empty($point)) {
+                            $playerQuery->orderBy('total_point', $point);
+                        }
+                        $forwardData = $playerQuery->with('Team', 'Position')->get();
                     }
                 }
-                //pr($goalkeeperData);
                 return view('users/createteamajax', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'type' => $type, 'team' => $team, 'request' => $request, 'user_selected_player' => $user_selected_player, 'editId' => $editId]);
             }
             return view('users/createTeam', ['editId' => $editId]);

@@ -48,6 +48,9 @@ class GetFixture implements ShouldQueue
         //$fixtures=json_decode($fixtures_data,true);
         $setSeasonId='';
         foreach($fixtures as $value){
+                if($value['season_id']!='18378'){
+                    continue;
+                }
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [
@@ -66,6 +69,9 @@ class GetFixture implements ShouldQueue
                     'starting_at' => $value['time']['starting_at']['date_time']
                 ]);
                 if($fixtureQuery->wasRecentlyCreated){
+                        GetTeam::dispatch();
+                        GetSquad::dispatch($value['id']);
+
                     // if(!Season::find($value['season_id'])){
                     //     $seasonData = $api->getSeason('');
                     //     foreach ($seasonData as $season) {
@@ -104,12 +110,6 @@ class GetFixture implements ShouldQueue
                     //         ]);
                     //     }
                     // }
-
-                    if($setSeasonId=='' || $setSeasonId!=$value['season_id']){
-                        //GetTeam::dispatch($value['league_id']);
-                        GetSquad::dispatch($value['id']);
-                        $setSeasonId=$value['season_id'];
-                    }
                 }
         }
     }

@@ -70,17 +70,21 @@ $("body").on("click", "#step3_back", function () {
 
 
 $("body").on("click", "#managesquad_one_submit", function () {
+
     var selectId=[];
     var categorie=[];
     $(".playerspot .active").each(function() {
         selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
         //categorie.push($(this).closest('div').find('.categorie').html());
     })
-    var yourArray = $.cookie('selected_player');
-    $.cookie('substitude', selectId);
-    var editId=$.cookie('editId');
-
-    manageSquadTwo(yourArray,selectId,editId);
+    if(selectId.length<2){
+        $.notify("Please select two Substitute.", "info");
+    }else{
+        var yourArray = $.cookie('selected_player');
+        var editId=$.cookie('editId');
+        $.cookie('substitude', selectId);
+        manageSquadTwo(yourArray,selectId,editId);
+    }
 })
 
 $("body").on("click", "#managesquad_two_submit", function () {

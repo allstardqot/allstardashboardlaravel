@@ -24,7 +24,7 @@
                         </div>
                         <p>$5.25 M</p>
                     </div>
-                    <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
+                    <a class="kdjkjd" href="" id="goalkeeper_detail" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
                 </div>
             </div>
             <div class="second-row-check">
@@ -41,7 +41,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
-                            <a class="kdjkjd" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                            <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
                         </div>
                     </div>
@@ -218,10 +218,10 @@
             <!-- Modal content-->
             <div class="modal-content djffhhxjm">
                 <div class="modal-header mt-5 dcjckjm">
-                    <h4 class="modal-title jdxksdjjm">Tammy Johnson</h4>
+                    <h4 class="modal-title jdxksdjjm" id="player_name_model">Tammy Johnson</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <p class="jsdhjdh">Forward</p>
+                    <p class="jsdhjdh" id="category_model">Forward</p>
                     <p class="jsdhjdh">Total Fantasy Points:xxx</p>
                     <p class="jsdhjdh">Current GW points: xxx</p>
                     <p class="jsdhjdh">Total Picks: xx</p>

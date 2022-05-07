@@ -26,7 +26,7 @@
                         </div>
                         <p>${{ $goalkeeperData['sell_price'] }}</p>
                     </div>
-                    <a class="skdhhjh" href="" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
+                    <a class="skdhhjh" href="" id="goalkeeper_detail" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                             </div>
                             <p>${{ $defenderData[0]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             </div>
                             <p>${{ $defenderData[1]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             </div>
                             <p>${{ $midfielderData[0]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             </div>
                             <p>${{ $midfielderData[1]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                             </div>
                             <p>${{ $forwardData[0]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                             </div>
                             <p>${{ $forwardData[1]['sell_price'] }}</p>
                         </div>
-                        <a class="sdhdhsnik" href="" data-bs-toggle="modal" data-bs-target="#myModal">View
+                        <a class="sdhdhsnik" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
                     </div>
                 </div>
@@ -198,10 +198,10 @@
             <!-- Modal content-->
             <div class="modal-content djffhhxjm">
                 <div class="modal-header mt-5 dcjckjm">
-                    <h4 class="modal-title jdxksdjjm">Tammy Johnson</h4>
+                    <h4 class="modal-title jdxksdjjm" id="player_name_model">Tammy Johnson</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <p class="jsdhjdh">Forward</p>
+                    <p class="jsdhjdh" id="category_model">Forward</p>
                     <p class="jsdhjdh">Total Fantasy Points:xxx</p>
                     <p class="jsdhjdh">Current GW points: xxx</p>
                     <p class="jsdhjdh">Total Picks: xx</p>

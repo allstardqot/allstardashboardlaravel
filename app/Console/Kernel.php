@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(GetFixture::class)->everyFifteenMinutes();
-        $schedule->job(GetTeam::class)->everyFifteenMinutes();
+        //$schedule->job(GetTeam::class)->everyFifteenMinutes();
         $schedule->job(NewsData::class)->everyFifteenMinutes();
         //$schedule->job(GetTeam::class)->weekly();
     }
