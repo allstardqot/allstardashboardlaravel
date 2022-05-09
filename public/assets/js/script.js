@@ -103,6 +103,12 @@ $("body").on("click", "#managesquad_one_submit", function () {
     }
 })
 
+$('#schedule_fixture').on("change",function() {
+    var date = $("#schedule_fixture").val();
+    alert(date);
+    console.log(date, 'change')
+});
+
 $("body").on("click", "#managesquad_two_submit", function () {
     var selectId=[];
     var captain='';

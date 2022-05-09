@@ -80,17 +80,17 @@
               id="goal_keeper" value="{{!empty($request['searchData']) && $request['type']=='goalkeeper'?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="goal_keeper_search"></i>
-            <a class="sdjndk7" onclick="goalKeepar()" href="javascript:void(0)" id="goalkeeper_filt">
+            <a class="sdjndk7" onclick="goalKeepar()" href="javascript:void(0)">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
-            <a class="sdjndk788" href="javascript:void(0)" >
+            <a class="sdjndk788" href="javascript:void(0)" id="goalkeeper_filt">
               Apply
               </a>
           </div>
         </div>
 
 
-     
+
 
         <div class="row mt-2 sortby" id="sortbyby">
           <div class="col-sm-7 mt-3">
@@ -290,16 +290,16 @@
               id="defender" value="{{!empty($request['searchData']) && $request['type']=='defender'?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="defender_search"></i>
-            <a class="sdjndk7" href="javascript:void(0)" id="defender_filt">
+            <a class="sdjndk7" onclick="defenderfilt()" href="javascript:void(0)">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
-            <a class="sdjndk788" href="javascript:void(0)" >
+            <a class="sdjndk788" href="javascript:void(0)" id="defender_filt">
               Apply
               </a>
           </div>
         </div>
 
-        <div class="row mt-2">
+        <div class="row mt-2 sortby" id="sortbydefender">
           <div class="col-sm-7 mt-3">
             <div class="sxdjdj87">
               <div class="sdjd787">
@@ -502,16 +502,16 @@
                 id="midfielder" value="{{!empty($request['searchData']) && $request['type']=='midfielder'?$request['searchData']:''}}"
               />
               <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
-              <a class="sdjndk7" href="javascript:void(0)" id="midfielder_filt">
+              <a class="sdjndk7" onclick="midfielderfilt()" href="javascript:void(0)" >
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
-              <a class="sdjnd88k7" href="javascript:void(0)" >
+              <a class="sdjndk788" href="javascript:void(0)" id="midfielder_filt">
               Apply
               </a>
             </div>
           </div>
 
-          <div class="row mt-2">
+          <div class="row mt-2 sortby" id="sortbymidfielder">
             <div class="col-sm-7 mt-3">
               <div class="sxdjdj87">
                 <div class="sdjd787">
@@ -715,17 +715,18 @@
                 id="forward" value="{{!empty($request['searchData']) && $request['type']=='forward'?$request['searchData']:''}}"
               />
               <i class="fa fa-search icon sdcjd8" id="forward_search"></i>
-              <a class="sdjndk7" href="javascript:void(0)" id="forward_filt">
+              <a class="sdjndk7" onclick="forwardfilt()" href="javascript:void(0)" >
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
-              <a class="sdjnd88k7" href="javascript:void(0)" >
+              <a class="sdjndk788" href="javascript:void(0)" id="forward_filt">
               Apply
               </a>
-             
+
             </div>
           </div>
 
-          <div class="row mt-2">
+        <div class="row mt-2 sortby" id="sortbyforward">
+
             <div class="col-sm-7 mt-3">
               <div class="sxdjdj87">
                 <div class="sdjd787">
@@ -857,26 +858,39 @@
 </div>
 
 <script>
-  function goalKeepar() {
-var element = document.getElementById("sortbyby");
-element.classList.toggle("active");
+function goalKeepar() {
+    var element = document.getElementById("sortbyby");
+    element.classList.toggle("active");
 }
+function defenderfilt() {
+    var element = document.getElementById("sortbydefender");
+    element.classList.toggle("active");
+}
+function midfielderfilt() {
+    var element = document.getElementById("sortbymidfielder");
+    element.classList.toggle("active");
+}
+function forwardfilt() {
+    var element = document.getElementById("sortbyforward");
+    element.classList.toggle("active");
+}
+
 </script>
 <script>
-let slider = document.getElementById("rangeSlider");
-let outputEl = document.querySelector(".goalkeeper_range");
+slider = document.getElementById("rangeSlider");
+outputEl = document.querySelector(".goalkeeper_range");
 sliderShow(slider,outputEl);
 
-let slider1 = document.getElementById("defender_rangeSlider");
-let outputEl1 = document.querySelector(".defender_range");
+slider1 = document.getElementById("defender_rangeSlider");
+outputEl1 = document.querySelector(".defender_range");
 sliderShow(slider1,outputEl1);
 
-let slider2 = document.getElementById("midfielder_rangeSlider");
-let outputEl2 = document.querySelector(".midfielder_range");
+slider2 = document.getElementById("midfielder_rangeSlider");
+outputEl2 = document.querySelector(".midfielder_range");
 sliderShow(slider2,outputEl2);
 
-let slider3 = document.getElementById("midfielder_rangeSlider");
-let outputEl3 = document.querySelector(".midfielder_range");
+slider3 = document.getElementById("midfielder_rangeSlider");
+outputEl3 = document.querySelector(".midfielder_range");
 sliderShow(slider3,outputEl3);
 
 function sliderShow(slider,outputEl){

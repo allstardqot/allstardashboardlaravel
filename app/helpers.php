@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Position;
+
 function  pr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;
 }
@@ -7,18 +10,27 @@ function p($data){
     echo "<pre>";print_r($data);echo "</pre>";
 }
 
+function getposition($id){
+    $name='';
+    $position=Position::find($id);
+    if(!empty($position->name)){
+        $name=$position->name;
+    }
+    return $name;
+}
+
 
 function defineConfigConstant(){
-		
+
     $settings = \App\Models\Setting::lists('value', 'name')->where(['Settings.id'=>1])->all();
-    
+
     $setting_value = 0;//Cache::read('setting_value', 'long');
     if (!$setting_value) {
-       
+
         $setting_value = $settings;
         //Cache::write('setting_value', $setting_value, 'long');
     }
-    
+
     $setting_value = json_decode(json_encode($setting_value),true);
     //pr($setting_value);die;
     if(!empty($setting_value)){

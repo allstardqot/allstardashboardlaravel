@@ -8,8 +8,7 @@
             <li>Step - 3</li>
         </ul>
         <h4 class="text-white text-center sdjskldj">
-            From your 7-player squad, select 5 players by the Gameweek deadline
-            to form your team.
+            From your 7-player squad, select 2 substitude players.
         </h4>
 
         <div class="m-bg text-white sdjkdxjnh">
