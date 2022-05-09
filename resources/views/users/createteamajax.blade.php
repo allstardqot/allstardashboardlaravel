@@ -80,13 +80,19 @@
               id="goal_keeper" value="{{!empty($request['searchData']) && $request['type']=='goalkeeper'?$request['searchData']:''}}"
             />
             <i class="fa fa-search icon sdcjd8" id="goal_keeper_search"></i>
-            <a class="sdjndk7" href="javascript:void(0)" id="goalkeeper_filt">
+            <a class="sdjndk7" onclick="goalKeepar()" href="javascript:void(0)" id="goalkeeper_filt">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
+            <a class="sdjndk788" href="javascript:void(0)" >
+              Apply
+              </a>
           </div>
         </div>
 
-        <div class="row mt-2">
+
+     
+
+        <div class="row mt-2 sortby" id="sortbyby">
           <div class="col-sm-7 mt-3">
             <div class="sxdjdj87">
               <div class="sdjd787">
@@ -287,6 +293,9 @@
             <a class="sdjndk7" href="javascript:void(0)" id="defender_filt">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
+            <a class="sdjndk788" href="javascript:void(0)" >
+              Apply
+              </a>
           </div>
         </div>
 
@@ -495,6 +504,9 @@
               <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
               <a class="sdjndk7" href="javascript:void(0)" id="midfielder_filt">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
+              </a>
+              <a class="sdjnd88k7" href="javascript:void(0)" >
+              Apply
               </a>
             </div>
           </div>
@@ -706,6 +718,10 @@
               <a class="sdjndk7" href="javascript:void(0)" id="forward_filt">
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
+              <a class="sdjnd88k7" href="javascript:void(0)" >
+              Apply
+              </a>
+             
             </div>
           </div>
 
@@ -839,6 +855,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  function goalKeepar() {
+var element = document.getElementById("sortbyby");
+element.classList.toggle("active");
+}
+</script>
 <script>
 let slider = document.getElementById("rangeSlider");
 let outputEl = document.querySelector(".goalkeeper_range");
