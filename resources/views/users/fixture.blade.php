@@ -22,31 +22,13 @@
                     <button
                       class="btn btn-danger btn-dropCla"
                       type="button"
-                      onclick="closeCalendor()"
+                      id="closeclaendar"
                     >
                       Match Schedule
                       <i class="fa fa-calendar" aria-hidden="true"></i>
                     </button>
-                    <ul class="dropdown-menu" id="calendarMenu">
-                      <li>
-                        <div
-                          class="calendar calendar-first"
-                          id="calendar_first"
-                        >
-                          <div class="calendar_header">
-                            <button class="switch-month switch-left">
-                              <i class="fa fa-chevron-left"></i>
-                            </button>
-                            <h2></h2>
-                            <button class="switch-month switch-right">
-                              <i class="fa fa-chevron-right"></i>
-                            </button>
-                          </div>
-                          <div class="calendar_weekdays"></div>
-                          <div class="calendar_content"></div>
-                        </div>
-                      </li>
-                    </ul>
+                  
+                    <div id="calendarMenu"></div>
                   </div>
                 </div>
               </div>
@@ -179,15 +161,6 @@
   </div>
 </section>
 
-<script>
-  function closeCalendor() {
-    var x = document.getElementById("calendarMenu");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-</script>
+
 
 @endsection
