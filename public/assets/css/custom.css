@@ -11,6 +11,37 @@ body{
   padding: 10px 23px;
   margin-left: 10px;
 }
+.hasDatepicker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  z-index: 99;
+  display: none;
+}
+.hasDatepicker.active{
+  display: block;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+  border: 1px solid #ff5000;
+  background: #ff5000;
+  color: #fff;
+
+}
+.ui-datepicker th {
+  
+  background: #fff;
+}
+table.ui-datepicker-calendar {
+  background: #fff;
+}
+table.ui-datepicker-calendar tr {
+  
+  border: inherit;
+}
+table.ui-datepicker-calendar td{
+  background: #fff;
+}
 .loading .circle  {
     display: inline-block;
     width: 50px;

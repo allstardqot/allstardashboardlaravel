@@ -5,6 +5,22 @@ console.log("Script is loading.......")
     $(".hidepara").toggleClass("active");
 });
 
+
+
+  $( function() {
+    $( "#calendarMenu" ).datepicker();
+  } );
+
+  
+  
+
+  $(document).ready(function(){
+    $("#closeclaendar").click(function(){
+      $(".hasDatepicker").toggleClass("active");
+    });
+  });
+
+
 $('#poolpassword').hide();
 $("#poolType").change(function () {
     // alert("The text has been changed.");
