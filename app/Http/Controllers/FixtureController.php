@@ -25,7 +25,8 @@ class FixtureController extends Controller
      */
     public function index()
     {
-        $fixturedata = Fixture::select(['fixtures.*',DB::raw('(SELECT short_code FROM teams WHERE teams.id=fixtures.localteam_id) as localteam_name'),DB::raw('(SELECT short_code FROM teams WHERE teams.id=fixtures.visitorteam_id) as visitorteam_name')])->get()->toArray();
+        $fixturedata = Fixture::with(['teams1','player1','teams2','player2'])->get()->toArray();
+        //pr($fixturedata);
         return view('users/fixture',['fixturedata'=>$fixturedata]);
     }
 }

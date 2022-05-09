@@ -12,8 +12,9 @@ body{
     -webkit-animation: spin 1s ease-in-out infinite;
 
   }
+
   /* .range-slider {
-   
+
   } */
   .range-slider__title {
     font-size: 1.5rem;
@@ -32,12 +33,12 @@ body{
   }
   .range-slider__value {
     /* font-size: 2rem; */
-    
+
     margin: 0rem 0;
 }
 .o-value{
     /* font-size: 2rem; */
-    
+
     margin: 0rem 0;
 }
   .range-slider__slider {
@@ -55,7 +56,7 @@ body{
     /* Grey background */
     outline: none;
     /* Remove outline */
-   
+
     /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: 0.2s;
     /* 0.2 seconds transition on hover */
@@ -221,7 +222,7 @@ display: none;
   margin-left: 5px;
   display: none;
 }
-.fixture-sec .tean-show img {
+.fixture-body img {
   width: 35px;
 }
 .news-col-content p, span, small, strong {
@@ -971,7 +972,7 @@ margin: 0px -21px -16px;
 .tean-show svg {
   width: 35px;
 }
-.tean-show span {
+.fixture-body span {
   color: #fff;
   font-size: 15px;
 }

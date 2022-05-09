@@ -60,43 +60,18 @@
                                 <div class="news-content">
                                     <h4>{{ $value['title'] }}</h4>
                                 <p>{!! $value['localteam']!!}</p>
-                               
+
                                 <small>Read More..</small>
                                 </div>
 
                             </a>
                         </div>
                         @endforeach
-                        
-                        {{-- <div class="latest-card">
-                            <a href="#" class="latest-anchor">
-                                <img src="{{ asset('public/assets/image/pexels-photo-7188095.jpeg') }}" class="img-fluid" alt="" />
-                                <div class="news-content">
-                                    <h4>Proin laoreet ornare quam</h4>
-                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
-                               
-                                <small>Read More..</small>
-                                </div>
-
-                            </a>
-                        </div>
-                        <div class="latest-card">
-                            <a href="#" class="latest-anchor">
-                                <img src="{{ asset('public/assets/image/pexels-photo-264312.jpeg') }}" class="img-fluid" alt="" />
-                                <div class="news-content">
-                                    <h4>Proin laoreet ornare quam</h4>
-                                <p>Crystal Palace picked up a 1-0 defeat to Newcastle United in the mid-week round of fixtures courtesy of a remarkable goal from Miguel Almiron (33') in the first forty-five. The defeat at St.</p>
-                               
-                                <small>Read More..</small>
-                                </div>
-
-                            </a>
-                        </div> --}}
                     </div>
 
                 </div>
             </div>
-            
+
             <div class="col-lg-3  mt-3 d-none d-lg-block order-lg-3">
                 <div class="bgcxhdb78">
 

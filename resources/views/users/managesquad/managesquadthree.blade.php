@@ -25,7 +25,7 @@
                         <p>$5.25 M</p>
                     </div>
                     <div class="area-title 4rep mt-3">
-                        <h5>Playing 5</h5>
+                        <h5>Captain</h5>
                     </div>
 
                     <a class="kdjkjd" href="" id="goalkeeper_detail" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="area-title 4rep">
-                <h5>Substitute</h5>
+                <h5>PLAYING 5</h5>
             </div>
 
             <div class="third-row-check">

@@ -16,16 +16,12 @@
             </p>
             {{-- {{ pr($newsValue) }} --}}
             <div class="news-big">
-              <img class="yhgt678" src="{{asset('public/assets/image/Rectangle%20308.jpg')}}" />
-              <h3 class="text-white mt-3">
-                <b>Lorem ipsum dolor sit amet</b>
-              </h3>
               <h6 class="hgyu7889">
                 {{$newsValue['updated_at']}}
               </h6>
               <p class="text-white mt-3">
                 {{$newsValue['localteam']}}
-               
+
 
               </p>
               <span id="dots_{{ $i }}">...</span>
@@ -36,202 +32,30 @@
             {{ $i++ }}
 
             @endforeach
-            {{-- <div class="news-big">
-              <img class="mt-4 yhgt678" src="{{asset('public/assets/image/Rectangle%20308.png')}}" />
-              <h3 class="text-white mt-3">
-                <b>Lorem ipsum dolor sit amet</b>
-              </h3>
-              <h6 class="hgyu7889">
-                May 31, 2019 l by User l Comments (2)
-              </h6>
-              <p class="text-white mt-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.
-                Fusce non elit vitae arcu dictum dapibus sit amet in enim.
-                Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
-                ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <a href="#" class="mt-2 hgft432">Read More</a>
-            </div>
-            <div class="news-big">
-              <img
-                class="yhgt678 mt-4"
-                src="{{asset('public/assets/image/Rectangle%20308(1).jpg')}}"
-              />
-              <h3 class="text-white mt-3">
-                <b>Lorem ipsum dolor sit amet</b>
-              </h3>
-              <h6 class="hgyu7889">
-                May 31, 2019 l by User l Comments (2)
-              </h6>
-              <p class="text-white mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.
-                Fusce non elit vitae arcu dictum dapibus sit amet in enim.
-                Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
-                ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <a href="#" class="mt-2 hgft432">Read More</a>
-            </div>
-            <div class="news-big">
-              <img
-                class="mt-4 yhgt678"
-                src="{{asset('public/assets/image/Rectangle%20308(1).png')}}"
-              />
-              <h3 class="text-white mt-3">
-                <b>Lorem ipsum dolor sit amet</b>
-              </h3>
-              <h6 class="hgyu7889">
-                May 31, 2019 l by User l Comments (2)
-              </h6>
-              <p class="text-white mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                aliquam ipsum vitae dapibus lobortis. Proin nec nibh ligula.
-                Fusce non elit vitae arcu dictum dapibus sit amet in enim.
-                Aenean nibh nisl, dapibus vel tellus a, gravida tincidunt
-                ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <a href="#" class="mt-2 hgft432">Read More</a>
-            </div> --}}
+
           </div>
         </div>
         <div class="col-lg-4 text-white hgtyr56">
-          <div class="jhays56">
-            <ul class="lkjiio458">
-              <h3 class="hgy78">Recent Posts</h3>
-            </ul>
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
+            <div class="hjuy4589">
+                <h4 class="mt-5 mkuytg">Recent Posts</h4>
+                <div class="latest-image-sec">
+                    @foreach($newsdata as $key => $value)
+                    <div class="latest-card">
+                        <a href="{{ url('/latest-news') }}" class="latest-anchor">
+                            <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
+                            <div class="news-content">
+                                <h4>{{ $value['title'] }}</h4>
+                            <p>{!! $value['localteam']!!}</p>
+
+                            {{-- <small>Read More..</small> --}}
+                            </div>
+
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
-              </a>
+
             </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-            <hr class="lkio90" />
-            <div class="mkj55">
-              <a class="latest-news-listing hgy789056" href="">
-                <img src="{{asset('public/assets/image/Rectangle%20312(1).png')}}" />
-                <div>
-                  <p class="jhgsty"><b>Lorem ipsum sit amet</b></p>
-                  <p class="jhgsty">
-                    Consectetur adip iscing elit, sed do eiusmod.
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
