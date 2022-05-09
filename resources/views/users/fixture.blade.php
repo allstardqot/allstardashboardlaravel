@@ -16,6 +16,8 @@
               </div>
               <div class="col-md-5 col-sm-6">
                 <div class="calendor-btn">
+                  {{-- <input type="date" id="schedule_fixture"> --}}
+
                   <div class="dropdown">
                     <button
                       class="btn btn-danger btn-dropCla"

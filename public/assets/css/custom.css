@@ -1,6 +1,16 @@
 body{
   background-color:#12133D;
 }
+.djfd765 h3 {
+  font-size: 26px;
+}
+.sdjndk788 {
+  background: #ff5000;
+  border-radius: 50px;
+  color: #fff !important;
+  padding: 10px 23px;
+  margin-left: 10px;
+}
 .loading .circle  {
     display: inline-block;
     width: 50px;
@@ -12,7 +22,9 @@ body{
     -webkit-animation: spin 1s ease-in-out infinite;
 
   }
-
+  .sortby.active{
+    display: none;
+  }
   /* .range-slider {
 
   } */
@@ -1776,6 +1788,7 @@ width: 80%; margin: auto; margin-top: 60px;
 }
 .sdjskldj{
 margin: auto; width: 80%; margin-top: 75px !important;
+font-size: 20px;
 }
 .sdjkdxjnh{
 width: 80%; margin-left: 10%
@@ -2679,6 +2692,9 @@ text-align: center;
   margin: 0 auto;
   width: 20%;
     background-position: top center !important;
+}
+.djfd765 .third-row-check .playerspot {
+  filter: grayscale(100%);
 }
 .djfd765  .first-row-check h5 {
   text-align: center;
