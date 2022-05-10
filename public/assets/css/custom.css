@@ -1,6 +1,12 @@
 body{
   background-color:#12133D;
 }
+.managing h3 {
+  font-size: 26px;
+}
+.djdndnn  h3 {
+  font-size: 26px;
+}
 .djfd765 h3 {
   font-size: 26px;
 }
@@ -10,6 +16,44 @@ body{
   color: #fff !important;
   padding: 10px 23px;
   margin-left: 10px;
+}
+td.vs-td-center::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  width: 1px;
+  height: 80%;
+  background: #ffffff26;
+}
+.fixture-body tr {
+  border-bottom: 0px;
+}
+.table-in tr:first-child td:first-child {
+  visibility: visible;
+}
+.table-in tr td:first-child {
+  visibility: hidden;
+  border: 0px !important;
+}
+
+.table-in tr td:first-child {
+  visibility: hidden;
+}
+.table-in tr:first-child td:first-child img {
+  width: 70px;
+}
+.vs-td-center {
+  position: relative;
+  overflow: hidden;
+}
+td.vs-td-center svg {
+  width: 65px;
+  height: auto;
+  border: 0px;
+  fill: #ffffff;
 }
 .hasDatepicker {
   position: absolute;
