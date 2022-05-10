@@ -44,6 +44,21 @@ class PoolController extends Controller
     }
 
     public function insert(Request $request){
+        request()->validate([
+            'pool_name' => 'required',
+            'pool_type' => 'required',
+            'max_participants' => 'required|numeric',
+            'entry_fees' => 'required|numeric',
+        ]);
+        if($request->pool_type==1){
+            request()->validate([
+                'pool_name' => 'required',
+                'pool_type' => 'required',
+                'max_participants' => 'required|numeric',
+                'entry_fees' => 'required|numeric',
+                'poolpassword' => 'required',
+            ]);
+        }
         $pool = new UserPool;
         $pool->user_id    = Auth::user()->id;
         $pool->pool_name   = $request->input('pool_name');

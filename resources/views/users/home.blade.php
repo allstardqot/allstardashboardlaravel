@@ -11,42 +11,14 @@
                 <div class="htavb">
                     <h4 class="mt-3 mkuytg">Trending Feeds</h4>
                     <div class="news-col-content">
-                        <div class="news-col">
-                            <h6 class="mt-3 assx45">NestleVera</h6>
-                            <p class="jsdx58">
-                                There are many variations of passages of Lorem Ipsum
-                                available,but the majority have suffered alteration.
-                            </p>
-                            <a class="hyujh45" href="#">2 Comment</a>
-                            <a class="jkyts778" href="#">Share</a>
-                        </div>
-                        <div class="news-col">
-                            <h6 class="mt-3 assx45">NestleVera</h6>
-                            <p class="jsdx58">
-                                There are many variations of passages of Lorem Ipsum
-                                available,but the majority have suffered alteration.
-                            </p>
-                            <a class="hyujh45" href="#">2 Comment</a>
-                            <a class="jkyts778" href="#">Share</a>
-                        </div>
-                        <div class="news-col">
-                            <h6 class="mt-3 assx45">NestleVera</h6>
-                            <p class="jsdx58">
-                                There are many variations of passages of Lorem Ipsum
-                                available,but the majority have suffered alteration.
-                            </p>
-                            <a class="hyujh45" href="#">2 Comment</a>
-                            <a class="jkyts778" href="#">Share</a>
-                        </div>
-                        <div class="news-col">
-                            <h6 class="mt-3 assx45">NestleVera</h6>
-                            <p class="jsdx58">
-                                There are many variations of passages of Lorem Ipsum
-                                available,but the majority have suffered alteration.
-                            </p>
-                            <a class="hyujh45" href="#">2 Comment</a>
-                            <a class="jkyts778" href="#">Share</a>
-                        </div>
+                        @foreach ($trending as $key => $value)
+                                {!! $value->description !!}
+                                <div class="like_share">
+                                    <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
+                                    <a class="jkyts778" href="#">Share</a>
+                                </div>
+                                <hr />
+                            @endforeach
                     </div>
                 </div>
 

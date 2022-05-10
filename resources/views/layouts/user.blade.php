@@ -11,13 +11,13 @@
     <title>All Stars @yield('title')</title>
 
     <!-- Styles -->
-   
+
     <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
-  
 
 
-    
+
+
 
 
     <link href="{{ asset('public/assets/css/fantasy-allstars.css') }}" rel="stylesheet">
@@ -36,7 +36,14 @@
       </div>
 
 @include('element/users/header') @show
+@if($errors->any())
+@foreach ($errors->all() as $err)
+<div class="alert alert-danger" role="alert">
+    <li>{{$err}}</li>
+</div>
 
+@endforeach
+@endif
 @yield('content')
 
 
@@ -60,7 +67,7 @@
     var editor1 = new RichTextEditor("#div_editor1");
     $(document).ready(function() {
 
-        
+
 
 
 
@@ -71,7 +78,7 @@
         });
 
 
-        
+
         $(".submit_comment").click(function(e) {
             var keyId = $(this).data('keyid');
             var textData = $(".comment_text" + keyId).val();

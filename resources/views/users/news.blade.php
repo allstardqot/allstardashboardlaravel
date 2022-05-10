@@ -9,7 +9,9 @@
         <div class="col-lg-8 mt-4">
           <div class="jhyt67">
             <h3 class="text-white mt-3"><b>Latest News</b></h3>
-            {{ $i=1; }}
+            @php
+                $i=1;
+            @endphp
             @foreach ($newsdata as $newsValue)
                         <p class="text-white mt-3">
               {{ $newsValue['title'] }}
@@ -29,7 +31,9 @@
                 {{$newsValue['visitorteam']}}</p>
                 <button  class="mt-2 hgft432 " onclick="myFunction({{ $i }})" id="myBtn_{{ $i }}">Read More</button>
             </div>
-            {{ $i++ }}
+            @php
+                $i++;
+            @endphp
 
             @endforeach
 

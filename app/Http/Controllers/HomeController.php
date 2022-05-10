@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CreatePost;
 use Illuminate\Http\Request;
 use App\Models\UserPool;
-use App\Models\Team;
 use App\Models\UserTeam;
 use App\Models\News;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class HomeController extends Controller
@@ -50,7 +51,9 @@ class HomeController extends Controller
             }
             return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata]);
         }
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>Auth::user()->id])->orderBy("comment",'desc')->get();
+
         // echo 'sljhf';die;
-        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata]);
+        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending]);
     }
 }

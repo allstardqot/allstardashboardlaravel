@@ -11,8 +11,8 @@ console.log("Script is loading.......")
     $( "#calendarMenu" ).datepicker();
   } );
 
-  
-  
+
+
 
   $(document).ready(function(){
     $("#closeclaendar").click(function(){
@@ -102,12 +102,6 @@ $("body").on("click", "#managesquad_one_submit", function () {
         manageSquadTwo(yourArray,selectId,editId);
     }
 })
-
-$('#schedule_fixture').on("change",function() {
-    var date = $("#schedule_fixture").val();
-    alert(date);
-    console.log(date, 'change')
-});
 
 $("body").on("click", "#managesquad_two_submit", function () {
     var selectId=[];

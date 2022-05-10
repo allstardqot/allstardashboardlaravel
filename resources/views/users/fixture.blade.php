@@ -16,9 +16,14 @@
               </div>
               <div class="col-md-5 col-sm-6">
                 <div class="calendor-btn">
-                  {{-- <input type="date" id="schedule_fixture"> --}}
+                <form method="POST" action="{{ route('fixture-data') }}">
+                    @csrf
+                  Starting Date<input type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
+                  End Date<input type="date" id="end_fixture" name="end_fixture" value="{{!empty($_POST['end_fixture'])?$_POST['end_fixture']:''}}">
+                    <input type="submit" value="Apply">
+                </form>
 
-                  <div class="dropdown">
+                  {{-- <div class="dropdown">
                     <button
                       class="btn btn-danger btn-dropCla"
                       type="button"
@@ -27,9 +32,9 @@
                       Match Schedule
                       <i class="fa fa-calendar" aria-hidden="true"></i>
                     </button>
-                  
+
                     <div id="calendarMenu"></div>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -45,6 +50,7 @@
                 </tr>
               </thead>
               <tbody>
+                @if(!empty($fixturedata))
                 @foreach ($fixturedata as $key=>$fixturValue )
                 @if(empty($fixturValue['teams1']) && empty($fixturValue['teams2']))
                     @continue
@@ -152,6 +158,9 @@
                     </td>
                   </tr>
                 @endforeach
+                @else
+                    <tr><td>Fixture not available.</td></tr>
+                @endif
               </tbody>
             </table>
           </div>
