@@ -166,10 +166,10 @@
         letter-spacing: 2px;
         outline: none;
       }
-    .bg-light {
-    --bs-bg-opacity: 1;
-    background-color: #2A2B50 !important;
-}
+      .bg-light {
+        --bs-bg-opacity: 1;
+        background-color: #505281 !important;
+    }
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
  
     font-weight: bold;
