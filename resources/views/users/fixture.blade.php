@@ -7,20 +7,41 @@
         <div class="fixture-card">
           <div class="fixture-head">
             <div class="row justify-content-between">
-              <div class="col-md-5 col-sm-6">
+              <div class="col-md-5 ">
                 <div class="head-content">
                   <h3>FIXTURES</h3>
                   <small>23rd April 2022 - 29th April 2022</small>
                   <a href="#" class="btn btn-danger">Gameweek</a>
                 </div>
               </div>
-              <div class="col-md-5 col-sm-6">
+              <div class="col-md-7 ">
                 <div class="calendor-btn">
+
+
+
                 <form method="POST" action="{{ route('fixture-data') }}">
                     @csrf
-                  Starting Date<input type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
-                  End Date<input type="date" id="end_fixture" name="end_fixture" value="{{!empty($_POST['end_fixture'])?$_POST['end_fixture']:''}}">
-                    <input type="submit" value="Apply">
+
+
+                    <div class="input-group">
+                     
+                      <span class="input-group-text" > <label for="basic-url" class="form-label">Starting Date</label></span>
+                   
+  <input  class="form-control" type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
+ 
+ 
+  <span class="input-group-text" >
+  <label for="basic-url" class="form-label">End Date</label>
+</span>
+  <input type="date" class="form-control" id="end_fixture" name="end_fixture" value="{{!empty($_POST['end_fixture'])?$_POST['end_fixture']:''}}">
+  <span class="input-group-text" >
+  <input type="submit" class="btn btn-danger" value="Apply">
+</span>
+  
+</div>
+                 
+                 
+                    
                 </form>
 
                   {{-- <div class="dropdown">
