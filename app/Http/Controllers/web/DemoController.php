@@ -10,6 +10,7 @@ use App\EntitySport;
 use App\Models\Fixture;
 use App\Models\News;
 use App\Models\Season;
+use App\Models\Squad;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,22 @@ class DemoController extends Controller
     public function fixtureData(){
 
         $api = new EntitySport();
-        // $team=Team::select('current_season_id')->get()->toArray();
+        $fixtureData=Fixture::select('id','localteam_id','visitorteam_id')->get()->toArray();
+        foreach($fixtureData as $value){
+            $getLineup = $api->getLineup($value['id'].'?include=lineup');
+            if(!empty($getLineup['lineup']['data'])){
+                foreach($getLineup['lineup']['data'] as $lineupValue){
+                    $squadData=Squad::where([['player_id',$lineupValue['player_id']],['fixture_id',$lineupValue['fixture_id']],['team_id',$lineupValue['team_id']]])->first();
+                    $squadData->playing11=1;
+                    if($squadData->update()){
+                    }
+                }
+            }
+        }
+        pr($fixtureData);
+
+        $fixture[] = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
+        pr($fixture);
         // if(in_array("18366",$team)){
         //     p("fineee");
         // }

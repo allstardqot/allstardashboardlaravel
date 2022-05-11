@@ -112,20 +112,20 @@
                     <td>
                       <table class="table table-in">
                         <tbody>
-                        @if(!empty($fixturValue['player1']) && !empty($fixturValue['player2']))
+                        @if(!empty($fixturValue['player2']) && !empty($fixturValue['player2']))
+                        @php
+                            $i=1;
+                        @endphp
                         @foreach ($fixturValue['player1'] as $player)
                         <tr>
-                        <td>
-                                <img
-                                    class="img-fluid"
-                                    src="{{$player['image_path']}}"
-                                  />
-                            </td>
                             <td>
                                 <img
                                     class="img-fluid"
-                                    src="{{$player['image_path']}}"
+                                    src="{{$fixturValue['teams1']['logo_path']}}"
                                   />
+                            </td>
+                            <td>
+                                <span>{{$i}}</span>
                             </td>
                             <td>
                                 <span>{{$player['fullname']}}</span>
@@ -137,27 +137,9 @@
                                 <span>{{$fixturValue['teams1']['short_code']}}</span>
                             </td>
                         </tr>
-                        @endforeach
-                        @endif
-                        @if(!empty($fixturValue['player2']) && !empty($fixturValue['player2']))
-                        @foreach ($fixturValue['player2'] as $player)
-                        <tr>
-                            <td>
-                                <img
-                                    class="img-fluid"
-                                    src="{{$player['image_path']}}"
-                                  />
-                            </td>
-                            <td>
-                                <span>{{$player['fullname']}}</span>
-                            </td>
-                            <td>
-                                <span>{{getposition($player['position_id'])}}</span>
-                            </td>
-                            <td>
-                                <span>{{$fixturValue['teams2']['short_code']}}</span>
-                            </td>
-                        </tr>
+                        @php
+                            $i++;
+                        @endphp
                         @endforeach
                         @endif
                         </tbody>
@@ -174,40 +156,19 @@
                       <table class="table table-in">
                         <tbody>
                         @if(!empty($fixturValue['player1']) && !empty($fixturValue['player2']))
-                        @foreach ($fixturValue['player1'] as $player)
+                        @php
+                            $i=1;
+                        @endphp
+                        @foreach ($fixturValue['player2'] as $player)
                         <tr>
                         <td>
                                 <img
                                     class="img-fluid"
-                                    src="{{$player['image_path']}}"
+                                    src="{{$fixturValue['teams2']['logo_path']}}"
                                   />
                             </td>
                             <td>
-                                <img
-                                    class="img-fluid"
-                                    src="{{$player['image_path']}}"
-                                  />
-                            </td>
-                            <td>
-                                <span>{{$player['fullname']}}</span>
-                            </td>
-                            <td>
-                                <span>{{getposition($player['position_id'])}}</span>
-                            </td>
-                            <td>
-                                <span>{{$fixturValue['teams1']['short_code']}}</span>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @endif
-                        @if(!empty($fixturValue['player2']) && !empty($fixturValue['player2']))
-                        @foreach ($fixturValue['player2'] as $player)
-                        <tr>
-                            <td>
-                                <img
-                                    class="img-fluid"
-                                    src="{{$player['image_path']}}"
-                                  />
+                                <span>{{$i}}</span>
                             </td>
                             <td>
                                 <span>{{$player['fullname']}}</span>
@@ -219,6 +180,9 @@
                                 <span>{{$fixturValue['teams2']['short_code']}}</span>
                             </td>
                         </tr>
+                        @php
+                            $i++;
+                        @endphp
                         @endforeach
                         @endif
                         </tbody>

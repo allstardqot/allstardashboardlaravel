@@ -156,6 +156,16 @@ class EntitySport
         return [];
     }
 
+    public function getLineup($params = []): array
+    {
+        $response = $this->httpParameter('fixtures', $params);
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+        return [];
+    }
+
     public function getPlayer($params = []): array
     {
         // https://doc.entitysport.com/#matches-list-api
@@ -187,26 +197,6 @@ class EntitySport
             return $arraData['data'];
         }
         return [];
-    }
-
-    public function getLineup(Fixture $fixture)
-    {
-        // https://doc.entitysport.com/#match-squads-api
-        $response = $this->http('matches/' . $fixture->id . '/squads');
-
-        if ($response->successful()) {
-            $status = $response->json('status');
-            if ($status == 'ok') {
-                $data = $response->json('response');
-                if (!is_null($data)) {
-                    return $data;
-                }
-            } elseif ($status == 'unauthorized') {
-                $this->login();
-            }
-        }
-
-        return null;
     }
 
     public function getFantasyPoints($fixtureId)

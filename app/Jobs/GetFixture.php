@@ -41,6 +41,8 @@ class GetFixture implements ShouldQueue
      */
     public function handle()
     {
+        //Getlineup::dispatch('18138818');
+
         log::info("fixture running");
         $api = new EntitySport();
 
@@ -71,6 +73,8 @@ class GetFixture implements ShouldQueue
                 if($fixtureQuery->wasRecentlyCreated){
                         GetTeam::dispatch();
                         GetSquad::dispatch($value['id']);
+                        //Getlineup::dispatch($value['id']);
+
 
                     // if(!Season::find($value['season_id'])){
                     //     $seasonData = $api->getSeason('');
