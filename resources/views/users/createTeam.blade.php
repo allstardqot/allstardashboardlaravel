@@ -413,6 +413,7 @@ forwardcheckbox();
         $("#defender_img" + n).attr("src", image);
         $("#defender_name" + n).html(full_name);
         $("#defendersell_price" + n).html(sell_price);
+        $(".defender_staricon"+n).show();
         n += 1;
       });
     }
@@ -466,6 +467,8 @@ forwardcheckbox();
         $("#midfielder_img" + n).attr("src", image);
         $("#midfielder_name" + n).html(full_name);
         $("#midfieldersell_price" + n).html(sell_price);
+        $(".midfielder_staricon"+n).show();
+
         n += 1;
       });
     }
@@ -515,6 +518,8 @@ forwardcheckbox();
         $("#forward_img" + n).attr("src", image);
         $("#forward_name" + n).html(full_name);
         $("#forwardsell_price" + n).html(sell_price);
+        $(".forward_staricon"+n).show();
+
         n += 1;
       });
     }
@@ -574,6 +579,8 @@ forwardcheckbox();
       $("#defender_img" + select).attr("src", image);
       $("#defender_name" + select).html(full_name);
       $("#defendersell_price" + select).html(sell_price);
+      $(".defender_staricon"+select).show();
+
       select += 1;
     });
 
@@ -601,6 +608,7 @@ forwardcheckbox();
       $("#midfielder_img" + select).attr("src", image);
       $("#midfielder_name" + select).html(full_name);
       $("#midfieldersell_price" + select).html(sell_price);
+      $(".midfielder_staricon"+select).show();
       select += 1;
     });
 
@@ -628,6 +636,7 @@ forwardcheckbox();
       $("#forward_img" + select).attr("src", image);
       $("#forward_name" + select).html(full_name);
       $("#forwardsell_price" + select).html(sell_price);
+      $(".forward_staricon"+select).show();
       select += 1;
     });
     if (select >= 2) {
@@ -814,12 +823,12 @@ forwardcheckbox();
                 var categorie=[];
                 $(".choose_substitude .active").each(function() {
                     var categorieHtml=$(this).closest('div').find('.categorie').html();
-                    if(selectId.length>=2){
-                        $.notify("Select only 2 substituted.", "info");
+                    if(selectId.length>=5){
+                        $.notify("Select only 5 players.", "info");
                         $(this).removeClass("active");
                     }else if($.inArray(categorieHtml,categorie)<0 || categorie.length === 0){
                         selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
-                        categorie.push($(this).closest('div').find('.categorie').html());
+                        //categorie.push($(this).closest('div').find('.categorie').html());
                     }else{
                         $(this).removeClass("active");
                         $.notify("Can not select 2 categorie.", "info");

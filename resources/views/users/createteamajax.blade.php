@@ -249,13 +249,13 @@
                   class="sdhdh7h8"
                   src="{{ asset('public/assets/image/star-new-1.png') }}"
                 />
-                <div class="bh8j7h7 defender_staricon">
+                <div class="bh8j7h7 defender_staricon{{$i}}">
                   <img
                     id="defender_img{{ $i }}"
                     src="{{ asset('public/assets/image/image _1.png') }}"
                   />
                 </div>
-                <div class="sdjd7jh89 defender_staricon">
+                <div class="sdjd7jh89 defender_staricon{{$i}}">
                   <img
                     src="{{ asset('public/assets/image/Vector_115.png') }}"
                   />
@@ -461,13 +461,13 @@
                     class="sdhdh7h8"
                     src="{{ asset('public/assets/image/star-new-1.png') }}"
                   />
-                  <div class="bh8j7h7 midfielder_staricon">
+                  <div class="bh8j7h7 midfielder_staricon{{$i}}">
                     <img
                       id="midfielder_img{{ $i }}"
                       src="{{ asset('public/assets/image/image _1.png') }}"
                     />
                   </div>
-                  <div class="sdjd7jh89 midfielder_staricon">
+                  <div class="sdjd7jh89 midfielder_staricon{{$i}}">
                     <img
                       src="{{ asset('public/assets/image/Vector_115.png') }}"
                     />
@@ -673,13 +673,13 @@
                     class="sdhdh7h8"
                     src="{{ asset('public/assets/image/star-new-1.png') }}"
                   />
-                  <div class="bh8j7h7 forward_staricon">
+                  <div class="bh8j7h7 forward_staricon{{$i}}">
                     <img
                       id="forward_img{{ $i }}"
                       src="{{ asset('public/assets/image/image _1.png') }}"
                     />
                   </div>
-                  <div class="sdjd7jh89 forward_staricon">
+                  <div class="sdjd7jh89 forward_staricon{{$i}}">
                     <img
                       src="{{ asset('public/assets/image/Vector_115.png') }}"
                     />
@@ -904,7 +904,10 @@ function sliderShow(slider,outputEl){
     };
 }
 $(".goalkeeper_staricon").hide();
-// $(".defender_staricon").hide();
-// $(".midfielder_staricon").hide();
-// $(".forward_staricon").hide();
+$(".defender_staricon0").hide();
+$(".defender_staricon1").hide();
+$(".midfielder_staricon0").hide();
+$(".midfielder_staricon1").hide();
+$(".forward_staricon0").hide();
+$(".forward_staricon1").hide();
 </script>
