@@ -89,17 +89,48 @@ $("body").on("click", "#managesquad_one_submit", function () {
 
     var selectId=[];
     var categorie=[];
+    var msg='';
     $(".playerspot .active").each(function() {
-        selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
-        //categorie.push($(this).closest('div').find('.categorie').html());
-    })
-    if(selectId.length<2){
-        $.notify("Please select two Substitute.", "info");
+        msg='';
+        if(selectId.length>=5){
+            $.notify("Select only 5 players.", "info");
+            $(this).removeClass("active");
+        }else{
+            selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+            if($.inArray($(this).closest('div').find('.categorie').html(),categorie)==-1){
+                categorie.push($(this).closest('div').find('.categorie').html());
+            }
+            if(selectId.length>=5 && $.inArray("Goalkeeper",categorie)==-1){
+                //$.notify("Please choose a goalkeeper.", "info");
+                msg="Please choose a goalkeeper.";
+            }
+            else if(selectId.length>=5 && categorie.length<4){
+                msg='Please chose a player to remaning category.';
+                //$.notify("Please chose a player to remaning category.", "info");
+            }else if(selectId.length<5){
+                //$.notify("Please chose 5 players.", "info");
+                msg='Please chose 5 players.';
+            }
+        }
+        //selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+    });
+    var allplayer=[];
+    var substitude=[];
+    $(".playerspot").each(function() {
+        allplayer.push($(this).closest('div').find('.categorie').attr('data-id'));
+    });
+    $.grep(allplayer, function(el) {
+            if ($.inArray(el, selectId) == -1) substitude.push(el);
+    });
+    if(selectId.length===0){
+        $.notify("Please chose 5 players.", "info");
+    }else if(substitude.length<2 || msg!==''){
+        $.notify(msg, "info");
     }else{
         var yourArray = $.cookie('selected_player');
         var editId=$.cookie('editId');
-        $.cookie('substitude', selectId);
-        manageSquadTwo(yourArray,selectId,editId);
+        $.cookie('substitude', substitude);
+        manageSquadTwo(yourArray,substitude,editId);
     }
 })
 

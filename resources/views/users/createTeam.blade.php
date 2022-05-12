@@ -815,9 +815,6 @@ forwardcheckbox();
         });
 
         $('body').on("click",".choose_substitude",function(e) {
-            if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
-                $.notify("Can not selecte goalkeeper.", "info");
-            }else{
                 $(this).find('.aboutplayer').toggleClass("active");
                 var selectId=[];
                 var categorie=[];
@@ -826,15 +823,26 @@ forwardcheckbox();
                     if(selectId.length>=5){
                         $.notify("Select only 5 players.", "info");
                         $(this).removeClass("active");
-                    }else if($.inArray(categorieHtml,categorie)<0 || categorie.length === 0){
-                        selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
-                        //categorie.push($(this).closest('div').find('.categorie').html());
                     }else{
-                        $(this).removeClass("active");
-                        $.notify("Can not select 2 categorie.", "info");
+                        selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
+                        if($.inArray($(this).closest('div').find('.categorie').html(),categorie)==-1){
+                            categorie.push($(this).closest('div').find('.categorie').html());
+                        }
+                        if(selectId.length>=5 && $.inArray("Goalkeeper",categorie)==-1){
+                            $.notify("Please choose a goalkeeper.", "info");
+                        }
+                        else if(selectId.length>=5 && categorie.length<4){
+                            $.notify("Please chose a player to remaning category.", "info");
+                        }else if(selectId.length==5){
+                            console.log("fineeee");
+                        }
                     }
+                    // else if(selectId.length>=5 && categorie.length<4){
+                    //     $.notify("Please chose a player to remaning category.", "info");
+                    // }else if(selectId.length>=5 && $.inArray("Goalkeeper",categorie)==-1){
+                    //     $.notify("Please choose a goalkeeper.", "info");
+                    // }
                 })
-            }
         });
 
         $('body').on("click",".choose_captain",function(e) {

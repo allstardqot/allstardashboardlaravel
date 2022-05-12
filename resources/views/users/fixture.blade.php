@@ -24,12 +24,12 @@
 
 
                     <div class="input-group">
-                     
+
                       <span class="input-group-text" > <label for="basic-url" class="form-label">Starting Date</label></span>
-                   
+
   <input  class="form-control" type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
- 
- 
+
+
   <span class="input-group-text" >
   <label for="basic-url" class="form-label">End Date</label>
 </span>
@@ -37,25 +37,12 @@
   <span class="input-group-text" >
   <input type="submit" class="btn btn-danger" value="Apply">
 </span>
-  
+
 </div>
-                 
-                 
-                    
+
+
+
                 </form>
-
-                  {{-- <div class="dropdown">
-                    <button
-                      class="btn btn-danger btn-dropCla"
-                      type="button"
-                      id="closeclaendar"
-                    >
-                      Match Schedule
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </button>
-
-                    <div id="calendarMenu"></div>
-                  </div> --}}
                 </div>
               </div>
             </div>
@@ -65,9 +52,7 @@
               <thead>
                 <tr>
                   <th scope="col"><h3>Matches</h3></th>
-                  {{-- <th scope="col">
-                    <div class="date-aprial"><p>on 23rd April 2022</p></div>
-                  </th> --}}
+
                 </tr>
               </thead>
               <tbody>
@@ -111,7 +96,7 @@
                         </div>
                       </td>
                       <td></td>
-                      <td>
+                      {{-- <td>
                         <div class="fropdown-bar-menu">
                           <div class="dropdown">
                             <button
@@ -127,9 +112,9 @@
                             </button>
                           </div>
                         </div>
-                      </td>
+                      </td> --}}
                 </tr>
-                <tr class="collapse" id="collapseExample{{$key}}">
+                {{-- <tr class="collapse" id="collapseExample{{$key}}">
                     <td>
                       <table class="table table-in">
                         <tbody>
@@ -209,7 +194,7 @@
                         </tbody>
                       </table>
                     </td>
-                  </tr>
+                </tr> --}}
                 @endforeach
                 @else
                     <tr><td>Fixture not available.</td></tr>
