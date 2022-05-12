@@ -29,7 +29,8 @@ class FixtureController extends Controller
         if(!empty($request->start_fixture) && !empty($request->end_fixture)){
             $fixtureQuery->whereBetween('starting_at', [$request->start_fixture." 00:00:00", $request->end_fixture." 23:59:59"]);
         }
-        $fixturedata = $fixtureQuery->with(['teams1','player1','teams2','player2'])->get()->toArray();
+        //$fixturedata = $fixtureQuery->with(['teams1','player1','teams2','player2'])->get()->toArray();
+        $fixturedata = $fixtureQuery->with(['teams1','teams2'])->get()->toArray();
         //pr($fixturedata);
         return view('users/fixture',['fixturedata'=>$fixturedata]);
     }
