@@ -209,7 +209,7 @@ class TeamController extends Controller
                 $forwardData[] = $playerValue;
             }
         }
-        //pr($user_selected_substitude);
+        //prr($user_selected_substitude);
         return view('users/managesquad/managesquadone', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'user_selected_substitude' => $user_selected_substitude]);
     }
 
@@ -255,11 +255,27 @@ class TeamController extends Controller
         $captainData = $substitudeData = $playerData = $goalkeeperData = [];
         $user_team_name = '';
 
+        $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
+
+
         if (!empty($editId)) {
             $userTeam = UserTeam::find($editId);
             $user_team_name = $userTeam['name'];
         }
         foreach ($selectedData as $playerValue) {
+            if ($playerValue->position_id == 1) {
+                $goalkeeperData = $playerValue;
+            }
+            if ($playerValue->position_id == 2) {
+                $defenderData[] = $playerValue;
+            }
+            if ($playerValue->position_id == 3) {
+                $midfielderData[] = $playerValue;
+            }
+            if ($playerValue->position_id == 4) {
+                $forwardData[] = $playerValue;
+            }
+
             if ($playerValue->id == $captain) {
                 $captainData = $playerValue;
                 continue;
@@ -271,6 +287,6 @@ class TeamController extends Controller
                 $playerData[] = $playerValue;
             }
         }
-        return view('users/managesquad/managesquadthree', ['playerData' => $playerData, 'captainData' => $captainData, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name]);
+        return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captainData, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name]);
     }
 }

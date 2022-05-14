@@ -2069,6 +2069,31 @@ clip-path: polygon(
 margin-top: -16px;
 transition: 0.3s;
 }
+.djdndnn .changeaboutplayer{
+    padding-bottom: 15px;
+    background: #000;
+    clip-path: polygon(
+      50% 0%,
+      100% 0,
+      100% 60%,
+      45% 100%,
+      47% 100%,
+      0% 60%,
+      0 0
+    );
+    margin-top: -16px;
+    transition: 0.3s;
+}
+.djdndnn .changeaboutplayer h4 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+.djdndnn .changeaboutplayer p {
+    margin: 0;
+    font-size: 12px;
+}
+
 
 .djdndnn  .aboutplayer:hover {
 background: #ff5000;
@@ -2753,6 +2778,12 @@ text-align: center;
   .fourth-row-check .aboutplayer {
     margin-top: -15px;
   }
+  .djdndnn .second-row-check .changeaboutplayer, .first-row-check .changeaboutplayer, .third-row-check .changeaboutplayer, .fourth-row-check .changeaboutplayer {
+    margin-top: -15px;
+}
+.djdndnn .changeaboutplayer .playerdetails {
+    display: none;
+}
   .djdndnn  .area-title.hide-desk {
     text-align: center;
     margin-top: 11px;
@@ -2799,8 +2830,11 @@ text-align: center;
   width: 20%;
     background-position: top center !important;
 }
-.djfd765 .third-row-check .playerspot {
+/* .djfd765 .third-row-check .playerspot {
   filter: grayscale(100%);
+} */
+.playerspot.changestar1 {
+    filter: grayscale(100%);
 }
 .djfd765  .first-row-check h5 {
   text-align: center;

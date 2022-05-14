@@ -294,7 +294,6 @@
     </main>
     <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
     <script>
-        selectCount()
 goalKeepercheckbox();
 defendercheckbox();
 midfieldercheckbox();
@@ -530,7 +529,7 @@ forwardcheckbox();
   });
 
   function selectCount() {
-    var selected = 0;
+    let selected = 0;
     $(".form-check-input:checkbox[type=checkbox]:checked").each(function (e) {
       selected += 1;
     });

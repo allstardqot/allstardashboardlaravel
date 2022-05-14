@@ -327,6 +327,8 @@ backBtn.addEventListener("click", (e) => {
             //console.log(nextId.addClass("active"))
             $("." + e.id).removeClass("show active")
             $("." + createTeamBtns.eq(i - 1)[0].id).addClass("show active")
+            nextId.addClass("active")
+
             return false;
         }
     })

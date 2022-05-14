@@ -47,11 +47,19 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot changestar">
+                        <div class="playerspot choose_captain changestar1">
                             <img src="{{ $defenderData[0]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="changeaboutplayer">
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
+                                <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
+                                <div class="playerdetails">
+                                    <p>18 CGW Point</p>
+                                    <p>104 T F Points</p>
+                                </div>
+                                <p>$5.25 M</p>
                             </div>
+                            <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
+                                Details</a>
                         </div>
                     </div>
                 @endif
@@ -79,7 +87,7 @@
                 <div class="greatplayer">
                     <div class="playerspot choose_captain changestar1">
                         <img src="{{ $defenderData[1]['image_path'] }}" />
-                        <div class="aboutplayer {{$user_selected_captain==$defenderData[1]['id']?'active':'';}}">
+                        <div class="changeaboutplayer">
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
                             <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                             <div class="playerdetails">
@@ -92,14 +100,6 @@
                             Details</a>
                     </div>
                 </div>
-                    {{-- <div class="greatplayer">
-                        <div class="playerspot changestar1">
-                            <img src="{{ $defenderData[1]['image_path'] }}" />
-                            <div class="aboutplayer ">
-                                <h4>{{ $defenderData[1]['fullname'] }}</h4>
-                            </div>
-                        </div>
-                    </div> --}}
                 @endif
             </div>
             <div class="area-title hide-desk">
@@ -126,9 +126,19 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot changestar">
+                        <div class="playerspot choose_captain changestar1">
                             <img src="{{ $midfielderData[0]['image_path'] }}" />
-                            <h4>{{ $midfielderData[0]['fullname'] }}</h4>
+                            <div class="changeaboutplayer">
+                                <h4>{{ $midfielderData[0]['fullname'] }}</h4>
+                                <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
+                                <div class="playerdetails">
+                                    <p>18 CGW Point</p>
+                                    <p>104 T F Points</p>
+                                </div>
+                                <p>$5.25 M</p>
+                            </div>
+                            <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
+                                Details</a>
                         </div>
                     </div>
                 @endif
@@ -154,9 +164,19 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot changestar">
+                         <div class="playerspot choose_captain changestar1">
                             <img src="{{ $midfielderData[1]['image_path'] }}" />
-                            <h4>{{ $midfielderData[1]['fullname'] }}</h4>
+                            <div class="changeaboutplayer">
+                                <h4>{{ $midfielderData[1]['fullname'] }}</h4>
+                                <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
+                                <div class="playerdetails">
+                                    <p>18 CGW Point</p>
+                                    <p>104 T F Points</p>
+                                </div>
+                                <p>$5.25 M</p>
+                            </div>
+                            <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
+                                Details</a>
                         </div>
                     </div>
                 @endif
@@ -184,9 +204,19 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot changestar">
+                        <div class="playerspot choose_captain changestar1">
                             <img src="{{ $forwardData[0]['image_path'] }}" />
-                            <h4>{{ $forwardData[0]['fullname'] }}</h4>
+                            <div class="changeaboutplayer">
+                                <h4>{{ $forwardData[0]['fullname'] }}</h4>
+                                <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
+                                <div class="playerdetails">
+                                    <p>18 CGW Point</p>
+                                    <p>104 T F Points</p>
+                                </div>
+                                <p>$5.25 M</p>
+                            </div>
+                            <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
+                                Details</a>
                         </div>
                     </div>
                 @endif
@@ -212,9 +242,19 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot changestar">
+                        <div class="playerspot choose_captain changestar1">
                             <img src="{{ $forwardData[1]['image_path'] }}" />
-                            <h4>{{ $forwardData[1]['fullname'] }}</h4>
+                            <div class="changeaboutplayer">
+                                <h4>{{ $forwardData[1]['fullname'] }}</h4>
+                                <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
+                                <div class="playerdetails">
+                                    <p>18 CGW Point</p>
+                                    <p>104 T F Points</p>
+                                </div>
+                                <p>$5.25 M</p>
+                            </div>
+                            <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
+                                Details</a>
                         </div>
                     </div>
                 @endif

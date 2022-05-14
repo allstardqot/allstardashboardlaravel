@@ -8,7 +8,7 @@
             <li>Step - 3</li>
         </ul>
         <h4 class="text-white text-center sdjskldj">
-            From your 7-player squad, select 2 substitude players.
+            From your 7-player squad, select 11 players by the Gameweek deadline to form your team.
         </h4>
 
         <div class="m-bg text-white sdjkdxjnh">
@@ -16,7 +16,11 @@
                 <h5>Goalkeeper</h5>
                 <div class="playerspot choose_substitude">
                     <img src="{{ $goalkeeperData['image_path'] }}" />
-                    <div class="aboutplayer">
+                    {{$extraClass=''}}
+                        @if (!empty($user_selected_substitude) && !in_array($goalkeeperData['id'],$user_selected_substitude))
+                            @php $extraClass='active'; @endphp
+                        @endif
+                    <div class="aboutplayer {{$extraClass}}">
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie" data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
@@ -34,7 +38,7 @@
                     <div class="playerspot choose_substitude">
                         <img src="{{ $defenderData[0]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($defenderData[0]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($defenderData[0]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
@@ -59,7 +63,7 @@
 
                         <img src="{{ $defenderData[1]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($defenderData[1]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($defenderData[1]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
@@ -85,7 +89,7 @@
                     <div class="playerspot choose_substitude">
                         <img src="{{ $midfielderData[0]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($midfielderData[0]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($midfielderData[0]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
@@ -108,7 +112,7 @@
                     <div class="playerspot choose_substitude">
                         <img src="{{ $midfielderData[1]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($midfielderData[1]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($midfielderData[1]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
@@ -133,7 +137,7 @@
                     <div class="playerspot choose_substitude">
                         <img src="{{ $forwardData[0]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($forwardData[0]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($forwardData[0]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">
@@ -156,7 +160,7 @@
                     <div class="playerspot choose_substitude">
                         <img src="{{ $forwardData[1]['image_path'] }}" />
                         {{$extraClass=''}}
-                        @if (in_array($forwardData[1]['id'],$user_selected_substitude))
+                        @if (!empty($user_selected_substitude) && !in_array($forwardData[1]['id'],$user_selected_substitude))
                             @php $extraClass='active'; @endphp
                         @endif
                         <div class="aboutplayer {{$extraClass}}">

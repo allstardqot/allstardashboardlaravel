@@ -858,6 +858,18 @@
 </div>
 
 <script>
+    $(".goalkeeper_staricon").hide();
+$(".defender_staricon0").hide();
+$(".defender_staricon1").hide();
+$(".midfielder_staricon0").hide();
+$(".midfielder_staricon1").hide();
+$(".forward_staricon0").hide();
+$(".forward_staricon1").hide();
+    selectCount();
+    goalKeepercheckbox();
+defendercheckbox();
+midfieldercheckbox();
+forwardcheckbox();
 function goalKeepar() {
     var element = document.getElementById("sortbyby");
     element.classList.toggle("active");
@@ -875,8 +887,6 @@ function forwardfilt() {
     element.classList.toggle("active");
 }
 
-</script>
-<script>
 slider = document.getElementById("rangeSlider");
 outputEl = document.querySelector(".goalkeeper_range");
 sliderShow(slider,outputEl);
@@ -903,11 +913,4 @@ function sliderShow(slider,outputEl){
     outputEl.textContent = `$ ${decimalSeparator(this.value)} `;
     };
 }
-$(".goalkeeper_staricon").hide();
-$(".defender_staricon0").hide();
-$(".defender_staricon1").hide();
-$(".midfielder_staricon0").hide();
-$(".midfielder_staricon1").hide();
-$(".forward_staricon0").hide();
-$(".forward_staricon1").hide();
 </script>
