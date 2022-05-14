@@ -37,11 +37,13 @@ class Fixture extends Model
 
     public function player1()
     {
-        return $this->hasMany(Player::class,'team_id','localteam_id')->join('squads','squads.player_id','=','players.id')->where(['squads.playing11'=>1]);
+        //return $this->hasMany(Player::class,'team_id','localteam_id')->join('squads','squads.player_id','=','players.id')->where(['squads.playing11'=>1]);
+        return $this->hasMany(Player::class,'team_id','localteam_id');
     }
 
     public function player2()
     {
-        return $this->hasMany(Player::class,'team_id','visitorteam_id')->join('squads','squads.player_id','=','players.id')->where(['squads.playing11'=>1]);
+        //return $this->hasMany(Player::class,'team_id','visitorteam_id')->join('squads','squads.player_id','=','players.id')->where(['squads.playing11'=>1]);
+        return $this->hasMany(Player::class,'team_id','visitorteam_id');
     }
 }
