@@ -848,16 +848,17 @@ forwardcheckbox();
             if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
                 $.notify("Can not select goalkeeper.", "info");
             }else{
-                $(this).find('.aboutplayer').toggleClass("active");
+                $(this).toggleClass("captain_icon");
                 var selectId=[];
-                $(".choose_captain .active").each(function() {
+                $(".captain_icon").each(function() {
                     if(selectId.length>=1){
                         $.notify("Select only 1 captain.", "info");
-                        $(this).removeClass("active");
+                        $(this).removeClass("captain_icon");
                     }else if(selectId.length === 0){
+                        console.log($(this).closest('div').find('.categorie').attr('data-id'));
                         selectId.push($(this).closest('div').find('.categorie').attr('data-id'));
                     }else{
-                        $(this).removeClass("active");
+                        $(this).removeClass("captain_icon");
                         $.notify("Can not select 2 captain.", "info");
                     }
                 })

@@ -15,7 +15,7 @@
                 <h5>Goalkeeper</h5>
                 <div class="playerspot choose_captain">
                     <img src="{{ $goalkeeperData['image_path'] }}" />
-                    <div class="aboutplayer">
+                    <div class="aboutplayer {{in_array($goalkeeperData['id'],$selected)?'active':'';}}">
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie"  data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
@@ -30,9 +30,9 @@
             <div class="second-row-check">
                 @if (!in_array($defenderData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$defenderData[0]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$defenderData[0]['id']?'captain_icon':'';}}">
                             <img src="{{ $defenderData[0]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$defenderData[0]['id']?'active':'';}}">
+                            <div class="aboutplayer {{in_array($defenderData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
@@ -47,7 +47,7 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain changestar1">
+                        <div class="playerspot changestar1">
                             <img src="{{ $defenderData[0]['image_path'] }}" />
                             <div class="changeaboutplayer">
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
@@ -68,9 +68,9 @@
                 </div>
                 @if (!in_array($defenderData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$defenderData[1]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$defenderData[1]['id']?'captain_icon':'';}}">
                             <img src="{{ $defenderData[1]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$defenderData[1]['id']?'active':'';}}">
+                            <div class="aboutplayer  {{in_array($defenderData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $defenderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                                 <div class="playerdetails">
@@ -85,7 +85,7 @@
                     </div>
                 @else
                 <div class="greatplayer">
-                    <div class="playerspot choose_captain changestar1">
+                    <div class="playerspot changestar1">
                         <img src="{{ $defenderData[1]['image_path'] }}" />
                         <div class="changeaboutplayer">
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
@@ -109,9 +109,9 @@
             <div class="third-row-check">
                 @if (!in_array($midfielderData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$midfielderData[0]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$midfielderData[0]['id']?'captain_icon':'';}}">
                             <img src="{{ $midfielderData[0]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$midfielderData[0]['id']?'active':'';}}">
+                            <div class="aboutplayer  {{in_array($midfielderData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
@@ -126,7 +126,7 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain changestar1">
+                        <div class="playerspot changestar1">
                             <img src="{{ $midfielderData[0]['image_path'] }}" />
                             <div class="changeaboutplayer">
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
@@ -147,9 +147,9 @@
                 </div>
                 @if (!in_array($midfielderData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$midfielderData[1]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$midfielderData[1]['id']?'captain_icon':'';}}">
                             <img src="{{ $midfielderData[1]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$midfielderData[1]['id']?'active':'';}}">
+                            <div class="aboutplayer {{in_array($midfielderData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
@@ -164,7 +164,7 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                         <div class="playerspot choose_captain changestar1">
+                         <div class="playerspot changestar1">
                             <img src="{{ $midfielderData[1]['image_path'] }}" />
                             <div class="changeaboutplayer">
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
@@ -187,9 +187,9 @@
             <div class="fourth-row-check">
                 @if (!in_array($forwardData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$forwardData[0]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$forwardData[0]['id']?'captain_icon':'';}}">
                             <img src="{{ $forwardData[0]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$forwardData[0]['id']?'active':'';}}">
+                            <div class="aboutplayer {{in_array($forwardData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
@@ -204,7 +204,7 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain changestar1">
+                        <div class="playerspot changestar1">
                             <img src="{{ $forwardData[0]['image_path'] }}" />
                             <div class="changeaboutplayer">
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
@@ -225,9 +225,9 @@
                 </div>
                 @if (!in_array($forwardData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain {{$user_selected_captain==$forwardData[1]['id']?'active':'';}}">
+                        <div class="playerspot choose_captain {{$user_selected_captain==$forwardData[1]['id']?'captain_icon':'';}}">
                             <img src="{{ $forwardData[1]['image_path'] }}" />
-                            <div class="aboutplayer {{$user_selected_captain==$forwardData[1]['id']?'active':'';}}">
+                            <div class="aboutplayer {{in_array($forwardData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">
@@ -242,7 +242,7 @@
                     </div>
                 @else
                     <div class="greatplayer">
-                        <div class="playerspot choose_captain changestar1">
+                        <div class="playerspot changestar1">
                             <img src="{{ $forwardData[1]['image_path'] }}" />
                             <div class="changeaboutplayer">
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>

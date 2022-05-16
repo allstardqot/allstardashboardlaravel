@@ -14,9 +14,9 @@
         <div class="m-bg text-white  djkdxjnh">
             <div class="first-row-check">
                 <h5>Goalkeeper</h5>
-                <div class="playerspot">
+                <div class="playerspot {{$goalkeeperData['id']==$captainData?'captain_icon':'';}}">
                     <img src="{{ $goalkeeperData['image_path'] }}" />
-                    <div class="aboutplayer">
+                    <div class="aboutplayer {{in_array($goalkeeperData['id'],$selected)?'active':'';}}">
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie"  data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
@@ -31,9 +31,9 @@
             <div class="second-row-check">
                 @if (!in_array($defenderData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$defenderData[0]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $defenderData[0]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer {{in_array($defenderData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
@@ -69,9 +69,9 @@
                 </div>
                 @if (!in_array($defenderData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$defenderData[1]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $defenderData[1]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer  {{in_array($defenderData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $defenderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                                 <div class="playerdetails">
@@ -110,9 +110,9 @@
             <div class="third-row-check">
                 @if (!in_array($midfielderData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$midfielderData[0]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $midfielderData[0]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer {{in_array($midfielderData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
@@ -148,9 +148,9 @@
                 </div>
                 @if (!in_array($midfielderData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$midfielderData[1]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $midfielderData[1]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer {{in_array($midfielderData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
@@ -188,9 +188,9 @@
             <div class="fourth-row-check">
                 @if (!in_array($forwardData[0]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$forwardData[0]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $forwardData[0]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer {{in_array($forwardData[0]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
@@ -226,9 +226,9 @@
                 </div>
                 @if (!in_array($forwardData[1]['id'], $substitude))
                     <div class="greatplayer">
-                        <div class="playerspot">
+                        <div class="playerspot {{$forwardData[1]['id']==$captainData?'captain_icon':'';}}">
                             <img src="{{ $forwardData[1]['image_path'] }}" />
-                            <div class="aboutplayer">
+                            <div class="aboutplayer {{in_array($forwardData[1]['id'],$selected)?'active':'';}}">
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">

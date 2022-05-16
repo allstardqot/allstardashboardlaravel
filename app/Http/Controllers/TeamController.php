@@ -97,7 +97,7 @@ class TeamController extends Controller
                 $user_selected_captain = '';
 
                 if (!empty($editId) && UserTeam::find($editId)) {
-                    $userTeam = UserTeam::find($editId)->first();
+                    $userTeam = UserTeam::find($editId);
                     $user_selected_player = json_decode($userTeam['players'], true);
                 }
                 $playerQuery = Player::query();
@@ -192,7 +192,7 @@ class TeamController extends Controller
         $selectedData = Player::query()->whereIn('id', $selected)->get();
         $user_selected_substitude = $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         if (!empty($editId)) {
-            $userTeam = UserTeam::find($editId)->first();
+            $userTeam = UserTeam::find($editId);
             $user_selected_substitude = json_decode($userTeam['substitude'], true);
         }
         foreach ($selectedData as $playerValue) {
@@ -240,7 +240,7 @@ class TeamController extends Controller
             }
         }
         //pr($user_selected_captain);
-        return view('users/managesquad/managesquadtwo', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'substitude' => $substitude, 'user_selected_captain' => $user_selected_captain]);
+        return view('users/managesquad/managesquadtwo', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'substitude' => $substitude, 'user_selected_captain' => $user_selected_captain,'selected'=>$selected]);
     }
 
     public function managesquadthree(Request $request)
@@ -287,6 +287,6 @@ class TeamController extends Controller
                 $playerData[] = $playerValue;
             }
         }
-        return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captainData, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name]);
+        return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captain, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name,'selected'=>$selected]);
     }
 }

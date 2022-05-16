@@ -7,6 +7,10 @@ body{
 .djdndnn  h3 {
   font-size: 26px;
 }
+.djfd765 .aboutplayer.active {
+    background: #ff5000;
+}
+
 .djfd765 h3 {
   font-size: 26px;
 }
@@ -817,6 +821,10 @@ border: 1px solid #ff5000;
 .managing .aboutplayer:hover {
   background: #ff5000;
 }
+.managing .aboutplayer.active{
+    background: #ff5000;
+}
+
 .managing .aboutplayer.active{
     background: #ff5000;
 }
@@ -2550,6 +2558,23 @@ background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
 .dxcfdkfjdkl89{
 width: 50%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 0px 0px;
 }
+.playerspot.captain_icon::before {
+    content: '';
+    position: absolute;
+    right: 36px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    background: url('../image/caption-img.png');
+    background-size: cover;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.playerspot.captain_icon {
+    position: relative;
+    overflow: hidden;
+}
 .sdkjskdj76{
 background-color:#2A2B50; border-radius: 10px;padding-bottom: 19px;margin-top:5%
 }
@@ -3251,6 +3276,17 @@ padding: 1%;
 
 }
 
+
+@media screen and (max-width: 1400px) {
+    .playerspot.captain_icon::before {
+        right: 8px;
+
+    }
+
+
+    }
+
+
 @media screen and (max-width: 991px) {
 .jsdbdhsol{
 width: 100% !important;
@@ -3259,9 +3295,14 @@ width: 100% !important;
 .htavb {
   display: none;
 }
-
+.playerspot.captain_icon::before {
+    right: 0px;
+    width: 30px;
+    height: 30px;
+}
 
 }
+
 
 
 
@@ -3740,7 +3781,13 @@ text-align: center;
 .fixture-sec .calendor-btn form {
   width: 100%;
 }
+.playerspot.captain_icon::before {
+    right: 10px;
+    top: 0px;
+    width: 30px;
+    height: 30px;
 
+}
 
 }
 
