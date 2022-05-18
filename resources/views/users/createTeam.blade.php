@@ -845,9 +845,9 @@ forwardcheckbox();
         });
 
         $('body').on("click",".choose_captain",function(e) {
-            if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
-                $.notify("Can not select goalkeeper.", "info");
-            }else{
+            // if($(this).closest('div').find('.categorie').html()=="Goalkeeper"){
+            //     $.notify("Can not select goalkeeper.", "info");
+            // }else{
                 $(this).toggleClass("captain_icon");
                 var selectId=[];
                 $(".captain_icon").each(function() {
@@ -862,7 +862,7 @@ forwardcheckbox();
                         $.notify("Can not select 2 captain.", "info");
                     }
                 })
-            }
+            //}
         });
 
         $('body').on("click","#goalkeeper_detail",function(e){

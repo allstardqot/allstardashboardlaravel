@@ -13,7 +13,7 @@
         <div class="m-bg text-white  djkdxjnh">
             <div class="first-row-check">
                 <h5>Goalkeeper</h5>
-                <div class="playerspot choose_captain">
+                <div class="playerspot choose_captain {{$user_selected_captain==$goalkeeperData['id']?'captain_icon':'';}}">
                     <img src="{{ $goalkeeperData['image_path'] }}" />
                     <div class="aboutplayer {{in_array($goalkeeperData['id'],$selected)?'active':'';}}">
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>

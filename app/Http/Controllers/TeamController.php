@@ -28,10 +28,38 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $userTeam = UserTeam::where(['user_id' => Auth::user()->id])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();
+        $nextWeek=nextWeek();
+        $user_id=Auth::user()->id;
+        $userTeam = UserTeam::where([['user_id',$user_id],['week',$nextWeek]])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();
 
         if (empty($userTeam)) {
             return redirect()->route('create-team')->with('info', 'Please first create team!');
+        }
+
+        $mainData = [];
+        foreach ($userTeam as $data) {
+            $result = [];
+            $players = $data['players'];
+            $plyArr = json_decode($players, true);
+            //p($players);
+            $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->select(['players.*','positions.name'])->get()->toArray();
+            $result['team_name'] = $data['name'];
+            $result['captain_id'] = $data['captain'];
+            $result['id'] = $data['id'];
+            array_push($mainData, $result);
+        }
+        return view('users/team', compact('mainData', 'userTeam'));
+    }
+
+    public function currentTeam(){
+        $user_id=Auth::user()->id;
+        $currentWeek=currentWeek();
+        //$teamCount=UserTeam::where([['week',$currentWeek],['user_id',$user_id]])->count();
+
+        $userTeam = UserTeam::where([['user_id',$user_id],['week',$currentWeek]])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();
+
+        if (empty($userTeam)) {
+            return redirect()->route('team')->with('message', 'Current week team not created.');
         }
 
         $mainData = [];
@@ -48,14 +76,7 @@ class TeamController extends Controller
             //$result['team_name']=$data['name'];
         }
 
-
-
-        //pr($mainData);
-        // $result = Player::join('Position', 'Position.id', '=', 'Player.position_id')->whereIn('id', $plyArr)->get()->toArray();
-        // pr($result);
-
-
-        return view('users/team', compact('mainData', 'userTeam'));
+        return view('users/currentteam', compact('mainData', 'userTeam'));
     }
 
     public function createTeam(Request $request, $editId = null)
@@ -65,6 +86,7 @@ class TeamController extends Controller
         if(!empty($editId) && empty($matches[0])){
             return redirect(route("team"));
         }
+        $user_id=Auth::user()->id;
         if (!empty($request->selected) && !empty($request->teamName)) {
             $selected = is_array($request->selected) ? $request->selected : explode(',', $request->selected);
             $substitude = is_array($request->substitude) ? $request->substitude : explode(',', $request->substitude);
@@ -76,8 +98,9 @@ class TeamController extends Controller
                 $userTeam = UserTeam::find($request->editId);
             } else {
                 $userTeam = new UserTeam;
+                $userTeam->week = nextWeek();
             }
-            $userTeam->user_id = Auth::user()->id;
+            $userTeam->user_id = $user_id;
             $userTeam->captain = $captain;
             $userTeam->substitude = json_encode($substitude);
             $userTeam->players = json_encode($selected);
@@ -92,6 +115,14 @@ class TeamController extends Controller
             $cost_range = $request->cost_range;
             $type = $request->type;
             $team = Team::pluck('name', 'id');
+
+            if (empty($editId)) {
+                $nextWeek=nextWeek();
+                $teamCount=UserTeam::where([['week',$nextWeek],['user_id',$user_id]])->count();
+                if($teamCount>=3){
+                    return redirect('team')->with("message","Can't create team more then 3 in a week.");
+                }
+            }
             if (!empty($searchData)) {
                 $user_selected_substitude = $user_selected_player = $goalkeeperData = $defenderData = $midfielderData = $forwardData = [];
                 $user_selected_captain = '';
@@ -239,7 +270,7 @@ class TeamController extends Controller
                 $forwardData[] = $playerValue;
             }
         }
-        //pr($user_selected_captain);
+        //prr($user_selected_captain);
         return view('users/managesquad/managesquadtwo', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'substitude' => $substitude, 'user_selected_captain' => $user_selected_captain,'selected'=>$selected]);
     }
 

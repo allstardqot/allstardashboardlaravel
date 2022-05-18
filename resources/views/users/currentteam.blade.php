@@ -4,7 +4,7 @@
 
 <main>
   <div class="sdjsdkn">
-    <h4><b class="skdjskd">My Team Next Week</b></h4>
+    <h4><b class="skdjskd">My Team Current Week</b></h4>
     <p class="skdjskdm">Nullam lectus magna, dignissim tempus est in, volutpat scelerisque tortor. Curabitur nec ex
       risus.</p>
     <h4 class="mt-3 text-white ">Teams Under War</h4>
@@ -22,7 +22,7 @@
               <a><b class="jsdh89">{{ $data['team_name'] }}</b></a>
             </li>
             <li class="nav-item hjkuygb">
-              <a href="{{ route('edit-team',$data['id'])  }}" class="mt-2 jhuionh">Edit Team</a>
+              {{-- <a href="{{ route('edit-team',$data['id'])  }}" class="mt-2 jhuionh">Edit Team</a> --}}
 
             </li>
 
@@ -35,11 +35,7 @@
 
           {{-- {{ pr($value) }} --}}
           <h6 class="mt-3 ml-4 jhjkhkl77"><b>{{ $value['name'] }}</b></h6>
-          <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}
-            @if($data['captain_id']==$value['id'])
-            C
-            @endif
-            </a>
+          <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}</a>
           <hr class="htguy78">
           @endforeach
 

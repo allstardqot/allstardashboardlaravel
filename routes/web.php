@@ -63,6 +63,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/team', [TeamController::class, 'index'])->name('team');
+        Route::get('/current-team', [TeamController::class, 'currentTeam'])->name('current-team');
+
+
 
         Route::get('/manage-squad', [TeamController::class, 'managesquadone'])->name('manage-squad');
         Route::get('/edit-team/manage-squad', [TeamController::class, 'managesquadone'])->name('manage-squad');

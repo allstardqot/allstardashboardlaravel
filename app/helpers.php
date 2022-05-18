@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Position;
+use App\Models\Week;
+use Illuminate\Support\Carbon;
 
 function  prr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;
@@ -19,6 +21,23 @@ function getposition($id){
     return $name;
 }
 
+function currentWeek(){
+    $week=0;
+    $data=Week::whereDate('starting_at','<',Carbon::now())->whereDate('ending_at','>',Carbon::now())->first();
+    if(!empty($data->id)){
+        $week= $data->id;
+    }
+    return $week;
+}
+
+function nextWeek(){
+    $week=0;
+    $data=Week::whereDate('starting_at','>',Carbon::now())->whereDate('ending_at','>',Carbon::now())->first();
+    if(!empty($data->id)){
+        $week= $data->id;
+    }
+    return $week;
+}
 
 function defineConfigConstant(){
 

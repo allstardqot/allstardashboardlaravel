@@ -31,6 +31,7 @@
 </head>
 
 <body>
+
     <div class="loading">
         <div class="circle"> </div>
       </div>
@@ -43,6 +44,11 @@
 </div>
 
 @endforeach
+@endif
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
 @endif
 @yield('content')
 
