@@ -37,14 +37,14 @@
           <h6 class="mt-3 ml-4 jhjkhkl77"><b>{{ $value['name'] }}</b></h6>
           <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}
             @if($data['captain_id']==$value['id'])
-            C
+            <img src="{{url('public/assets/image/c_captain.png')}}" class="float-end img-fluid" style="margin-right:6%">
             @endif
             </a>
           <hr class="htguy78">
           @endforeach
 
 
-          <a href="#" class="hjuy87">Go to manage Squad</a>
+          <a href="javascript:void(0)" onclick="editManageSquad({{$data['id']}})" id="go_to_manage_squad" class="hjuy87">Go to manage Squad</a>
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
             <h4 class="ihnik8978">Fantasy Point 900</h4>
@@ -58,5 +58,6 @@
       @endforeach
     </div>
 </main>
+
 
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UserPool;
 use App\Models\UserTeam;
 use App\Models\News;
+use App\Models\UserContest;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -29,15 +30,18 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
+        $user_id=Auth::user()->id;
         $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $searchData=$request->searchData;
         $type=$request->type;
         $publicQuery=UserPool::query();
         $privateQuery=UserPool::query();
+
+        $jointuser=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->select(['user_pools.id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->pluck('joined','user_pools.id')->toArray();
+
+        $contest_pool=UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
         //$team = Team::get();
-        $team = UserTeam::where('user_id',Auth::user()->id)->get();
-        // p($team);
+        $team = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
 
         $publicData=$publicQuery->where(['pool_type'=>0])->get();
         $privateData=$privateQuery->where(['pool_type'=>1])->get();
@@ -49,11 +53,23 @@ class HomeController extends Controller
                     $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
             }
-            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata]);
+            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser]);
         }
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>Auth::user()->id])->orderBy("comment",'desc')->get();
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
 
         // echo 'sljhf';die;
         return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending]);
+    }
+
+    public function jointeam(Request $request){
+        $contest_data=new UserContest();
+        $contest_data->pool_id=$request->input('join_pool_id');
+        $contest_data->user_id=Auth::user()->id;
+        $contest_data->user_team_id=$request->input('select_team');
+        if($contest_data->save()){
+            return redirect('home')->with('message','Pool Join Successfully.');
+        }else{
+            return redirect('home')->with('message',"Cant't Join this pool.");
+        }
     }
 }

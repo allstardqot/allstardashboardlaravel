@@ -29,7 +29,7 @@
                        </div>
                     @endif
                         <img src="{{ asset('public/img/fantasy-allstars 1.png') }}" />
-                        <form method="POST" action="{{ route('ForgetPasswordPost') }}">
+                         method="POST" action="{{ route('ForgetPasswordPost') }}">
                             @csrf
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -43,14 +43,14 @@
                                       <span class="text-danger passerror">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
-                                  
+
                                 {{-- <input
                     type="text"
                     class="input-login form-control"
                     name="email"
                     placeholder="Email"
                   /> --}}
-                            
+
                             <br />
                             <button type="submit" class="but"><b>Send</b></button>
                         </form>

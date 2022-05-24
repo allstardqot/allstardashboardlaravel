@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Carbon\Carbon;
 use App\Models\Season;
 use Illuminate\Support\Facades\Log;
 
@@ -73,6 +74,10 @@ class GetFixture implements ShouldQueue
                 if($fixtureQuery->wasRecentlyCreated){
                         GetTeam::dispatch();
                         GetSquad::dispatch($value['id']);
+                        // $lineupSchedule = Carbon::parse($event->starting_at)->addMinutes(-45);
+                        // GetLineup::dispatch($event->id)->delay($lineupSchedule);
+                        GetScore::dispatch($fixtureQuery->id)->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
+
                         //Getlineup::dispatch($value['id']);
 
 
