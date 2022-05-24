@@ -348,7 +348,7 @@ display: none;
   line-height: 18px;
 }
 .fixture-card {
-  background: #2a2b50;
+  background: #505281;
   border-radius: 10px;
   padding: 20px 15px;
   margin: 5% 0%;
@@ -403,7 +403,7 @@ width: 25%;
 }
 
 .sdhnd7789{
-background-color: #2a2b50;
+background-color: #505281;
 }
 .dffjf87{
 padding: 6px 20px;
@@ -446,7 +446,7 @@ font-size: 26px; font-weight: lighter;
 background-color: #12133d;
 }
 .jkasdhd78{
-background-color: #2a2b50;
+background-color: #505281;
 border-radius: 12px;
 
 }
@@ -491,7 +491,7 @@ padding-left: 30px;
 .sdhfj9754{
 width: 100%;
 height: 150px;
-background-color: #2a2b50;
+background-color: #505281;
 border: none;
 border-radius: 12px;
 padding: 5px 10px;
@@ -780,7 +780,7 @@ border: 1px solid #ff5000;
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
-  margin-top: 8px !important;
+  margin-top: 20px !important;
   display: block;
   font-size: 13px;
 }
@@ -788,7 +788,7 @@ border: 1px solid #ff5000;
 .managing .playerspot img {
   margin-top: 6px;
   border-radius: 100%;
-  max-width: 110px;
+  max-width: 85px;
 }
 .managing .playerdetails {
   display: flex;
@@ -798,10 +798,19 @@ border: 1px solid #ff5000;
   margin: 0;
   font-size: 12px;
 }
+.managing .first-row-check {
+  margin-top: 15px;
+}
 .managing .aboutplayer h4 {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
   margin: 0;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .managing .aboutplayer {
   padding-bottom: 15px;
@@ -846,10 +855,12 @@ border: 1px solid #ff5000;
 .third-row-check,
 .fourth-row-check {
   display: flex;
-  width: 95%;
+  width: 100%;
+  max-width: 1000px;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
+  margin-top: -60px;
 }
 .managing .greatplayer {
   width: 20%;
@@ -1128,7 +1139,7 @@ margin: 0px -21px -16px;
 }
 .fixture-body .table tbody td {
 
-  border-bottom: 1px solid #2a2b50;
+  border-bottom: 1px solid #505281;
   vertical-align: middle;
 }
 
@@ -1161,7 +1172,7 @@ color: #cacaca;
 font-size: 12px; color: #cacaca;
 }
  .main1{
-  background-color: #2a2b50;
+  background-color: #505281;
   width: 90%;
   margin-left: 5%;
   padding-bottom: 10px;
@@ -1223,7 +1234,7 @@ font-size: 12px; color: #cacaca;
   width: 100%;
   padding: 2% 3%;
   border-radius: 30px;
-  background-color: #2a2b50;
+  background-color: #505281;
   color: white;
  }
  .lkahty{
@@ -1233,7 +1244,7 @@ font-size: 12px; color: #cacaca;
   padding: 3%;
   border-color: #ff5000;
   border-radius: 30px;
-  background-color: #2a2b50;
+  background-color: #505281;
   color: #e44b0a;
  }
  .tbnayr{
@@ -1246,7 +1257,7 @@ font-size: 12px; color: #cacaca;
   padding: 13px;
  }
  .namtrs{
-  background-color: #2a2b50;
+  background-color: #505281;
  }
  .namtrs i{
   font-size: 40px; margin-left: 15%;
@@ -1307,7 +1318,7 @@ font-size: 12px; color: #cacaca;
   margin-left: 24%;
  }
  .asjk45{
-  background-color: #2a2b50; padding: 2%; margin-top: 4%;
+  background-color: #505281; padding: 2%; margin-top: 4%;
  }
  .inmutsfg{
   width: 80%;
@@ -1343,7 +1354,7 @@ font-size: 12px; color: #cacaca;
   text-decoration: none;
  }
  .htavb{
-  background-color:#2A2B50; border-radius: 10px;
+  background-color:#505281; border-radius: 10px;
  }
  .mkuytg{
   background-color:#FF5000; padding: 2% 2% 2% 5%;width: 100%; border-radius: 10px 10px 0px 0px;
@@ -1373,7 +1384,7 @@ font-size: 12px; color: #cacaca;
   text-decoration: none;color:#FF5000;padding-left: 30px;
  }
  .hjuy4589{
-  background-color:#2A2B50; border-radius: 10px;padding-bottom: 1px;
+  background-color:#505281; border-radius: 10px;padding-bottom: 1px;
  }
  .nnm1{
   width:90%;margin-left:5%;margin-top: 3%;
@@ -1385,7 +1396,7 @@ font-size: 12px; color: #cacaca;
   width:90%;margin-left:5%;margin-top: 5%;padding-bottom: 15px;
  }
  .njkas985{
-  background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
+  background-color:#505281;border-radius: 10px;padding-bottom: 1%;
   height: 100%;
 
  }
@@ -1403,7 +1414,7 @@ font-size: 12px; color: #cacaca;
   display: flex;width: 100%;text-align: center;
  }
  .lpoins455{
-  width: 50%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 0px 0px;
+  width: 50%;text-align: center;background-color: #505281;border-radius: 0px 10px 0px 0px;
  }
  .klpoijm98{
   width: 50%;border-radius: 10px 0px 0px 0px;
@@ -1415,7 +1426,7 @@ font-size: 12px; color: #cacaca;
   color: #fff;border: none;border-radius: 0px 10px 0px 0px;
  }
  .lkpoi526{
-  background-color:#2A2B50;border: 1px solid #ddd;border-right: none; border-radius:30px 0px 0px 30px;color: fff;
+  background-color:#505281;border: 1px solid #ddd;border-right: none; border-radius:30px 0px 0px 30px;color: fff;
  }
  .pokj256{
   width: 90%;margin-left: 5%;
@@ -1471,7 +1482,11 @@ font-size: 12px; color: #cacaca;
   margin-right: 5%;
  }
  .hjytg458{
-  background-color:#3B3C5E;border: 1px solid #FF5000;border-radius: 30px;padding: 6px 15px;color: #FF5000;
+  background-color: #ff5000;
+  border: 1px solid #FF5000;
+  border-radius: 30px;
+  padding: 6px 15px;
+  color: #ffffff !important;
  }
  .ahjl458{
   text-decoration: none;color:#fff !important;
@@ -1534,7 +1549,7 @@ font-size: 12px; color: #cacaca;
   background-color:#FF5000;border-radius: 50px;padding: 4% 3.5%;margin-left: 18%;
  }
  .bgcxhdb78{
-  background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
+  background-color:#505281;border-radius: 10px;padding-bottom: 1%;
   height: 100%;
  }
  .hdbnd76{
@@ -1548,13 +1563,13 @@ font-size: 12px; color: #cacaca;
   border-radius: 10px 0px 0px 0px;
  }
  .lkmhu87{
-  width: 50%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 0px 0px;
+  width: 50%;text-align: center;background-color: #505281;border-radius: 0px 10px 0px 0px;
  }
  .hnbgty78{
   color: #fff;border: none;border-radius: 0px 10px 0px 0px;
  }
  .hgbjhyt56{
-  background-color:#2A2B50; border-radius: 10px;padding-bottom: 19px;margin-top:5%
+  background-color:#505281; border-radius: 10px;padding-bottom: 19px;margin-top:5%
  }
  .hnbgy890{
   display: flex;width: 100%;
@@ -1578,7 +1593,7 @@ font-size: 12px; color: #cacaca;
   background-color:#FF5000;border-radius: 50px;padding: 4% 3.8%;margin-left: 5%;
  }
  .jsdhdgdtsb{
-  background-color:#2A2B50;border-radius: 10px;padding: 20px;
+  background-color:#505281;border-radius: 10px;padding: 20px;
  }
  .mnhjityfg{
   text-align:center;
@@ -1587,7 +1602,7 @@ font-size: 12px; color: #cacaca;
   color:#fff
  }
  .nhbjkloui{
-  color:#fff;border-radius: 30px; border: 1px solid #ddd; margin-left: 5%; background-color: #2A2B50;padding: 2px 20px;font-size: 10px;
+  color:#fff;border-radius: 30px; border: 1px solid #ddd; margin-left: 5%; background-color: #505281;padding: 2px 20px;font-size: 10px;
  }
  .mjnhiok{
   color:red;
@@ -1599,19 +1614,19 @@ font-size: 12px; color: #cacaca;
   padding: 0px;font-size: 15px; color: #fff;margin-left: 15%;
  }
  .jhtyu{
-  background-color:#2A2B50; border:1px solid #ddd;padding: 6px 30px;width: 80%; border-radius: 30px;color: fff;
+  background-color:#505281; border:1px solid #ddd;padding: 6px 30px;width: 80%; border-radius: 30px;color: fff;
  }
 .nmhitf{
 margin-top: 2%;font-size: 15px;color: #fff;margin-left: 15%;
 }
 .jhngyt{
-background-color:#2A2B50; border:1px solid #ddd;padding: 7px 30px;width: 80%; border-radius: 30px;color: fff;
+background-color:#505281; border:1px solid #ddd;padding: 7px 30px;width: 80%; border-radius: 30px;color: fff;
 }
 .nhbgyuhd{
 color:#fff
 }
 .hgftrsde{
-background-color: #2a2b50; padding: 2%; margin-top: 4%
+background-color: #505281; padding: 2%; margin-top: 4%
 }
 .inpuytgfcv{
 width: 80%;
@@ -1697,7 +1712,7 @@ background-color: #ff5000;
           font-size: 20px;
 }
 .jhyt67{
-background-color: #2a2b50;
+background-color: #505281;
 padding: 2%;
 
 border-radius: 20px;
@@ -1736,7 +1751,7 @@ display: flex; margin-left: 5%
 margin-left: 0.5em
 }
 .jhays56{
-background-color: #2a2b50; border-radius: 20px
+background-color: #505281; border-radius: 20px
 }
 .jhgsty{
 margin-left: 5%
@@ -1745,7 +1760,7 @@ margin-left: 5%
 background-color: white; width: 86%; margin-left: 3%
 }
 .hsadguy6{
-background-color: #2a2b50; border-radius: 10px
+background-color: #505281; border-radius: 10px
 }
 .jsdghdhs9{
 background-color: #ff5000;
@@ -1768,7 +1783,7 @@ text-decoration: none;
                 color: #ff5000;
 }
 .djhdj78{
-background-color: #2a2b50;
+background-color: #505281;
 border-radius: 10px;
 padding-bottom: 1px;
 }
@@ -1785,7 +1800,7 @@ margin-top: 5%;
 padding-bottom: 15px;
 }
 .hyuij86{
-background-color: #2a2b50;
+background-color: #505281;
               border-radius: 10px;
               padding-bottom: 1.5%;
 }
@@ -1801,7 +1816,7 @@ border-radius: 10px 0px 0px 0px;
 .nskjdhtycdsdf{
 width: 50%;
 text-align: center;
-background-color: #2a2b50;
+background-color: #505281;
 border-radius: 0px 10px 0px 0px;
 }
 .kasjnio98{
@@ -1842,12 +1857,12 @@ border-radius: 10px 10px 0px 0px;
 border-radius: 0px 10px 0px 0px
 }
 .mjhtfg{
-background-color: #2a2b50;
+background-color: #505281;
               border-radius: 10px;
               padding-bottom: 1%;
 }
 .htgft{
-background-color: #2a2b50;
+background-color: #505281;
 border-radius: 10px;
 padding-bottom: 19px;
 margin-top: 5%;
@@ -2030,19 +2045,18 @@ opacity: 0.5;
 }
 
 .djdndnn  .playerspot a {
-color: #fff;
-text-decoration: none;
-text-transform: uppercase;
-margin-top: 8px !important;
-display: block;
-font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 20px !important;
+  display: block;
+  font-size: 13px;
 }
 
 .djdndnn .playerspot img {
-  margin-top: 15px;
-  width: 100%;
-  max-width: 130px;
+  margin-top: 6px;
   border-radius: 100%;
+  max-width: 85px;
 }
 
 .djdndnn   .playerdetails {
@@ -2057,10 +2071,18 @@ font-size: 12px;
 
 .djdndnn
 .aboutplayer h4 {
-font-size: 15px;
-font-weight: bold;
-margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
+
+
 
 .djdndnn  .aboutplayer {
 padding-bottom: 15px;
@@ -2093,10 +2115,18 @@ transition: 0.3s;
     transition: 0.3s;
 }
 .djdndnn .changeaboutplayer h4 {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
+
+
 .djdndnn .changeaboutplayer p {
     margin: 0;
     font-size: 12px;
@@ -2131,16 +2161,19 @@ opacity: 0.5;
 .djdndnn  .second-row-check,
 .third-row-check,
 .fourth-row-check {
-display: flex;
-width: 95%;
-justify-content: space-around;
-align-items: center;
-margin: 0 auto;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: -60px;
 }
 
 
 .djdndnn  .greatplayer {
-width: 20%;
+  margin-top: 20px;
+  width: 20%;
 }
 
 
@@ -2289,7 +2322,7 @@ background-color:#12133D;
 padding-bottom: 50px !important;
 }
 .sklddnk{
-background-color:#2A2B50;border-radius: 20px;
+background-color:#505281;border-radius: 20px;
 
 }
 .skdjnm
@@ -2372,7 +2405,7 @@ text-align: center;
 color: #FFFFFF;
 }
 .ijuyk0898{
-background-color:#2A2B50;border-radius: 20px;
+background-color:#505281;border-radius: 20px;
 }
 .dljfdjf{
 padding: 2%;width: 100%; border-radius: 20px;background-color:#3F4062;
@@ -2402,16 +2435,16 @@ text-decoration: none;color:#FF5000;padding-left: 30px;
 text-decoration: none;margin-left:5%;color:#0EA5E0;
 }
 .jhdfjkh{
-background-color:#2A2B50; border-radius: 10px;
+background-color:#505281; border-radius: 10px;
 }
 .hung67{
-background-color:#2A2B50; border-radius: 10px;padding-bottom: 1px;
+background-color:#505281; border-radius: 10px;padding-bottom: 1px;
 }
 .xnxck098{
 width:90%;margin-left:5%;margin-top: 5%;padding-bottom: 15px;
 }
 .bhjk098{
-background-color:#2A2B50;border-radius: 10px;padding-bottom: 7%;
+background-color:#505281;border-radius: 10px;padding-bottom: 7%;
 }
 .ncjdxjh89{
 display: flex;width: 100%;text-align: center;
@@ -2426,7 +2459,7 @@ border-radius: 10px 0px 0px 0px;
 margin-left: 5%;
 }
 .bndjsd89{
-width: 33.3%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 0px 0px;
+width: 33.3%;text-align: center;background-color: #505281;border-radius: 0px 10px 0px 0px;
 }
 .hsdjm8676{
 color: #fff;border: none;border-radius: 0px 10px 0px 0px;
@@ -2504,7 +2537,7 @@ background-color:#FF5000;border-radius: 50px;padding: 4% 3.8%;margin-left: 5%;
 width:80%;margin-top:4%;
 }
 .sdhdjhsio{
-background-color: #2a2b50;
+background-color: #505281;
         padding: 2%;
         margin-top: 8%;
         border-radius: 10px;
@@ -2515,7 +2548,7 @@ padding: 1em;
 .sddmmnd767{
 padding: 2% 25px;
               border-radius: 20px;
-              background-color: #2a2b50;
+              background-color: #505281;
               color: white;
               border: 1px solid #fff;
               display: inline-block;
@@ -2550,18 +2583,18 @@ color: #fff;
 border-radius: 20px;
 }
 .sdfjd79{
-background-color:#2A2B50; border-radius: 10px;padding-bottom: 19px;margin-top:5%;
+background-color:#505281; border-radius: 10px;padding-bottom: 19px;margin-top:5%;
 }
 .sdjhdjk89{
-background-color:#2A2B50;border-radius: 10px;padding-bottom: 1%;
+background-color:#505281;border-radius: 10px;padding-bottom: 1%;
 }
 .dxcfdkfjdkl89{
-width: 50%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 0px 0px;
+width: 50%;text-align: center;background-color: #505281;border-radius: 0px 10px 0px 0px;
 }
 .playerspot.captain_icon::before {
     content: '';
     position: absolute;
-    right: 36px;
+    right: 10px;
     top: 10px;
     width: 40px;
     height: 40px;
@@ -2576,7 +2609,7 @@ width: 50%;text-align: center;background-color: #2A2B50;border-radius: 0px 10px 
     overflow: hidden;
 }
 .sdkjskdj76{
-background-color:#2A2B50; border-radius: 10px;padding-bottom: 19px;margin-top:5%
+background-color:#505281; border-radius: 10px;padding-bottom: 19px;margin-top:5%
 }
 .ncjsik98{
 width:90%;margin-left:5%;margin-top: 3%;
@@ -2714,7 +2747,7 @@ text-align: center;
   }
   .managing .playerspot a {
 
-    margin-top: 20px !important;
+    margin-top: 10px !important;
     }
   .managing .second-row-check .playerspot img {
     margin-top: 10px;
@@ -2736,6 +2769,7 @@ text-align: center;
   }
   .managing .first-row-check .playerspot {
     width: 43%;
+    max-width: 200px;
   }
   .managing .first-row-check .playerspot img {
     margin-top: 10px;
@@ -2871,16 +2905,18 @@ text-align: center;
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
-  margin-top: 8px !important;
+  margin-top: 20px !important;
   display: block;
   font-size: 13px;
 }
+.djfd765 .third-row-check {
+  margin-top: 15px;
+}
 
 .djfd765 .playerspot img {
-  margin-top: 15px;
-  width: 100%;
-  max-width: 130px;
+  margin-top: 6px;
   border-radius: 100%;
+  max-width: 85px;
 }
 .djfd765  .playerdetails {
   display: flex;
@@ -2891,10 +2927,18 @@ text-align: center;
   font-size: 12px;
 }
 .djfd765  .aboutplayer h4 {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
+
+
 .djfd765  .aboutplayer {
   padding-bottom: 15px;
   background: #000;
@@ -2932,10 +2976,12 @@ text-align: center;
 .third-row-check,
 .fourth-row-check {
   display: flex;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
   justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
+
 }
 .djfd765  .greatplayer {
   width: 20%;
@@ -2952,10 +2998,7 @@ text-align: center;
 .fourth-row-check .playerspot {
   width: 100%;
 }
-.djfd765  .third-row-check {
-  margin-top: 85px;
-  padding-bottom: 40px;
-}
+
 .djfd765  .third-row-check .area-title {
   margin-top: 21px;
 }
@@ -2969,7 +3012,7 @@ text-align: center;
   background: url("../image/newbg.png"), #079b08;
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: cover;
+
 }
 .djfd765  .popup .popuptext {
   visibility: hidden;
@@ -2986,9 +3029,7 @@ text-align: center;
   margin-left: -80px;
   margin-top: 11px;
 }
-.djfd765 .second-row-check {
-  margin-top: 80px;
-}
+
 
 .djfd765  .popup p {
   margin: 0;
@@ -3122,7 +3163,7 @@ margin-bottom: 0px;
 
 .dashboard-tab  .nav-link {width: 100%;border-radius: 10px 0px 0px 0px;height: 50px;font-weight: 700;    background-color: #3b3c5e;   color: #fff;}
 
-.dashboard-tab .nav-link.active {    background-color: #2a2b50; }
+.dashboard-tab .nav-link.active {    background-color: #505281; }
 .dashboard-tab .private-1{
 border-radius: 0px 10px 0px 0px;
 }
@@ -3144,7 +3185,7 @@ border-radius: 0px !important;
 text-align: center;
 }
 .managers-tab .nav-link {width: 100%;border-radius: 10px 0px 0px 0px;height: 50px;font-weight: 700;    background-color: #3B3C5E;    color: #fff;}
-.managers-tab .nav-link.active {background-color: #2a2b50; }
+.managers-tab .nav-link.active {background-color: #505281; }
 .managers-tab .private-1{
 border-radius: 0px 10px 0px 0px;
 }
@@ -3153,7 +3194,7 @@ border-radius: 0px 10px 0px 0px;
 
 .managers-tab .hsdhsd {
 
-background-color: #2A2B50;
+background-color: #505281;
     border-radius: 10px;
     padding: 20px;
    }
@@ -3223,7 +3264,7 @@ background-color: #2A2B50;
     }
 
     .managers-tab .sdbndbnuj {
-      background-color: #2A2B50;
+      background-color: #505281;
       border-radius: 10px;
       padding-bottom: 19px;
   }
@@ -3328,6 +3369,10 @@ form .page .field button {
   font-size: 16px !important;
 
 }
+.managing .second-row-check, .third-row-check, .fourth-row-check {
+  width: 100%;
+  max-width: 350px;
+}
   .djfd765  .playerspot {
     width: 66%;
   }
@@ -3372,12 +3417,11 @@ form .page .field button {
   width: 50% !important;
   padding: 0px 10px;
 }
-.djfd765 .playerspot {
-  width: 45% !important;
-}
+
 .djfd765 .playerspot a {
-  margin-top: 32px !important;
- }
+  margin-top: 10px !important;
+
+}
   .djfd765   .playerspot img {
     margin-top: 14px;
     border-radius: 100%;
@@ -3425,6 +3469,15 @@ form .page .field button {
   header .navbar-brand img {
     max-width: 75px;
 }
+.managing .first-row-check {
+  margin-top: 0px;
+}
+.managing .second-row-check, .third-row-check, .fourth-row-check {
+ margin-top: 0px;
+ margin-bottom: 20px;
+ width: 100%;
+}
+
 .sdjnd890j {
   width: 100%;
   flex-wrap: wrap;
@@ -3782,10 +3835,10 @@ text-align: center;
   width: 100%;
 }
 .playerspot.captain_icon::before {
-    right: 10px;
-    top: 0px;
-    width: 30px;
-    height: 30px;
+  right: 20px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
 
 }
 
