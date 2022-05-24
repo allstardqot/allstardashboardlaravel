@@ -7,7 +7,7 @@ use App\Models\Player;
 use App\Models\Team;
 use App\Models\UserTeam;
 use Auth;
-
+use Illuminate\Support\Facades\Cookie;
 
 class TeamController extends Controller
 {
@@ -214,6 +214,15 @@ class TeamController extends Controller
             }
             return view('users/createTeam', ['editId' => $editId]);
         }
+    }
+
+    public function editSquad(Request $request)
+    {
+        if(!empty($request->id)){
+            $userTeam = UserTeam::find($request->id);
+            return json_decode($userTeam->players,true);
+        }
+
     }
 
     public function managesquadone(Request $request)

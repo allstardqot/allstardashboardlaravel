@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
          * Dashboard Routes
          */
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::post('/home', [App\Http\Controllers\HomeController::class, 'jointeam'])->name('home');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -75,6 +76,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/edit-team/manage-squad-thr', [TeamController::class, 'managesquadthree'])->name('manage-squad-thr');
 
         Route::get('/edit-team/{id}', [TeamController::class, 'createTeam'])->name('edit-team');
+        Route::get('/edit-manage-squad', [TeamController::class, 'editSquad'])->name('edit-manage-squad');
         Route::get('/edit-team/create-team', [TeamController::class, 'createTeam'])->name('create-team');
         Route::get('/create-team', [TeamController::class, 'createTeam'])->name('create-team');
         Route::get('/edit-team/create-team', [TeamController::class, 'createTeam'])->name('create-team');

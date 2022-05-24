@@ -10,9 +10,8 @@ $("#public_search").on('click',function(){
     });
     alert("fine"+searchData);
     //setInterval(searching, 2000,2)
-    
+
 })
 function searching(id){
     alert("fineee"+id);
 }
-console.log("gineeeeeeeeeeeeeeeeeeeeee");

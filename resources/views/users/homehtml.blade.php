@@ -1,5 +1,5 @@
-    
-     
+
+
      <div class="njkas985">
 
         <div class="dashboard-tab">
@@ -50,9 +50,11 @@
                         </div>
                     </div>
                     <div class="dash-data">
-                    @if (count($privateData) != 0)
+                    @if (count($publicData) != 0)
                         @foreach ($publicData as $publicValue)
-                     
+                        @if(in_array($publicValue['id'],$contest_pool))
+                            @continue;
+                        @endif
                             <div class="mkpiuh">
                                 <div class="row">
                                     <div class="col-sm-7 mt-3 ">
@@ -63,12 +65,12 @@
                                                     {{ $publicValue['entry_fees'] }}</p>
                                             </div>
                                             <div class="jhgyu56">
-                                                <button class="asunht56">20
+                                                <button class="asunht56">{{!empty($jointuser[$publicValue['id']])?$jointuser[$publicValue['id']]:0}}
                                                     Users</button>
                                             </div>
                                         </div>
                                         @if($_SERVER['REMOTE_ADDR'] =='49.204.161.179')
-                                            
+
                                         @endif
                                     </div>
                                     <div class="col-sm-5 mt-4 w-90 pb-3">
@@ -82,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                         @endforeach
                         </div>
                     @else
@@ -102,6 +104,9 @@
                     <div class="dash-data">
                     @if (count($privateData) != 0)
                         @foreach ($privateData as $privateValue)
+                        @if(in_array($privateValue['id'],$contest_pool))
+                            @continue;
+                        @endif
                             <div class="mkpiuh">
 
                                 <div class="row">
@@ -113,7 +118,7 @@
                                                     {{ $privateValue['entry_fees'] }}</p>
                                             </div>
                                             <div class="jhgyu56">
-                                                <button class="asunht56">20
+                                                <button class="asunht56">{{!empty($jointuser[$privateValue['id']])?$jointuser[$privateValue['id']]:0}}
                                                     Users</button>
                                             </div>
                                         </div>
@@ -141,7 +146,6 @@
 
     <script>
         function showmodel(id,type){
-            //    alert(type)
                if(type == 0){
                 document.getElementById('pooltypebtn').hidden=true;
                 document.getElementById('joinPass').hidden=true;
@@ -151,6 +155,6 @@
                 document.getElementById('joinPass').hidden=false;
                 document.getElementById('passLabel').hidden=false;
                }
-               document.getElementById("join_user_id").value = id;
+               document.getElementById("join_pool_id").value = id;
            }
     </script>

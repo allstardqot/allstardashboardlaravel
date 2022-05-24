@@ -702,8 +702,9 @@
                         <p class="mjnhiok">Amount to join : All Star Coins 20</p>
                         <p class="mjnhiok">Amount in Wallet : All Star Coins 30</p>
                     </div>
-                    <form class="hbngtdf">
-                        <input type="hidden" name="join_user_id" id="join_user_id">
+                    <form class="hbngtdf" action="{{ route('home') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="join_pool_id" id="join_pool_id">
                         <label class="labelhg " id="passLabel">Enter Password to join private
                             pool</label>
                         <div class=" text-center">
@@ -711,7 +712,7 @@
                         </div>
                         <label class="nmhitf">Select Team</label>
                         <div class=" text-white  text-center">
-                            <select class="inputcolor jhngyt">
+                            <select class="inputcolor jhngyt" id="select_team" name="select_team">
                                 <option class="nhbgyuhd">Select Team</option>
                                 @foreach($team as $key => $value)
                                 <option class="nhbgyuhd" value="{{ $value->id }}">{{ $value->name }}</option>
@@ -721,7 +722,7 @@
 
                         </div>
                         <div class="text-center">
-                            <button type="button" class=" btn-default1 mt-4">Pay Now to Join</button>
+                            <button type="submit" name="submit" class=" btn-default1 mt-4">Pay Now to Join</button>
                         </div>
                     </form>
                 </div>
