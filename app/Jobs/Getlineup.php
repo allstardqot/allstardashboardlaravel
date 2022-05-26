@@ -46,6 +46,8 @@ class Getlineup implements ShouldQueue
         Log::info($getLineup);
 
         if(!empty($getLineup['lineup']['data'])){
+            Log::info("lineup announced.".$this->fixtureId);
+
             foreach($getLineup['lineup']['data'] as $lineupValue){
                 $squadData=Squad::where([['player_id',$lineupValue['player_id']],['fixture_id',$lineupValue['fixture_id']],['team_id',$lineupValue['team_id']]])->first();
                 $squadData->playing11=1;
@@ -53,7 +55,7 @@ class Getlineup implements ShouldQueue
                 }
             }
         }else{
-            Log::info("enterrrrrrrrrrrrrrrrrrrrrr");
+            Log::info("lineup Schedule".$this->fixtureId);
             self::dispatch($this->fixtureId)->delay(now()->addMinutes(1));
         }
     }

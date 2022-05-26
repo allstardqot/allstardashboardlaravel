@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 //
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
+Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
 
 
 Route::get('/about_us', [AboutusController::class,'index']);

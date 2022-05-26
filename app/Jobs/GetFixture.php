@@ -69,7 +69,8 @@ class GetFixture implements ShouldQueue
                     'visitorteam_id' => $value['visitorteam_id'],
                     'weather_report' => is_array($value['weather_report'])?json_encode($value['weather_report']):'',
                     'scores' => is_array($value['scores'])?json_encode($value['scores']):'',
-                    'starting_at' => $value['time']['starting_at']['date_time']
+                    'starting_at' => $value['time']['starting_at']['date_time'],
+                    'status' => $value['time']['status']
                 ]);
                 if($fixtureQuery->wasRecentlyCreated){
                         GetTeam::dispatch();
@@ -77,7 +78,6 @@ class GetFixture implements ShouldQueue
                         // $lineupSchedule = Carbon::parse($event->starting_at)->addMinutes(-45);
                         // GetLineup::dispatch($event->id)->delay($lineupSchedule);
                         GetScore::dispatch($fixtureQuery->id)->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
-
                         //Getlineup::dispatch($value['id']);
 
 
