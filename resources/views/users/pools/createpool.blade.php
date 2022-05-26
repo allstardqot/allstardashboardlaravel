@@ -13,6 +13,15 @@
                     <input type="text" id="pool_name" class="inmutsfg" name="pool_name" placeholder="Create your Pool Name" />
                     <br />
                     <input class="inmutsfg" type="number" id="entry_fees" name="entry_fees" placeholder="Enter Entry Amount" /><br />
+
+                    <select class="hdydtsb" id="poolTeamId" name="team_id">
+                        <option class="jytf" value="">Select Team</option>
+                        
+                        @foreach($team as $key => $value)
+                        <option class="nhbgyuhd" value="{{ $value->id }}">{{ $value->name }}</option>
+
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-lg-6 text-center">
                     <div class="text-white">
@@ -24,6 +33,8 @@
                     </div>
 
                     <input class="inmutsfg" type="number" id="max_participants" name="max_participants" placeholder="Enter max participants" /><br />
+
+                    
 
                     <input class="inmutsfg" type="password" id="poolpassword" name="password" placeholder="Create Password" /><br />
                 </div>

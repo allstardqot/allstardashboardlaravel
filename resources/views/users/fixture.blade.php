@@ -10,7 +10,7 @@
               <div class="col-md-5 ">
                 <div class="head-content">
                   <h3>FIXTURES</h3>
-                  <small>23rd April 2022 - 29th April 2022</small>
+                  <small>{{date('d M Y', strtotime($weeak['starting_at']))}} - {{date('d M Y', strtotime($weeak['ending_at']))}}</small>
                   <a href="#" class="btn btn-danger">Gameweek</a>
                 </div>
               </div>

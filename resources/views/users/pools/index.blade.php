@@ -81,9 +81,9 @@
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link private-11" id="private-tab" data-bs-toggle="pill"
-                                        data-bs-target="#private" type="button" role="tab" aria-controls="private"
-                                        aria-selected="false">
+                                    <button class="nav-link private-11" id="live-tab" data-bs-toggle="pill"
+                                        data-bs-target="#public-live" type="button" role="tab"
+                                        aria-controls="public-home-live" aria-selected="true">
                                         Live
                                     </button>
                                 </li>
@@ -102,8 +102,12 @@
                                     <div class="row">
                                         <div class="col-sm-9">
                                             <div class="dash-tab">
-                                                <h5>Open Pools of this Game Week 13M-19M2021</h5>
-                                                <p>13th March 2021 - 19th March 2021 GAMEWEEK</p>
+                                                @if (!empty($upcomingDate['starting_at']))
+                                                    <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                                                    <p>{{ date('d M Y', strtotime($upcomingDate['starting_at'])) }} -
+                                                        {{ date('d M Y', strtotime($upcomingDate['ending_at'])) }}</p>
+                                                @endif
+
                                             </div>
                                         </div>
                                         <div class="col-sm-3 pb-2">
@@ -114,59 +118,54 @@
                                         </div>
                                     </div>
                                     <div class="dash-data">
-                                        <?php
-                 if(count($upcomingPool)!=0){
-                  foreach ($upcomingPool as $key => $value) {
-                  ?>
 
-                                        <div class="mkpiuh">
-                                            <div class="row">
-                                                <div class="col-sm-7 mt-3">
-                                                    <div class="lkpoioubn">
-                                                        <div>
-                                                            <h6>{{ $value['pool_name'] }}</h6>
-                                                            <p class="yhji2365">Entry Amount <img
-                                                                    src="{{ asset('public/assets/image/coin-img.png') }}"
-                                                                    width="20" class="img-fluid" alt="">
-                                                                {{ $value['entry_fees'] }}</p>
+                                        @if (count($upcomingPool) != 0)
+                                            @foreach ($upcomingPool as $key => $value)
+                                                <div class="mkpiuh">
+                                                    <div class="row">
+                                                        <div class="col-sm-7 mt-3">
+                                                            <div class="lkpoioubn">
+                                                                <div>
+                                                                    <h6>{{ $value['pool_name'] }}</h6>
+                                                                    <p class="yhji2365">Entry Amount <img
+                                                                            src="{{ asset('public/assets/image/coin-img.png') }}"
+                                                                            width="20" class="img-fluid" alt="">
+                                                                        {{ $value['entry_fees'] }}</p>
+                                                                </div>
+                                                                <div class="jhgyu56">
+                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                        Users</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="jhgyu56">
-                                                            <button class="asunht56">{{$value['joined']}} Users</button>
+                                                        <div class="col-sm-5 mt-4 w-90 pb-3">
+                                                            <div class="okiuj456">
+                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
+                                                                    data-bs-target="#myModal">+View Detail</a>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-5 mt-4 w-90 pb-3">
-                                                    <div class="okiuj456">
-                                                        <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">+View Detail</a>
-
-                                                    </div>
-                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="tab-pane fade" id="private" role="tabpanel"
+                                                aria-labelledby="private-tab">
+                                                <h5 class="sdksdjdj">No Record</h5>
                                             </div>
-                                        </div>
-
-
-                                        <?php
-                  }
-
-                }else{
-                 ?>
-
-                                        <div class="tab-pane fade" id="private" role="tabpanel"
-                                            aria-labelledby="private-tab">
-                                            <h5 class="sdksdjdj">No Record</h5>
-                                        </div>
-                                        <?php
-                }
-                ?>
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="private" role="tabpanel" aria-labelledby="private-tab">
+                                <div class="tab-pane fade" id="public-live" role="tabpanel" aria-labelledby="live-tab">
                                     <div class="row">
                                         <div class="col-sm-9">
                                             <div class="dash-tab">
+                                                @if (!empty($currentDate['starting_at']))
+
                                                 <h5>Open Pools of this Game Week 13M-19M2021</h5>
-                                                <p>13th March 2021 - 19th March 2021 GAMEWEEK</p>
+                                                <p>{{ date('d M Y', strtotime($currentDate['starting_at'])) }} -
+                                                    {{ date('d M Y', strtotime($currentDate['ending_at'])) }}</p>
+                                            @endif
                                             </div>
                                         </div>
                                         <div class="col-sm-3 pb-2">
@@ -177,51 +176,43 @@
                                         </div>
                                     </div>
                                     <div class="dash-data">
-                                        <?php
-                 if(count($livePool)!=0){
-                  foreach ($livePool as $key => $value) {
-                  ?>
 
-                                        <div class="mkpiuh">
-                                            <div class="row">
-                                                <div class="col-sm-7 mt-3">
-                                                    <div class="lkpoioubn">
-                                                        <div>
-                                                            <h6>{{ $value['pool_name'] }}</h6>
-                                                            <p class="yhji2365">Entry Amount <img
-                                                                    src="{{ asset('public/assets/image/coin-img.png') }}"
-                                                                    width="20" class="img-fluid" alt="">
-                                                                {{ $value['entry_fees'] }}</p>
+                                        @if (count($livePool) != 0)
+                                            @foreach ($livePool as $key => $value)
+                                                {{-- {{prr($value['pool_name']."ereerwr");}} --}}
+                                                <div class="mkpiuh">
+                                                    <div class="row">
+                                                        <div class="col-sm-7 mt-3">
+                                                            <div class="lkpoioubn">
+                                                                <div>
+                                                                    <h6>{{ $value['pool_name'] }}</h6>
+                                                                    <p class="yhji2365">Entry Amount <img
+                                                                            src="{{ asset('public/assets/image/coin-img.png') }}"
+                                                                            width="20" class="img-fluid" alt="">
+                                                                        {{ $value['entry_fees'] }}</p>
+                                                                </div>
+                                                                <div class="jhgyu56">
+                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                        Users</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="jhgyu56">
-                                                            <button class="asunht56">{{$value['joined']}} Users</button>
+                                                        <div class="col-sm-5 mt-4 w-90 pb-3">
+                                                            <div class="okiuj456">
+                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
+                                                                    data-bs-target="#myModal">+View Detail</a>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-5 mt-4 w-90 pb-3">
-                                                    <div class="okiuj456">
-                                                        <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">+View Detail</a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <?php
-                  }
-
-                }else{
-                 ?>
-
-                                        {{-- <div class="tab-pane fade" id="private" role="tabpanel"
+                                            @endforeach
+                                        @else
+                                            {{-- <div class="tab-pane fade" id="private" role="tabpanel"
                                             aria-labelledby="private-tab"> --}}
                                             <h5 class="sdksdjdj">No Record</h5>
-                                        {{-- </div> --}}
-                                        <?php
-                }
-                ?>
+                                            {{-- </div> --}}
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="private1" role="tabpanel" aria-labelledby="private-tab">
@@ -240,51 +231,41 @@
                                         </div>
                                     </div>
                                     <div class="dash-data">
-                                        <?php
-                 if(count($completePool)!=0){
-                  foreach ($completePool as $key => $value) {
-                  ?>
-
-                                        <div class="mkpiuh">
-                                            <div class="row">
-                                                <div class="col-sm-7 mt-3">
-                                                    <div class="lkpoioubn">
-                                                        <div>
-                                                            <h6>{{ $value['pool_name'] }}</h6>
-                                                            <p class="yhji2365">Entry Amount <img
-                                                                    src="{{ asset('public/assets/image/coin-img.png') }}"
-                                                                    width="20" class="img-fluid" alt="">
-                                                                {{ $value['entry_fees'] }}</p>
+                                        @if (count($completePool) != 0)
+                                            @foreach ($completePool as $key => $value)
+                                                <div class="mkpiuh">
+                                                    <div class="row">
+                                                        <div class="col-sm-7 mt-3">
+                                                            <div class="lkpoioubn">
+                                                                <div>
+                                                                    <h6>{{ $value['pool_name'] }}</h6>
+                                                                    <p class="yhji2365">Entry Amount <img
+                                                                            src="{{ asset('public/assets/image/coin-img.png') }}"
+                                                                            width="20" class="img-fluid" alt="">
+                                                                        {{ $value['entry_fees'] }}</p>
+                                                                </div>
+                                                                <div class="jhgyu56">
+                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                        Users</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="jhgyu56">
-                                                            <button class="asunht56">{{$value['joined']}} Users</button>
+                                                        <div class="col-sm-5 mt-4 w-90 pb-3">
+                                                            <div class="okiuj456">
+                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
+                                                                    data-bs-target="#myModal">+View Detail</a>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-5 mt-4 w-90 pb-3">
-                                                    <div class="okiuj456">
-                                                        <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                            data-bs-target="#myModal">+View Detail</a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <?php
-                  }
-
-                }else{
-                 ?>
-
-                                        {{-- <div class="tab-pane fade" id="private" role="tabpanel"
+                                            @endforeach
+                                        @else
+                                            {{-- <div class="tab-pane fade" id="private" role="tabpanel"
                                             aria-labelledby="private-tab"> --}}
                                             <h5 class="sdksdjdj">No Record</h5>
-                                        {{-- </div> --}}
-                                        <?php
-                }
-                ?>
+                                            {{-- </div> --}}
+                                        @endif
                                     </div>
                                 </div>
                             </div>

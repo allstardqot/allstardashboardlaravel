@@ -1240,13 +1240,13 @@ font-size: 12px; color: #cacaca;
  .lkahty{
   text-align: right; width: 40%;
  }
- .bants{
+ .bants {
   padding: 3%;
   border-color: #ff5000;
   border-radius: 30px;
-  background-color: #505281;
-  color: #e44b0a;
- }
+  background-color: #ff5000;
+  color: #fff !important;
+}
  .tbnayr{
   background-color: #ff5000;
   width: 30%;

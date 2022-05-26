@@ -22,8 +22,8 @@
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Courrent Week</a></li>
-                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week</a></li>
+                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Courrent Week Team</a></li>
+                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week Team</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">

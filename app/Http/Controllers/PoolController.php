@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\UserTeam;
 use App\Models\UserContest;
+use App\Models\Week;
 use App\Models\UserPool;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -34,8 +36,20 @@ class PoolController extends Controller
         $user_id    = Auth::user()->id;
         //$poolData = UserPool::query()->where(['user_id'=>$user_id])->get();
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
-        $upcomingPool=$livePool=$completePool=[];
-        foreach($poolQuery as $poolValue){
+        $completeDate=$currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
+        
+        foreach($poolQuery as $key=>$poolValue){
+            if($key==0){
+                if(nextWeek()>0){
+                    $upcomingDate=Week::find(nextWeek())->toArray();
+                }
+                if(currentWeek()>0){
+                    $currentDate=Week::find(currentWeek())->toArray();
+                }
+                // if(currentWeek()>0){
+                //     $completeDate=Week::find(currentWeek())->toArray();
+                // }
+            }
             if($poolValue['week']==nextWeek()){
                 $upcomingPool[]=$poolValue;
             }
@@ -46,13 +60,16 @@ class PoolController extends Controller
                 $completePool[]=$poolValue;
             }
         }
-            return view('users/pools/index',['upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool]);
+        
+
+            return view('users/pools/index',['upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
     }
 
     public function createPool()
     {
         // echo 'sljhf';die;
-        $team       = Team::get();
+        $user_id  = Auth::user()->id;
+        $team     = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
         return view('users/pools/createpool',['team'=>$team]);
     }
 
@@ -69,7 +86,8 @@ class PoolController extends Controller
                 'pool_type' => 'required',
                 'max_participants' => 'required|numeric',
                 'entry_fees' => 'required|numeric',
-                'poolpassword' => 'required',
+                'password' => 'required',
+                'team_id'=>'required'
             ]);
         }
         $pool = new UserPool;
@@ -82,7 +100,13 @@ class PoolController extends Controller
             $pool->password =  Hash::make($request->input('password'));
         }
         $pool->entry_fees =  $request->input('entry_fees');
-        $pool->save();
+        if($request->input('pool_type') == '1' && $pool->save() ){
+            $contest = new UserContest;
+            $contest->user_id    = Auth::user()->id;
+            $contest->pool_id    = $pool->id;
+            $contest->user_team_id = $request->input('team_id');
+            $contest->save();
+        }
         return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
         // return redirect()->back()->with('status','Student Added Successfully');
 
