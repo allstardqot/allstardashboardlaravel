@@ -81,6 +81,9 @@ class TeamController extends Controller
 
     public function createTeam(Request $request, $editId = null)
     {
+        if(nextWeek()<1){
+            return redirect('home')->with("message","Can't create team because admin not set week now.");
+        }
         $editId = !empty($request->editId) ? $request->editId : $editId;
         preg_match_all('!\d+!', $editId, $matches);
         if(!empty($editId) && empty($matches[0])){

@@ -6,6 +6,7 @@ use App\Models\CreatePost;
 use Illuminate\Http\Request;
 use App\Models\UserPool;
 use App\Models\UserTeam;
+use App\Models\Week;
 use App\Models\News;
 use App\Models\UserContest;
 use Illuminate\Support\Facades\DB;
@@ -53,11 +54,15 @@ class HomeController extends Controller
                     $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
             }
-            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser]);
+            $weeak=[];
+            if(currentWeek()>0){
+                $weeak=Week::find(currentWeek())->toArray();
+            }
+            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser,'weeak'=>$weeak]);
         }
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
 
-        // echo 'sljhf';die;
+        //prr($publicData);
         return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending]);
     }
 

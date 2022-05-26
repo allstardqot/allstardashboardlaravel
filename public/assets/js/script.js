@@ -27,14 +27,18 @@ $(document).ready(function () {
 });
 
 $('#poolpassword').hide();
+$('#poolTeamId').hide();
+
 $("#poolType").change(function () {
     // alert("The text has been changed.");
     var pollType = $('#poolType').val();
 
     if (pollType == 1) {
         $('#poolpassword').show();
+        $('#poolTeamId').show();
     } else {
         $('#poolpassword').hide();
+        $('#poolTeamId').hide();
 
     }
 
