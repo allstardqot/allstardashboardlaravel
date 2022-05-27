@@ -4,13 +4,21 @@ use App\Models\Position;
 use App\Models\Week;
 use Illuminate\Support\Carbon;
 
-const FIXTURE_STATUS = ['NOT STARTED', 'LIVE', 'IN REVIEW', 'COMPLETED', 'CANCELED'];
+const FIXTURE_STATUS = ['NS', 'LIVE', 'HT', 'FT', 'ET' ,'PEN_LIVE' ,'AET' ,'BREAK' ,'FT_PEN' ,'CANCL' ,'POSTP' ,'INT' ,'ABAN' ,'SUSP' ,'TBA' ,'AWARDED' ,'DELAYED' ,'WO' ,'AU' ,'Deleted'];
 
 
 function  prr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;
 }
 
+function weekIdDate($date){
+    $week=0;
+    $data=Week::whereDate('starting_at','<=',$date)->whereDate('ending_at','>=',$date)->first();
+    if(!empty($data->id)){
+        $week= $data->id;
+    }
+    return $week;
+}
 function p($data){
     echo "<pre>";print_r($data);echo "</pre>";
 }
@@ -35,7 +43,7 @@ function currentWeek(){
 
 function nextWeek(){
     $week=0;
-    $data=Week::whereDate('starting_at','>=',Carbon::now())->whereDate('ending_at','>=',Carbon::now())->first();
+    $data=Week::whereDate('starting_at','>',Carbon::now())->whereDate('ending_at','>=',Carbon::now())->first();
     if(!empty($data->id)){
         $week= $data->id;
     }

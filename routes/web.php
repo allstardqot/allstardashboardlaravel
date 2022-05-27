@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 //
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
+Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
 
 
 Route::get('/about_us', [AboutusController::class,'index']);
@@ -89,7 +90,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');
         Route::post('/store-post', [ManagerController::class, 'store'])->name('store-post');
 
-        Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
+        //Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
+        Route::get('/view-detail/{id}',[LeaderboardController::class,'viewdetail'])->name('view-detail');
 // });
 
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
