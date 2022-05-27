@@ -5,6 +5,8 @@
     <div class="container hgftrsde">
         <h3 class="text-white text-center mt-5">Edit Profile</h3>
         <form method="POST" action="{{ url('update') }}">
+            
+           
             @csrf
             <div class="row">
                 <div class="col-lg-6 mt-5 text-center">
@@ -15,7 +17,15 @@
                     <input class="inpuytgfcv" type="date" name="dob" placeholder="DD | MM | YY" />
                     <br>
                     {{-- <i class="fa fa-calendar icon ujhtf" aria-hidden="true"></i> --}}
+                    <div class="text-white">
+                        <select class="hgyui89" name="country_code">
+                            <option value="{{old('country_code')}}">Select Country Code</option>
+                            @foreach ($code as $data)
+                            <option value="{{$data}}" <?= ($data == $user['country_code'])?"selected":''; ?>>{{ $data }} </option>
+                            @endforeach
 
+                        </select>
+                    </div>
 
                     <input class="inpuytgfcv mt-3" type="text" id="phone" name="phone" placeholder="Phone Number" value="{{$user['phone']}}" /><br />
                     <div class="form-group d-flex justify-content-between">
@@ -39,23 +49,15 @@
                     <input class="inpuytgfcv mt-4" type="text" id="pincode" name="pincode" placeholder="Zipcode" value="{{$user['pincode']}}" /><br />
 
                     <div class="text-white">
-                        <select class="hgtfr56" name="country_code">
-                            <option value="{{old('country_code')}}">Select Country</option>
+                        <select class="hgtfr56" name="country">
+                            <option value="{{old('country')}}">Select Country</option>
                             @foreach ($nationlity as $data)
-                            <option value="{{$data->country}}" <?= ($data->country==$user['country_code'])?"selected":''; ?>>{{ $data->country }} </option>
+                            <option value="{{$data->country}}" <?= ($data->country==$user['country'])?"selected":''; ?>>{{ $data->country }} </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="text-white">
-                        <select class="hgyui89" name="team_id">
-                            <option value="{{old('team_id')}}">Select Team</option>
-                            @foreach ($team as $data)
-                            <option value="{{$data->name}}" <?= ($data->name == $user['team_id'])?"selected":''; ?>>{{ $data->name }} </option>
-                            @endforeach
-
-                        </select>
-                    </div>
+                   
 
                     <input class="inpuytgfcv mt-4" type="text" id="city" name="city" placeholder="City" value={{$user['city']}}><br />
                 </div>

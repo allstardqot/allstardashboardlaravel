@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>All Stars @yield('title')</title>
@@ -15,11 +14,6 @@
     <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
 
-
-
-
-
-
     <link href="{{ asset('public/assets/css/fantasy-allstars.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/fantasy-allstars1.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/f-a.css') }}" rel="stylesheet">
@@ -28,6 +22,17 @@
     <link href="{{ asset('public/assets/css/rte_theme_default.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/editor.css') }}" rel="stylesheet">
 
+    <script>
+        function deleteCookie1()  
+        {  
+             var name = 'selected_player';
+             var edit = 'step';
+            //  document.cookie = name+'="";-1; path=/';
+            //  document.cookie = edit+'="";-1; path=/';
+            // cookie1=document.cookie;  
+            // alert("Cookie1 is deleted");    
+        } 
+    </script>
 </head>
 
 <body>
@@ -46,8 +51,10 @@
 @endforeach
 @endif
 @if(session()->has('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-one" id="alert">
         {{ session()->get('message') }}
+
+        <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
     </div>
 @endif
 @yield('content')
@@ -71,11 +78,12 @@
 
 <script>
     var editor1 = new RichTextEditor("#div_editor1");
+    $('body').on('click','#createTeam',function(){
+        alert('fdg');
+        $.removeCookie('selected_player');
+        $.removeCookie('editId');
+    });
     $(document).ready(function() {
-
-
-
-
 
         $(".hideShow").click(function(e) {
             var keyId = $(this).data('keyid');

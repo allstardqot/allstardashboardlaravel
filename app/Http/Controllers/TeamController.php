@@ -28,6 +28,7 @@ class TeamController extends Controller
      */
     public function index()
     {
+       
         $nextWeek=nextWeek();
         $user_id=Auth::user()->id;
         $userTeam = UserTeam::where([['user_id',$user_id],['week',$nextWeek]])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();
@@ -52,6 +53,7 @@ class TeamController extends Controller
     }
 
     public function currentTeam(){
+       
         $user_id=Auth::user()->id;
         $currentWeek=currentWeek();
         //$teamCount=UserTeam::where([['week',$currentWeek],['user_id',$user_id]])->count();
@@ -81,6 +83,8 @@ class TeamController extends Controller
 
     public function createTeam(Request $request, $editId = null)
     {
+
+        
         if(nextWeek()<1){
             return redirect('home')->with("message","Can't create team because admin not set week now.");
         }
