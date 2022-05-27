@@ -37,7 +37,7 @@ class PoolController extends Controller
         //$poolData = UserPool::query()->where(['user_id'=>$user_id])->get();
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
         $completeDate=$currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
-        
+
         foreach($poolQuery as $key=>$poolValue){
             if($key==0){
                 if(nextWeek()>0){
@@ -60,7 +60,7 @@ class PoolController extends Controller
                 $completePool[]=$poolValue;
             }
         }
-        
+
 
             return view('users/pools/index',['upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
     }

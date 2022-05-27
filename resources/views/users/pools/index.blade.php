@@ -140,8 +140,7 @@
                                                         </div>
                                                         <div class="col-sm-5 mt-4 w-90 pb-3">
                                                             <div class="okiuj456">
-                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                                    data-bs-target="#myModal">+View Detail</a>
+                                                                <a href="{{ url('view-detail',$value['id']) }}" class="hjytg458">+View Detail</a>
 
                                                             </div>
                                                         </div>
@@ -199,8 +198,7 @@
                                                         </div>
                                                         <div class="col-sm-5 mt-4 w-90 pb-3">
                                                             <div class="okiuj456">
-                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                                    data-bs-target="#myModal">+View Detail</a>
+                                                                <a href="{{ url('view-detail',$value['id']) }}" class="hjytg458">+View Detail</a>
 
                                                             </div>
                                                         </div>
@@ -252,8 +250,7 @@
                                                         </div>
                                                         <div class="col-sm-5 mt-4 w-90 pb-3">
                                                             <div class="okiuj456">
-                                                                <a href="#" class="hjytg458" data-bs-toggle="modal"
-                                                                    data-bs-target="#myModal">+View Detail</a>
+                                                                <a href="{{ url('view-detail',$value['id']) }}" class="hjytg458">+View Detail</a>
 
                                                             </div>
                                                         </div>

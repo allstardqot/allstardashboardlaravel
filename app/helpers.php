@@ -43,7 +43,7 @@ function currentWeek(){
 
 function nextWeek(){
     $week=0;
-    $data=Week::whereDate('starting_at','>=',Carbon::now())->whereDate('ending_at','>=',Carbon::now())->first();
+    $data=Week::whereDate('starting_at','>',Carbon::now())->whereDate('ending_at','>=',Carbon::now())->first();
     if(!empty($data->id)){
         $week= $data->id;
     }
