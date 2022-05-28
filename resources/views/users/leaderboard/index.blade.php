@@ -5,70 +5,38 @@
         <div class="container-fluid p-4 text-white sdhdfksk">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="hsadguy6">
-                        <h4 class="mt-3 jsdghdhs9">Trending Feeds</h4>
-                        <h6 class="mt-3 h6h8">NestleVera</h6>
-                        <p class="ghy78">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="a2a3s4" href="">2 Comment</a>
-                        <a class="a3456" href="">Share</a>
-                        <hr />
-
-                        <h6 class="h6h8">NestleVera</h6>
-                        <p class="ghy78">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="a2a3s4" href="">2 Comment</a>
-                        <a class="a3456" href="">Share</a>
-                        <hr />
-
-                        <h6 class="h6h8">NestleVera</h6>
-                        <p class="ghy78">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="a2a3s4" href="">2 Comment</a>
-                        <a class="a3456" href="">Share</a>
-                        <hr />
+                    <div class="htavb">
+                        <h4 class="mt-3 mkuytg">Trending Feeds</h4>
+                        <div class="news-col-content">
+                            @foreach ($trending as $key => $value)
+                                    {!! $value->description !!}
+                                    <div class="like_share">
+                                        <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
+                                        <a class="jkyts778" href="#">Share</a>
+                                    </div>
+                                    <hr />
+                                @endforeach
+                        </div>
                     </div>
 
                     <div class="hjuy4589">
                         <h4 class="mt-5 mkuytg">Premier League News</h4>
                         <div class="latest-image-sec">
+                            @foreach($newsdata as $key => $value)
                             <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
+                                <a href="{{ url('/latest-news') }}" class="latest-anchor">
                                     <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
+                                        <h4>{{ $value['title'] }}</h4>
+                                    <p>{!! $value['localteam']!!}</p>
+    
+                                    <small>Read More..</small>
                                     </div>
+    
                                 </a>
                             </div>
-                            <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
-                                    <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
-                                    <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
-                                    </div>
-                                </a>
-                            </div>
+                            @endforeach
                         </div>
+    
                     </div>
                 </div>
                 <div class="col-lg-6 mt-3">
@@ -440,7 +408,7 @@
                                             <div class="mypoint">
                                                 <div class="my-point-head">
                                                     <h4>{{isset($result['team_name'])?$result['team_name']:''}}</h4>
-                                                    <a href="#" class="btn btn-danger">Edit Team</a>
+                                                    <a href="{{ route('edit-team',$userTeam['id'])  }}" class="btn btn-danger">Edit Team</a>
                                                 </div>
                                                 <div class="table-responsive">
                                                     <table class="table">
@@ -578,9 +546,11 @@
                                                             </tr> --}}
                                                         </tbody>
                                                     </table>
-
+                                                 @php 
+                                                    // prr($userTeam)
+                                                 @endphp
                                                     <div class="squad-btn">
-                                                        <a href="#" class="btn btn-danger">Go to menage Squad</a>
+                                                        <a href="javascript:void(0)" onclick="editManageSquad({{$userTeam['id']  }})" class="btn btn-danger">Go to menage Squad</a>
                                                     </div>
                                                     <div class="fantacy-point">
                                                         <h3>Fantasy Point <strong> $900</strong></h3>

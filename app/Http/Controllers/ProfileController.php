@@ -61,6 +61,7 @@ class ProfileController extends Controller
         $user->phone    = $request->input('phone');
         $user->gender    = $request->input('gender');
         $user->address    = $request->input('address');
+        $user->dob    = $request->input('dob');
         $user->pincode    = $request->input('pincode');
         $user->country    = $request->input('country');
         $user->country_code    = $request->input('country_code');

@@ -8,12 +8,12 @@
       <div class="row">
         <div class="col-lg-8 mt-4">
           <div class="jhyt67">
-            <h3 class="text-white mt-3"><b>Latest News</b></h3>
+            <h3 class="text-white mt-3" id="newsTextHead"> <b>Latest News</b></h3>
             @php
                 $i=1;
             @endphp
             @foreach ($newsdata as $newsValue)
-                        <p class="text-white mt-3">
+                        <p class="text-white mt-3" id='newsTextFirst'>
               {{ $newsValue['title'] }}
             </p>
             {{-- {{ pr($newsValue) }} --}}
@@ -46,7 +46,7 @@
                     @foreach($newsdata as $key => $value)
                     <div class="latest-card">
                         <a href="{{ url('/latest-news') }}" class="latest-anchor">
-                            <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
+                            {{-- <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" /> --}}
                             <div class="news-content">
                                 <h4>{{ $value['title'] }}</h4>
                             <p>{!! $value['localteam']!!}</p>

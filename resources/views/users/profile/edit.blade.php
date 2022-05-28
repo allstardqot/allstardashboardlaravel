@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div class="container hgftrsde">
-        <h3 class="text-white text-center mt-5">Edit Profile</h3>
+        <h3 class="text-white text-center mt-5 editprofileText">Edit Profile</h3>
         <form method="POST" action="{{ url('update') }}">
             
            
@@ -14,16 +14,15 @@
                     <input class="inpuytgfcv mt-4" type="text" id="email" name="email" placeholder="Email" value="{{$user['email']}}" /><br />
                     <br>
 
-                    <input class="inpuytgfcv" type="date" name="dob" placeholder="DD | MM | YY" />
+                    <input class="inpuytgfcv dob"  name="dob" id="dob" placeholder="DD | MM | YY" value="{{$user['dob']}}"/>
                     <br>
                     {{-- <i class="fa fa-calendar icon ujhtf" aria-hidden="true"></i> --}}
-                    <div class="text-white">
+                    <div class="text-white" >
                         <select class="hgyui89" name="country_code">
                             <option value="{{old('country_code')}}">Select Country Code</option>
                             @foreach ($code as $data)
                             <option value="{{$data}}" <?= ($data == $user['country_code'])?"selected":''; ?>>{{ $data }} </option>
                             @endforeach
-
                         </select>
                     </div>
 
