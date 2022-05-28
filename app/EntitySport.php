@@ -141,7 +141,9 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -151,7 +153,9 @@ class EntitySport
         $response = $this->httpParameter('squad/season', $params);
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -161,7 +165,9 @@ class EntitySport
         $response = $this->httpParameter('fixtures', $params);
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -173,7 +179,9 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -184,7 +192,9 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -194,7 +204,9 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }

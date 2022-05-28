@@ -14,7 +14,9 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\LeaderboardController;
-
+use App\Jobs\GetFixture;
+use App\Jobs\test;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 
@@ -59,6 +61,14 @@ Route::group(['middleware' => ['auth']], function() {
         /**
          * Dashboard Routes
          */
+// Route::get('cron/', function(){
+
+//         // $job=(new \App\Jobs\GetFixture())->delay(now()->addMinute(1));
+//         // dispatch($job);
+//         $job=(new GetFixture())
+//         ->delay(Carbon::now()->addSecond(5));
+//         dispatch($job);
+//     });
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::post('/home', [App\Http\Controllers\HomeController::class, 'jointeam'])->name('home');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

@@ -4,6 +4,7 @@ namespace App\Console;
 use App\Jobs\GetFixture;
 use App\Jobs\GetTeam;
 use App\Jobs\NewsData;
+use App\Models\Team;
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -16,7 +17,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Democron::class,
     ];
 
 
@@ -28,11 +28,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(GetFixture::class)->everyFifteenMinutes();
+        $schedule->job(GetFixture::class)->everyMinute();
+        $schedule->job(Team::class)->daily();
         //$schedule->command('demo:cron')->everyMinute();
         //$schedule->job(GetTeam::class)->everyFifteenMinutes();
         //$schedule->job(NewsData::class)->everyFifteenMinutes();
         //$schedule->job(GetTeam::class)->weekly();
+        //dispatch($schedule);
     }
 
     /**

@@ -2,14 +2,16 @@
 
 namespace App\Jobs;
 
-use App\EntitySport;
-use App\Models\Fixture;
 use Illuminate\Bus\Queueable;
-use App\Models\League;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+
+use App\EntitySport;
+use App\Models\Fixture;
+use App\Models\League;
 use Carbon\Carbon;
 use App\Models\Season;
 use Illuminate\Support\Facades\Log;
@@ -32,7 +34,7 @@ class GetFixture implements ShouldQueue
      */
     public function __construct()
     {
-        $this->queue = 'fixture';
+        //$this->queue = 'fixture';
     }
 
     /**
@@ -43,17 +45,18 @@ class GetFixture implements ShouldQueue
     public function handle()
     {
         //Getlineup::dispatch('18138818');
-
-        log::info("fixture running");
+        log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
 
         $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news');
         //$fixtures=json_decode($fixtures_data,true);
+        log::info("6666666666666");
+
         $setSeasonId='';
         foreach($fixtures as $value){
-                if($value['season_id']!='18378'){
-                    continue;
-                }
+                // if($value['season_id']!='18378'){
+                //     continue;
+                // }
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [
@@ -72,11 +75,15 @@ class GetFixture implements ShouldQueue
                     'starting_at' => $value['time']['starting_at']['date_time'],
                     'status' => $value['time']['status']
                 ]);
+                log::info("fffffffffffff");
+
                 if($fixtureQuery->wasRecentlyCreated){
-                        GetTeam::dispatch();
+                        log::info("lllkkkkkkkk");
+                        //GetTeam::dispatch();
                         GetSquad::dispatch($value['id']);
-                        // $lineupSchedule = Carbon::parse($event->starting_at)->addMinutes(-45);
-                        // GetLineup::dispatch($event->id)->delay($lineupSchedule);
+                        $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
+                        log::info($lineupSchedule);
+                        Getlineup::dispatch($fixtureQuery->id)->delay($lineupSchedule);
                         GetScore::dispatch($fixtureQuery->id)->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
                         //Getlineup::dispatch($value['id']);
 
@@ -119,6 +126,9 @@ class GetFixture implements ShouldQueue
                     //         ]);
                     //     }
                     // }
+                }else{
+                log::info("nnnnnnnnnnnnn");
+
                 }
         }
     }

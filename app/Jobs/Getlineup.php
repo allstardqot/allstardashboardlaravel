@@ -16,6 +16,8 @@ class Getlineup implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private int $fixtureId;
+    private bool $autoSet;
+
     /**
      * The number of seconds the job can run before timing out.
      *
@@ -28,9 +30,10 @@ class Getlineup implements ShouldQueue
      * @param $fixtureId
      * @param bool $autoSet
      */
-    public function __construct($fixtureId)
+    public function __construct($fixtureId,$autoSet=true)
     {
-        $this->queue = 'lineup';
+        //$this->queue = 'lineup';
+        $this->autoSet=$autoSet;
         $this->fixtureId = $fixtureId;
     }
 
@@ -41,9 +44,10 @@ class Getlineup implements ShouldQueue
      */
     public function handle()
     {
+        log::info("lineup running");
+
         $api = new EntitySport();
         $getLineup = $api->getLineup($this->fixtureId.'?include=lineup');
-        Log::info($getLineup);
 
         if(!empty($getLineup['lineup']['data'])){
             Log::info("lineup announced.".$this->fixtureId);
@@ -54,7 +58,8 @@ class Getlineup implements ShouldQueue
                 if($squadData->update()){
                 }
             }
-        }else{
+        }
+        if ($this->autoSet) {
             Log::info("lineup Schedule".$this->fixtureId);
             self::dispatch($this->fixtureId)->delay(now()->addMinutes(1));
         }

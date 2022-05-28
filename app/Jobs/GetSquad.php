@@ -12,6 +12,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Team;
+use Illuminate\Support\Facades\Log;
+
 
 class GetSquad implements ShouldQueue
 {
@@ -32,7 +34,7 @@ class GetSquad implements ShouldQueue
      */
     public function __construct($fixtureId)
     {
-        $this->queue = 'squad';
+        //$this->queue = 'squad';
         $this->fixtureId = $fixtureId;
     }
 
@@ -43,6 +45,8 @@ class GetSquad implements ShouldQueue
      */
     public function handle()
     {
+        log::info("squad running");
+
         $api = new EntitySport();
         $fixtureData=Fixture::find($this->fixtureId);
         $teamArray = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
