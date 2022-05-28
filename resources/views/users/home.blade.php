@@ -28,7 +28,6 @@
                         @foreach($newsdata as $key => $value)
                         <div class="latest-card">
                             <a href="{{ url('/latest-news') }}" class="latest-anchor">
-                                <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid" alt="" />
                                 <div class="news-content">
                                     <h4>{{ $value['title'] }}</h4>
                                 <p>{!! $value['localteam']!!}</p>

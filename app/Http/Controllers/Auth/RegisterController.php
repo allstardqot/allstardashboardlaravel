@@ -70,9 +70,7 @@ class RegisterController extends Controller
             'user_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'team_id' => ['required', ],
-            'player_id' => ['required', ],
-            'country_code' => ['required', ],
+            'country' => ['required', ],
         ]);
     }
 
@@ -89,9 +87,8 @@ class RegisterController extends Controller
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'role_id'=> 3 ,
-            'country_code'=> $data['country_code'] ,
-            'team_id'=> $data['team_id'] ,
-            'player_id'=> $data['player_id'] ,
+            'country'=> $data['country'] ,
+           
             'password' => Hash::make($data['password']),
         ]);
 

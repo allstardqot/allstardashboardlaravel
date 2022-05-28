@@ -43,7 +43,7 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
-            'from' => array('name' => 'All Star'),
+            'from' => array('address' => 'admin@allstarsfan.com', 'name' => 'All Star'),
         ],
 
         'ses' => [
@@ -93,8 +93,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'admin@allstarsfan.com'),
+        'name' => env('MAIL_FROM_NAME', 'All Star'),
     ],
 
     /*

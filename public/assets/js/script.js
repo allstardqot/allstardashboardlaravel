@@ -1,5 +1,7 @@
 console.log("Script is loading.......")
 
+
+$('.dob').datepicker();
 $(".newshideShow").click(function (e) {
     //var keyId = $(this).data('keyid');
     $(".hidepara").toggleClass("active");
@@ -126,6 +128,7 @@ function editManageSquad(id) {
             //$.cookie('selected_player', result);
             set_cookie('selected_player', result);
 
+            // alert(window.location);
 
             manageSquad(result,id);
             window.location="edit-team/"+id;

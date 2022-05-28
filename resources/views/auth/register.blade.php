@@ -56,15 +56,15 @@
                     <input id="password-confirm" type="password" class="input-reis form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                         <br>
                     <div class="form-group">
-                        <select class="form-control input-reis" name="country_code" >
-                          <option value="{{old('country_code')}}">Select Country</option>
+                        <select class="form-control input-reis" name="country" >
+                          <option value="{{old('country')}}">Select Country</option>
                           @foreach ($nationlity as $data)
                               <option value="{{$data->country}}" >{{ $data->country }} </option>               
                           @endforeach   
                          
                         </select>
                       </div>
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                         <select class="form-control input-reis" name="team_id" >
                           <option value="{{old('team_id')}}">Select Team</option>
                           @foreach ($team as $data)
@@ -79,7 +79,7 @@
                               <option value="{{$data->display_name}}" >{{ $data->display_name }} </option>               
                           @endforeach   
                         </select>
-                      </div>
+                      </div> --}}
                        
                     <br />
                     

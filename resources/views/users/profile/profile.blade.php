@@ -4,12 +4,12 @@
 
 <main>
   @if(session()->has('message'))
-    <div class="alert alert-success alert-one" id="alert">
+    {{-- <div class="alert alert-success alert-one" id="alert">
         {{ session()->get('message') }}
 
         <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
-    </div>
-@endif
+    </div> --}}
+  @endif
   <div class="container sdhdjhsio">
     <div class="row mt-5 text-center sxdcnd">
       <div class="col-lg-4 mt-2">
