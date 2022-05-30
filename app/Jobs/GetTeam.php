@@ -12,6 +12,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Team;
+use Illuminate\Support\Facades\Log;
+
 
 class GetTeam implements ShouldQueue
 {
@@ -32,7 +34,7 @@ class GetTeam implements ShouldQueue
      */
     public function __construct()
     {
-        $this->queue = 'getteam';
+        //$this->queue = 'getteam';
         //$this->season_id = $season_id;
     }
 
@@ -43,6 +45,7 @@ class GetTeam implements ShouldQueue
      */
     public function handle()
     {
+        log::info("get team running");
         $api = new EntitySport();
         $getSeason=$api->getLeagueSeason("Premier League");
         foreach($getSeason as $seasonValue){
@@ -66,7 +69,8 @@ class GetTeam implements ShouldQueue
 
                 ]);
             }
-            if(!empty($seasonValue['current_season_id']) && $seasonValue['current_season_id']=='18378'){
+            // if(!empty($seasonValue['current_season_id']) && $seasonValue['current_season_id']=='18378'){
+            if(!empty($seasonValue['current_season_id'])){
                 $teams = $api->getTeam($seasonValue['current_season_id']);
                 $setCountry = '';
                 foreach ($teams as $teamData) {

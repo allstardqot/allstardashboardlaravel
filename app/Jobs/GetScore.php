@@ -12,6 +12,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Team;
+use Illuminate\Support\Facades\Log;
+
 
 class GetScore implements ShouldQueue
 {
@@ -34,7 +36,7 @@ class GetScore implements ShouldQueue
      */
     public function __construct($fixtureId,bool $autoSet = true)
     {
-        $this->queue = 'score';
+        //$this->queue = 'score';
         $this->autoSet = $autoSet;
         $this->fixtureId = $fixtureId;
     }
@@ -46,6 +48,8 @@ class GetScore implements ShouldQueue
      */
     public function handle()
     {
+        log::info("getSquad running");
+
         $api = new EntitySport();
         $fixture = Fixture::query()
                 ->where('id', $this->fixtureId)
@@ -60,6 +64,10 @@ class GetScore implements ShouldQueue
             } else {
 
                 $mathcScore = $api->getMacthScore($this->fixtureId . '?include=lineup.player,bench.player');
+                if($mathcScore['time']){
+                    $fixture->status=isset($mathcScore['time']['status'])?$mathcScore['time']['status']:$fixture->status;
+                    $fixture->update();
+                }
                 if (!empty($mathcScore['lineup']['data'])) {
                     foreach ($mathcScore['lineup']['data'] as $scoreValue) {
                         $totalPoints = 0;

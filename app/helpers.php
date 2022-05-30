@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 const FIXTURE_STATUS = ['NS', 'LIVE', 'HT', 'FT', 'ET' ,'PEN_LIVE' ,'AET' ,'BREAK' ,'FT_PEN' ,'CANCL' ,'POSTP' ,'INT' ,'ABAN' ,'SUSP' ,'TBA' ,'AWARDED' ,'DELAYED' ,'WO' ,'AU' ,'Deleted'];
 
 
-function  prr($data){
+function prr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;
 }
 
