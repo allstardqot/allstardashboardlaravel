@@ -44,6 +44,7 @@ Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
 
 Route::get('/about_us', [AboutusController::class,'index']);
 Route::get('/contact_us', [ContactusController::class,'index']);
+Route::post('/insert-enquiry', [ContactusController::class,'insert'])->name('insert-enquiry');
 Route::get('/faq', [FaqController::class,'index']);
 
 

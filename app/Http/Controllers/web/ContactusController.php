@@ -10,4 +10,9 @@ class ContactusController extends Controller
     public function index(){
         return view("web.contact_us");
     }
+
+    public function insert(Request $request){
+        print_r($request);die;
+
+    }
 }
