@@ -32,7 +32,7 @@ class Getlineup implements ShouldQueue
      */
     public function __construct($fixtureId,$autoSet=true)
     {
-        //$this->queue = 'lineup';
+        $this->queue = 'lineup';
         $this->autoSet=$autoSet;
         $this->fixtureId = $fixtureId;
     }
@@ -44,10 +44,11 @@ class Getlineup implements ShouldQueue
      */
     public function handle()
     {
-        log::info("lineup running");
 
         $api = new EntitySport();
         $getLineup = $api->getLineup($this->fixtureId.'?include=lineup');
+        log::info("lineup running".$this->fixtureId);
+        log::info("lineup runningfff".json_encode($getLineup));
 
         if(!empty($getLineup['lineup']['data'])){
             Log::info("lineup announced.".$this->fixtureId);

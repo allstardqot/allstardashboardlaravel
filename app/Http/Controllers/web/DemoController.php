@@ -75,7 +75,7 @@ class DemoController extends Controller
     }
     public function teamData(){
         $api = new EntitySport();
-        $getSeason=$api->team("season/19376");
+        $getSeason=$api->team("season/19273");
         //prr($getSeason);
         foreach($getSeason as $teamData){
             // if(!League::find($seasonValue['id'])){

@@ -34,7 +34,7 @@ class GetSquad implements ShouldQueue
      */
     public function __construct($fixtureId)
     {
-        //$this->queue = 'squad';
+        $this->queue = 'squad';
         $this->fixtureId = $fixtureId;
     }
 

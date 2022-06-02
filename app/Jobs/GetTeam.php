@@ -34,7 +34,7 @@ class GetTeam implements ShouldQueue
      */
     public function __construct()
     {
-        //$this->queue = 'getteam';
+        $this->queue = 'getteam';
         //$this->season_id = $season_id;
     }
 

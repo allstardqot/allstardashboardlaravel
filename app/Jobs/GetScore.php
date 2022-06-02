@@ -36,7 +36,7 @@ class GetScore implements ShouldQueue
      */
     public function __construct($fixtureId,bool $autoSet = true)
     {
-        //$this->queue = 'score';
+        $this->queue = 'score';
         $this->autoSet = $autoSet;
         $this->fixtureId = $fixtureId;
     }
@@ -48,7 +48,7 @@ class GetScore implements ShouldQueue
      */
     public function handle()
     {
-        log::info("getSquad running");
+        log::info("getSquad running".$this->fixtureId);
 
         $api = new EntitySport();
         $fixture = Fixture::query()
