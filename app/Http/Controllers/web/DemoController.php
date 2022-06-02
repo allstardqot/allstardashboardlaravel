@@ -14,6 +14,8 @@ use App\Models\Squad;
 use App\Models\Team;
 use App\Models\UserTeam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 use Illuminate\Support\Facades\Http;
 
@@ -76,158 +78,91 @@ class DemoController extends Controller
     //fixture data
     public function fixtureData(){
 
+        log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
-        $fixtureData=Fixture::select('id','localteam_id','visitorteam_id')->get()->toArray();
-        foreach($fixtureData as $value){
-            $getLineup = $api->getLineup($value['id'].'?include=lineup');
-            if(!empty($getLineup['lineup']['data'])){
-                foreach($getLineup['lineup']['data'] as $lineupValue){
-                    $squadData=Squad::where([['player_id',$lineupValue['player_id']],['fixture_id',$lineupValue['fixture_id']],['team_id',$lineupValue['team_id']]])->first();
-                    $squadData->playing11=1;
-                    if($squadData->update()){
-                    }
-                }
-            }
-        }
-        pr($fixtureData);
 
-        $fixture[] = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
-        pr($fixture);
-        // if(in_array("18366",$team)){
-        //     p("fineee");
-        // }
-        // pr($team);
-        // $getSeason=$api->getLeagueSeason("Premier League");
-        // foreach($getSeason as $seasonValue){
-        //     pr($seasonValue);
-        // }
-        // pr($getSeason);
-        $getNews = $api->getAllNews('');
-        foreach($getNews as $newsData){
-            $fixtureQuery = News::query()->updateOrCreate([
-                'fixture_id' => $newsData['fixture_id'],
-            ], [
-                'title' => $newsData['introduction'],
-                'localteam' => $newsData['localteam'],
-                'visitorteam' => $newsData['visitorteam']
-            ]);
-        }
-        pr($getNews);
-
-        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news');
-        pr($fixtures);
+        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(30)->toDateString().'?include=news');
         //$fixtures=json_decode($fixtures_data,true);
+        log::info("6666666666666");
+//        prr($fixtures);
         $setSeasonId='';
         foreach($fixtures as $value){
-            //pr($value);
-            //pr($value['time']['starting_at']['date_time']);
-            $fixtureQuery = Fixture::query()->updateOrCreate([
-                'id' => $value['id'],
-            ], [
-                'season_id' => $value['season_id'],
-                'league_id' => $value['league_id'],
-                'stage_id' => $value['stage_id'],
-                'round_id' => $value['round_id'],
-                'group_id' => $value['group_id'],
-                'aggregate_id' => $value['aggregate_id'],
-                'venue_id' => $value['venue_id'],
-                'referee_id' => $value['referee_id'],
-                'localteam_id' => $value['localteam_id'],
-                'visitorteam_id' => $value['visitorteam_id'],
-                'weather_report' => is_array($value['weather_report'])?json_encode($value['weather_report']):'',
-                'scores' => is_array($value['scores'])?json_encode($value['scores']):'',
-                'starting_at' => $value['time']['starting_at']['date_time']
-            ]);
-            if($fixtureQuery->wasRecentlyCreated){
-                if(!Season::find($value['season_id'])){
-                    $season = $api->getSeason($value['season_id']);
-                    $competition = Season::query()->updateOrCreate([
-                        'id' => $value['season_id'],
-                    ], [
-                        'name' => $season['name'],
-                        'league_id' => $season['league_id'],
-                        'is_current_season' => $season['is_current_season'],
-                        'current_round_id' => $season['current_round_id'],
-                        'current_stage_id' => $season['current_stage_id'],
-                    ]);
+                // if($value['season_id']!='18378'){
+                //     continue;
+                // }
+                $fixtureQuery = Fixture::query()->updateOrCreate([
+                    'id' => $value['id'],
+                ], [
+                    'season_id' => $value['season_id'],
+                    'league_id' => $value['league_id'],
+                    'stage_id' => $value['stage_id'],
+                    'round_id' => $value['round_id'],
+                    'group_id' => $value['group_id'],
+                    'aggregate_id' => $value['aggregate_id'],
+                    'venue_id' => $value['venue_id'],
+                    'referee_id' => $value['referee_id'],
+                    'localteam_id' => $value['localteam_id'],
+                    'visitorteam_id' => $value['visitorteam_id'],
+                    'weather_report' => is_array($value['weather_report'])?json_encode($value['weather_report']):'',
+                    'scores' => is_array($value['scores'])?json_encode($value['scores']):'',
+                    'starting_at' => $value['time']['starting_at']['date_time'],
+                    'status' => $value['time']['status']
+                ]);
+                log::info("fffffffffffff");
+
+                if($fixtureQuery->wasRecentlyCreated){
+                        log::info("lllkkkkkkkk");
+                        //GetTeam::dispatch();
+                        GetSquad::dispatch($value['id']);
+                        $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
+                        log::info($lineupSchedule);
+                        Getlineup::dispatch($fixtureQuery->id)->delay($lineupSchedule);
+                        GetScore::dispatch($fixtureQuery->id)->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
+                        //Getlineup::dispatch($value['id']);
+
+
+                    // if(!Season::find($value['season_id'])){
+                    //     $seasonData = $api->getSeason('');
+                    //     foreach ($seasonData as $season) {
+                    //         $competition = Season::query()->updateOrCreate([
+                    //             'id' => $season['id'],
+                    //         ], [
+                    //             'name' => $season['name'],
+                    //             'league_id' => $season['league_id'],
+                    //             'is_current_season' => $season['is_current_season'],
+                    //             'current_round_id' => $season['current_round_id'],
+                    //             'current_stage_id' => $season['current_stage_id'],
+                    //         ]);
+                    //     }
+                    // }
+
+                    // if(!League::find($value['league_id'])){
+                    //     $leagueData = $api->getLeague('');
+                    //     foreach ($leagueData as $league) {
+                    //         $leagueQuery = League::query()->updateOrCreate([
+                    //             'id' => $league['id'],
+                    //         ], [
+                    //             'name' => $league['name'],
+                    //             'active' => $league['active'],
+                    //             'type' => $league['type'],
+                    //             'legacy_id' => $league['legacy_id'],
+                    //             'country_id' => $league['country_id'],
+                    //             'is_cup' => $league['is_cup'],
+                    //             'logo_path' => $league['logo_path'],
+                    //             'is_friendly' => $league['is_friendly'],
+                    //             'current_season_id' => $league['current_season_id'],
+                    //             'current_round_id' => $league['current_round_id'],
+                    //             'current_stage_id' => $league['current_stage_id'],
+                    //             'live_standings' => $league['live_standings'],
+                    //             'coverage' => json_encode($league['coverage']),
+
+                    //         ]);
+                    //     }
+                    // }
+                }else{
+                log::info("nnnnnnnnnnnnn");
+
                 }
-
-                if(!League::find($value['league_id'])){
-                    $league = $api->getLeague($value['league_id']);
-                    $leagueQuery = League::query()->updateOrCreate([
-                        'id' => $value['league_id'],
-                    ], [
-                        'name' => $league['name'],
-                        'active' => $league['active'],
-                        'type' => $league['type'],
-                        'legacy_id' => $league['legacy_id'],
-                        'country_id' => $league['country_id'],
-                        'is_cup' => $league['is_cup'],
-                        'logo_path' => $league['logo_path'],
-                        'is_friendly' => $league['is_friendly'],
-                        'current_season_id' => $league['current_season_id'],
-                        'current_round_id' => $league['current_round_id'],
-                        'current_stage_id' => $league['current_stage_id'],
-                        'live_standings' => $league['live_standings'],
-                        'coverage' => json_encode($league['coverage']),
-
-                    ]);
-                }
-
-                if($setSeasonId=='' || $setSeasonId!=$value['season_id']){
-                    $teams = $api->getTeam($value['season_id']);
-                    $setCountry='';
-                    foreach($teams as $teamData){
-                        $teamQuery = Team::query()->updateOrCreate([
-                            'id' => $teamData['id'],
-                        ], [
-                            'name' => $teamData['name'],
-                            'legacy_id' => $teamData['legacy_id'],
-                            'short_code' => $teamData['short_code'],
-                            'twitter' => $teamData['twitter'],
-                            'country_id' => $teamData['country_id'],
-                            'national_team' => $teamData['national_team'],
-                            'founded' => $teamData['founded'],
-                            'logo_path' => $teamData['logo_path'],
-                            'venue_id' => $teamData['venue_id'],
-                            'current_season_id' => $teamData['current_season_id'],
-                            'is_placeholder' => $teamData['is_placeholder'],
-                        ]);
-
-                        if($setCountry=='' || $setCountry!=$teamData['country_id'])
-                        $players = $api->getPlayer($teamData['country_id'].'/players');
-                        foreach($players as $playerData){
-                            if($playerData['birthdate']){
-                                $convert=str_replace("/","-",$playerData['birthdate']);
-                                $date=date_create($convert);
-                                $playerData['birthdate']=date_format($date,"Y/m/d H:i:s");
-                            }
-                            $date=date_create("16-01-1988");
-                            $playerQuery = Player::query()->updateOrCreate([
-                                'id' => $playerData['player_id'],
-                            ], [
-                                'team_id' => $playerData['team_id'],
-                                'country_id' => $playerData['country_id'],
-                                'position_id' => $playerData['position_id'],
-                                'common_name' => $playerData['common_name'],
-                                'display_name' => $playerData['display_name'],
-                                'fullname' => $playerData['fullname'],
-                                'firstname' => $playerData['firstname'],
-                                'lastname' => $playerData['lastname'],
-                                'nationality' => $playerData['nationality'],
-                                'birthdate' => $playerData['birthdate'],
-                                'birthcountry' => $playerData['birthcountry'],
-                                'birthplace' => $playerData['birthplace'],
-                                'height' => $playerData['height'],
-                                'weight' => $playerData['weight'],
-                                'image_path' => $playerData['image_path'],
-                            ]);
-                        }
-                        $setCountry=$teamData['country_id'];
-                    }
-                    $setSeasonId=$value['season_id'];
-                }
-            }
         }
     }
 
