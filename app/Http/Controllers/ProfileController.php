@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserContest;
 use Illuminate\Http\Request;
 use App\Models\Nationalities;
 use App\Models\Team;
@@ -13,11 +14,7 @@ use Auth;
 
 class ProfileController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+   
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,7 +33,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         // echo 'sljhf';die;
-        return view('users/profile/profile',['user'=>$user]);
+        $usercontest = UserContest::where(['user_id'=>$user->id])->get();
+        // $usercontest->count()
+        return view('users/profile/profile',['usercontest'=>$usercontest,'user'=>$user]);
     }
 
     public function edit(){

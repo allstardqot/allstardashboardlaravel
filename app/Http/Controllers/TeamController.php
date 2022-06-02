@@ -227,12 +227,11 @@ class TeamController extends Controller
     public function createTeam(Request $request, $editId = null)
     {
 
-        $cookie = \Cookie::queue(\Cookie::forget('selected_player'));
-        \Cookie::queue(\Cookie::forget('step'));
-        \Cookie::queue(\Cookie::forget('editId'));
-        \Cookie::queue(\Cookie::forget('substitude'));
+        // $cookie = \Cookie::queue(\Cookie::forget('selected_player'));
+        // \Cookie::queue(\Cookie::forget('step'));
+        // \Cookie::queue(\Cookie::forget('editId'));
+        // \Cookie::queue(\Cookie::forget('substitude'));
 
-        
         if(nextWeek()<1){
             return redirect('home')->with("message","Can't create team because admin not set week now.");
         }

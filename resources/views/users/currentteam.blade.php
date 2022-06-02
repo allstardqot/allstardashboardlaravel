@@ -40,7 +40,7 @@
           @endforeach
 
 
-          <a href="#" class="hjuy87">Go to manage Squad</a>
+          {{-- <a href="#" class="hjuy87">Go to manage Squad</a> --}}
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
             <h4 class="ihnik8978">Fantasy Point 900</h4>

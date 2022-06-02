@@ -73,6 +73,55 @@ class DemoController extends Controller
             }
         }
     }
+    public function teamData(){
+        $api = new EntitySport();
+        $getSeason=$api->team("season/19376");
+        //prr($getSeason);
+        foreach($getSeason as $teamData){
+            // if(!League::find($seasonValue['id'])){
+            //     $leagueQuery = League::query()->updateOrCreate([
+            //         'id' => $seasonValue['id'],
+            //     ], [
+            //         'name' => $seasonValue['name'],
+            //         'active' => $seasonValue['active'],
+            //         'type' => $seasonValue['type'],
+            //         'legacy_id' => $seasonValue['legacy_id'],
+            //         'country_id' => $seasonValue['country_id'],
+            //         'is_cup' => $seasonValue['is_cup'],
+            //         'logo_path' => $seasonValue['logo_path'],
+            //         'is_friendly' => $seasonValue['is_friendly'],
+            //         'current_season_id' => $seasonValue['current_season_id'],
+            //         'current_round_id' => $seasonValue['current_round_id'],
+            //         'current_stage_id' => $seasonValue['current_stage_id'],
+            //         'live_standings' => $seasonValue['live_standings'],
+            //         'coverage' => json_encode($seasonValue['coverage']),
+
+            //     ]);
+            // }
+            // if(!empty($seasonValue['current_season_id']) && $seasonValue['current_season_id']=='18378'){
+            // if(!empty($seasonValue['current_season_id'])){
+            //     $teams = $api->getTeam($seasonValue['current_season_id']);
+            //     $setCountry = '';
+            //     foreach ($teams as $teamData) {
+                    $teamQuery = Team::query()->updateOrCreate([
+                        'id' => $teamData['id'],
+                    ], [
+                        'name' => $teamData['name'],
+                        'legacy_id' => $teamData['legacy_id'],
+                        'short_code' => $teamData['short_code'],
+                        'twitter' => $teamData['twitter'],
+                        'country_id' => $teamData['country_id'],
+                        'national_team' => $teamData['national_team'],
+                        'founded' => $teamData['founded'],
+                        'logo_path' => $teamData['logo_path'],
+                        'venue_id' => $teamData['venue_id'],
+                        'current_season_id' => $teamData['current_season_id'],
+                        'is_placeholder' => $teamData['is_placeholder'],
+                    ]);
+            //     }
+            // }
+        }
+    }
     //fixture data
     public function fixtureData(){
 

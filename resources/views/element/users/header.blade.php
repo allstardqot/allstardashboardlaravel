@@ -14,7 +14,7 @@
                 <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}" onclick="deleteCookie1()">Create Team</a>
+              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}" >Create Team</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,7 +22,7 @@
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Courrent Week Team</a></li>
+                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Current Week Team</a></li>
                 <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week Team</a></li>
               </ul>
             </li>
