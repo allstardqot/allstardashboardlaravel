@@ -13,7 +13,7 @@ class EntitySport
     public function http($url, $params = []): Response
     {
         $token = 'ibXid00Vo8GJc3BqCW7laSehfNkNUWBaCB4ZhxcYzCvA0z92LgKshco4Zao0';
-        //pr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
+        //prr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
         return Http::get('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
     }
 
@@ -95,6 +95,15 @@ class EntitySport
         }
 
         return [];
+    }
+
+    public function team($params = []): array
+    {
+        $response = $this->http('teams', $params); 
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
     }
 
     public function getSquad($params = []): array

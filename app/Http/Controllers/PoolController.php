@@ -10,6 +10,7 @@ use App\Models\UserContest;
 use App\Models\Week;
 use App\Models\UserPool;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
@@ -49,6 +50,8 @@ class PoolController extends Controller
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.id as ucid','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
         $completeDate=$currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
 
+        $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+
         foreach($poolQuery as $key=>$poolValue){
             if($key==0){
                 if(nextWeek()>0){
@@ -74,7 +77,7 @@ class PoolController extends Controller
         //prr($upcomingPool);
 
 
-            return view('users/pools/index',['upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
+            return view('users/pools/index',['user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
     }
 
     public function createPool()

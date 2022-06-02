@@ -14,10 +14,11 @@
                     <div class="col-lg-6 col-12">
                         <h5 class="askdyhdn" class="mt-4 ">Leave us a message</h5>
                         <div class=" mt-5">
-                          <form action="">
-                            <input class="input-one" type="text" id="fname" name="fname" placeholder="First_Name Last_Name" /><br />
-                            <input class="input-two" type="text" id="fname" name="fname" placeholder="Email Address" /><br />
-                            <textarea class="input-three" name="message" rows="6" placeholder="Your Message" cols="30"></textarea>
+                          <form action="{{ url('create') }}" method="POST">
+                            @csrf
+                            <input class="input-one" type="text" id="fname" name="fname" placeholder="Enter Your Name" required/><br />
+                            <input class="input-two" type="email" id="email_enquiry" name="email" placeholder="Email Address" required/><br />
+                            <textarea class="input-three" name="message" rows="6" placeholder="Your Message" cols="30" required></textarea>
                             <button type="submit" name="submit" class="form-control input-button btnColor mt-4 order-last order-lg-first" >SEND</button>
 
                           </form>

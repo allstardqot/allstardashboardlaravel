@@ -60,11 +60,12 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="manger-home" role="tabpanel" aria-labelledby="manger-home-tab">
                                 <div class="hsdhsd">
+                                    @foreach($user as $key => $value)
                                     <div class="sdkdj">
                                         <div class="user-details">
                                             <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
                                             <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
+                                                <h5>{{ $value->user_name }}</h5>
                                             </div>
                                         </div>
 
@@ -73,71 +74,9 @@
                                             <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
                                         </div>
                                     </div>
-                                    <div class="sdkdj">
-                                        <div class="user-details">
-                                            <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
-                                        </div>
-                                    </div>
-                                    <div class="sdkdj">
-                                        <div class="user-details">
-                                            <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
-                                        </div>
-                                    </div>
-                                    <div class="sdkdj">
-                                        <div class="user-details">
-                                            <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
-                                        </div>
-                                    </div>
-                                    <div class="sdkdj">
-                                        <div class="user-details">
-                                            <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
-                                        </div>
-                                    </div>
-                                    <div class="sdkdj">
-                                        <div class="user-details">
-                                            <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
-                                        </div>
-                                    </div>
+                                        
+                                    @endforeach
+                                    
 
 
 

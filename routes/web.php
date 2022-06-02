@@ -41,11 +41,13 @@ use Illuminate\Support\Facades\Route;
 //
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
+Route::get('/teamdata',[DemoController::class,'teamData']);
 Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
 
 
 Route::get('/about_us', [AboutusController::class,'index']);
 Route::get('/contact_us', [ContactusController::class,'index']);
+Route::post('/create', [ContactusController::class,'create'])->name('contactus.create');
 Route::get('/faq', [FaqController::class,'index']);
 
 
