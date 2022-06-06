@@ -98,6 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/create-pool', [PoolController::class, 'createPool'])->name('create-pool');
         Route::post('/insert', [PoolController::class, 'insert'])->name('insert');
         Route::get('/latest-news', [App\Http\Controllers\NewsController::class, 'index'])->name('latest-news');
+        Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');
 
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');

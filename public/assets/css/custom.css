@@ -42,7 +42,7 @@ body {
 
 .form-outer .team-player .bh8j7h7 img {
   width: 100%;
-  max-width: 60px;
+  max-width: 75px;
 }
 #newsTextHead {
   font-size: 20px;
@@ -915,7 +915,7 @@ strong {
 }
 .playerspot img {
   margin-top: 15px;
-  max-width: 60px;
+  max-width: 85px;
 }
 .managing .aboutplayer:hover {
   background: #ff5000;
@@ -3196,6 +3196,9 @@ main {
   }
   .managing .area-title.hide-mob {
     display: none;
+  }
+  .playerspot img {
+    max-width: 70px !important;
   }
 }
 

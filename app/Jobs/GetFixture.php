@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
+use App\Models\Team;
 use App\EntitySport;
 use App\Models\Fixture;
 use App\Models\League;
@@ -48,15 +48,19 @@ class GetFixture implements ShouldQueue
         log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
 
-        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news');
+        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news,localTeam,visitorTeam');
         //$fixtures=json_decode($fixtures_data,true);
-        log::info("6666666666666");
+        //log::info("6666666666666e".json_encode($fixtures)."pppp");
 
         $setSeasonId='';
         foreach($fixtures as $value){
                 // if($value['season_id']!='18378'){
                 //     continue;
                 // }
+                if($value['league_id']!='1538'){
+                    continue;
+                }
+                
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [
@@ -75,11 +79,46 @@ class GetFixture implements ShouldQueue
                     'starting_at' => $value['time']['starting_at']['date_time'],
                     'status' => $value['time']['status']
                 ]);
-                log::info("fffffffffffff");
 
                 if($fixtureQuery->wasRecentlyCreated){
-                        log::info("lllkkkkkkkk");
-                        //GetTeam::dispatch();
+                        $localteamdData=$value['localTeam']['data'];
+                        if(!empty($localteamdData)){
+                        $teamQuery = Team::query()->updateOrCreate([
+                            'id' => $localteamdData['id'],
+                        ], [
+                            'name' => $localteamdData['name'],
+                            'legacy_id' => $localteamdData['legacy_id'],
+                            'short_code' => $localteamdData['short_code'],
+                            'twitter' => $localteamdData['twitter'],
+                            'country_id' => $localteamdData['country_id'],
+                            'national_team' => $localteamdData['national_team'],
+                            'founded' => $localteamdData['founded'],
+                            'logo_path' => $localteamdData['logo_path'],
+                            'venue_id' => $localteamdData['venue_id'],
+                            'current_season_id' => $localteamdData['current_season_id'],
+                            'is_placeholder' => $localteamdData['is_placeholder'],
+                        ]);
+                        }
+
+                        $visitorTeamData=$value['visitorTeam']['data'];
+                        if(!empty($visitorTeamData)){
+                            $teamQuery = Team::query()->updateOrCreate([
+                                'id' => $visitorTeamData['id'],
+                            ], [
+                                'name' => $visitorTeamData['name'],
+                                'legacy_id' => $visitorTeamData['legacy_id'],
+                                'short_code' => $visitorTeamData['short_code'],
+                                'twitter' => $visitorTeamData['twitter'],
+                                'country_id' => $visitorTeamData['country_id'],
+                                'national_team' => $visitorTeamData['national_team'],
+                                'founded' => $visitorTeamData['founded'],
+                                'logo_path' => $visitorTeamData['logo_path'],
+                                'venue_id' => $visitorTeamData['venue_id'],
+                                'current_season_id' => $visitorTeamData['current_season_id'],
+                                'is_placeholder' => $visitorTeamData['is_placeholder'],
+                            ]);
+                        }
+
                         GetSquad::dispatch($value['id']);
                         $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
                         log::info($lineupSchedule);

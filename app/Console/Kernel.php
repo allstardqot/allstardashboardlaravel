@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(GetFixture::class)->everyMinute();
-        $schedule->job(Team::class)->daily();
+        $schedule->job(GetFixture::class)->everyFifteenMinutes();
+        //$schedule->job(GetTeam::class)->everyMinute();
         //$schedule->command('demo:cron')->everyMinute();
         //$schedule->job(GetTeam::class)->everyFifteenMinutes();
         //$schedule->job(NewsData::class)->everyFifteenMinutes();

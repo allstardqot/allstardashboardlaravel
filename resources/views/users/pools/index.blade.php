@@ -112,8 +112,8 @@
                                         </div>
                                         <div class="col-sm-3 pb-2">
                                             <div class="text-center">
-                                                <a href="{{ url('manager-lounge') }}" class="btn-01">+ Create
-                                                    Post</a>
+                                                <a href="{{ url('create-pool') }}" class="btn-01">+ Create
+                                                    Pool</a>
                                             </div>
                                         </div>
                                     </div>
@@ -169,8 +169,8 @@
                                         </div>
                                         <div class="col-sm-3 pb-2">
                                             <div class="text-center">
-                                                <a href="{{ url('manager-lounge') }}" class="btn-01">+ Create
-                                                    Post</a>
+                                                <a href="{{ url('create-pool') }}" class="btn-01">+ Create
+                                                    Pool</a>
                                             </div>
                                         </div>
                                     </div>
@@ -223,8 +223,8 @@
                                         </div>
                                         <div class="col-sm-3 pb-2">
                                             <div class="text-center">
-                                                <a href="{{ url('manager-lounge') }}" class="btn-01">+ Create
-                                                    Post</a>
+                                                <a href="{{ url('create-pool') }}" class="btn-01">+ Create
+                                                    Pool</a>
                                             </div>
                                         </div>
                                     </div>

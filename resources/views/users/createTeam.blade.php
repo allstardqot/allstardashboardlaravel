@@ -303,15 +303,19 @@
 
         function playerTeamCheck() {
             var teamArray = [];
+            var status =true;
             $(".form-check-input:checkbox[type=checkbox]:checked").each(function(e) {
                 var teamname = $(this).closest("tr").find("strong").html();
                 if (teamArray[teamname] === undefined) {
                     teamArray[teamname] = 1
+                    status =false;
+                    
                 } else {
                     teamArray[teamname] = parseInt(teamArray[teamname]) + 1
                 }
                 if (teamArray[teamname] > 2) {
                     $.notify("You can only select 2 maximum players from one team.", "info");
+                    status =false;
                     $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
                     $(this).closest('tr').css('backgroundColor', '');
                     //$("#NextBtn").attr("class","firstNext next adisable");
@@ -319,7 +323,10 @@
                     //$("#NextBtn").attr("class","firstNext next");
                 }
             });
-            selectCount();
+            // alert(status);
+            
+                selectCount();
+            
         }
 
         $("body").on("click", ".goalkeeper_td", function() {
@@ -345,7 +352,7 @@
                     $(this).closest("tr").find("input[type=checkbox]").prop("checked", true);
                     $(".goalkeeper_staricon").show();
                 }
-
+                playerTeamCheck();
                 newselect = 0;
                 $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                     newselect += 1;
@@ -371,15 +378,27 @@
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
             $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor', '');
             selectCount();
-            playerTeamCheck();
         });
 
-        $("body").on("click", ".defender_td", function() {
+        $("body").on("click", ".defender_td", function() {            
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
-                $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
-                $("input.defendercheck").removeAttr("disabled");
+            
+            $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
+            $("input.defendercheck").removeAttr("disabled");
+
+            var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
+            var defender_name1 = $('#defender_name1').html();
+            var defender_name0 = $('#defender_name0').html();
+                if( $.trim(defender_name0) == nameHidden){
+                    $(".defender_staricon0").hide();
+                }
+
+                if( $.trim(defender_name1) == nameHidden){                   
+                   $(".defender_staricon1").hide();                  
+                }
+               
             } else {
                 var select = 0;
                 var image = "";
@@ -405,6 +424,7 @@
                 if (newselect >= 2) {
                     $("input.defendercheck").prop("disabled", true);
                 }
+                playerTeamCheck();
                 var n = 0;
                 $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
                     $(this).removeAttr("disabled");
@@ -421,16 +441,26 @@
             $(".defendercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
             $(".defendercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor', '');
             selectCount();
-            playerTeamCheck();
 
         });
 
         $("body").on("click", ".midfielder_td", function() {
+            var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
-                $("input.midfieldercheck").removeAttr("disabled");
+                $("input.defendercheck").removeAttr("disabled");
+                var midfielder_name1 = $('#midfielder_name1').html();
+                var midfielder_name0 = $('#midfielder_name0').html();
+                    
+                if( $.trim(midfielder_name0) == nameHidden){
+                    $(".midfielder_staricon0").hide();                       
+                }
+                if( $.trim(midfielder_name1) == nameHidden){
+                    $(".midfielder_staricon1").hide();                   
+                }
+               
             } else {
                 var select = 0;
                 var image = "";
@@ -457,6 +487,7 @@
                     $("input.midfieldercheck").prop("disabled", true);
                 }
                 var n = 0;
+                playerTeamCheck();
                 $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
                     $(this).removeAttr("disabled");
                     image = $(this).closest("tr").find("img").attr("src");
@@ -476,15 +507,25 @@
             $(".midfieldercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
             $(".midfieldercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor', '');
             selectCount();
-            playerTeamCheck();
         });
 
         $("body").on("click", ".forward_td", function() {
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
+                var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
                 $("input.forwardcheck").removeAttr("disabled");
+                var forward_name1 = $('#forward_name1').html();
+                var forward_name0 = $('#forward_name0').html();
+                
+                if( $.trim(forward_name0) == nameHidden){
+                    alert(forward_name1);
+                    $(".forward_staricon0").hide();                       
+                }
+                if( $.trim(forward_name1) == nameHidden){
+                    $(".forward_staricon1").hide();                   
+                }
             } else {
                 var select = 0;
                 var image = "";
@@ -510,6 +551,7 @@
                 if (newselect >= 2) {
                     $("input.forwardcheck").prop("disabled", true);
                 }
+                playerTeamCheck();
                 var n = 0;
                 $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
                     $(this).removeAttr("disabled");
@@ -527,7 +569,6 @@
             $(".forwardcheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
             $(".forwardcheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor', '');
             selectCount();
-            playerTeamCheck();
         });
 
         function selectCount() {
@@ -544,6 +585,7 @@
             var image = "";
             var full_name = "";
             var sell_price = "";
+            playerTeamCheck();
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".goalkep_fullname").html();
@@ -572,6 +614,7 @@
 
         function defendercheckbox() {
             var select = 0;
+            playerTeamCheck();
 
             $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
                 image = $(this).closest("tr").find("img").attr("src");
@@ -584,6 +627,23 @@
 
                 select += 1;
             });
+            if(select==1){
+                $(".defender_staricon1").hide();
+            }else if(select==0){
+                $(".defender_staricon0").hide();
+                $(".defender_staricon0").hide();
+            }
+
+            var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
+            var defender_name1 = $('#defender_name1').html();
+            var defender_name0 = $('#defender_name0').html();
+                if( $.trim(defender_name0) == nameHidden){
+                    $(".defender_staricon0").hide();
+                }
+
+                if( $.trim(defender_name1) == nameHidden){                   
+                   $(".defender_staricon1").hide();                  
+                }
 
             if (select >= 2) {
                 $("input.defendercheck").attr("disabled", true);
@@ -602,6 +662,8 @@
 
         function midfieldercheckbox() {
             var select = 0;
+            playerTeamCheck();
+
             $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".midfielder_fullname").html();
@@ -612,6 +674,12 @@
                 $(".midfielder_staricon" + select).show();
                 select += 1;
             });
+            if(select==1){
+                $(".midfielder_staricon1").hide();
+            }else if(select==0){
+                $(".midfielder_staricon0").hide();
+                $(".midfielder_staricon1").hide();
+            }
 
             if (select >= 2) {
                 $("input.midfieldercheck").attr("disabled", true);
@@ -630,6 +698,8 @@
 
         function forwardcheckbox() {
             var select = 0;
+            playerTeamCheck();
+
             $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".forward_fullname").html();
@@ -640,6 +710,12 @@
                 $(".forward_staricon" + select).show();
                 select += 1;
             });
+            if(select==1){
+                $(".forward_staricon1").hide();
+            }else if(select==0){
+                $(".forward_staricon1").hide();
+                $(".forward_staricon0").hide();
+            }
             if (select >= 2) {
                 $("input.forwardcheck").attr("disabled", true);
                 $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");

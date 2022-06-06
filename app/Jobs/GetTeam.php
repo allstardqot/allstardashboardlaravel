@@ -47,7 +47,9 @@ class GetTeam implements ShouldQueue
     {
         log::info("get team running");
         $api = new EntitySport();
-        $getSeason=$api->getLeagueSeason("Premier League");
+        //$getSeason=$api->getLeagueSeason("Premier League");
+        $getSeason=$api->getLeagueSeason("UEFA Nations League");
+        
         foreach($getSeason as $seasonValue){
             if(!League::find($seasonValue['id'])){
                 $leagueQuery = League::query()->updateOrCreate([

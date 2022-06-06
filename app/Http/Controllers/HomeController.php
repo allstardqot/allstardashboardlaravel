@@ -50,14 +50,6 @@ class HomeController extends Controller
         $contest_pool = UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
         //$team = Team::get();
         $team = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
-
-       
-        if($team->count() == 0){
-            // return 
-            return redirect('/create-team');
-            // echo $team->count()
-        }
-       
        
         $publicData=$publicQuery->where(['pool_type'=>0])->get();
         $privateData=$privateQuery->where(['pool_type'=>1])->get();

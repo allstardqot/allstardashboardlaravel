@@ -46,7 +46,7 @@
           <div class="d-flex">
             <ul class="navbar-nav head-drop">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url('/wallet') }}">
                   <img class="reat1" src="{{asset('public/assets/image/Rectangle 317.png')}}" width="65px"></a>
               </li>
               <li class="nav-item dropdown">

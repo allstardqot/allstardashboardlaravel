@@ -381,7 +381,8 @@
                       @continue;
                   @endif
                 <tr>
-                  <td class="defender_td">
+                  <td class="defender_td" >
+                    <input type="hidden" id="hiddenId" value="{{ $defenderValue["fullname"] }}">
                     <img
                       class="imgsize"
                       src="{{ $defenderValue['image_path'] }}"
@@ -594,6 +595,7 @@
                     @endif
                   <tr>
                     <td class="midfielder_td">
+                      <input type="hidden" id="hiddenId" value="{{ $midfielderValue["fullname"] }}">
                       <img
                         class="imgsize"
                         src="{{ $midfielderValue['image_path'] }}"
@@ -809,6 +811,7 @@
                     @endif
                   <tr>
                     <td class="forward_td">
+                    <input type="hidden" id="hiddenId" value="{{ $forwardValue["fullname"] }}">
                       <img
                         class="imgsize"
                         src="{{ $forwardValue['image_path'] }}"

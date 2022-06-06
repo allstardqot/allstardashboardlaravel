@@ -64,8 +64,9 @@ class GetSquad implements ShouldQueue
                         }
                         $playerQuery = Player::query()->updateOrCreate([
                             'id' => $playerDetail['player_id'],
+                            'team_id' => $teamValue,
                         ], [
-                            'team_id' => $playerDetail['team_id'],
+                            //'team_id' => $playerDetail['team_id'],
                             'country_id' => $playerDetail['country_id'],
                             'position_id' => $playerDetail['position_id'],
                             'common_name' => $playerDetail['common_name'],
