@@ -4,11 +4,11 @@
         <div class="row">
           <div class="col-lg-3 col-12 text-center text-lg-left">
             <h3>QUICK LINK</h3>
-            <p>Home</p>
-            <p>About Us</p>
-            <p>How to Play</p>
-            <p>FAQ</p>
-            <p>Contact Us</p>
+            <p><a href="{{ url('/') }}">Home</a> </p>
+            <p><a href="{{ url('/about_us') }}">About Us</a></p>
+            <p><a href="{{ url('/how_to_play') }}">How to Play</a></p>
+            <p><a href="{{ url('/faq') }}">FAQ</a></p>
+            <p><a href="{{ url('/contact_us') }}">Contact Us</a></p>
           </div>
           <div class="col-lg-3 col-12 text-center text-lg-left">
             <h3>LEGAL</h3>

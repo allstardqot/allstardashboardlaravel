@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\UserTeam;
+use App\Models\News;
 use App\Models\UserContest;
 use App\Models\Week;
 use App\Models\UserPool;
@@ -45,6 +46,8 @@ class PoolController extends Controller
 
         
         // echo $cookie;die;
+        $newsdata     = News::query()->orderByDesc('news_created_at')->limit(5)->get();
+
         $user_id    = Auth::user()->id;
         //$poolData = UserPool::query()->where(['user_id'=>$user_id])->get();
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.id as ucid','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
@@ -77,7 +80,7 @@ class PoolController extends Controller
         //prr($upcomingPool);
 
 
-            return view('users/pools/index',['user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
+            return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
     }
 
     public function createPool()

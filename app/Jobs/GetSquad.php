@@ -45,7 +45,7 @@ class GetSquad implements ShouldQueue
      */
     public function handle()
     {
-        log::info("squad running");
+        Log::info("squad running".$this->fixtureId);
 
         $api = new EntitySport();
         $fixtureData=Fixture::find($this->fixtureId);

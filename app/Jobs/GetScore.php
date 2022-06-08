@@ -48,7 +48,7 @@ class GetScore implements ShouldQueue
      */
     public function handle()
     {
-        log::info("getSquad running".$this->fixtureId);
+        Log::info("getScore running".$this->fixtureId);
 
         $api = new EntitySport();
         $fixture = Fixture::query()
@@ -59,7 +59,7 @@ class GetScore implements ShouldQueue
 
             if( ($fixture->status == FIXTURE_STATUS[0]) || (strtotime($fixture->starting_at) >= time())  ) {
                 if ($this->autoSet) {
-                    self::dispatch($this->fixtureId)->delay(now()->addMinutes($this->time_interval));
+                    self::dispatch($this->fixtureId)->delay(now()->addMinutes(2));
                 }
             } else {
 
@@ -129,7 +129,7 @@ class GetScore implements ShouldQueue
                 }
                 if ($this->autoSet) {
                     if ($fixture->status === FIXTURE_STATUS[0] || $fixture->status === FIXTURE_STATUS[1] || $fixture->status === FIXTURE_STATUS[2]) {
-                        self::dispatch($this->fixtureId)->delay(now()->addMinutes($this->time_interval));
+                        self::dispatch($this->fixtureId)->delay(now()->addMinutes(2));
                     }
                 }
             }

@@ -79,7 +79,7 @@ class HomeController extends Controller
         $contest_data->user_id=Auth::user()->id;
         $contest_data->user_team_id=$request->input('select_team');
         if($contest_data->save()){
-            return redirect('home')->with('message','Pool Join Successfully.');
+            return redirect('my-pool')->with('message','Pool Join Successfully.');
         }else{
             return redirect('home')->with('message',"Cant't Join this pool.");
         }

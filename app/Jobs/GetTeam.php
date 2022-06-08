@@ -45,7 +45,7 @@ class GetTeam implements ShouldQueue
      */
     public function handle()
     {
-        log::info("get team running");
+        Log::info("get team running");
         $api = new EntitySport();
         //$getSeason=$api->getLeagueSeason("Premier League");
         $getSeason=$api->getLeagueSeason("UEFA Nations League");

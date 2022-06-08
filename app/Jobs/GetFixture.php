@@ -45,12 +45,12 @@ class GetFixture implements ShouldQueue
     public function handle()
     {
         //Getlineup::dispatch('18138818');
-        log::info("fixture runningghhhhhhhhhhhh");
+        Log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
 
         $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news,localTeam,visitorTeam');
         //$fixtures=json_decode($fixtures_data,true);
-        //log::info("6666666666666e".json_encode($fixtures)."pppp");
+        //Log::info("6666666666666e".json_encode($fixtures)."pppp");
 
         $setSeasonId='';
         foreach($fixtures as $value){
@@ -118,12 +118,13 @@ class GetFixture implements ShouldQueue
                                 'is_placeholder' => $visitorTeamData['is_placeholder'],
                             ]);
                         }
+                        Log::info("fixture id get".$value['id']);
 
                         GetSquad::dispatch($value['id']);
                         $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
-                        log::info($lineupSchedule);
-                        Getlineup::dispatch($fixtureQuery->id)->delay($lineupSchedule);
-                        GetScore::dispatch($fixtureQuery->id)->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
+                        Log::info($lineupSchedule);
+                        Getlineup::dispatch($value['id'])->delay($lineupSchedule);
+                        GetScore::dispatch($value['id'])->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
                         //Getlineup::dispatch($value['id']);
 
 
@@ -166,7 +167,7 @@ class GetFixture implements ShouldQueue
                     //     }
                     // }
                 }else{
-                log::info("nnnnnnnnnnnnn");
+                Log::info("nnnnnnnnnnnnn");
 
                 }
         }

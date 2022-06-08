@@ -19,7 +19,25 @@ body {
   text-align: center;
   padding: 20px 15px;
 }
+.heading-h3 span {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+  display: inline-block;
+}
 
+.heading-h3 {
+  margin-bottom: 50px;
+}
+.content-sec {
+  color: #fff;
+}
+.content-sec h4,
+p {
+  color: #fff;
+}
+.content-sec h4 {
+  margin-top: 25px;
+}
 .profile-card-sec h3 {
   color: #ff5000;
   font-size: 40px;

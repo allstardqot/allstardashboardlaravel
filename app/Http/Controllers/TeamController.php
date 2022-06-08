@@ -27,8 +27,7 @@ class TeamController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-       
+    {       
         $nextWeek=nextWeek();
         $user_id=Auth::user()->id;
         $userTeam = UserTeam::where([['user_id',$user_id],['week',$nextWeek]])->orderBy('user_teams.id', 'DESC')->limit(3)->get()->toArray();

@@ -35,38 +35,21 @@
                     </div>
                     <div class="hjuy4589">
                         <h4 class="mt-5 mkuytg">Premier League News</h4>
-                        <div class="latest-image-sec">
-                            <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
-                                    <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
-                                    <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-card">
-                                <a href="#">
-                                    <img src="{{ asset('public/assets/image/news-1.png') }}" class="img-fluid"
-                                        alt="" />
-                                    <div class="news-content">
-                                        <h4>Proin laoreet ornare quam</h4>
-                                        <small>Placerat mauris</small>
-                                    </div>
-                                </a>
-                            </div>
+                       <div class="latest-image-sec">
+                        @foreach($newsdata as $key => $value)
+                        <div class="latest-card">
+                            <a href="{{ url('/latest-news') }}" class="latest-anchor">
+                                <div class="news-content">
+                                    <h4>{{ $value['title'] }}</h4>
+                                <p>{!! $value['localteam']!!}</p>
+
+                                <small>Read More..</small>
+                                </div>
+
+                            </a>
                         </div>
+                        @endforeach
+                    </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-3">

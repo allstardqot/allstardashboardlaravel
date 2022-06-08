@@ -520,7 +520,7 @@
                 var forward_name0 = $('#forward_name0').html();
                 
                 if( $.trim(forward_name0) == nameHidden){
-                    alert(forward_name1);
+                    // alert(forward_name1);
                     $(".forward_staricon0").hide();                       
                 }
                 if( $.trim(forward_name1) == nameHidden){

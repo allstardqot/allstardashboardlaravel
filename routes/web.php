@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\web\AboutusController;
+use App\Http\Controllers\web\PagelayoutController;
 use App\Http\Controllers\web\ContactusController;
 use App\Http\Controllers\web\DemoController;
 use App\Http\Controllers\web\FaqController;
@@ -43,7 +44,10 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
 Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
-
+Route::get('/terms-condition',[PagelayoutController::class,'termsCondition']);
+Route::get('/aml-policy',[PagelayoutController::class,'amlPolicy']);
+Route::get('/kyc-policy',[PagelayoutController::class,'kycPolicy']);
+Route::get('/gaming-policy',[PagelayoutController::class,'gamingPolicy']);
 
 Route::get('/about_us', [AboutusController::class,'index']);
 Route::get('/contact_us', [ContactusController::class,'index']);
