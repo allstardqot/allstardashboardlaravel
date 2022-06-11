@@ -68,7 +68,7 @@ class GetScore implements ShouldQueue
                     $fixture->status=isset($mathcScore['time']['status'])?$mathcScore['time']['status']:$fixture->status;
                     $fixture->update();
                 }
-                Log::info("getSquad runninggg".json_encode($mathcScore['lineup']['data']));
+                
                 if (!empty($mathcScore['lineup']['data'])) {
                     foreach ($mathcScore['lineup']['data'] as $scoreValue) {
                         $totalPoints = 0;

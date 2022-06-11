@@ -48,7 +48,6 @@ class Getlineup implements ShouldQueue
         $api = new EntitySport();
         $getLineup = $api->getLineup($this->fixtureId.'?include=lineup');
         Log::info("lineup running".$this->fixtureId);
-        Log::info("lineup runningfff".json_encode($getLineup));
 
         if(!empty($getLineup['lineup']['data'])){
             Log::info("lineup announced.".$this->fixtureId);
