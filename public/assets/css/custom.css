@@ -1410,6 +1410,9 @@ header .droplink {
   border-radius: 30px;
   background-color: #ff5000;
   color: #fff !important;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 10px;
 }
 .tbnayr {
   background-color: #ff5000;

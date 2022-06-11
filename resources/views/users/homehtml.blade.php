@@ -104,6 +104,23 @@
                     <i class="fa fa-search icon" id="private_search"></i>
 
                 </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="dash-tab">
+                            @if(!empty($weeak['starting_at']))
+                            <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                            <p>
+                                {{date('d M Y', strtotime($weeak['starting_at']))}} - {{date('d M Y', strtotime($weeak['ending_at']))}}
+                                
+                            </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 pb-2">
+                        <div class="text-center"><a href="{{ url('/create-pool') }}" class="btn-01">+
+                                Create Pool</a></div>
+                    </div>
+                </div>
                 <div class="dash-data">
                     @if (count($privateData) != 0)
                         @foreach ($privateData as $privateValue)

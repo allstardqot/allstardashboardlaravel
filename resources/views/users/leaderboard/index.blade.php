@@ -596,14 +596,15 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
+                                        {{-- <div class="sdlsdjk">
                                             <div class="sdj8678">
                                                 <p class="sdjdcj89"><b>Email:</b></p>
                                             </div>
                                             <div class="sdjjsh7">
                                                 <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
                                             </div>
-                                        </div>
+                                        </div> --}}
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />
@@ -617,14 +618,7 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div>
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />
@@ -638,14 +632,7 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div>
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />
@@ -659,14 +646,7 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div>
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />
@@ -680,14 +660,7 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div>
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />
@@ -701,14 +674,7 @@
                                                 <h5>Tammy Abraham</h5>
                                             </div>
                                         </div>
-                                        <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div>
+                                        
                                         <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
                                                 aria-hidden="true"></i></a>
                                         <hr />

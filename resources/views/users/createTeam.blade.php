@@ -329,19 +329,46 @@
             
         }
 
+        function coins(price,status){
+            var spendCoin = $('#coin').html();
+
+            var res = status == "plus" ? parseInt(spendCoin.replace('M', '')) + parseInt($.trim(price.replace('M', ''))) :spendCoin.replace('M', '') - $.trim(price.replace('M', ''));
+            $('#coin').html(res+'M');
+          
+            // console.log(spendCoin);
+        }
+
         $("body").on("click", ".goalkeeper_td", function() {
+            var sell_price = "";
+            var status ="";
+
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
+
+                $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+                    
+                    $(this).removeAttr("disabled");
+                    image = $(this).closest("tr").find("img").attr("src");
+                    full_name = $(this).closest("tr").find(".goalkep_fullname").html();
+                    sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
+                    $("#goalkeeper_img").attr("src", image);
+                    $("#goalkeeper_name").html(full_name);
+                    $("#goalkeepersell_price").html(sell_price);
+                    status = "plus";
+                    coins(sell_price,status);
+                    // alert(sell_price);
+                    
+                });
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
                 $(".goalkeeper_staricon").hide();
                 $("input.goalkeepercheck").removeAttr("disabled");
+                
             } else {
                 var select = 0;
                 var image = "";
                 var full_name = "";
-                var sell_price = "";
-
+               
                 $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                     select += 1;
                 });
@@ -351,6 +378,7 @@
                     $("input.goalkeepercheck").removeAttr("disabled");
                     $(this).closest("tr").find("input[type=checkbox]").prop("checked", true);
                     $(".goalkeeper_staricon").show();
+                    
                 }
                 playerTeamCheck();
                 newselect = 0;
@@ -362,16 +390,21 @@
                 }
 
                 $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
+                    // alert('sdfsdf');
+                    
                     $(this).removeAttr("disabled");
                     image = $(this).closest("tr").find("img").attr("src");
                     full_name = $(this).closest("tr").find(".goalkep_fullname").html();
-                    sell_price = $(this)
-                        .closest("tr")
-                        .find(".goalkeeper_sell_price")
-                        .html();
+                    sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
                     $("#goalkeeper_img").attr("src", image);
+                    //  alert(sell_price);
+
                     $("#goalkeeper_name").html(full_name);
                     $("#goalkeepersell_price").html(sell_price);
+                    if(select == 0){
+                        coins(sell_price);
+
+                    }
                     select += 1;
                 });
             }
@@ -380,7 +413,10 @@
             selectCount();
         });
 
-        $("body").on("click", ".defender_td", function() {            
+        $("body").on("click", ".defender_td", function() {    
+            
+            var sell_price = "";
+            var status ="";
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
@@ -389,8 +425,14 @@
             $("input.defendercheck").removeAttr("disabled");
 
             var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
+            var hiddenSellprice = $(this).closest("tr").find("#hiddenSellprice").val();
             var defender_name1 = $('#defender_name1').html();
             var defender_name0 = $('#defender_name0').html();
+               
+                status = "plus";
+                coins(hiddenSellprice,status);
+                    
+                   
                 if( $.trim(defender_name0) == nameHidden){
                     $(".defender_staricon0").hide();
                 }
@@ -403,8 +445,7 @@
                 var select = 0;
                 var image = "";
                 var full_name = "";
-                var sell_price = "";
-
+                
                 $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
                     select += 1;
                 });
@@ -435,6 +476,10 @@
                     $("#defender_name" + n).html(full_name);
                     $("#defendersell_price" + n).html(sell_price);
                     $(".defender_staricon" + n).show();
+                    // alert(newselect)
+                    if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
+                        coins(sell_price);
+                    }
                     n += 1;
                 });
             }
@@ -445,7 +490,9 @@
         });
 
         $("body").on("click", ".midfielder_td", function() {
+            var status ="";
             var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
+            var hiddenSellprice = $(this).closest("tr").find("#midSellprice").val();
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
@@ -453,6 +500,8 @@
                 $("input.defendercheck").removeAttr("disabled");
                 var midfielder_name1 = $('#midfielder_name1').html();
                 var midfielder_name0 = $('#midfielder_name0').html();
+                status = "plus";
+                coins(hiddenSellprice,status);
                     
                 if( $.trim(midfielder_name0) == nameHidden){
                     $(".midfielder_staricon0").hide();                       
@@ -500,6 +549,11 @@
                     $("#midfielder_name" + n).html(full_name);
                     $("#midfieldersell_price" + n).html(sell_price);
                     $(".midfielder_staricon" + n).show();
+                    // alert(select)
+                    if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
+                        // alert(sell_price)
+                        coins(sell_price);
+                    }
 
                     n += 1;
                 });
@@ -514,11 +568,13 @@
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
                 var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
+                var hiddenSellprice = $(this).closest("tr").find("#forwrdSellPrice").val();
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
                 $("input.forwardcheck").removeAttr("disabled");
                 var forward_name1 = $('#forward_name1').html();
                 var forward_name0 = $('#forward_name0').html();
-                
+                status = "plus";
+                coins(hiddenSellprice,status);
                 if( $.trim(forward_name0) == nameHidden){
                     // alert(forward_name1);
                     $(".forward_staricon0").hide();                       
@@ -562,6 +618,10 @@
                     $("#forward_name" + n).html(full_name);
                     $("#forwardsell_price" + n).html(sell_price);
                     $(".forward_staricon" + n).show();
+                    if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
+                        // alert(sell_price)
+                        coins(sell_price);
+                    }
 
                     n += 1;
                 });
