@@ -6,7 +6,7 @@
     </p>
   </div>
   <div class="sxdhdcn9908">
-    <h1 class="sdhsdks87">50M</h1>
+    <h1 class="sdhsdks87" id="coin">50M</h1>
     <p class="sdjhs7tyh">
       <b
         >Money<br />
@@ -383,6 +383,7 @@
                 <tr>
                   <td class="defender_td" >
                     <input type="hidden" id="hiddenId" value="{{ $defenderValue["fullname"] }}">
+                    <input type="hidden" id="hiddenSellprice" value="{{ $defenderValue["sell_price"] }}">
                     <img
                       class="imgsize"
                       src="{{ $defenderValue['image_path'] }}"
@@ -596,6 +597,7 @@
                   <tr>
                     <td class="midfielder_td">
                       <input type="hidden" id="hiddenId" value="{{ $midfielderValue["fullname"] }}">
+                      <input type="hidden" id="midSellprice" value="{{ $midfielderValue["sell_price"] }}">
                       <img
                         class="imgsize"
                         src="{{ $midfielderValue['image_path'] }}"
@@ -812,6 +814,8 @@
                   <tr>
                     <td class="forward_td">
                     <input type="hidden" id="hiddenId" value="{{ $forwardValue["fullname"] }}">
+                    <input type="hidden" id="forwrdSellPrice" value="{{ $forwardValue["sell_price"] }}">
+                    
                       <img
                         class="imgsize"
                         src="{{ $forwardValue['image_path'] }}"

@@ -55,9 +55,11 @@ class PoolController extends Controller
 
         $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
 
+        $nextWeek=nextWeek();
+        $currentWeek=currentWeek();
         foreach($poolQuery as $key=>$poolValue){
             if($key==0){
-                if(nextWeek()>0){
+                if($nextWeek>0){
                     $upcomingDate=Week::find(nextWeek())->toArray();
                 }
                 if(currentWeek()>0){
@@ -67,17 +69,17 @@ class PoolController extends Controller
                 //     $completeDate=Week::find(currentWeek())->toArray();
                 // }
             }
-            if($poolValue['week']==nextWeek()){
+            if($poolValue['week']==$nextWeek){
                 $upcomingPool[]=$poolValue;
             }
-            if($poolValue['week']==currentWeek()){
+            if($poolValue['week']==$currentWeek){
                 $livePool[]=$poolValue;
             }
-            if($poolValue['week']<currentWeek()){
+            if($poolValue['week']<$currentWeek){
+                // prr($poolValue);
                 $completePool[]=$poolValue;
             }
         }
-        //prr($upcomingPool);
 
 
             return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
@@ -118,12 +120,15 @@ class PoolController extends Controller
             $pool->password =  Hash::make($request->input('password'));
         }
         $pool->entry_fees =  $request->input('entry_fees');
+        //prr($pool);
         if($request->input('pool_type') == '1' && $pool->save() ){
             $contest = new UserContest;
             $contest->user_id    = Auth::user()->id;
             $contest->pool_id    = $pool->id;
             $contest->user_team_id = $request->input('team_id');
             $contest->save();
+        }else{
+            $pool->save();
         }
         return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
         // return redirect()->back()->with('status','Student Added Successfully');
