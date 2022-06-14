@@ -48,29 +48,33 @@ class Getlineup implements ShouldQueue
 
         $api = new EntitySport();
         $getLineup = $api->getLineup($this->fixtureId.'?include=lineup');
-        Log::info("lineup running".$this->fixtureId);
-
-        if(!empty($getLineup['lineup']['data'])){
-            if($getLineup['time']){
-                $fixture = Fixture::query()
+        $fixture = Fixture::query()
                 ->where('id', $this->fixtureId)
                 ->first();
-                $fixture->status=isset($getLineup['time']['status'])?$getLineup['time']['status']:$fixture->status;
-                $fixture->update();
-            }
-            Log::info("lineup announced.".$this->fixtureId);
+        Log::info("lineup running".$this->fixtureId);
 
-            foreach($getLineup['lineup']['data'] as $lineupValue){
-                $squadData=Squad::where([['player_id',$lineupValue['player_id']],['fixture_id',$lineupValue['fixture_id']],['team_id',$lineupValue['team_id']]])->first();
-                if(!empty($squadData)){
-                    $squadData->playing11=1;
-                    $squadData->update();
+        if($fixture->status==FIXTURE_STATUS[0]){
+            if(!empty($getLineup['lineup']['data'])){
+                if($getLineup['time']){
+                    
+                    $fixture->status=isset($getLineup['time']['status'])?$getLineup['time']['status']:$fixture->status;
+                    $fixture->update();
+                }
+                Log::info("lineup announced.".$this->fixtureId);
+
+                foreach($getLineup['lineup']['data'] as $lineupValue){
+                    $squadData=Squad::where([['player_id',$lineupValue['player_id']],['fixture_id',$lineupValue['fixture_id']],['team_id',$lineupValue['team_id']]])->first();
+                    if(!empty($squadData)){
+                        $squadData->playing11=1;
+                        $squadData->update();
+                    }
                 }
             }
+            if ($this->autoSet) {
+                Log::info("lineup Schedule".$this->fixtureId);
+                self::dispatch($this->fixtureId)->delay(now()->addMinutes(1));
+            }
         }
-        if ($this->autoSet) {
-            Log::info("lineup Schedule".$this->fixtureId);
-            self::dispatch($this->fixtureId)->delay(now()->addMinutes(1));
-        }
+        
     }
 }

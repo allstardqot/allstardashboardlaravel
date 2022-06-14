@@ -81,7 +81,7 @@
                                                 data-bs-target="#myModal"
                                                 onclick="showmodel({{ $publicValue['id'] }},{{ $publicValue['pool_type'] }})">+Join
                                                 this pool</a>
-                                            <a class="ahjl458" href="#">
+                                            <a class="ahjl458" href="{{url('/invite/'.$publicValue['id'])}}">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
                                             </a>
                                         </div>

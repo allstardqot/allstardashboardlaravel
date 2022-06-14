@@ -33,6 +33,7 @@ class SetUserTeamTotal implements ShouldQueue
      */
     public function __construct($fixtureId)
     {
+        $this->queue = 'setuserteamtotal';
         $this->fixtureId = $fixtureId;
     }
 
@@ -44,15 +45,19 @@ class SetUserTeamTotal implements ShouldQueue
     public function handle()
     {
 
+
         $fixture = Fixture::query()
                     ->where('id', $this->fixtureId)
                     ->first();
+        Log::info("Set user team total running".$this->fixtureId);
 
         $week=weekIdDate($fixture->starting_at);
         if($week>0){
             $squads=Squad::where([['fixture_id',$this->fixtureId],['total_points','>',0]])->pluck('total_points','player_id')->toArray();
+            Log::info("Set user team total fine get");
 
-            $user_team=UserTeam::where('week',3)->get();
+
+            $user_team=UserTeam::where('week',$week)->get();
 
             foreach($user_team as $key=>$userValue){
                 $total_points=0;

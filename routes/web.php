@@ -101,6 +101,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/my-pool', [PoolController::class, 'index'])->name('my-pool');
         Route::get('/create-pool', [PoolController::class, 'createPool'])->name('create-pool');
         Route::post('/insert', [PoolController::class, 'insert'])->name('insert');
+        Route::get('/invite/{id}', [PoolController::class, 'invitePool'])->name('invite');
+        //Route::post('/invite/{id}', [PoolController::class, 'invitePool'])->name('invite');
         Route::get('/latest-news', [App\Http\Controllers\NewsController::class, 'index'])->name('latest-news');
         Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');
 

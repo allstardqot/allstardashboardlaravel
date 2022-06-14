@@ -29,7 +29,7 @@ $(document).ready(function () {
 });
 
 $('#poolpassword').hide();
-$('#poolTeamId').hide();
+// $('#poolTeamId').hide();
 
 $("#poolType").change(function () {
     // alert("The text has been changed.");
@@ -37,10 +37,10 @@ $("#poolType").change(function () {
 
     if (pollType == 1) {
         $('#poolpassword').show();
-        $('#poolTeamId').show();
+        // $('#poolTeamId').show();
     } else {
         $('#poolpassword').hide();
-        $('#poolTeamId').hide();
+        // $('#poolTeamId').hide();
 
     }
 

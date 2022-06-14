@@ -8,6 +8,18 @@ body {
   font-family: serif;
   color: #ff5000 !important;
 }
+#invitemodal .modal-title {
+  font-size: 1.2rem;
+  color: #ff5000;
+}
+#invitemodal .btn-danger {
+  background: #ff5000;
+  padding: 9px;
+}
+#invitemodal .btn-danger:hover {
+  background: #0ea5df;
+  border-color: #0ea5df;
+}
 .profile-card-sec {
   background: #ffffff;
   border-radius: 10px;

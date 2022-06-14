@@ -134,4 +134,10 @@ class PoolController extends Controller
         // return redirect()->back()->with('status','Student Added Successfully');
 
     }
+
+    public function invitePool($id){
+        $pool = UserPool::find($id)->toArray();
+        //prr($pool);
+        return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees']]);
+    }
 }

@@ -67,10 +67,10 @@
                                             <div class="col-sm-12">
                                                 <div class="gstsbdkiuy">
                                                     <div class="hsdytg">
-                                                        <h6>Big Blues Pool Public</h6>
+                                                        <h6>{{!empty($result['pull_name'])?$result['pull_name']:'';}}</h6>
                                                     </div>
                                                     <div class="nhgtyuijn">
-                                                        <button class="sjdhjsdh">20 Users</button>
+                                                        <button class="sjdhjsdh">{{!empty($result['joined'])?$result['joined']:'';}} Users</button>
                                                     </div>
                                                 </div>
                                             </div>

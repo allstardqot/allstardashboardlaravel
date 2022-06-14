@@ -71,7 +71,7 @@
 
 
                                         <div class="user-invite">
-                                            <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
+                                            <a class="sjsdjk78" href="#invitemodal" data-bs-toggle="modal"><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
                                         </div>
                                     </div>
                                         
@@ -667,7 +667,54 @@
             </div>
         </div>
         <!-- Button trigger modal -->
+
+    
 </main>
+<div class="modal fade" id="invitemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Please select your pool to share</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="modal-in">
+            <form action="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Public or Private</option>
+                                <option value="Public Pool">Public Pool</option>
+                                <option value="Private Pool">Private Pool</option>
+                                
+                              </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+
+                    </div>
+
+                </div>
+              
+            </form>
+        </div>
+       
+        </div>
+      
+      </div>
+    </div>
+  </div>
 <script src="{{asset('public/assets/js/jquery-3.5.1.min.js')}}"></script>
 <script>
     $(document).ready(function() {
