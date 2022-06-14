@@ -37,21 +37,27 @@
                     </div>
                 </div>
             </div>
-            <div class="baytjh">
-                <div class="row">
-                    <div class="majhyt">
-                        <div class="clak">
-                            <input class="inpotyahn" type="text" id="fname" name="fname" placeholder="Enter Email address" />
-                        </div>
-                        <div class="lkahty">
-                            <button class="bants">+ Add More</button>
+            <form id="email" method="post" action="{{ url('/invite-email') }}">
+                @csrf
+
+            
+                <div class="baytjh" id="fieldadd">
+                    <div class="row">
+                        <div class="majhyt">
+                            <div class="clak">
+                                <input class="inpotyahn" type="email" id="email" name="email[]" placeholder="Enter Email address" />
+                            </div>
+                            <div class="lkahty">
+                                <input class="bants add_more" type="button"  value="+ Add More">
+                                {{-- <button type="button" class="bants add_more">+ Add More</button> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <button type="button" class="form-control btnColor mt-4 order-last order-lg-first tbnayr">
-                Invite
-            </button>
+                <button type="submit" name="submit" id="invite" class="form-control btnColor mt-4 order-last order-lg-first tbnayr">
+                    Invite
+                </button>
+            </form>
         </div>
     </div>
 

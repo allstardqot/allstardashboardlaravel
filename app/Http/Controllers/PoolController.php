@@ -90,6 +90,11 @@ class PoolController extends Controller
         // echo 'sljhf';die;
         $user_id  = Auth::user()->id;
         $team     = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
+        // prr(count($team));
+        if(count($team) == 0){
+            return redirect('/create-team')->with('info','You Cant Create Pool, first create team');
+        }
+        // if()
         return view('users/pools/createpool',['team'=>$team]);
     }
 
@@ -110,34 +115,46 @@ class PoolController extends Controller
                 'team_id'=>'required'
             ]);
         }
-        $pool = new UserPool;
-        $pool->user_id    = Auth::user()->id;
-        $pool->pool_name   = $request->input('pool_name');
-        $pool->pool_type   = $request->input('pool_type');
-        $pool->max_participants = $request->input('max_participants');
-        // $pool->team_id = $request->input('team_id');
-        if($request->input('pool_type') == '1'){
-            $pool->password =  Hash::make($request->input('password'));
+        if(nextWeek() != 0){
+            $pool = new UserPool;
+            $pool->user_id    = Auth::user()->id;
+            $pool->pool_name   = $request->input('pool_name');
+            $pool->pool_type   = $request->input('pool_type');
+            $pool->max_participants = $request->input('max_participants');
+            $pool->week_id = nextWeek();
+            if($request->input('pool_type') == '1'){
+                $pool->password =  Hash::make($request->input('password'));
+            }
+            $pool->entry_fees =  $request->input('entry_fees');
+            //prr($pool);
+            if($request->input('pool_type') == '1' && $pool->save() ){
+                $contest = new UserContest;
+                $contest->user_id    = Auth::user()->id;
+                $contest->pool_id    = $pool->id;
+                $contest->user_team_id = $request->input('team_id');
+                $contest->save();
+            }else{
+                $pool->save();
+            }
+            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
+
         }
-        $pool->entry_fees =  $request->input('entry_fees');
-        //prr($pool);
-        if($request->input('pool_type') == '1' && $pool->save() ){
-            $contest = new UserContest;
-            $contest->user_id    = Auth::user()->id;
-            $contest->pool_id    = $pool->id;
-            $contest->user_team_id = $request->input('team_id');
-            $contest->save();
-        }else{
-            $pool->save();
-        }
-        return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
-        // return redirect()->back()->with('status','Student Added Successfully');
+        
+        return redirect()->back()->with('info','You Cant Create Pool this Time');
 
     }
+
 
     public function invitePool($id){
         $pool = UserPool::find($id)->toArray();
         //prr($pool);
         return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees']]);
+    }
+
+
+    public function invite(Request $request){
+       echo 'adfjsdf';
+        prr($request->input('email'));
+        return redirect()->back();
     }
 }

@@ -70,13 +70,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    var editor1 = new RichTextEditor("#div_editor1");
+    
    
 
    
     $(document).ready(function() {
 
-       
+
+        var i=1;  
+      $('.add_more').click(function(){  
+           i++;  
+           $('#fieldadd').append('<div class="row" id="row'+i+'"><div class="majhyt"><div class="clak"><input class="inpotyahn" type="email" name="email[]" placeholder="Enter Email address" /></div><div class="lkahty"><input class="bants btnremove" name="remove" id="'+i+'" type="button" value="X Remove"></div></div></div>');
+           //$('#fname').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+           
+      });  
+
+
+      $(document).on('click', '.btnremove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  
+    //   $('#invite').click(function(){      
+    //     let dataa=$('#email').serialize();      
+    //     alert(dataa);
+    //     console.log(dataa);
+           
+    //   });  
+
+
+    
+      var editor1 = new RichTextEditor("#div_editor1");
 
         $(".hideShow").click(function(e) {
             var keyId = $(this).data('keyid');
