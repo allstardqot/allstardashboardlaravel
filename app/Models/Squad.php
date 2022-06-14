@@ -12,7 +12,7 @@ class Squad extends Model
         'id',
         'player_id',
         'fixture_id',
-        'weekId',
+        'week_id',
         'fixture_starting_at',
         'team',
         'is_active',

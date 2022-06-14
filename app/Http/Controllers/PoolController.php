@@ -15,6 +15,8 @@ use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
+use App\Mail\UserEmail;
+use Mail;
 
 class PoolController extends Controller
 {
@@ -55,8 +57,8 @@ class PoolController extends Controller
 
         $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
 
-        $nextWeek=nextWeek();
-        $currentWeek=currentWeek();
+        $nextWeek = nextWeek();
+        $currentWeek = currentWeek();
         foreach($poolQuery as $key=>$poolValue){
             if($key==0){
                 if($nextWeek>0){
@@ -126,16 +128,17 @@ class PoolController extends Controller
                 $pool->password =  Hash::make($request->input('password'));
             }
             $pool->entry_fees =  $request->input('entry_fees');
+            $pool->save();
             //prr($pool);
-            if($request->input('pool_type') == '1' && $pool->save() ){
+            // if($request->input('pool_type') == '1' && $pool->save() ){
                 $contest = new UserContest;
                 $contest->user_id    = Auth::user()->id;
                 $contest->pool_id    = $pool->id;
                 $contest->user_team_id = $request->input('team_id');
                 $contest->save();
-            }else{
+            // }else{
                 $pool->save();
-            }
+            // }
             return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
 
         }
@@ -153,8 +156,12 @@ class PoolController extends Controller
 
 
     public function invite(Request $request){
-       echo 'adfjsdf';
-        prr($request->input('email'));
-        return redirect()->back();
+        $users =$request->input('email');
+  
+        foreach ($users as $key => $user) {
+            Mail::to($user)->send(new UserEmail($user));
+        }
+        return redirect('/my-pool')->with('success','Send email successfully.');
+        // return response()->json(['success'=>'Send email successfully.']);
     }
 }

@@ -51,8 +51,8 @@ class HomeController extends Controller
         //$team = Team::get();
         $team = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
        
-        $publicData=$publicQuery->where(['pool_type'=>0])->get();
-        $privateData=$privateQuery->where(['pool_type'=>1])->get();
+        $publicData  = $publicQuery->where(['pool_type'=>0 ,'week_id'=>nextWeek()])->get();
+        $privateData = $privateQuery->where(['pool_type'=>1,'week_id'=>nextWeek()])->get();
         if(!empty($searchData)){
             if($searchData!="Search"){
                 if($type=="public"){
@@ -63,7 +63,7 @@ class HomeController extends Controller
             }
             $weeak=[];
             if(currentWeek()>0){
-                $weeak=Week::find(currentWeek())->toArray();
+                $weeak=Week::find(nextWeek())->toArray();
             }
             return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser,'weeak'=>$weeak]);
         }

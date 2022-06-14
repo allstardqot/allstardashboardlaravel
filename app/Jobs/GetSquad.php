@@ -52,6 +52,7 @@ class GetSquad implements ShouldQueue
         $teamArray = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
         $season_id=$fixtureData['season_id'];
         $weekId=weekIdDate($fixtureData['starting_at']);
+        Log::info("sqqqqqqqqqqqqqqq".$weekId."----".$fixtureData['starting_at']);
         foreach ($teamArray as $teamValue) {
             if (!empty($teamValue)) {
                 $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player');
