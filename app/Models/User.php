@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'country_code' ,
         'team_id' ,
         'player_id' ,
+        'referral_code'
     ];
 
     /**

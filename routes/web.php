@@ -43,7 +43,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
-Route::get('/setusertotalteam',[DemoController::class,'setusertotalteam']);
+Route::get('/setuserTeamtotal/{fixtureId}',[DemoController::class,'setuserTeamtotal']);
+
+
+
+
 Route::get('/terms-condition',[PagelayoutController::class,'termsCondition']);
 Route::get('/aml-policy',[PagelayoutController::class,'amlPolicy']);
 Route::get('/kyc-policy',[PagelayoutController::class,'kycPolicy']);
@@ -79,6 +83,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/home', [App\Http\Controllers\HomeController::class, 'jointeam'])->name('home');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
+        Route::post('/send-invition', [ProfileController::class, 'send_invition'])->name('send-invition');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/team', [TeamController::class, 'index'])->name('team');
         Route::get('/current-team', [TeamController::class, 'currentTeam'])->name('current-team');

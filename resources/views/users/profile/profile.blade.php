@@ -16,7 +16,7 @@
   <div class="container sdhdjhsio">
     <div class="row mt-5 text-center sxdcnd">
       <div class="col-lg-4 mt-2">
-        <a href="#" class="sddmmnd767">Invite Friend</a>
+        <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a>
       </div>
       <div class="col-lg-4 mt-2 text-white">
         <img src="{{ asset('public/assets/image/Rectangle%20276.png') }}" />
@@ -85,4 +85,34 @@
     }
   </script>
 </main>
+
+<!-- Modal -->
+<div class="modal fade invite-popup" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Invite</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="invite_email">
+        @csrf
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group mb-3 w-100 pr-0">
+            <input type="email" class="form-control" placeholder="Enter Email" name="email" id="inviteemail" required />
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group w-100 ">
+              <input  class="btn btn-primary" id="send_invite" value="Invite"/>
+            </div>
+          </div>
+        </div>
+       </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
 @endsection

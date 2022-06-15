@@ -20,6 +20,25 @@ body {
   background: #0ea5df;
   border-color: #0ea5df;
 }
+.invite-popup .btn-primary {
+  background: #ff5000;
+  border-color: #ff5000;
+  padding: 8px;
+}
+
+.invite-popup .form-group {
+  padding-right: 0;
+  margin-top: 0px;
+
+}
+.invite-popup .modal-dialog {
+  max-width: 330px;
+  
+}
+.invite-popup .modal-title {
+  font-size: 20px;
+  font-weight: 600;
+}
 .profile-card-sec {
   background: #ffffff;
   border-radius: 10px;
@@ -4288,6 +4307,9 @@ main {
     width: 100%;
     margin-bottom: 14px;
   }
+  .invite-popup .modal-dialog {
+    max-width: 575px;
+}
   .calendor-btn .input-group {
     display: block;
     text-align: left;

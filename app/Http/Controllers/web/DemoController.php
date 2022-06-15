@@ -4,8 +4,10 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
-use App\Models\League;
 use App\Models\Player;
+
+use App\Models\League;
+
 use App\EntitySport;
 use App\Models\Fixture;
 use App\Models\News;
@@ -40,6 +42,52 @@ class DemoController extends Controller
                 }
 
             }
+        }
+    }
+
+    public function setuserTeamtotal($fixtureId=null){
+        $week=currentWeek();
+        $user_team = UserTeam::where('current_week',$week)->get();
+        foreach($user_team as $key=>$teamValue){
+            $total_points=0;
+            $players = $teamValue['players'];
+            $selected_player = json_decode($players, true);
+            
+            $squads = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('total_points','player_id')->toArray();
+            
+            $playing11Data = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('playing11','player_id')->toArray();
+            
+                $substitude_player=json_decode($teamValue->substitude,true);
+                
+                $count=0;
+                $final_substitude_player=$new_substitude_players=[];
+                $positionGet=Player::whereIn('id',$selected_player)->where('position_id',1)->select(['players.id'])->get()->first()->toArray();
+                foreach($playing11Data as $key=>$status){
+                    if($status==0 && count($new_substitude_players)<2){
+                        $new_substitude_players[]=$key;
+                        $count+=1;
+                    }
+                }
+                if(count($new_substitude_players)<2){
+                    $new_substitude_players=[];
+                }
+                $goalKeeperSubstitude='';
+                if(in_array($positionGet['id'],$new_substitude_players)){
+                    $goalKeeperSubstitude=$positionGet['id'];
+                }
+                $final_substitude_player=!empty($new_substitude_players)?$new_substitude_players:$substitude_player;
+                $played_player=array_diff($selected_player,$final_substitude_player);
+                
+                foreach($played_player as $player_id){
+                    if($teamValue->captain==$player_id && empty($goalKeeperSubstitude)){
+                        $total_points += isset($squads[$player_id])?$squads[$player_id]*2:0;
+                    }else{
+                        $total_points += isset($squads[$player_id])?$squads[$player_id]:0;
+                    }
+                }
+                $teamValue->total_points=$total_points;
+                $teamValue->substitude=json_encode($final_substitude_player);
+                $teamValue->update();
         }
     }
 
@@ -253,42 +301,5 @@ class DemoController extends Controller
 
                 }
         }
-    }
-
-    public function setusertotalteam(){
-
-        $this->fixtureId=18138829;
-        $fixture = Fixture::query()
-                    ->where('id', $this->fixtureId)
-                    ->first();
-
-
-        $week=weekIdDate($fixture->starting_at);
-        if($week>0){
-            $squads=Squad::where([['fixture_id',$this->fixtureId],['total_points','>',0]])->pluck('total_points','player_id')->toArray();
-
-            $user_team=UserTeam::where('week',3)->get();
-
-            foreach($user_team as $key=>$userValue){
-                $total_points=0;
-                $selected_player=json_decode($userValue->players,true);
-                $substitude_player=json_decode($userValue->substitude,true);
-                $played_player=array_diff($selected_player,$substitude_player);
-                foreach($played_player as $player_id){
-                    if($userValue->captain==$player_id){
-                        $total_points += isset($squads[$player_id])?$squads[$player_id]*2:0;
-                    }else{
-                        $total_points += isset($squads[$player_id])?$squads[$player_id]:0;
-                    }
-                }
-                $userValue->total_points=$total_points;
-                $userValue->update();
-            }
-        }
-        echo "fine";
-
-        // foreach($squads as $total_points=>$player_id){
-
-        // }
     }
 }

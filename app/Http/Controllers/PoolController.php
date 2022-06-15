@@ -62,10 +62,10 @@ class PoolController extends Controller
         foreach($poolQuery as $key=>$poolValue){
             if($key==0){
                 if($nextWeek>0){
-                    $upcomingDate=Week::find(nextWeek())->toArray();
+                    $upcomingDate=Week::find($nextWeek)->toArray();
                 }
-                if(currentWeek()>0){
-                    $currentDate=Week::find(currentWeek())->toArray();
+                if($currentWeek>0){
+                    $currentDate=Week::find($currentWeek)->toArray();
                 }
                 // if(currentWeek()>0){
                 //     $completeDate=Week::find(currentWeek())->toArray();
@@ -82,9 +82,7 @@ class PoolController extends Controller
                 $completePool[]=$poolValue;
             }
         }
-
-
-            return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
+           return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
     }
 
     public function createPool()
@@ -156,7 +154,8 @@ class PoolController extends Controller
 
 
     public function invite(Request $request){
-        $users =$request->input('email');
+       
+        $users = $request->input('email');
   
         foreach ($users as $key => $user) {
             Mail::to($user)->send(new UserEmail($user));

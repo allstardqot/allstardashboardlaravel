@@ -11,6 +11,10 @@ class UserTeam extends Model
     protected $fillable = [
         'id',
         'user_id',
+        'week',
+        'current_week',
+        'captain',
+        'substitude',
         'players',
         'name',
         'total_points'

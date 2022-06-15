@@ -133,7 +133,7 @@
     <div class="rightSide">
       <img src="{{ asset('public/img/Pattern(1).png') }}" />
     </div>
-    <div class="col-lg-11 mx-auto text-white text-center py-5">
+    <!-- <div class="col-lg-11 mx-auto text-white text-center py-5">
       <h1><b>Upcoming Match</b></h1>
       <p class="pregraph">
         Sint anim laboris in dolore deserunt. Exercitation commodo nostrud
@@ -267,7 +267,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </main>
 

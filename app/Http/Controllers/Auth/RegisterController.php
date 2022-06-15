@@ -83,12 +83,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // print_r($data['country_code']);die;
+        $user_data =  User::query()->orderByDesc('id')->limit(1)->first();
+        // prr();
+        // echo 'ASU000'.($user_data->id+1);die;
+
+        $refer_code = 'ASU000'.($user_data->id+1);
+       
         return User::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'role_id'=> 3 ,
             'country'=> $data['country'] ,
-           
+           'referral_code'=>$refer_code,
             'password' => Hash::make($data['password']),
         ]);
 

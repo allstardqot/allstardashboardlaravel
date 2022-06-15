@@ -28,6 +28,8 @@ class LeaderboardController extends Controller
 
     public function viewdetail($id){
         $user_contest=UserContest::join('user_pools','user_pools.id','pool_id')->select(['user_pools.pool_name','user_contests.*',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->find($id)->toArray();
+        $leaderboardData=UserTeam::join('user_contests','user_contests.user_team_id','user_teams.id')->join('users','users.id','user_teams.user_id')->where('pool_id',$user_contest['pool_id'])->orderBy('total_points','desc')->select(['users.user_name','user_teams.total_points'])->get();
+        //prr($query);
         
         $user_id=Auth::user()->id;
         $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
@@ -36,10 +38,11 @@ class LeaderboardController extends Controller
 
         if(!empty($user_contest['user_team_id'])){
             $userTeam = UserTeam::find($user_contest['user_team_id'])->toArray();
+            ///echo $userTeam['current_week'];die;
             $players = $userTeam['players'];
             $plyArr = json_decode($players, true);
             //p($players);
-            $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->select(['players.*','positions.name'])->get()->toArray();
+            $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->join('squads','squads.player_id','players.id')->whereIn('players.id', $plyArr)->where('squads.week_id',$userTeam['current_week'])->orderBy('positions.id', 'ASC')->select(['players.*','positions.name','squads.total_points'])->get()->toArray();
             $result['team_name'] = $userTeam['name'];
             $result['captain_id'] = $userTeam['captain'];
             $result['pull_name']=$user_contest['pool_name'];
@@ -47,7 +50,7 @@ class LeaderboardController extends Controller
             $result['id'] = $userTeam['id'];
         }
         //prr($result);
-        return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam'));
+        return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam','leaderboardData'));
     }
 
     

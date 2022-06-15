@@ -34,6 +34,13 @@ module.exports = {
             interpreter: "php",
             exec_mode: "fork",
             args: ["queue:work", "--daemon", "--queue=getteam"],
+        },
+        {
+            name: "Set user total team",
+            script: "artisan",
+            interpreter: "php",
+            exec_mode: "fork",
+            args: ["queue:work", "--daemon", "--queue=setuserteamtotal"],
         }
     ],
 };

@@ -105,6 +105,7 @@ class TeamController extends Controller
                 $userTeam = UserTeam::find($request->editId);
             } else {
                 $userTeam = new UserTeam;
+                $userTeam->current_week = currentWeek();
                 $userTeam->week = nextWeek();
             }
             $userTeam->user_id = $user_id;
@@ -251,6 +252,7 @@ class TeamController extends Controller
                 $userTeam = UserTeam::find($request->editId);
             } else {
                 $userTeam = new UserTeam;
+                $userTeam->current_week = currentWeek();
                 $userTeam->week = nextWeek();
             }
             $userTeam->user_id = $user_id;

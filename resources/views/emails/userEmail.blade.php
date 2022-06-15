@@ -7,6 +7,7 @@
   
     <h1>Hi, </h1>
     <p>{{ $user }}</p>
+    <p></p>
      
     <p>Thank you</p>
 </body>

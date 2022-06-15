@@ -9,6 +9,8 @@ use App\Models\Nationalities;
 use App\Models\Team;
 use App\Models\Player;
 use Auth;
+use App\Mail\UserEmail;
+use Mail;
 
 
 
@@ -73,5 +75,17 @@ class ProfileController extends Controller
         //     Return a response that the user was updated successfully.
         // */
         return redirect('/profile')->with('message', 'Your Profile Successfully Updated!');
+    }
+
+    public function send_invition(Request $request){
+        $referral_code      = Auth::user()->referral_code;
+  
+        Mail::send('users.invition_html',['token' => $request->token,'referral_code'=>$referral_code], function($message) use($request){
+            $message->to($request->email);
+            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $message->subject('Invition');
+        });
+        return 'Success';
+
     }
 }

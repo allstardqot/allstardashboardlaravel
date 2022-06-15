@@ -76,26 +76,43 @@
    
     $(document).ready(function() {
 
+        // open invite modal 
+        $("#inviteBtn").click(function () {
+            $("#modal").modal('show');
+        });
 
+        $("#send_invite").click(function () {
+            var invite_email = $('#invite_email').serialize();
+            // alert(invite_email)
+            $("#modal").modal('hide');
+
+            $.ajax({
+                url: "send-invition",
+                method: "POST",
+                data: $('#invite_email').serialize(),
+                success: function(result) {
+                  console.log(result)
+
+                }
+            });
+            // alert(invite_email)
+        });
+
+        // Add more on created pool
         var i=1;  
-      $('.add_more').click(function(){  
-           i++;  
-           $('#fieldadd').append('<div class="row" id="row'+i+'"><div class="majhyt"><div class="clak"><input class="inpotyahn" type="email" name="email[]" placeholder="Enter Email address" /></div><div class="lkahty"><input class="bants btnremove" name="remove" id="'+i+'" type="button" value="X Remove"></div></div></div>');
-           //$('#fname').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-           
-      });  
+        $('.add_more').click(function(){  
+            i++;  
+            $('#fieldadd').append('<div class="row" id="row'+i+'"><div class="majhyt"><div class="clak"><input class="inpotyahn" type="email" name="email[]" placeholder="Enter Email address" /></div><div class="lkahty"><input class="bants btnremove" name="remove" id="'+i+'" type="button" value="X Remove"></div></div></div>');
+            //$('#fname').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+            
+        });  
 
-
-      $(document).on('click', '.btnremove', function(){  
-           var button_id = $(this).attr("id");   
-           $('#row'+button_id+'').remove();  
-      });  
-    //   $('#invite').click(function(){      
-    //     let dataa=$('#email').serialize();      
-    //     alert(dataa);
-    //     console.log(dataa);
-           
-    //   });  
+        // btn remove on created pool
+        $(document).on('click', '.btnremove', function(){  
+            var button_id = $(this).attr("id");   
+            $('#row'+button_id+'').remove();  
+        });  
+    
 
 
     
