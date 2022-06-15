@@ -49,7 +49,10 @@ class LeaderboardController extends Controller
             $result['joined']=$user_contest['joined'];
             $result['id'] = $userTeam['id'];
         }
-        //prr($result);
+        // foreach($leaderboardData as $ledValue){
+        //     if($)
+        // }
+        //prr($leaderboardData);
         return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam','leaderboardData'));
     }
 

@@ -125,7 +125,7 @@ class GetScore implements ShouldQueue
                             'rating' => !empty($scoreValue['stats']['rating']) ? $scoreValue['stats']['rating'] : '',
                         ]);
                     }
-                    SetUserTeamTotal::dispatch($this->fixtureId);
+                    //SetUserTeamTotal::dispatch($this->fixtureId);
                 }
                 if ($this->autoSet) {
                     if ($fixture->status === FIXTURE_STATUS[0] || $fixture->status === FIXTURE_STATUS[1] || $fixture->status === FIXTURE_STATUS[2]) {

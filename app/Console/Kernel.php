@@ -2,7 +2,7 @@
 
 namespace App\Console;
 use App\Jobs\GetFixture;
-use App\Jobs\GetTeam;
+use App\Jobs\SetUserTeamTotal;
 use App\Jobs\NewsData;
 use App\Models\Team;
 use Illuminate\Console\Command;
@@ -28,10 +28,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(GetFixture::class)->everyMinute();
+        $schedule->job(GetFixture::class)->everyFifteenMinutes();
+        $schedule->job(SetUserTeamTotal::class)->everyFifteenMinutes();
         //$schedule->job(GetTeam::class)->everyMinute();
         //$schedule->command('demo:cron')->everyMinute();
-        //$schedule->job(GetTeam::class)->everyFifteenMinutes();
         //$schedule->job(NewsData::class)->everyFifteenMinutes();
         //$schedule->job(GetTeam::class)->weekly();
         //dispatch($schedule);

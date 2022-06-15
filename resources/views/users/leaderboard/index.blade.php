@@ -85,12 +85,18 @@
                                                         <th>Username</th>
                                                         <th class="shdghsdg">Fantecy Points</th>
                                                     </tr>
+                                                    @php
+                                                        $point = 0
+                                                    @endphp
                                                     @foreach ($leaderboardData as $key=>$userData)
                                                     <tr>
-                                                        <td>{{$key+1}}</td>
+                                                        <td>{{($point==0 || $point > $userData['total_points'])?$key+1:$key}}</td>
                                                         <td>{{$userData['user_name']}}</td>
                                                         <td>{{$userData['total_points']}}</td>
                                                     </tr>
+                                                    @php
+                                                        $point = $userData['total_points'];
+                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -130,123 +136,12 @@
                                                                 </td>
                                                             </tr>
                                                             @endforeach
-                                                            {{-- <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5>DEFENDER</h5>
-                                                                    <div class="player-name">
-                                                                        <img src="{{ asset('public/assets/image/Rectangle 276.png') }}"
-                                                                            alt="" class="img-fluid" width="30"
-                                                                            height="30" />
-                                                                        <span>Player Name </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="points-text">
-                                                                    <small>Points :309</small>
-                                                                </td>
-                                                            </tr> --}}
+                                                            
                                                         </tbody>
                                                     </table>
                                                  @php 
-                                                    // prr($userTeam)
+                                                    
                                                  @endphp
-                                                    <div class="squad-btn">
-                                                        <a href="javascript:void(0)" onclick="editManageSquad({{$userTeam['id']  }})" class="btn btn-danger">Go to menage Squad</a>
-                                                    </div>
                                                     <div class="fantacy-point">
                                                         <h3>Fantasy Point <strong> $900</strong></h3>
                                                     </div>

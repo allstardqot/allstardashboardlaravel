@@ -16,7 +16,8 @@
   <div class="container sdhdjhsio">
     <div class="row mt-5 text-center sxdcnd">
       <div class="col-lg-4 mt-2">
-        <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a>
+         <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a> 
+        <!-- <a href="#" class="sddmmnd767" id=''>Invite Friend</a> -->
       </div>
       <div class="col-lg-4 mt-2 text-white">
         <img src="{{ asset('public/assets/image/Rectangle%20276.png') }}" />

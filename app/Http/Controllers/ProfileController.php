@@ -78,9 +78,9 @@ class ProfileController extends Controller
     }
 
     public function send_invition(Request $request){
-        $referral_code      = Auth::user()->referral_code;
+        $referal      = Auth::user()->referral_code;
   
-        Mail::send('users.invition_html',['token' => $request->token,'referral_code'=>$referral_code], function($message) use($request){
+        Mail::send('users.invition',['token' => $request->token,'referal'=>$referal], function($message) use($request){
             $message->to($request->email);
             $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
             $message->subject('Invition');

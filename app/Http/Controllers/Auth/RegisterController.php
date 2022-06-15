@@ -48,13 +48,13 @@ class RegisterController extends Controller
     }
 
     
-    public function showRegistrationForm(){
-        // echo 'dflkhsadokf';die;
+    public function showRegistrationForm($referal=null){
+        // echo $referal;die;
         $nationlity = Nationalities::select('country')->get();
         $team = Team::select('name')->get();
         $player = Player::select('display_name')->get();
         // print_r($player);die;
-        return view("auth.register", compact("nationlity",'team','player'));
+        return view('auth.register', ["nationlity"=>$nationlity,'team'=>$team,'player'=>$player,'referal'=>$referal]);
     }
 
     /**
@@ -84,9 +84,10 @@ class RegisterController extends Controller
     {
         // print_r($data['country_code']);die;
         $user_data =  User::query()->orderByDesc('id')->limit(1)->first();
-        // prr();
+        // prr();referal_id
+        $user = User::where(['referral_code'=>$data['referal_code']])->first();
         // echo 'ASU000'.($user_data->id+1);die;
-
+        // prr($user->id);
         $refer_code = 'ASU000'.($user_data->id+1);
        
         return User::create([
@@ -95,6 +96,7 @@ class RegisterController extends Controller
             'role_id'=> 3 ,
             'country'=> $data['country'] ,
            'referral_code'=>$refer_code,
+           'referal_id'=>$user->id,
             'password' => Hash::make($data['password']),
         ]);
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\LeaderboardController;
@@ -62,7 +63,7 @@ Route::get('/faq', [FaqController::class,'index']);
 
 Route::get('/how_to_play', [HowtoplayController::class,'index']);
 
-
+Route::get('/register/{referal}', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Auth::routes();
 
 
@@ -126,11 +127,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
     Route::post('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
 
-
+   
     // Route::get('/fixture-data',function(){
     //     return view('users/fixture');
     // });
 });
+
+
+
 
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');

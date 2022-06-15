@@ -64,6 +64,9 @@
                          
                         </select>
                       </div>
+                      {{-- <br /> --}}
+                    <input id="referal-code" type="text" class="input-reis form-control" name="referal_code" required autocomplete="Referal Code" placeholder="Referal Code" value="{{ $referal }}">
+                        <br>
                       {{-- <div class="form-group">
                         <select class="form-control input-reis" name="team_id" >
                           <option value="{{old('team_id')}}">Select Team</option>

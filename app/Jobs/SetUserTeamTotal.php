@@ -32,10 +32,9 @@ class SetUserTeamTotal implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($fixtureId)
+    public function __construct()
     {
         $this->queue = 'setuserteamtotal';
-        $this->fixtureId = $fixtureId;
     }
 
     /**
