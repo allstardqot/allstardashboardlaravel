@@ -85,18 +85,12 @@
                                                         <th>Username</th>
                                                         <th class="shdghsdg">Fantecy Points</th>
                                                     </tr>
-                                                    @php
-                                                        $point = 0
-                                                    @endphp
                                                     @foreach ($leaderboardData as $key=>$userData)
                                                     <tr>
-                                                        <td>{{($point==0 || $point > $userData['total_points'])?$key+1:$key}}</td>
+                                                        <td>{{$userData['rank']}}</td>
                                                         <td>{{$userData['user_name']}}</td>
                                                         <td>{{$userData['total_points']}}</td>
                                                     </tr>
-                                                    @php
-                                                        $point = $userData['total_points'];
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -114,7 +108,10 @@
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <tbody>
-                                                        @foreach($result as $key => $data)
+                                                        @php
+                                                                $total_fpoints=0;
+                                                        @endphp
+                                                        @foreach($result as $key => $data)    
                                                         @if(!isset($data['name']))
                                                             @continue;
                                                         @endif
@@ -135,6 +132,9 @@
                                                                     <small>Points :{{$data['total_points']}}</small>
                                                                 </td>
                                                             </tr>
+                                                            @php
+                                                                $total_fpoints+=$data['total_points'];
+                                                            @endphp
                                                             @endforeach
                                                             
                                                         </tbody>
@@ -143,7 +143,7 @@
                                                     
                                                  @endphp
                                                     <div class="fantacy-point">
-                                                        <h3>Fantasy Point <strong> $900</strong></h3>
+                                                        <h3>Fantasy Point <strong> ${{$total_fpoints}}</strong></h3>
                                                     </div>
                                                 </div>
                                             </div>

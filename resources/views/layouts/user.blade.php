@@ -27,7 +27,7 @@
 </head>
 
 <body>
-
+   
     <div class="loading">
         <div class="circle"> </div>
       </div>
@@ -48,6 +48,8 @@
         <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
     </div>
 @endif
+
+
 @yield('content')
 
 

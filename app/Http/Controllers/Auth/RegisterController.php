@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -85,7 +86,25 @@ class RegisterController extends Controller
         // print_r($data['country_code']);die;
         $user_data =  User::query()->orderByDesc('id')->limit(1)->first();
         // prr();referal_id
-        $user = User::where(['referral_code'=>$data['referal_code']])->first();
+        $user_id = '';
+        if(!empty($data['referal_code'])){
+            $user = User::where(['referral_code'=>$data['referal_code']])->first();
+            // prr($user);
+            if(empty($user)){
+                session()->flash('error', 'Plz Enter Valid Referal Code!');
+                // return redirect('register')->with('info','Plz Enter Valid Referal Code!');
+                // return redirect()->route('register');
+            }else{
+
+                $user->wallet = $user->wallet + 100;
+                $user->save();
+                $user_id = $user->id;
+            }
+
+            
+
+        }
+        
         // echo 'ASU000'.($user_data->id+1);die;
         // prr($user->id);
         $refer_code = 'ASU000'.($user_data->id+1);
@@ -96,7 +115,7 @@ class RegisterController extends Controller
             'role_id'=> 3 ,
             'country'=> $data['country'] ,
            'referral_code'=>$refer_code,
-           'referal_id'=>$user->id,
+           'referal_id'=>$user_id,
             'password' => Hash::make($data['password']),
         ]);
 

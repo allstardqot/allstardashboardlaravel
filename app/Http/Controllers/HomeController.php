@@ -74,8 +74,26 @@ class HomeController extends Controller
     }
 
     public function jointeam(Request $request){
-        $contest_data=new UserContest();
-        $contest_data->pool_id=$request->input('join_pool_id');
+
+        $wallet = Auth::user()->wallet;
+            // echo $wallet;die;
+        $join_pool_id =     $request->input('join_pool_id');
+
+        $pool = UserPool::findOrFail($join_pool_id);
+        // prr();
+        $entry_fees = $pool['entry_fees'];
+        if($entry_fees > $wallet){
+            return redirect()->back()->with('message','You have not sufficant balance!');
+
+        }
+
+        $user = Auth::user();
+        $user->wallet    = $wallet - $entry_fees;
+        $user->save();
+
+        
+        $contest_data       = new UserContest();
+        $contest_data->pool_id = $join_pool_id;
         $contest_data->user_id=Auth::user()->id;
         $contest_data->user_team_id=$request->input('select_team');
         if($contest_data->save()){

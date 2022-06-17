@@ -57,7 +57,10 @@ class GetFixture implements ShouldQueue
                 // if($value['season_id']!='18378'){
                 //     continue;
                 // }
-                if($value['league_id']!='1538'){
+                // if($value['league_id']!='1538'){
+                //     continue;
+                // }
+                if($value['league_id']!='779'){
                     continue;
                 }
                 

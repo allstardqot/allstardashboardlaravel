@@ -14,7 +14,9 @@ use App\Models\News;
 use App\Models\Season;
 use App\Models\Squad;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\UserTeam;
+use App\Models\UserContest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -43,6 +45,56 @@ class DemoController extends Controller
 
             }
         }
+    }
+
+    public function rankUpdate(){
+        //echo priviousWeek();die;
+        // $userContestQuery=UserContest::join('user_teams as ut','ut.id','user_contests.user_team_id')->select(['ut.total_points','user_contests.pool_id','user_contests.rank','user_contests.id'])->orderBy('pool_id','asc')->orderBy('total_points','desc')->get();
+        // $rank=$pool_id=$total_points=0;
+        // //prr($userContestQuery);
+        // foreach($userContestQuery as $key=>$value){
+        //     if($pool_id==0 || $pool_id!=$value['pool_id']){
+        //         $rank=0;
+        //     }
+
+        //     if($pool_id==$value['pool_id'] && $total_points==$value['total_points']){
+        //         $rank=$rank;
+        //     }else{
+        //         $rank+=1;
+        //     }
+        //     echo $value['id'].'-------------'.$rank.'---------'.$value['pool_id'].'----------'.$value['total_points']."<br>";
+        //     $total_points=$value['total_points'];
+        //     $pool_id=$value['pool_id'];
+        //     $value['rank']=$rank;
+        //     $value->update();
+        // }
+        $priviousWeek=priviousWeek();
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id'])->get()->toArray();
+        //prr($userTeamQuery);
+
+        $winningData=[];
+        foreach($userTeamQuery as $key=>$value){
+            $winningData[$value['pool_id']][]=$value;
+        }
+        if(!empty($winningData)){
+            foreach($winningData as $pool_id=>$poolData){
+                $totalUserJoin=count($winningData[$pool_id]);
+                foreach($poolData as $poolValue){
+                    $totalPriceGet=$poolValue['entry_fees']*$totalUserJoin;
+                    $firstRankprice=$totalPriceGet*75/100;
+                    $secondRankprice=$totalPriceGet*15/100;
+                    $adminPrice=$totalPriceGet*10/100;
+                    if($poolValue['rank']==1){
+                        User::where('id', $poolValue['user_id'])->increment('wallet',$firstRankprice);
+                    }
+                    if($poolValue['rank']==2){
+                        User::where('id', $poolValue['user_id'])->increment('wallet',$secondRankprice);
+                    }
+                }
+                //p($poolValue);
+            }   
+        }
+        prr($winningData);
     }
 
     public function setuserTeamtotal($fixtureId=null){

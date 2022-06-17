@@ -43,9 +43,18 @@ function currentWeek(){
 
 function nextWeek(){
     $week=currentWeek();
-
     if(Week::where('id','>',$week)->orderBy('id','asc')->first()){
         $query=Week::where('id','>',$week)->orderBy('id','asc')->first();
+        return $query->id;
+    }else{
+        return 0;
+    }
+}
+
+function priviousWeek(){
+    $week=currentWeek();
+    if(Week::where('id','<',$week)->orderBy('id','desc')->first()){
+        $query=Week::where('id','<',$week)->orderBy('id','desc')->first();
         return $query->id;
     }else{
         return 0;

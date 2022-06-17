@@ -646,10 +646,12 @@
             var full_name = "";
             var sell_price = "";
             playerTeamCheck();
+            // coins();
             $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".goalkep_fullname").html();
                 sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
+                coins(sell_price);
                 select += 1;
             });
             if (select >= 1) {
@@ -680,6 +682,7 @@
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".defender_fullname").html();
                 sell_price = $(this).closest("tr").find(".defender_sell_price").html();
+                coins(sell_price);
                 $("#defender_img" + select).attr("src", image);
                 $("#defender_name" + select).html(full_name);
                 $("#defendersell_price" + select).html(sell_price);
@@ -728,6 +731,7 @@
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".midfielder_fullname").html();
                 sell_price = $(this).closest("tr").find(".midfielder_sell_price").html();
+                coins(sell_price);
                 $("#midfielder_img" + select).attr("src", image);
                 $("#midfielder_name" + select).html(full_name);
                 $("#midfieldersell_price" + select).html(sell_price);
@@ -764,6 +768,7 @@
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".forward_fullname").html();
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
+                coins(sell_price);
                 $("#forward_img" + select).attr("src", image);
                 $("#forward_name" + select).html(full_name);
                 $("#forwardsell_price" + select).html(sell_price);

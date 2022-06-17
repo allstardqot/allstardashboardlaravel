@@ -87,6 +87,8 @@ class PoolController extends Controller
 
     public function createPool()
     {
+
+
         // echo 'sljhf';die;
         $user_id  = Auth::user()->id;
         $team     = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
@@ -105,6 +107,9 @@ class PoolController extends Controller
             'max_participants' => 'required|numeric',
             'entry_fees' => 'required|numeric',
         ]);
+
+
+       
         if($request->pool_type==1){
             request()->validate([
                 'pool_name' => 'required',
@@ -116,6 +121,17 @@ class PoolController extends Controller
             ]);
         }
         if(nextWeek() != 0){
+            $wallet = Auth::user()->wallet;
+            // echo $wallet;die;
+            $entry_fees = $request->input('entry_fees');
+            if($entry_fees > $wallet){
+                return redirect()->back()->with('message','You have not sufficant balance!');
+
+            }
+            $user = Auth::user();
+            $user->wallet    = $wallet - $entry_fees;
+            $user->save();
+
             $pool = new UserPool;
             $pool->user_id    = Auth::user()->id;
             $pool->pool_name   = $request->input('pool_name');
@@ -125,7 +141,7 @@ class PoolController extends Controller
             if($request->input('pool_type') == '1'){
                 $pool->password =  Hash::make($request->input('password'));
             }
-            $pool->entry_fees =  $request->input('entry_fees');
+            $pool->entry_fees =  $entry_fees;
             $pool->save();
             //prr($pool);
             // if($request->input('pool_type') == '1' && $pool->save() ){
@@ -135,13 +151,13 @@ class PoolController extends Controller
                 $contest->user_team_id = $request->input('team_id');
                 $contest->save();
             // }else{
-                $pool->save();
+                // $pool->save();
             // }
             return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
 
         }
         
-        return redirect()->back()->with('info','You Cant Create Pool this Time');
+        return redirect()->back()->with('message','You Cant Create Pool this Time');
 
     }
 
@@ -160,7 +176,7 @@ class PoolController extends Controller
         foreach ($users as $key => $user) {
             Mail::to($user)->send(new UserEmail($user));
         }
-        return redirect('/my-pool')->with('success','Send email successfully.');
+        return redirect('/my-pool')->with('message','Send email successfully.');
         // return response()->json(['success'=>'Send email successfully.']);
     }
 }

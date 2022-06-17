@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
+Route::get('/rankUpdate',[DemoController::class,'rankUpdate']);
 Route::get('/setuserTeamtotal/{fixtureId}',[DemoController::class,'setuserTeamtotal']);
 
 

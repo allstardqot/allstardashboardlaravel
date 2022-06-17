@@ -14,7 +14,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class SetUserTeamTotal implements ShouldQueue
+class WinningPorcess implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -87,7 +87,5 @@ class SetUserTeamTotal implements ShouldQueue
                 $teamValue->substitude=json_encode($final_substitude_player);
                 $teamValue->update();
         }
-
-        
     }
 }

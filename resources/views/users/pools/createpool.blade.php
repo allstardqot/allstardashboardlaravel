@@ -10,15 +10,15 @@
 
             <div class="row">
                 <div class="col-lg-6 text-center">
-                    <input type="text" id="pool_name" class="inmutsfg" name="pool_name" placeholder="Create your Pool Name" />
+                    <input type="text" id="pool_name" class="inmutsfg" name="pool_name" placeholder="Create your Pool Name" value="{{ old('pool_name') }}" />
                     <br />
-                    <input class="inmutsfg" type="number" id="entry_fees" name="entry_fees" placeholder="Enter Entry Amount" /><br />
+                    <input class="inmutsfg" type="number" id="entry_fees" name="entry_fees" placeholder="Enter Entry Amount" value="{{ old('entry_fees') }}"/><br />
 
                     <select class="hdydtsb" id="poolTeamId" name="team_id">
-                        <option class="jytf" value="">Select Team</option>
+                        <option class="jytf" >Select Team</option>
                         
                         @foreach($team as $key => $value)
-                        <option class="nhbgyuhd" value="{{ $value->id }}">{{ $value->name }}</option>
+                        <option class="nhbgyuhd" value="{{$value->id }}" {{old('team_id') == $value->id  ? 'selected' : ''}} >{{ $value->name }}</option>
 
                         @endforeach
                     </select>
@@ -26,13 +26,13 @@
                 <div class="col-lg-6 text-center">
                     <div class="text-white">
                         <select class="hdydtsb" id="poolType" name="pool_type">
-                            <option class="jytf" value="">Pool Type</option>
+                            <option class="jytf" value="{{old('pool_type')}}" selected>Pool Type</option>
                             <option class="jytf" value="1">Private</option>
                             <option class="jytf" value="0">Public</option>
                         </select>
                     </div>
 
-                    <input class="inmutsfg" type="number" id="max_participants" name="max_participants" placeholder="Enter max participants" /><br />
+                    <input class="inmutsfg" type="number" id="max_participants" name="max_participants" placeholder="Enter max participants" value="{{ old('max_participants') }}"/><br />
 
                     
 
