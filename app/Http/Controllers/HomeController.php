@@ -9,6 +9,7 @@ use App\Models\UserTeam;
 use App\Models\Week;
 use App\Models\News;
 use App\Models\UserContest;
+use App\Models\Squad;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
@@ -48,6 +49,11 @@ class HomeController extends Controller
 
         $jointuser = UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->select(['user_pools.id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->pluck('joined','user_pools.id')->toArray();
 
+    $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
+    // prr($topplayers);
+
+        // 
+        // $topplayers ='';
         $contest_pool = UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
         //$team = Team::get();
         $team = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
@@ -71,7 +77,7 @@ class HomeController extends Controller
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
 
         //prr($publicData);
-        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending,'user'=>$user]);
+        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending,'user'=>$user,'topplayers'=>$topplayers]);
     }
 
     public function jointeam(Request $request){

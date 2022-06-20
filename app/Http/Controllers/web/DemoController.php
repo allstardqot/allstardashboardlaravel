@@ -71,14 +71,15 @@ class DemoController extends Controller
         // }
         $priviousWeek=priviousWeek();
         //echo $priviousWeek."<br>";
-        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id'])->orderby('user_contests.rank','asc')->get()->toArray();
-
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
+        //prr($userTeamQuery);die;
         $winningData=[];
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){
+                //prr($winningData);
                 $totalUserJoin=count($winningData[$pool_id]);
                 $countRank=$rank=0;
                 $userIdArray=$newArray=[];
@@ -126,6 +127,7 @@ class DemoController extends Controller
                                         $payment->type      = 'CONTEST WON';
                                         $payment->transaction_id = uniqid();
                                         $payment->save();
+                                        UserContest::where('pool_id',$pool_id)->update(['winning_distribute'=>1]);
                                     }
                                 }
                                 if($rank==1 && $value['count']>1){
@@ -135,7 +137,6 @@ class DemoController extends Controller
                         }
                     }
                 }
-                //p($newArray);
             }   
         }
         echo "Ttt";die;

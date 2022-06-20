@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\EntitySport;
 use App\Models\Fixture;
 use App\Models\Player;
+use App\Models\UserContest;
 use App\Models\Squad;
 use App\Models\UserTeam;
 use Illuminate\Bus\Queueable;
@@ -86,6 +87,26 @@ class SetUserTeamTotal implements ShouldQueue
                 $teamValue->total_points=$total_points;
                 $teamValue->substitude=json_encode($final_substitude_player);
                 $teamValue->update();
+        }
+
+        //rank update
+
+        $userContestQuery=UserContest::join('user_teams as ut','ut.id','user_contests.user_team_id')->select(['ut.total_points','user_contests.pool_id','user_contests.rank','user_contests.id'])->orderBy('pool_id','asc')->orderBy('total_points','desc')->get();
+        $rank=$pool_id=$total_points=0;
+        foreach($userContestQuery as $key=>$value){
+            if($pool_id==0 || $pool_id!=$value['pool_id']){
+                $rank=0;
+            }
+
+            if($pool_id==$value['pool_id'] && $total_points==$value['total_points']){
+                $rank=$rank;
+            }else{
+                $rank+=1;
+            }
+            $total_points=$value['total_points'];
+            $pool_id=$value['pool_id'];
+            $value['rank']=$rank;
+            $value->update();
         }
 
 

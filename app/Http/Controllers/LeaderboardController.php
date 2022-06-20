@@ -8,6 +8,7 @@ use App\Models\UserTeam;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\CreatePost;
+use App\Models\Squad;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -34,6 +35,7 @@ class LeaderboardController extends Controller
         $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
         $result = [];
+        $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
 
         if(!empty($user_contest['user_team_id'])){
             $userTeam = UserTeam::find($user_contest['user_team_id'])->toArray();
@@ -56,7 +58,7 @@ class LeaderboardController extends Controller
         //     if($)
         // }
         //prr($result);
-        return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam','leaderboardData'));
+        return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam','leaderboardData','topplayers'));
     }
 
     

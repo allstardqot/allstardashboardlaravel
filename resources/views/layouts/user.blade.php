@@ -73,6 +73,13 @@
 
 <script>
     
+    const shareData = {
+        title: 'My Nataraja',
+        text: "This is the best online ID: https://mynataraja.live/ \n Winning daily successfully!" ,
+        // url: 'https://mynataraja.live/',
+        
+
+    }
     const btn = document.querySelector('.share');
     const resultPara = document.querySelector('.result');
 

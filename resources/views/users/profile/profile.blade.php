@@ -48,20 +48,20 @@
       <div class="row mt-5 text-center">
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>{{ $usercontest->count() }}</h3>
+            <h3>{{ $usercontest }}</h3>
             <h6>Total Contest</h6>
           </div>
         </div>
 
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>1990</h3>
+            <h3>{{$totalCoins}}</h3>
             <h6>Total Coins</h6>
           </div>
         </div>
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>20</h3>
+            <h3>{{$winningContest}}</h3>
             <h6>Contest Wins</h6>
           </div>
         </div>

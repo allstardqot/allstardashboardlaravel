@@ -35,9 +35,14 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         // echo 'sljhf';die;
-        $usercontest = UserContest::where(['user_id'=>$user->id])->get();
+        $usercontest = UserContest::where(['user_id'=>$user->id])->count();
+        $totalCoin = User::where(['id'=>$user->id])->get()->first();
+        $totalCoins=!empty($totalCoin['wallet'])?$totalCoin['wallet']:0;
+        $winningContest = UserContest::where([['user_id',$user->id],['winning_distribute',1],['rank',[1,2]]])->get()->count();
+
+        //echo $winningContest;die;
         // $usercontest->count()
-        return view('users/profile/profile',['usercontest'=>$usercontest,'user'=>$user]);
+        return view('users/profile/profile',['usercontest'=>$usercontest,'user'=>$user,'totalCoins'=>$totalCoins,'winningContest'=>$winningContest]);
     }
 
     public function edit(){

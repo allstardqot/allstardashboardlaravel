@@ -41,36 +41,18 @@ class WinningProcess implements ShouldQueue
      */
     public function handle()
     {
-        //rank update
-
-        $userContestQuery=UserContest::join('user_teams as ut','ut.id','user_contests.user_team_id')->select(['ut.total_points','user_contests.pool_id','user_contests.rank','user_contests.id'])->orderBy('pool_id','asc')->orderBy('total_points','desc')->get();
-        $rank=$pool_id=$total_points=0;
-        foreach($userContestQuery as $key=>$value){
-            if($pool_id==0 || $pool_id!=$value['pool_id']){
-                $rank=0;
-            }
-
-            if($pool_id==$value['pool_id'] && $total_points==$value['total_points']){
-                $rank=$rank;
-            }else{
-                $rank+=1;
-            }
-            $total_points=$value['total_points'];
-            $pool_id=$value['pool_id'];
-            $value['rank']=$rank;
-            $value->update();
-        }
-
         //winning distribute
         $priviousWeek=priviousWeek();
-        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id'])->orderby('user_contests.rank','asc')->get()->toArray();
-
+        //echo $priviousWeek."<br>";
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
+        //prr($userTeamQuery);die;
         $winningData=[];
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){
+                //prr($winningData);
                 $totalUserJoin=count($winningData[$pool_id]);
                 $countRank=$rank=0;
                 $userIdArray=$newArray=[];
@@ -87,7 +69,7 @@ class WinningProcess implements ShouldQueue
                     $newArray['admin_price']=$adminPrice;
                     if($rank==0 || $poolValue['rank']==$rank){
                         $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
-                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
                         $countRank=$countRank+1;
                     }else{
                         $newArray['rank'][$poolValue['rank']]['count']=$countRank;
@@ -104,6 +86,7 @@ class WinningProcess implements ShouldQueue
                                 if($rank==1 && $value['count']>1){
                                     $total_price=$newArray['first_price']+$newArray['second_price'];
                                     $eachUser=$total_price/$value['count'];
+                                    //prr($value);
                                 }elseif($rank==1 && $value['count']==1){
                                     $eachUser=$newArray['first_price'];
                                 }elseif($rank==2){
@@ -117,6 +100,7 @@ class WinningProcess implements ShouldQueue
                                         $payment->type      = 'CONTEST WON';
                                         $payment->transaction_id = uniqid();
                                         $payment->save();
+                                        UserContest::where('pool_id',$pool_id)->update(['winning_distribute'=>1]);
                                     }
                                 }
                                 if($rank==1 && $value['count']>1){
@@ -126,7 +110,7 @@ class WinningProcess implements ShouldQueue
                         }
                     }
                 }
-            }
+            }   
         }
     }
 }

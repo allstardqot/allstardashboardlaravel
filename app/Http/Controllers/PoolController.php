@@ -13,6 +13,7 @@ use App\Models\Payment;
 use App\Models\UserPool;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Squad;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
@@ -57,6 +58,7 @@ class PoolController extends Controller
         $completeDate=$currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
 
         $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
 
         $nextWeek = nextWeek();
         $currentWeek = currentWeek();
@@ -83,7 +85,7 @@ class PoolController extends Controller
                 $completePool[]=$poolValue;
             }
         }
-           return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate]);
+           return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
     }
 
     public function createPool()
