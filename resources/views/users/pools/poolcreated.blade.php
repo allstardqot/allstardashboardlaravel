@@ -32,7 +32,8 @@
                             </p>
                         </div>
                         <div class="nyary">
-                            <a href="javascript:void(0);" class="jnsdxi" data-bs-toggle="modal" data-bs-target="#exampleModal">share</a>
+                            <a href="#"  class="jnsdxi share" >share</a>
+                            <p class="result"></p>
                         </div>
                     </div>
                 </div>

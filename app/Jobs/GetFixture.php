@@ -48,7 +48,7 @@ class GetFixture implements ShouldQueue
         Log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
 
-        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?include=news,localTeam,visitorTeam');
+        $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(5)->toDateString().'?leagues=779&include=news,localTeam,visitorTeam');
         //$fixtures=json_decode($fixtures_data,true);
         //Log::info("6666666666666e".json_encode($fixtures)."pppp");
 

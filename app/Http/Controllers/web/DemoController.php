@@ -10,6 +10,7 @@ use App\Models\League;
 
 use App\EntitySport;
 use App\Models\Fixture;
+use App\Models\Payment;
 use App\Models\News;
 use App\Models\Season;
 use App\Models\Squad;
@@ -69,8 +70,8 @@ class DemoController extends Controller
         //     $value->update();
         // }
         $priviousWeek=priviousWeek();
-        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id'])->get()->toArray();
-        //prr($userTeamQuery);
+        //echo $priviousWeek."<br>";
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id'])->orderby('user_contests.rank','asc')->get()->toArray();
 
         $winningData=[];
         foreach($userTeamQuery as $key=>$value){
@@ -79,21 +80,65 @@ class DemoController extends Controller
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){
                 $totalUserJoin=count($winningData[$pool_id]);
+                $countRank=$rank=0;
+                $userIdArray=$newArray=[];
                 foreach($poolData as $poolValue){
                     $totalPriceGet=$poolValue['entry_fees']*$totalUserJoin;
                     $firstRankprice=$totalPriceGet*75/100;
                     $secondRankprice=$totalPriceGet*15/100;
                     $adminPrice=$totalPriceGet*10/100;
-                    if($poolValue['rank']==1){
-                        User::where('id', $poolValue['user_id'])->increment('wallet',$firstRankprice);
+                    if($rank!=0 && $poolValue['rank']!=$rank){
+                        $countRank=1;
                     }
-                    if($poolValue['rank']==2){
-                        User::where('id', $poolValue['user_id'])->increment('wallet',$secondRankprice);
+                    $newArray['first_price']=$firstRankprice;
+                    $newArray['second_price']=$secondRankprice;
+                    $newArray['admin_price']=$adminPrice;
+                    if($rank==0 || $poolValue['rank']==$rank){
+                        $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
+                        $countRank=$countRank+1;
+                    }else{
+                        $newArray['rank'][$poolValue['rank']]['count']=$countRank;
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
+                    }
+                    $rank=$poolValue['rank'];
+                }
+
+                if(!empty($newArray)){
+                    foreach($newArray as $key=>$count){
+                        if($key=='rank' && !empty($count)){
+                            foreach($count as $rank=>$value){
+                                $total_price=$eachUser=0;
+                                if($rank==1 && $value['count']>1){
+                                    $total_price=$newArray['first_price']+$newArray['second_price'];
+                                    $eachUser=$total_price/$value['count'];
+                                    //prr($value);
+                                }elseif($rank==1 && $value['count']==1){
+                                    $eachUser=$newArray['first_price'];
+                                }elseif($rank==2){
+                                    $eachUser=$newArray['second_price']/$value['count'];
+                                }
+                                foreach($value['user_id'] as $user_id){
+                                    if(User::where('id', $user_id)->increment('wallet',$eachUser)){
+                                        $payment            = new Payment;
+                                        $payment->user_id   = $poolValue['user_id'];
+                                        $payment->amount    = $eachUser;
+                                        $payment->type      = 'CONTEST WON';
+                                        $payment->transaction_id = uniqid();
+                                        $payment->save();
+                                    }
+                                }
+                                if($rank==1 && $value['count']>1){
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
-                //p($poolValue);
+                //p($newArray);
             }   
         }
+        echo "Ttt";die;
         prr($winningData);
     }
 

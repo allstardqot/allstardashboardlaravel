@@ -9,6 +9,7 @@ use App\Models\UserTeam;
 use App\Models\News;
 use App\Models\UserContest;
 use App\Models\Week;
+use App\Models\Payment;
 use App\Models\UserPool;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -128,9 +129,20 @@ class PoolController extends Controller
                 return redirect()->back()->with('message','You have not sufficant balance!');
 
             }
+
+            
             $user = Auth::user();
             $user->wallet    = $wallet - $entry_fees;
             $user->save();
+
+            $payment            = new Payment;
+            $payment->user_id   = Auth::user()->id;
+            $payment->amount    = $entry_fees;
+            $payment->type      = 'POOL JOIN';
+            $payment->transaction_id = uniqid();
+            //$payment->status = 1;
+            $payment->save();
+            
 
             $pool = new UserPool;
             $pool->user_id    = Auth::user()->id;

@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\UserContest;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Payment;
 use Auth;
 
 class HomeController extends Controller
@@ -91,6 +92,13 @@ class HomeController extends Controller
         $user->wallet    = $wallet - $entry_fees;
         $user->save();
 
+        $payment            = new Payment;
+        $payment->user_id   = Auth::user()->id;
+        $payment->amount    = $entry_fees;
+        $payment->type      = 'POOL JOIN';
+        $payment->transaction_id = uniqid();
+        //$payment->status = 1;
+        $payment->save();
         
         $contest_data       = new UserContest();
         $contest_data->pool_id = $join_pool_id;

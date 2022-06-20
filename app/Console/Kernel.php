@@ -3,6 +3,7 @@
 namespace App\Console;
 use App\Jobs\GetFixture;
 use App\Jobs\SetUserTeamTotal;
+use App\Jobs\WinningProcess;
 use App\Jobs\NewsData;
 use App\Models\Team;
 use Illuminate\Console\Command;
@@ -30,6 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->job(GetFixture::class)->everyFifteenMinutes();
         $schedule->job(SetUserTeamTotal::class)->everyFifteenMinutes();
+        $schedule->job(WinningProcess::class)->daily();
         //$schedule->job(GetTeam::class)->everyMinute();
         //$schedule->command('demo:cron')->everyMinute();
         //$schedule->job(NewsData::class)->everyFifteenMinutes();
