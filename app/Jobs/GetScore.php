@@ -68,7 +68,7 @@ class GetScore implements ShouldQueue
                     $fixture->status=isset($mathcScore['time']['status'])?$mathcScore['time']['status']:$fixture->status;
                     $fixture->update();
                 }
-                
+
                 if (!empty($mathcScore['lineup']['data'])) {
                     foreach ($mathcScore['lineup']['data'] as $scoreValue) {
                         $totalPoints = 0;

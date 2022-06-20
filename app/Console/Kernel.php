@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(WinningProcess::class)->daily();
         //$schedule->job(GetTeam::class)->everyMinute();
         //$schedule->command('demo:cron')->everyMinute();
-        //$schedule->job(NewsData::class)->everyFifteenMinutes();
+        $schedule->job(NewsData::class)->daily();
         //$schedule->job(GetTeam::class)->weekly();
         //dispatch($schedule);
     }

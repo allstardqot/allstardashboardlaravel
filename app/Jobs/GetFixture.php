@@ -63,7 +63,7 @@ class GetFixture implements ShouldQueue
                 if($value['league_id']!='779'){
                     continue;
                 }
-                
+
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [

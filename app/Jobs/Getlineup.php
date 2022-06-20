@@ -56,7 +56,7 @@ class Getlineup implements ShouldQueue
         if($fixture->status==FIXTURE_STATUS[0]){
             if(!empty($getLineup['lineup']['data'])){
                 if($getLineup['time']){
-                    
+
                     $fixture->status=isset($getLineup['time']['status'])?$getLineup['time']['status']:$fixture->status;
                     $fixture->update();
                 }
@@ -75,6 +75,6 @@ class Getlineup implements ShouldQueue
                 self::dispatch($this->fixtureId)->delay(now()->addMinutes(1));
             }
         }
-        
+
     }
 }

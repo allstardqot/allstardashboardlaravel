@@ -50,13 +50,13 @@ class SetUserTeamTotal implements ShouldQueue
             $total_points=0;
             $players = $teamValue['players'];
             $selected_player = json_decode($players, true);
-            
+
             $squads = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('total_points','player_id')->toArray();
-            
+
             $playing11Data = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('playing11','player_id')->toArray();
-            
+
                 $substitude_player=json_decode($teamValue->substitude,true);
-                
+
                 $count=0;
                 $final_substitude_player=$new_substitude_players=[];
                 $positionGet=Player::whereIn('id',$selected_player)->where('position_id',1)->select(['players.id'])->get()->first()->toArray();
@@ -75,7 +75,7 @@ class SetUserTeamTotal implements ShouldQueue
                 }
                 $final_substitude_player=!empty($new_substitude_players)?$new_substitude_players:$substitude_player;
                 $played_player=array_diff($selected_player,$final_substitude_player);
-                
+
                 foreach($played_player as $player_id){
                     if($teamValue->captain==$player_id && empty($goalKeeperSubstitude)){
                         $total_points += isset($squads[$player_id])?$squads[$player_id]*2:0;
@@ -88,6 +88,6 @@ class SetUserTeamTotal implements ShouldQueue
                 $teamValue->update();
         }
 
-        
+
     }
 }

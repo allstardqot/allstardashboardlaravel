@@ -1,14 +1,9 @@
 <?php
 
 namespace App\Jobs;
-
-use App\EntitySport;
-use App\Models\Fixture;
-use App\Models\Player;
 use App\Models\Payment;
-use App\Models\Squad;
+use App\Models\UserContest;
 use App\Models\User;
-use App\Models\UserTeam;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -92,7 +87,7 @@ class WinningProcess implements ShouldQueue
                     $newArray['admin_price']=$adminPrice;
                     if($rank==0 || $poolValue['rank']==$rank){
                         $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
-                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
                         $countRank=$countRank+1;
                     }else{
                         $newArray['rank'][$poolValue['rank']]['count']=$countRank;
@@ -131,7 +126,7 @@ class WinningProcess implements ShouldQueue
                         }
                     }
                 }
-            }   
+            }
         }
     }
 }
