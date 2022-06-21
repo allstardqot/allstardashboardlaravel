@@ -1,12 +1,46 @@
 body {
   background-color: #12133d;
 }
-
+.sdchsdsdh .table td {
+  position: relative;
+}
+.check_span{
+  position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 2;
+}
 .editprofileText {
   font-size: 40px;
   font-style: serif;
   font-family: serif;
   color: #ff5000 !important;
+}
+.transition-sec h3 {
+  font-size: 31px;
+  margin-bottom: 20px;
+}
+.transition-sec tr {
+  border-bottom: 1px solid #ffffff24;
+}
+.transition-sec .table-responsive .table {
+  border-radius: 10px;
+}
+.transition-sec tr:last-child {
+  border-bottom: #12133d;
+}
+.transition-sec .table > :not(caption) > * > * {
+  padding: 0.8rem 0.8rem;
+}
+.transition-sec .page-item.active .page-link {
+  background-color: #ff5000;
+  border-color: #ff5000;
+}
+.transition-sec .page-link {
+  color: #ff5000;
 }
 #invitemodal .modal-title {
   font-size: 1.2rem;
@@ -29,11 +63,9 @@ body {
 .invite-popup .form-group {
   padding-right: 0;
   margin-top: 0px;
-
 }
 .invite-popup .modal-dialog {
   max-width: 330px;
-  
 }
 .invite-popup .modal-title {
   font-size: 20px;
@@ -3109,7 +3141,7 @@ main {
     padding-right: 0px;
     padding-left: 12px;
   }
-  .managers-tab a.sjsdjk78 {
+  .managers-tab .sjsdjk78 {
     padding: 4px 8px !important;
     font-size: 14px !important;
   }
@@ -3747,7 +3779,7 @@ main {
   text-decoration: none;
 }
 
-.managers-tab a.sjsdjk78 {
+.managers-tab .sjsdjk78 {
   text-decoration: none;
   color: #fff;
   border-radius: 20px;
@@ -4309,7 +4341,7 @@ main {
   }
   .invite-popup .modal-dialog {
     max-width: 575px;
-}
+  }
   .calendor-btn .input-group {
     display: block;
     text-align: left;

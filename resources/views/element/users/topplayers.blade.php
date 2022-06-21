@@ -33,7 +33,7 @@
                             <p>Goals</p>
                         </div>
                         <div class="asskk87">
-                            <p>{{ $goals['scored'] }}</p>
+                            <p>{{ !empty($goals['scored'])?$goals['scored']:'0' }}</p>
                         </div>
                     </div>
                     <div class="jksdjkdod7889">
@@ -41,7 +41,7 @@
                             <p>Assists</p>
                         </div>
                         <div class="asskk87">
-                            <p>{{ $goals['assists'] }}</p>
+                            <p>{{ !empty($goals['assists'])?$goals['assists']:'0' }}</p>
                         </div>
                     </div>
                 </div>

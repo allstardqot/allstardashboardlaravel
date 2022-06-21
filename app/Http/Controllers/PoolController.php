@@ -85,6 +85,7 @@ class PoolController extends Controller
                 $completePool[]=$poolValue;
             }
         }
+        //prr($topplayers);
            return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
     }
 

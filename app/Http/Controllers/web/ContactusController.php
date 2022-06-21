@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\EnquiryDetail;
+use App\Mail\UserEmail;
+use Mail;
+
 
 
 class ContactusController extends Controller
@@ -34,10 +37,12 @@ class ContactusController extends Controller
     protected function create(Request $request)
     {
         // echo 'sdfsdf';die;
-        // print_r($request->email);die;  
+        // print_r($request->email);die; 
+        $user =$request->email; 
+        Mail::to($user)->send(new UserEmail($user));
         $enquiry = new EnquiryDetail;
         $enquiry->name = $request->fname;
-        $enquiry->email = $request->email;
+        $enquiry->email = $user;
         $enquiry->message = $request->message;
         $enquiry->save();
         return redirect('/')->with('message', 'Thanks For Submission!');

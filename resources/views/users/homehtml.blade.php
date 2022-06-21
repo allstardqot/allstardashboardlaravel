@@ -57,6 +57,9 @@
                             @if (in_array($publicValue['id'], $contest_pool))
                                 @continue;
                             @endif
+                            @if($publicValue->max_participants == $jointuser[$publicValue['id']])
+                                @continue;
+                             @endif
                             <div class="mkpiuh">
                                 <div class="row">
                                     <div class="col-sm-7 mt-3 ">
@@ -127,6 +130,9 @@
                             @if (in_array($privateValue['id'], $contest_pool))
                                 @continue;
                             @endif
+                            @if($privateValue->max_participants == $jointuser[$privateValue['id']])
+                            @continue;
+                         @endif
                             <div class="mkpiuh">
 
                                 <div class="row">

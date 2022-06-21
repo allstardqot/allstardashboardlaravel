@@ -29,7 +29,7 @@
                        </div>
                     @endif
                         <img src="{{ asset('public/img/fantasy-allstars 1.png') }}" />
-                         method="POST" action="{{ route('ForgetPasswordPost') }}">
+                         <form method="POST" action="{{ route('ForgetPasswordPost') }}">
                             @csrf
                             <div class="input-group">
                                 <div class="input-group-prepend">

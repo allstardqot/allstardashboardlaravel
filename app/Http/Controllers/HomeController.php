@@ -45,25 +45,32 @@ class HomeController extends Controller
         $type         = $request->type;
         $publicQuery  = UserPool::query();
         $privateQuery = UserPool::query();
-        $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
 
         $jointuser = UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->select(['user_pools.id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->pluck('joined','user_pools.id')->toArray();
 
-    $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
-    // prr($topplayers);
+        $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
 
-        // 
-        // $topplayers ='';
         $contest_pool = UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
         //$team = Team::get();
         $team = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
        
-        $publicData  = $publicQuery->where(['pool_type'=>0 ,'week_id'=>nextWeek()])->get();
-        $privateData = $privateQuery->where(['pool_type'=>1,'week_id'=>nextWeek()])->get();
+        
+
+         // Join Pool Count From User Contest
+         $publicData  = $publicQuery->where(['pool_type'=>0 ,'week_id'=>nextWeek()])->get();
+         $privateData = $privateQuery->where(['pool_type'=>1,'week_id'=>nextWeek()])->get();
+        
+         if($_SERVER['REMOTE_ADDR'] == '49.204.163.246'){
+         
+            // prr($jointuser);die;
+            
+         }
+       
         if(!empty($searchData)){
             if($searchData!="Search"){
                 if($type=="public"){
-                    $publicData=$publicQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
+                    $publicData = $publicQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }else{
                     $privateData=$privateQuery->where('pool_name', 'LIKE', '%' . $searchData . '%')->get();
                 }
@@ -115,5 +122,15 @@ class HomeController extends Controller
         }else{
             return redirect('home')->with('message',"Cant't Join this pool.");
         }
+    }
+
+
+    public function fetchpool(){
+        $pool_type = $_GET['id'] == 'Private Pool' ? 1 : 0 ;
+        
+        $user_pool = UserPool::select('pool_name')->where(['pool_type'=>$pool_type])->get();
+        return json_encode($user_pool);
+
+
     }
 }

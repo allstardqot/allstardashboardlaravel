@@ -67,7 +67,7 @@
         </div>
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>20</h3>
+            <h3>{{$fantasyPoint}}</h3>
             <h6>Fantasy Point</h6>
           </div>
         </div>

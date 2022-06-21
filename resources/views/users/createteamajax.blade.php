@@ -211,7 +211,7 @@
                       </p>
                     </td>
                     <td class="checkboxtd">
-                      <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox" {{$check}} value="{{ $goakkeeperValue['id'] }}" id="flexCheckDefault" onclick="goalKeepercheckbox(event)"/>
+                      <input class="form-check-input tem-chekbox goalkeepercheck" type="checkbox" {{$check}} value="{{ $goakkeeperValue['id'] }}" id="flexCheckDefault" onclick="goalKeepercheckbox()"/>
                     </td>
                   </tr>
 
@@ -413,13 +413,14 @@
                       {{ $defenderValue["sell_price"] }}
                     </p>
                   </td>
-                  <td>
+                  <td class="defender_td">
+                    <span class="check_span"></span>
                     <input
                       class="form-check-input tem-chekbox defendercheck"
                       type="checkbox"
                       value="{{ $defenderValue['id'] }}"
                       id="flexCheckDefault" {{$check}}
-                      onclick="defendercheckbox()"
+                      {{-- onclick="defendercheckbox()" --}}
                     />
                   </td>
                 </tr>
@@ -627,13 +628,14 @@
                         {{ $midfielderValue["sell_price"] }}
                       </p>
                     </td>
-                    <td>
+                    <td class="midfielder_td">
+                    <span class="check_span"></span>
                       <input
                         class="form-check-input tem-chekbox midfieldercheck"
                         type="checkbox"
                         value="{{ $midfielderValue['id'] }}"
                         id="flexCheckDefault" {{$check}}
-                        onclick="midfieldercheckbox()"
+                        {{-- onclick="midfieldercheckbox()" --}}
                       />
                     </td>
                   </tr>
@@ -845,12 +847,14 @@
                         {{ $forwardValue["sell_price"] }}
                       </p>
                     </td>
-                    <td>
+                    <td class="forward_td">
+                    <span class="check_span"></span>
                       <input class="form-check-input tem-chekbox forwardcheck"
                       name="checkbox_forward" type="checkbox" value="{{
                         $forwardValue["id"]
                       }}" id="flexCheckDefault" {{$check}}
-                      onclick="forwardcheckbox()">
+                      {{-- onclick="forwardcheckbox()" --}}
+                      >
                     </td>
                   </tr>
                   @endforeach

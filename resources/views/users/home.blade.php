@@ -69,20 +69,13 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="user-invite">
-                                            <a class="sjsdjk78" href="#invitemodal" data-bs-toggle="modal"><i class="fa fa-user-plus sdjkdjkd" aria-hidden="true"></i> Invite</a>
+                                        <div class="user-invite" >
+                                            <button type="button" class="sjsdjk78"  onclick="openpop('{{ $value->email }}')"><i class="fa fa-user-plus sdjkdjkd" ></i> Invite</button>
                                         </div>
                                     </div>
                                         
                                     @endforeach
-                                    
-
-
-
                                 </div>
-
-
                             </div>
                             @include('element/users/topplayers') 
 
@@ -156,10 +149,20 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" id="typeoption">
                                 <option selected>Select Public or Private</option>
                                 <option value="Public Pool">Public Pool</option>
                                 <option value="Private Pool">Private Pool</option>
+                                
+                              </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" id="typename">
+                                <option selected>Select Public or Private</option>
+                               
                                 
                               </select>
                         </div>
@@ -184,7 +187,38 @@
   </div>
 <script src="{{asset('public/assets/js/jquery-3.5.1.min.js')}}"></script>
 <script>
+    function openpop(email){
+        // alert(email);
+        $('#exampleFormControlInput1').val(email);
+        $('#invitemodal').modal('show');
+    }
     $(document).ready(function() {
+
+       
+        $("#typeoption").change(function(){
+            var id = $(this).val();
+            $.ajax
+            ({
+                type: "GET",
+                url: "fetchpool",
+                data: 'id='+id,
+                cache: false,
+                success: function(data)
+                {
+                    var arr = JSON.parse(data);
+                    alert(arr);
+                    // $.each(data, function(i, value){
+                    //     // $("#typename").html('');
+                    //     alert(value.pool_name)
+                    //     // $("#typename").append('<option value="'+ this.value +'">'+ this.name +'</option>')
+                    //     $('#typename').append($('<option>').text(code).attr('value', name));
+                    // })
+                    // console.log(data); // I get error and success function does not execute
+                } 
+            });
+
+        });
+                
 
 
         fetchData("Search");

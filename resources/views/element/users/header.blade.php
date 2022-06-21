@@ -59,6 +59,9 @@
                   <li>
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transection</a>
+                  </li>
                 </ul>
               </li>
             </ul>

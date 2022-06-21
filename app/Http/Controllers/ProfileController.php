@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\UserContest;
+use App\Models\UserTeam;
 use Illuminate\Http\Request;
 use App\Models\Nationalities;
 use App\Models\Team;
 use App\Models\Player;
 use Auth;
 use App\Mail\UserEmail;
+use App\Models\Payment;
 use Mail;
 
 
@@ -39,10 +41,9 @@ class ProfileController extends Controller
         $totalCoin = User::where(['id'=>$user->id])->get()->first();
         $totalCoins=!empty($totalCoin['wallet'])?$totalCoin['wallet']:0;
         $winningContest = UserContest::where([['user_id',$user->id],['winning_distribute',1],['rank',[1,2]]])->get()->count();
+        $fantasyPoint = UserTeam::where([['user_id',$user->id]])->sum('total_points');
 
-        //echo $winningContest;die;
-        // $usercontest->count()
-        return view('users/profile/profile',['usercontest'=>$usercontest,'user'=>$user,'totalCoins'=>$totalCoins,'winningContest'=>$winningContest]);
+        return view('users/profile/profile',['usercontest'=>$usercontest,'user'=>$user,'totalCoins'=>$totalCoins,'winningContest'=>$winningContest,'fantasyPoint'=>$fantasyPoint]);
     }
 
     public function edit(){
@@ -92,5 +93,13 @@ class ProfileController extends Controller
         });
         return 'Success';
 
+    }
+
+    public function transection(){
+
+        $user_id = Auth::user()->id;
+        $transection = Payment::where(['user_id'=>$user_id])->get();
+
+        return view('users/profile/transection',compact('transection'));
     }
 }

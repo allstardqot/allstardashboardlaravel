@@ -69,7 +69,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function() {
-    // Route::group(['middleware' => ['verified']], function() {
+    Route::group(['middleware' => ['verified']], function() {
         /**
          * Dashboard Routes
          */
@@ -83,9 +83,11 @@ Route::group(['middleware' => ['auth']], function() {
 //     });
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::post('/home', [App\Http\Controllers\HomeController::class, 'jointeam'])->name('home');
+        Route::get('/fetchpool', [App\Http\Controllers\HomeController::class, 'fetchpool'])->name('fetchpool');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/send-invition', [ProfileController::class, 'send_invition'])->name('send-invition');
+        Route::get('/transection', [ProfileController::class, 'transection'])->name('transection');
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/team', [TeamController::class, 'index'])->name('team');
         Route::get('/current-team', [TeamController::class, 'currentTeam'])->name('current-team');
@@ -120,13 +122,14 @@ Route::group(['middleware' => ['auth']], function() {
 
         //Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
         Route::get('/view-detail/{id}',[LeaderboardController::class,'viewdetail'])->name('view-detail');
-// });
+        Route::get('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
+        Route::post('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
+});
 
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', [VerificationController::class,'resend'])->name('verification.resend');
-    Route::get('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
-    Route::post('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
+   
 
    
     // Route::get('/fixture-data',function(){
