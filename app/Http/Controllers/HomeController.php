@@ -14,6 +14,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
 use Auth;
+use App\Mail\UserEmail;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -61,12 +63,6 @@ class HomeController extends Controller
          $publicData  = $publicQuery->where(['pool_type'=>0 ,'week_id'=>nextWeek()])->get();
          $privateData = $privateQuery->where(['pool_type'=>1,'week_id'=>nextWeek()])->get();
         
-         if($_SERVER['REMOTE_ADDR'] == '49.204.163.246'){
-         
-            // prr($jointuser);die;
-            
-         }
-       
         if(!empty($searchData)){
             if($searchData!="Search"){
                 if($type=="public"){
@@ -118,7 +114,7 @@ class HomeController extends Controller
         $contest_data->user_id=Auth::user()->id;
         $contest_data->user_team_id=$request->input('select_team');
         if($contest_data->save()){
-            return redirect('my-pool')->with('message','Pool Join Successfully.');
+            return redirect('my-pool')->with('message','Pool Joined Successfully 😊.');
         }else{
             return redirect('home')->with('message',"Cant't Join this pool.");
         }
@@ -126,11 +122,54 @@ class HomeController extends Controller
 
 
     public function fetchpool(){
+        $user_id = Auth::user()->id;
         $pool_type = $_GET['id'] == 'Private Pool' ? 1 : 0 ;
         
-        $user_pool = UserPool::select('pool_name')->where(['pool_type'=>$pool_type])->get();
-        return json_encode($user_pool);
+        $user_pool = UserPool::select('pool_name')->where(['pool_type'=>$pool_type,'week_id'=>nextWeek(),'user_id'=>$user_id])->get();
+        $html = '';
+        if($user_pool->count() > 0){
+            foreach($user_pool as $data){
+                $html .= '<option value="'.$data->pool_name.'">'.$data->pool_name.'</option>';
+            }
+        }else{
+            $html = '<option value="">First Create Pool</option>';
+        }
+        
+        return $html;
+    }
 
+    public function userinvite(Request $request){
 
+        $data = ['name'=>$request->name,'email'=>$request->email,'pool_name'=>$request->pool_name];
+        $email = $request->email;
+        Mail::send('mail', $data, function($message) use ($email)  {
+           $message->to($email, 'Tutorials Point')->subject
+              ('All Star Invite');
+           
+        });
+        return redirect('home')->with('message',"Email(s) Sent Successfully.");
+
+    }
+
+    public function joinusers(){
+        $id = $_GET['id'];
+        
+        $join_user = UserContest::join('users','users.id','=','user_contests.user_id')->select('users.user_name')->where('user_contests.pool_id',$id)->get();
+        $html = '';
+        $id =1;
+        if($join_user->count() > 0){
+            foreach($join_user as $data){
+                $html .= '<tr>
+                    <th scope="row">'. $id.'</th>
+                    <td>'.strtoupper( $data->user_name).'</td>
+                  </tr>';
+
+            $id++;
+            }
+        }else{
+            $html = '<span >First Create Pool</span>';
+        }
+        
+        return $html;
     }
 }

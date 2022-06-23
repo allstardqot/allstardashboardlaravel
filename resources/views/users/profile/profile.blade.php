@@ -73,11 +73,15 @@
         </div>
       </div>
     </div>
-    <input
+    <a href="{{ url('/grand-leaderboard') }}">
+      <input
       type="button"
       class="form-control btnColor mt-4 order-last order-lg-first sdsda"
       value="Grand Leader Board"
     />
+
+    </a>
+    
   </div>
   <script>
     function closeAlert() {

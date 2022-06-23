@@ -42,10 +42,11 @@
                                     <a class="enquiryA">enquiry@allstars.com</a>
                                 </div>
                                 <div class="mt-5  mb-4">
-                                    <img src="{{asset('public/img/Icon%20awesome-youtube.png')}}" />
-                                    <img style="margin-left: 5%" src="{{asset('public/img/Icon%20awesome-instagram.png')}}" />
-                                    <img style="margin-left: 5%" src="{{asset('public/img/Icon%20awesome-facebook.png')}}" />
-                                    <img style="margin-left: 5%" src="{{asset('public/img/Icon%20awesome-twitter.png')}}" />
+                                    <a href="https://telegram.me/" ><img src="{{asset('public/img/teligram.png')}}"></a>
+                                    <a href="https://www.instagram.com/"><img src="{{asset('public/img/Icon awesome-instagram.png')}}" style="margin-left: 5%"> </a>
+                                    <a href="https://twitter.com/"><img src="{{asset('public/img/Icon awesome-twitter.png')}}" style="margin-left: 5%"> </a>
+                                    <a href="https://discord.gg/"><img src="{{asset('public/img/discord-50.png')}}" style="margin-left: 5%"> </a>
+                                    
                                 </div>
                             </div>
 

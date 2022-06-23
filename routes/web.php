@@ -73,17 +73,11 @@ Route::group(['middleware' => ['auth']], function() {
         /**
          * Dashboard Routes
          */
-// Route::get('cron/', function(){
-
-//         // $job=(new \App\Jobs\GetFixture())->delay(now()->addMinute(1));
-//         // dispatch($job);
-//         $job=(new GetFixture())
-//         ->delay(Carbon::now()->addSecond(5));
-//         dispatch($job);
-//     });
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::post('/home', [App\Http\Controllers\HomeController::class, 'jointeam'])->name('home');
         Route::get('/fetchpool', [App\Http\Controllers\HomeController::class, 'fetchpool'])->name('fetchpool');
+        Route::post('/user-invite', [App\Http\Controllers\HomeController::class, 'userinvite'])->name('user-invite');
+        Route::get('/joinusers', [App\Http\Controllers\HomeController::class, 'joinusers'])->name('joinusers');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/send-invition', [ProfileController::class, 'send_invition'])->name('send-invition');
@@ -120,8 +114,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');
         Route::post('/store-post', [ManagerController::class, 'store'])->name('store-post');
 
-        //Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
+        Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
         Route::get('/view-detail/{id}',[LeaderboardController::class,'viewdetail'])->name('view-detail');
+        Route::get('/grand-leaderboard',[LeaderboardController::class,'grandleaderboard'])->name('grand-leaderboard');
         Route::get('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
         Route::post('/fixture-data', [FixtureController::class,'index'])->name('fixture-data');
 });

@@ -45,13 +45,107 @@
     <div class="alert alert-success alert-one" id="alert">
         {{ session()->get('message') }}
 
-        <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
+        <button type="button" class="btn-close" aria-label="Close" ></button>
     </div>
 @endif
 
 
 @yield('content')
 
+
+{{-- Invite Modal Html From Haome And Pool Section --}}
+
+<div class="modal fade" id="invitemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Please select your pool to share</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="modal-in">
+            <form action="{{ url('/user-invite') }}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Email">
+                            <input type="text" class="form-control" id="formname" name="name" placeholder="Name" required>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <select class="form-select typeoption" aria-label="Default select example " name="pool_type" id="typeoption" required>
+                                <option selected>Select Public or Private</option>
+                                <option value="Public Pool">Public Pool</option>
+                                <option value="Private Pool">Private Pool</option>
+                                
+                              </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" name='pool_name' id="typename" required>
+                                <option selected>Select First Pool Type</option>
+                               
+                                
+                              </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+
+                    </div>
+
+                </div>
+              
+            </form>
+        </div>
+       
+        </div>
+      
+      </div>
+    </div>
+</div>
+
+{{-- Popup For Showing User Name Which Join In Pool --}}
+<div class="modal fade" id="joinusers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title fs-4" id="exampleModalLabel">Pool Join Users</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-in">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3" id="joinusername">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">User Name</th>
+                                   
+                                  </tr>
+                                </thead>
+                                <tbody id="poolusersname">
+                                </tbody >
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @include('element/users/footer')
 
@@ -72,30 +166,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    
-    const shareData = {
-        title: 'My Nataraja',
-        text: "This is the best online ID: https://mynataraja.live/ \n Winning daily successfully!" ,
-        // url: 'https://mynataraja.live/',
-        
 
+    function openpop(email,username){
+        // alert(email);
+        $('#exampleFormControlInput1').val(email);
+        $('#formname').val(username);
+        $('#invitemodal').modal('show');
     }
-    const btn = document.querySelector('.share');
-    const resultPara = document.querySelector('.result');
 
-    // Share must be triggered by "user activation"
-    btn.addEventListener('click', async () => {
-        
-        try {
-        await navigator.share(shareData)
-        // resultPara.textContent = 'MDN shared successfully'
-        } catch(err) {
-        // resultPara.textContent = 'Error: ' + err
-        }
-    });
+   
+    
+    
+
+    function userdetail(id){
+        $.ajax
+        ({
+            type: "GET",
+            url: "joinusers",
+            data: 'id='+id,
+            cache: false,
+            success: function(data)
+            {
+                $('#poolusersname').html(data);
+            } 
+        });
+        $('#joinusers').modal('show');
+    }
 
    
     $(document).ready(function() {
+
+
+        $(".typeoption").change(function(){
+            var id = $(this).val();
+            $.ajax
+            ({
+                type: "GET",
+                url: "fetchpool",
+                data: 'id='+id,
+                cache: false,
+                // dataType: 'json',
+                success: function(data)
+                {
+                    $('#typename').html(data);
+                } 
+            });
+        });
 
         // open invite modal 
         $("#inviteBtn").click(function () {
@@ -137,7 +253,7 @@
 
 
     
-      var editor1 = new RichTextEditor("#div_editor1");
+     
 
         $(".hideShow").click(function(e) {
             var keyId = $(this).data('keyid');
@@ -209,7 +325,7 @@
     });
 
    
-
+    var editor1 = new RichTextEditor("#div_editor1");
 
 </script>
 

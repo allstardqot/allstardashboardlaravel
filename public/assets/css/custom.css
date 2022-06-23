@@ -330,6 +330,13 @@ table.ui-datepicker-calendar td {
   border-radius: 100px;
   border: 0.25rem solid salmon;
 }
+
+#joinusername .table {
+  background: transparent;
+}
+#joinusername .table tr {
+  border-bottom: 1px solid #eee;
+}
 .loading {
   display: none;
   justify-content: center;

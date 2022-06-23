@@ -8,30 +8,21 @@
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="jhdfjkh">
                         <h4 class="mt-3 ksdxjj878">Trending Feeds</h4>
-                        <h6 class="mt-3 kjhmn90">NestleVera</h6>
-                        <p class="sjdhd89">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
+                        @foreach ($trending as $key => $value)
+                        <div class="news-col-content">
+                            <p >
+                                {!! $value->description !!}
                         </p>
-                        <a class="jsdhjkshd78" href="">2 Comment</a>
-                        <a class="bjui67" href="">Share</a>
-                        <hr />
-                        <h6 class="sdhsdbhjk87">NestleVera</h6>
-                        <p class="sjdhd89">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="aksdjd89787" href="">2 Comment</a>
-                        <a class="bjui67" href="">Share</a>
-                        <hr />
-                        <h6 class="sdhsdbhjk87">NestleVera</h6>
-                        <p class="sjdhd89">
-                            There are many variations of passages of Lorem Ipsum
-                            available,but the majority have suffered alteration.
-                        </p>
-                        <a class="aksdjd89787" href="">2 Comment</a>
-                        <a class="bjui67" href="">Share</a>
-                        <hr />
+
+                        </div>
+                            <div class="like_share">
+                                <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
+                                <a class="jkyts778" href="#">Share</a>
+                            </div>
+                                <hr>
+                        @endforeach
+                       
+                       
                     </div>
                     <div class="hjuy4589">
                         <h4 class="mt-5 mkuytg">Premier League News</h4>
@@ -116,7 +107,7 @@
                                                                         {{ $value['entry_fees'] }}</p>
                                                                 </div>
                                                                 <div class="jhgyu56">
-                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                    <button class="asunht56 " onclick="userdetail('{{ $value['id'] }}')">{{ $value['joined'] }}
                                                                         Users</button>
                                                                 </div>
                                                             </div>
@@ -174,7 +165,7 @@
                                                                         {{ $value['entry_fees'] }}</p>
                                                                 </div>
                                                                 <div class="jhgyu56">
-                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                    <button class="asunht56" onclick="userdetail('{{ $value['id'] }}')">{{ $value['joined'] }}
                                                                         Users</button>
                                                                 </div>
                                                             </div>
@@ -200,8 +191,11 @@
                                     <div class="row">
                                         <div class="col-sm-9">
                                             <div class="dash-tab">
+                                                @if (!empty($completeDate->starting_at))
                                                 <h5>Open Pools of this Game Week 13M-19M2021</h5>
-                                                <p>13th March 2021 - 19th March 2021 GAMEWEEK</p>
+                                                <p>
+                                                    {{ date('d M Y', strtotime($completeDate->ending_at)) }} - BEFORE</p>
+                                            @endif
                                             </div>
                                         </div>
                                         <div class="col-sm-3 pb-2">
@@ -226,7 +220,7 @@
                                                                         {{ $value['entry_fees'] }}</p>
                                                                 </div>
                                                                 <div class="jhgyu56">
-                                                                    <button class="asunht56">{{ $value['joined'] }}
+                                                                    <button class="asunht56" onclick="userdetail('{{ $value['id'] }}')">{{ $value['joined'] }}
                                                                         Users</button>
                                                                 </div>
                                                             </div>
@@ -362,8 +356,7 @@
 
 
                                             <div class="user-invite">
-                                                <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                        aria-hidden="true"></i> Invite</a>
+                                                <button type="button" class="sjsdjk78"  onclick="openpop('{{ $value->email }}','{{ $value->user_name  }}')"><i class="fa fa-user-plus sdjkdjkd" ></i> Invite</button>
                                             </div>
                                         </div>
                                             

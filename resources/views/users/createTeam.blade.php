@@ -280,7 +280,23 @@
                             <input type="hidden" value="{{ $editId }}" id="edit_id">
                             <input type="hidden" value="{{ !empty($check) ? $check : '' }}" id="edit_manage_squad">
                         </div>
-
+                        <div class="sdjsd689">
+                            <div class="sdjsd789">
+                                <h1 class="sdhn485" id="selected_count">0/7</h1>
+                                <p class="sxdjhd767">
+                                <b>Players <br />Selected</b>
+                                </p>
+                            </div>
+                            <div class="sxdhdcn9908">
+                                <h1 class="sdhsdks87" id="coin">50M</h1>
+                                <p class="sdjhs7tyh">
+                                <b
+                                    >Money<br />
+                                    Remaining</b
+                                >
+                                </p>
+                            </div>
+                        </div>
                         <div class="tab-content" id="myTabContent">
 
                         </div>
@@ -313,7 +329,8 @@
                 } else {
                     teamArray[teamname] = parseInt(teamArray[teamname]) + 1
                 }
-                if (teamArray[teamname] > 2) {
+                // alert(teamArray[teamname]);
+                if (teamArray[teamname] >= 2) {
                     $.notify("You can only select 2 maximum players from one team.", "info");
                     status =false;
                     $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
@@ -328,6 +345,9 @@
                 selectCount();
             
         }
+
+
+        
 
         function coins(price,status){
             var spendCoin = $('#coin').html();
@@ -421,6 +441,7 @@
             
             var sell_price = "";
             var status ="";
+            
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
@@ -447,10 +468,17 @@
                 var image = "";
                 var full_name = "";
                 var spendCoin = $('#coin').html();
+                var sellprice ='';
+              
+                playerTeamCheck();
+              
+                
+
                 $(this).removeAttr("disabled");
                     
-                sell_price = $(this).closest("tr").find(".defender_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
+                sellprice = $(this).closest("tr").find(".defender_sell_price").html();
+               
+                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else{
                     $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
@@ -472,7 +500,8 @@
                     if (newselect >= 2) {
                         $("input.defendercheck").prop("disabled", true);
                     }
-                    playerTeamCheck();
+                    
+                    // alert();
                     var n = 0;
                     $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
                         $(this).removeAttr("disabled");
@@ -483,12 +512,11 @@
                         $("#defender_name" + n).html(full_name);
                         $("#defendersell_price" + n).html(sell_price);
                         $(".defender_staricon" + n).show();
-                        // alert(newselect)
-                        if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
-                            coins(sell_price);
-                        }
                         n += 1;
                     });
+                    sellprice = $(this).closest("tr").find(".defender_sell_price").html();
+                    coins(sellprice);
+
                 }
             }
             $(".defendercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
@@ -522,12 +550,13 @@
                 var select = 0;
                 var image = "";
                 var full_name = "";
+                var sellprice = "";
                 var sell_price = "";
                 var spendCoin = $('#coin').html();
                 $(this).removeAttr("disabled");
                     
-                sell_price = $(this).closest("tr").find(".midfielder_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
+                sellprice = $(this).closest("tr").find(".midfielder_sell_price").html();
+                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else{
                     $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
@@ -555,23 +584,15 @@
                         $(this).removeAttr("disabled");
                         image = $(this).closest("tr").find("img").attr("src");
                         full_name = $(this).closest("tr").find(".midfielder_fullname").html();
-                        sell_price = $(this)
-                            .closest("tr")
-                            .find(".midfielder_sell_price")
-                            .html();
+                        sell_price += $(this).closest("tr").find(".midfielder_sell_price").html();
                         $("#midfielder_img" + n).attr("src", image);
                         $("#midfielder_name" + n).html(full_name);
                         $("#midfieldersell_price" + n).html(sell_price);
                         $(".midfielder_staricon" + n).show();
-                        // alert(select)
-                        if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
-                            // alert(sell_price)
-                            coins(sell_price);
-                        }
-
                         n += 1;
                     });
-
+                    sellprice = $(this).closest("tr").find(".midfielder_sell_price").html();
+                    coins(sellprice);
                 }
 
                 
@@ -605,11 +626,12 @@
                 var image = "";
                 var full_name = "";
                 var sell_price = "";
+                var sellprice  ='';
                 var spendCoin = $('#coin').html();
                 $(this).removeAttr("disabled");
                     
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
+                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sell_price))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else{
                     $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
@@ -637,19 +659,15 @@
                         $(this).removeAttr("disabled");
                         image = $(this).closest("tr").find("img").attr("src");
                         full_name = $(this).closest("tr").find(".forward_fullname").html();
-                        sell_price = $(this).closest("tr").find(".forward_sell_price").html();
+                        sellprice = parseInt($(this).closest("tr").find(".forward_sell_price").html());
                         $("#forward_img" + n).attr("src", image);
                         $("#forward_name" + n).html(full_name);
-                        $("#forwardsell_price" + n).html(sell_price);
+                        $("#forwardsell_price" + n).html(sellprice);
                         $(".forward_staricon" + n).show();
-                        if((select ==  0 && n == 0) || (select == 1 && n ==1) ){
-                            // alert(sell_price)
-                            coins(sell_price);
-                        }
-
                         n += 1;
                     });
-
+                    sell_price = $(this).closest("tr").find(".forward_sell_price").html();
+                    coins(sell_price);
                 }
 
                 
@@ -932,6 +950,7 @@
                     data = "Search";
                 }
                 showLoader();
+                // alert('asdasas');
                 $.ajax({
                     url: "create-team",
                     method: "GET",
@@ -944,11 +963,14 @@
                         'cost_range': cost_range
                     },
                     success: function(result) {
+                        // console.log(result);
                         $("#myTabContent").html(result);
                         hideLoader();
                     }
                 });
             }
+
+            
 
             $("body").on('click', "#goalkeeper_filt", function(e) {
                 point = $("#goal_keeper_point").val();
@@ -983,8 +1005,10 @@
             $("body").on('keyup', "#goal_keeper", function(e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     searchData = $("#goal_keeper").val();
+                   
                     if (!searchData) {
                         searchData = 'Search'
+                        
                     }
                     fetchData(searchData, "goalkeeper");
                 }
@@ -992,6 +1016,7 @@
 
             $("body").on('click', "#goal_keeper_search", function(e) {
                 searchData = $("#goal_keeper").val();
+               
                 if (!searchData) {
                     searchData = 'Search'
                 }

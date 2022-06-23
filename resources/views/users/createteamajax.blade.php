@@ -1,20 +1,3 @@
-<div class="sdjsd689">
-  <div class="sdjsd789">
-    <h1 class="sdhn485" id="selected_count">0/7</h1>
-    <p class="sxdjhd767">
-      <b>Players <br />Selected</b>
-    </p>
-  </div>
-  <div class="sxdhdcn9908">
-    <h1 class="sdhsdks87" id="coin">50M</h1>
-    <p class="sdjhs7tyh">
-      <b
-        >Money<br />
-        Remaining</b
-      >
-    </p>
-  </div>
-</div>
 <div
   class="tab-pane fade home-tab <?= $type == 'goalkeeper' || $type == '' ? 'show active' : '' ?>"
   id="home"

@@ -72,9 +72,8 @@
                                                     {{ $publicValue['entry_fees'] }}</p>
                                             </div>
                                             <div class="jhgyu56">
-                                                <button
-                                                    class="asunht56">{{ !empty($jointuser[$publicValue['id']]) ? $jointuser[$publicValue['id']] : 0 }}
-                                                    Users</button>
+                                                <button class="asunht56" onclick="userdetail('{{ $publicValue['id'] }}')">{{ !empty($jointuser[$publicValue['id']]) ? $jointuser[$publicValue['id']] : 0 }} 
+                                                    Users </button>
                                             </div>
                                         </div>
                                     </div>

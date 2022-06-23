@@ -18,6 +18,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
 use App\Mail\UserEmail;
+use App\Models\CreatePost;
 use Mail;
 
 class PoolController extends Controller
@@ -55,9 +56,9 @@ class PoolController extends Controller
         $user_id    = Auth::user()->id;
         //$poolData = UserPool::query()->where(['user_id'=>$user_id])->get();
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.id as ucid','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
-        $completeDate=$currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
+        $completeDate = $currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
 
-        $user     = User::select('user_name')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user     = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
 
         $nextWeek = nextWeek();
@@ -68,25 +69,33 @@ class PoolController extends Controller
                     $upcomingDate=Week::find($nextWeek)->toArray();
                 }
                 if($currentWeek>0){
-                    $currentDate=Week::find($currentWeek)->toArray();
+                    $currentDate = Week::find($currentWeek)->toArray();
                 }
-                // if(currentWeek()>0){
-                //     $completeDate=Week::find(currentWeek())->toArray();
-                // }
+                if(currentWeek()>0){
+                    $completeDate=Week::where('id','<',currentWeek())->orderByDesc('id')->first();
+                }
             }
+
+           
             if($poolValue['week']==$nextWeek){
                 $upcomingPool[]=$poolValue;
             }
             if($poolValue['week']==$currentWeek){
                 $livePool[]=$poolValue;
             }
-            if($poolValue['week']<$currentWeek){
+            if($poolValue['week'] < $currentWeek){
                 // prr($poolValue);
-                $completePool[]=$poolValue;
+                $completePool[] = $poolValue;
             }
+
+            // if($_SERVER['REMOTE_ADDR'] == '49.204.163.246'){
+
+            //     // prr($completeDate->starting_at);
+            // }
         }
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
         //prr($topplayers);
-           return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
+           return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'trending'=>$trending,'completeDate'=>$completeDate,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
     }
 
     public function createPool()
@@ -191,7 +200,7 @@ class PoolController extends Controller
         foreach ($users as $key => $user) {
             Mail::to($user)->send(new UserEmail($user));
         }
-        return redirect('/my-pool')->with('message','Send email successfully.');
+        return redirect('/my-pool')->with('message','Email(s) Sent Successfully..');
         // return response()->json(['success'=>'Send email successfully.']);
     }
 }

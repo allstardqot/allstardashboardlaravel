@@ -15,11 +15,10 @@
             </div>
             <div class="col-12 col-lg-4 py-1 py-lg-0 hsakdjh56">
               <ul class="d-flex list-unstyled text-center sdbdjksd65">
-                <li class="px-2"><a href="https://www.facebook.com/"><img src="{{asset('public/img/Icon awesome-facebook.png')}}"></a></li>
+                <li class="px-2"><a href="https://telegram.me/" ><img src="{{asset('public/img/teligram.png')}}"></a></li>
                 <li class="px-3"><a href="https://www.instagram.com/"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
-                <li class="px-3"><a href="https://www.linkedin.com/"><img src="{{asset('public/img/Icon awesome-linkedin.png')}}"> </a></li>
                 <li class="px-3"><a href="https://twitter.com/"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
-                <li class="px-3"><a href="https://www.youtube.com/"><img src="{{asset('public/img/Icon awesome-youtube.png')}}"> </a></li>
+                <li class="px-3"><a href="https://discord.gg/"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
               </ul>
             </div>
           </div>

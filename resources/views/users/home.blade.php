@@ -70,7 +70,7 @@
                                         </div>
 
                                         <div class="user-invite" >
-                                            <button type="button" class="sjsdjk78"  onclick="openpop('{{ $value->email }}')"><i class="fa fa-user-plus sdjkdjkd" ></i> Invite</button>
+                                            <button type="button" class="sjsdjk78"  onclick="openpop('{{ $value->email }}','{{ $value->user_name  }}')"><i class="fa fa-user-plus sdjkdjkd" ></i> Invite</button>
                                         </div>
                                     </div>
                                         
@@ -130,94 +130,19 @@
 
     
 </main>
-<div class="modal fade" id="invitemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Please select your pool to share</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <div class="modal-in">
-            <form action="">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
-                        </div>
 
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example" id="typeoption">
-                                <option selected>Select Public or Private</option>
-                                <option value="Public Pool">Public Pool</option>
-                                <option value="Private Pool">Private Pool</option>
-                                
-                              </select>
-                        </div>
 
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example" id="typename">
-                                <option selected>Select Public or Private</option>
-                               
-                                
-                              </select>
-                        </div>
 
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                          <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
 
-                    </div>
 
-                </div>
-              
-            </form>
-        </div>
-       
-        </div>
-      
-      </div>
-    </div>
-  </div>
 <script src="{{asset('public/assets/js/jquery-3.5.1.min.js')}}"></script>
 <script>
-    function openpop(email){
-        // alert(email);
-        $('#exampleFormControlInput1').val(email);
-        $('#invitemodal').modal('show');
-    }
+    
+
     $(document).ready(function() {
 
        
-        $("#typeoption").change(function(){
-            var id = $(this).val();
-            $.ajax
-            ({
-                type: "GET",
-                url: "fetchpool",
-                data: 'id='+id,
-                cache: false,
-                success: function(data)
-                {
-                    var arr = JSON.parse(data);
-                    alert(arr);
-                    // $.each(data, function(i, value){
-                    //     // $("#typename").html('');
-                    //     alert(value.pool_name)
-                    //     // $("#typename").append('<option value="'+ this.value +'">'+ this.name +'</option>')
-                    //     $('#typename').append($('<option>').text(code).attr('value', name));
-                    // })
-                    // console.log(data); // I get error and success function does not execute
-                } 
-            });
-
-        });
+        
                 
 
 
