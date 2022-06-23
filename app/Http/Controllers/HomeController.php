@@ -9,6 +9,7 @@ use App\Models\UserTeam;
 use App\Models\Week;
 use App\Models\News;
 use App\Models\UserContest;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Squad;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -84,16 +85,32 @@ class HomeController extends Controller
     }
 
     public function jointeam(Request $request){
+        request()->validate([
+            'user_team_id' => 'required',
+        ]);
+        $join_pool_id =     $request->input('join_pool_id');
+        $pool = UserPool::findOrFail($join_pool_id);
+        // echo 'sg';die;
+        if($request->input('hiddenpooltype') == 1){
+            request()->validate([
+                'password' => 'required',
+            ]);
+            $password = $request->input('password');
+            if (!Hash::check($password, $pool->password)) {
+                return redirect()->back()->with('error', 'Join Failed, pls check password');
+             }
+            
+        }
 
         $wallet = Auth::user()->wallet;
             // echo $wallet;die;
-        $join_pool_id =     $request->input('join_pool_id');
+        
 
-        $pool = UserPool::findOrFail($join_pool_id);
+        
         // prr();
         $entry_fees = $pool['entry_fees'];
         if($entry_fees > $wallet){
-            return redirect()->back()->with('message','You have not sufficant balance!');
+            return redirect()->back()->with('error','You have not sufficant balance!');
 
         }
 
@@ -109,14 +126,14 @@ class HomeController extends Controller
         //$payment->status = 1;
         $payment->save();
         
-        $contest_data       = new UserContest();
-        $contest_data->pool_id = $join_pool_id;
-        $contest_data->user_id=Auth::user()->id;
-        $contest_data->user_team_id=$request->input('select_team');
+        $contest_data           = new UserContest();
+        $contest_data->pool_id  = $join_pool_id;
+        $contest_data->user_id  = Auth::user()->id;
+        $contest_data->user_team_id = $request->input('user_team_id');
         if($contest_data->save()){
             return redirect('my-pool')->with('message','Pool Joined Successfully 😊.');
         }else{
-            return redirect('home')->with('message',"Cant't Join this pool.");
+            return redirect('home')->with('error',"Cant't Join this pool.");
         }
     }
 

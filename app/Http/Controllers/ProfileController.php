@@ -98,7 +98,8 @@ class ProfileController extends Controller
     public function transection(){
 
         $user_id = Auth::user()->id;
-        $transection = Payment::where(['user_id'=>$user_id])->get();
+        $transection = Payment::join('users','users.id','=','payments.user_id')->where(['user_id'=>$user_id])->latest('payments.id')->paginate(10);
+        // $transection= Payment::paginate(10); 
 
         return view('users/profile/transection',compact('transection'));
     }

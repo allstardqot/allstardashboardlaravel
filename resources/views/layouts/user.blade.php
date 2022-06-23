@@ -35,17 +35,25 @@
 @include('element/users/header') @show
 @if($errors->any())
 @foreach ($errors->all() as $err)
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-danger " id="" role="alert">
     <li>{{$err}}</li>
 </div>
 
 @endforeach
 @endif
 @if(session()->has('message'))
-    <div class="alert alert-success alert-one" id="alert">
+    <div class="alert alert-success alert-one " id="alert">
         {{ session()->get('message') }}
 
-        <button type="button" class="btn-close" aria-label="Close" ></button>
+        <button type="button" class="btn-close"  aria-label="Close" ></button>
+    </div>
+@endif
+
+@if(session()->has('error'))
+    <div class="alert alert-danger alert-one " id="alert">
+        {{ session()->get('error') }}
+
+        {{-- <button type="button" class="btn-close"  aria-label="Close" ></button> --}}
     </div>
 @endif
 
@@ -229,6 +237,7 @@
                 data: $('#invite_email').serialize(),
                 success: function(result) {
                   console.log(result)
+                  $.notify("Email(s) Sent Successfully", "success");
 
                 }
             });

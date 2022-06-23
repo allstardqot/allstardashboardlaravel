@@ -103,15 +103,17 @@
                     <form class="hbngtdf" action="{{ route('home') }}" method="POST">
                         @csrf
                         <input type="hidden" name="join_pool_id" id="join_pool_id">
+                        <input type="hidden" id="hiddenpooltype" name="hiddenpooltype">
                         <label class="labelhg " id="passLabel">Enter Password to join private
                             pool</label>
                         <div class=" text-center">
                             <input class="inputcolor jhtyu " type="password" id="joinPass" name="password" placeholder="Enter Password">
+                           
                         </div>
                         <label class="nmhitf">Select Team</label>
                         <div class=" text-white  text-center">
-                            <select class="inputcolor jhngyt" id="select_team" name="select_team">
-                                <option class="nhbgyuhd">Select Team</option>
+                            <select class="inputcolor jhngyt" id="select_team" name="user_team_id" >
+                                <option selected value="">Select Team</option>
                                 @foreach($team as $key => $value)
                                 <option class="nhbgyuhd" value="{{ $value->id }}">{{ $value->name }}</option>
 
@@ -140,12 +142,6 @@
     
 
     $(document).ready(function() {
-
-       
-        
-                
-
-
         fetchData("Search");
 
         function fetchData(data, type = null) {

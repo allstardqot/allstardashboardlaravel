@@ -38,7 +38,7 @@
                     <div class="col-sm-8">
                         <div class="dash-tab">
                             @if(!empty($weeak['starting_at']))
-                            <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                            
                             <p>
                                 {{date('d M Y', strtotime($weeak['starting_at']))}} - {{date('d M Y', strtotime($weeak['ending_at']))}}
                                 
@@ -110,7 +110,7 @@
                     <div class="col-sm-8">
                         <div class="dash-tab">
                             @if(!empty($weeak['starting_at']))
-                            <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                            
                             <p>
                                 {{date('d M Y', strtotime($weeak['starting_at']))}} - {{date('d M Y', strtotime($weeak['ending_at']))}}
                                 
@@ -144,7 +144,7 @@
                                             </div>
                                             <div class="jhgyu56">
                                                 <button
-                                                    class="asunht56">{{ !empty($jointuser[$privateValue['id']]) ? $jointuser[$privateValue['id']] : 0 }}
+                                                    class="asunht56"  onclick="userdetail('{{ $privateValue['id'] }}')">{{ !empty($jointuser[$privateValue['id']]) ? $jointuser[$privateValue['id']] : 0 }}
                                                     Users</button>
                                             </div>
                                         </div>
@@ -176,14 +176,18 @@
 <script>
     function showmodel(id, type) {
         if (type == 0) {
+
             document.getElementById('pooltypebtn').hidden = true;
             document.getElementById('joinPass').hidden = true;
             document.getElementById('passLabel').hidden = true;
+            
         } else {
+            
             document.getElementById('pooltypebtn').hidden = false;
             document.getElementById('joinPass').hidden = false;
             document.getElementById('passLabel').hidden = false;
         }
         document.getElementById("join_pool_id").value = id;
+        document.getElementById("hiddenpooltype").value = type;
     }
 </script>

@@ -77,7 +77,7 @@
                                         <div class="col-sm-9">
                                             <div class="dash-tab">
                                                 @if (!empty($upcomingDate['starting_at']))
-                                                    <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                                                   
                                                     <p>{{ date('d M Y', strtotime($upcomingDate['starting_at'])) }} -
                                                         {{ date('d M Y', strtotime($upcomingDate['ending_at'])) }}</p>
                                                 @endif
@@ -135,7 +135,7 @@
                                             <div class="dash-tab">
                                                 @if (!empty($currentDate['starting_at']))
 
-                                                <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                                               
                                                 <p>{{ date('d M Y', strtotime($currentDate['starting_at'])) }} -
                                                     {{ date('d M Y', strtotime($currentDate['ending_at'])) }}</p>
                                             @endif
@@ -192,9 +192,9 @@
                                         <div class="col-sm-9">
                                             <div class="dash-tab">
                                                 @if (!empty($completeDate->starting_at))
-                                                <h5>Open Pools of this Game Week 13M-19M2021</h5>
+                                               
                                                 <p>
-                                                    {{ date('d M Y', strtotime($completeDate->ending_at)) }} - BEFORE</p>
+                                                    BEFORE - {{ date('d M Y', strtotime($completeDate->ending_at)) }} </p>
                                             @endif
                                             </div>
                                         </div>
