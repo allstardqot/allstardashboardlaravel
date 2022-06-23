@@ -234,6 +234,7 @@ function manageSquadFinal(yourArray, substitude, captain, teamName, editId) {
             delete_cookie('substitude');
             delete_cookie('selected_player');
             delete_cookie('editId');
+            delete_cookie('playerIdArray');
             //history.go(-1);
             window.location = "team";
         }

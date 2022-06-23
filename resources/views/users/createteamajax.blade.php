@@ -1,3 +1,10 @@
+@php
+$cookiesArray=[];
+if (!empty($_COOKIE['playerIdArray'])){
+    $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
+}
+
+@endphp
 <div
   class="tab-pane fade home-tab <?= $type == 'goalkeeper' || $type == '' ? 'show active' : '' ?>"
   id="home"
@@ -139,7 +146,7 @@
                     <h6>Team</h6>
                   </th>
                   <th scope="col">
-                    <h6>Goals/Assists</h6>
+                    <h6>Goals</h6>
                   </th>
                   <th scope="col">
                     <h6>Fantasy points</h6>
@@ -151,7 +158,7 @@
                 <tbody>
                   @foreach ($goalkeeperData as $goakkeeperValue)
                   {{$check=''}}
-                  @if(!empty($user_selected_player) && in_array($goakkeeperValue["id"],$user_selected_player))
+                  @if((!empty($user_selected_player) && in_array($goakkeeperValue["id"],$user_selected_player)) || in_array($goakkeeperValue["id"],$cookiesArray))
                     @php $check="checked"; @endphp
                   @endif
                   @if(empty($goakkeeperValue["team"]["name"]))
@@ -346,7 +353,7 @@
                     <h6>Team</h6>
                   </th>
                   <th scope="col">
-                    <h6>Goals/Assists</h6>
+                    <h6>Goals</h6>
                   </th>
                   <th scope="col">
                     <h6>Fantasy points</h6>
@@ -357,7 +364,7 @@
                 </thead>
                 @foreach ($defenderData as $defenderValue)
                 {{$check=''}}
-                  @if(!empty($user_selected_player) && in_array($defenderValue["id"],$user_selected_player))
+                  @if((!empty($user_selected_player) && in_array($defenderValue["id"],$user_selected_player)) || in_array($defenderValue["id"],$cookiesArray))
                     @php $check="checked"; @endphp
                   @endif
                 @if(empty($defenderValue["team"]["name"]))
@@ -561,7 +568,7 @@
                       <h6>Team</h6>
                     </th>
                     <th scope="col">
-                      <h6>Goals/Assists</h6>
+                      <h6>Goals</h6>
                     </th>
                     <th scope="col">
                       <h6>Fantasy points</h6>
@@ -572,7 +579,7 @@
                   </thead>
                   @foreach ($midfielderData as $midfielderValue)
                   {{$check=''}}
-                  @if(!empty($user_selected_player) && in_array($midfielderValue["id"],$user_selected_player))
+                  @if((!empty($user_selected_player) && in_array($midfielderValue["id"],$user_selected_player)) || in_array($midfielderValue["id"],$cookiesArray))
                     @php $check="checked"; @endphp
                   @endif
                   @if(empty($midfielderValue["team"]["name"]))
@@ -779,7 +786,7 @@
                       <h6>Team</h6>
                     </th>
                     <th scope="col">
-                      <h6>Goals/Assists</h6>
+                      <h6>Goals</h6>
                     </th>
                     <th scope="col">
                       <h6>Fantasy points</h6>
@@ -790,7 +797,7 @@
                   </thead>
                   @foreach ($forwardData as $forwardValue)
                   {{$check=''}}
-                  @if(!empty($user_selected_player) && in_array($forwardValue["id"],$user_selected_player))
+                  @if((!empty($user_selected_player) && in_array($forwardValue["id"],$user_selected_player)) || in_array($forwardValue["id"],$cookiesArray))
                     @php $check="checked"; @endphp
                   @endif
                   @if(empty($forwardValue["team"]["name"]))
@@ -800,7 +807,7 @@
                     <td class="forward_td">
                     <input type="hidden" id="hiddenId" value="{{ $forwardValue["fullname"] }}">
                     <input type="hidden" id="forwrdSellPrice" value="{{ $forwardValue["sell_price"] }}">
-                    
+
                       <img
                         class="imgsize"
                         src="{{ $forwardValue['image_path'] }}"
