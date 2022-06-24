@@ -54,7 +54,9 @@
 
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>{{$totalCoins}}</h3>
+            <h3>
+              <img src="{{ asset('public/assets/image/coins.png') }}" alt="" class="img-fluid" width="38">
+              {{$totalCoins}}</h3>
             <h6>Total Coins</h6>
           </div>
         </div>

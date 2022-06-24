@@ -67,7 +67,7 @@
                                             <div>
                                                 <h6>{{ $publicValue['pool_name'] }}</h6>
                                                 <p class="yhji2365">Entry Amount <img
-                                                        src="{{ asset('public/assets/image/coin-img.png') }}"
+                                                        src="{{ asset('public/assets/image/coins.png') }}"
                                                         width="20" class="img-fluid" alt="">
                                                     {{ $publicValue['entry_fees'] }}</p>
                                             </div>
@@ -139,7 +139,7 @@
                                         <div class="lkpoioubn">
                                             <div>
                                                 <h6>{{ $privateValue['pool_name'] }}</h6>
-                                                <p class="yhji2365">Entry Amount $
+                                                <p class="yhji2365">Entry Amount <img src="{{ asset('public/assets/image/coins.png') }}" alt="" width="20" class="img-fluid">
                                                     {{ $privateValue['entry_fees'] }}</p>
                                             </div>
                                             <div class="jhgyu56">

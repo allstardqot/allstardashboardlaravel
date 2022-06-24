@@ -53,21 +53,31 @@ So, how do you win? In a nutshell, players with the most points at the end of th
     </div>
     <h1 style="text-align:center;" ><b>Picking Your Title Winners</b></h1>
     <p class="lorem-left"  >The great thing about Fantasy Allstars is that we have made team creation as easy as shooting at an empty goal. We give you football’s creme de la creme on a silver platter, and you choose the seven champions that will bring you glory. This is how you kick off your first Fantasy Allstars season.</p>
+    
     <div class="row mt-4 text-center justify-content-center">
-      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3">
-
-        <img class="img-fluid" src="{{asset('public/img/Group%2067.png')}}">
-      </div>
-      <div class="col-lg-4 col-sm-6 px-1 col-12 p-3 get-margin" >
-        <img class="img-fluid" src="{{asset('public/img/Group%2068.png')}}">
-      </div>
-      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3">
-        <img class="img-fluid" src="{{asset('public/img/Group%2069.png')}}">
-      </div>
-      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3">
+      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3 card-main">
+        <div class="pickcartd-main">
         <div class="picking-card">
           <h4>Select Players from Gameweek</h4>
         </div>
+</div>
+
+      </div>
+      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3 card-main">
+        <div class="pickcartd-main">
+        <div class="picking-card">
+          <h4>Shortlist 15-players squad</h4>
+        </div>
+</div>
+
+      </div>
+      <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3 card-main">
+        <div class="pickcartd-main">
+        <div class="picking-card">
+          <h4>Create 11 Players Team</h4>
+        </div>
+</div>
+
       </div>
     </div>
     <div class="row">
