@@ -275,6 +275,10 @@ table.ui-datepicker-calendar td {
   /* font-size: 2rem; */
 
   margin: 0rem 0;
+  position: relative;
+}
+.range-slider__value::after {
+  content: "M";
 }
 .o-value {
   /* font-size: 2rem; */

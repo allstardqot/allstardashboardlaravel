@@ -5,9 +5,10 @@
 <main>
   <div class="sdjsdkn">
     <h4><b class="skdjskd">My Team Next Week</b></h4>
-    <p class="skdjskdm">Nullam lectus magna, dignissim tempus est in, volutpat scelerisque tortor. Curabitur nec ex
-      risus.</p>
-    <h4 class="mt-3 text-white ">Teams Under War</h4>
+    <p class="skdjskdm">These are the star players you picked for the next Gameweek. You can make changes to your squad and edit your teams before the Gameweek selection deadline.
+      Will Be in Action Soon
+      </p>
+    <h4 class="mt-3 text-white "> (previously Teams Under War)</h4>
   </div>
 
 

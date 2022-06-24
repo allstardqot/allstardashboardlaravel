@@ -13,8 +13,8 @@
             <div class="bgcolor">
                 <div class="text-center">
                     <h1>Login</h1>
-                    <h3>Welcome aboard my friend</h3>
-                    <p class="pb-1">just a couple of clicks and we start</p>
+                    <h3>Welcome Back Boss!</h3>
+                    <p class="pb-1">The players are in the dressing room and eager to hear your instructions.</p>
                 </div>
                 <div class="position_image">
                     <img style="margin-left: 10%" src="{{asset('public/img/Group 42.png')}}" width="80%" height="auto" />

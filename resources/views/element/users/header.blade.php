@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
       <div class="container-fluid text-white">
-        <a class="navbar-brand" href="{{url('/') }}"><img src="{{asset('public/assets/image/fantasy-allstars 1.png')}}"></a>
+        <a class="navbar-brand" href="{{url('/home') }}"><img src="{{asset('public/assets/image/fantasy-allstars 1.png')}}"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -60,7 +60,7 @@
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{{ url('/transection') }}">Transection</a>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
                 </ul>
               </li>

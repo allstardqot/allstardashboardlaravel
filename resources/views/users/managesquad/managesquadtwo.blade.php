@@ -19,8 +19,8 @@
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie"  data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
-                            <p>18 CGW Point</p>
-                            <p>104 T F Points</p>
+                            <p>0 CGW Point</p>
+                            <p>0 T F Points</p>
                         </div>
                         <p>$5.25 M</p>
                     </div>
@@ -36,8 +36,8 @@
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -53,8 +53,8 @@
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -74,8 +74,8 @@
                                 <h4>{{ $defenderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -91,8 +91,8 @@
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
                             <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                             <div class="playerdetails">
-                                <p>18 CGW Point</p>
-                                <p>104 T F Points</p>
+                                <p>0 CGW Point</p>
+                                <p>0 T F Points</p>
                             </div>
                             <p>$5.25 M</p>
                         </div>
@@ -115,8 +115,8 @@
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -132,8 +132,8 @@
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -153,8 +153,8 @@
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -170,8 +170,8 @@
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -193,8 +193,8 @@
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -210,8 +210,8 @@
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -231,8 +231,8 @@
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>
@@ -248,8 +248,8 @@
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>18 CGW Point</p>
-                                    <p>104 T F Points</p>
+                                    <p>0 CGW Point</p>
+                                    <p>0 T F Points</p>
                                 </div>
                                 <p>$5.25 M</p>
                             </div>

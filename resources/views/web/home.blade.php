@@ -8,16 +8,13 @@
       <div class="col-lg-6 text-white agjustHome">
         <div class="col-12 container col-lg-9">
           <div class="sdndj67">
-            <h3 style="font-size: 3em">A Fantasy Football Communit</h3>
-            <h1 style="font-size: 5em"><b>Coming Soon</b></h1>
+            <h3 style="font-size: 3em">Fantasy Football As It Should Be</h3>
+            <h1 style="font-size: 5em"><b>Join for the Hat-Tricks - Stay for the Mates</b></h1>
           </div>
           <p class="pregraph">
-            Fantasy Allstars is for people who believe football and community go
-            hand in hand. All our energy and focus will be on creating an
-            experience where all members enjoy Fantasy Football within a
-            close-knit community...
+            At Fantasy Allstars, football and community go hand in hand. You challenge the next Guardiolas and future Klopps today but join them to watch El Clásico tomorrow. Winning means little to our crypto fantasy community if we can’t share the joy.
           </p>
-          <button class="bou">Start Invest</button>
+          <button class="bou">Start Playing</button>
           <a class="ml-3 text-white" href=""><b>Learn More</b></a>
         </div>
       </div>
@@ -43,13 +40,9 @@
         </div>
         <div class="col-12 col-lg-6 text-white d-flex align-items-center dfjdfjk">
           <div class="w-100 text-center mt-3">
-            <h1 class="sdhnsk7" ><b>How to play?</b></h1>
+            <h1 class="sdhnsk7" ><b>Become a Champ and Have Fun</b></h1>
             <p class="pregraph">
-              Play in public league. play in private league with<br />
-              friends. Play our Head-to-Head war games.<br />
-              manage your team through transfers. Interact<br />
-              with other managers in the community. win<br />
-              prizes.
+              Pit your wits against top managers in public leagues and challenge your friends in private pools. Engage in weekly head-to-head duels, pick super-talented players and join the banter. Once you are done, collect your prizes!
             </p>
             <button class="boutton"><b>Join Now</b></button>
           </div>
@@ -57,43 +50,34 @@
       </div>
     </div>
       <div class="col-lg-10 col-11 w-100 text-center py-5 text-white mx-auto">
-        <h1><b>How it works?</b></h1>
+        <h1><b>How Does It Work?</b></h1>
         <p class="asbsyt" class="pregraph">
-          Sint anim laboris in dolore deserunt. Exercitation commodo nostrud
-          reprehenderit ut ut.<br />
-          Aute amet irure cupidatat occaecat minim eiusmod ea cupidatat.
+          Kick off your crypto football adventure as soon as you join. No crowd delays, difficult owners and self-indulgent football divas. Log in, buy your coins and start competing in three simple steps.
         </p>
       </div>
       <div class="col-lg-11 col-11 mx-auto">
         <div class="row">
           <div class="col-12 col-lg-4 text-center text-white">
             <img src="{{ asset('public/img/Step%2002.png') }}" />
-            <h3><b>Buy coins</b></h3>
+            <h3><b>Buy Coins</b></h3>
             <p>
-              Use credit card to add your money to<br />
-              your PredictionStrike account anytime<br />
-              you want
+              Fund your Fantasy Allstars account and purchase AFC tokens.
             </p>
           </div>
           <div class="col-12 col-lg-4 text-center text-white">
             <img src="{{ asset('public/img/Step%2003.png') }}" />
-            <h3><b>Pick team</b></h3>
+            <h3><b>Pick Your Allstars</b></h3>
             <p>
-              Buy and own shares of your favorite<br />
-              players just like you would a real stock
+              Buy and own football players just as you would a real stock.
             </p>
           </div>
           <div class="col-12 col-lg-4 text-center text-white">
             <img src="{{ asset('public/img/Step%2004.png') }}" />
             <h3>
-              <b
-                >compete in public or<br />
-                private pools</b
-              >
+              Challenge Others
             </h3>
             <p>
-              The value of players and team will<br />
-              increase or decrease based on upon
+              Join public and private pools and profit when your players perform well and their value increases.
             </p>
           </div>
         </div>
@@ -109,14 +93,11 @@
             <div class="text-center text-lg-left">
               <h3 class="heading">
                 <b
-                  >Fantasy All-Stars offers the best<br />
-                  fantasy sports experience online.</b
+                  >Fantasy Allstars Reinvents the Fantasy Football Experience and Puts Community First!</b
                 >
               </h3>
               <p class="pregraph1">
-                Play in public leagues, private leagues with friends, or<br />
-                compete against the community with our weekly head-to-<br />head
-                War games.
+                Become the next Mourinho but without the Special One’s gloating when he wins and tantrums when he loses. Win or lose, the Allstars community is always there for you. Everyone shares your joy when you win and helps you get back on your feet when you are down on your luck.
               </p>
               <button class="boutt"><b>Join Now</b></button>
             </div>

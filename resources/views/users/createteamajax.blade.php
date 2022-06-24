@@ -197,7 +197,7 @@ if (!empty($_COOKIE['playerIdArray'])){
                     </td>
                     <td class="goalkeeper_td">
                       <p class="hsksk78 goalkeeper_sell_price">
-                        {{ $goakkeeperValue["sell_price"] }} M
+                        {{ $goakkeeperValue["sell_price"] }}M
                       </p>
                     </td>
                     <td class="checkboxtd">
@@ -400,7 +400,7 @@ if (!empty($_COOKIE['playerIdArray'])){
                   </td>
                   <td class="defender_td">
                     <p class="hsksk78 defender_sell_price">
-                      {{ $defenderValue["sell_price"] }}
+                      {{ $defenderValue["sell_price"] }}M
                     </p>
                   </td>
                   <td class="defender_td">
@@ -615,7 +615,7 @@ if (!empty($_COOKIE['playerIdArray'])){
                     </td>
                     <td class="midfielder_td">
                       <p class="hsksk78 midfielder_sell_price">
-                        {{ $midfielderValue["sell_price"] }}
+                        {{ $midfielderValue["sell_price"] }}M
                       </p>
                     </td>
                     <td class="midfielder_td">
@@ -755,7 +755,7 @@ if (!empty($_COOKIE['playerIdArray'])){
                 <div class="range-slider">
 
                     <p class="range-slider__subtitle">Cost Bar</p>
-                    <div class="value-data"><p class="o-value">$0</p> <p class="forward_range range-slider__value">${{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p></div>
+                    <div class="value-data"><p class="o-value">$0</p> <p class="forward_range range-slider__value">$ {{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p></div>
 
                     <div class="range-slider__slider">
                         <input
@@ -834,7 +834,7 @@ if (!empty($_COOKIE['playerIdArray'])){
                     </td>
                     <td class="forward_td">
                       <p class="hsksk78 forward_sell_price">
-                        {{ $forwardValue["sell_price"] }}
+                        {{ $forwardValue["sell_price"] }}M
                       </p>
                     </td>
                     <td class="forward_td">

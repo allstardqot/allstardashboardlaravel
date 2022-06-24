@@ -12,29 +12,22 @@
 
             <div class="about-common about-one">
               <div class="content">
-                <h3>COMMUNITY FIRST</h3>
-                <p>Fantasy Allstars is  for people who believe football and community go hand in hand. All our energy and focus will be on creating an experience where all members enjoy Fantasy Football within a close-knit community focused on sharing knowledge and helping each other succeed. Our ultimate goal is that your participation will help you get the most out of your love for the game and your enjoyment of the fantasy sports experience.</p>
+                <h3>Everyone Can Win</h3>
+                <p>We want to keep you engaged and competitive from start to finish. No one likes competing in a one-team league - just ask French teams that have to face PSG week in and week out. One player getting all the accolades is boring and makes the whole season pointless. But we are different. We give you challenges and milestones each Gameweek and reward you when you complete them. We play that killer pass that puts you in front of an open goal, and all you need to do is tap the ball into the empty net. In our crypto fantasy community, everyone's a winner.</p>
               </div>
             </div>
 
             <div class="about-common about-two">
               <div class="content">
-                <h3>Redefining Fantasy Football</h3>
-                <p>Redefining Fantasy Football
-At Fantasy Allstars, we understand that most other fantasy sports platforms focus on the top tier of users. They reward the few and ignore the rest, leaving you feeling excluded and lacking a sense of camaraderie and community to the experience.
-
-At Allstars, you will be part of the most inclusive Fantasy Football community in the world. We believe in full transparency and integrity. You will be engaged throughout the full football season, receiving fun and useful content and real-time updates and analytics.
-
-
-
-</p>
+                <h3>A Joint Effort</h3>
+                <p>We are all about community and shared values here at Fantasy Allstars. Cristiano Ronaldo might disagree, but football is not fun when only one person has the ball. With us, however, even the most narcissistic Ronaldos become hard-working Kantes that put the team first. We make that happen by ensuring that whenever our community grows and works better together, prize pools increase too. At Fantasy Allstars, we put you in a well-oiled machine of eleven Kantes that benefits from the strategies shared, input given, and friends invited.</p>
               </div>
             </div>
 
             <div class="about-common about-three">
               <div class="content">
-                <h3>Giving Back</h3>
-                <p>Most importantly, we believe our success and your success are one in the same. As the  community grows, so do your chances of wining. Prize pools will increase as the community grows. We also hope that as you progress in the community, you give back through the different mediums available, such as inviting friends, sharing strategies and participating in the community social feed. 
+                <h3>Stay In the Game from Start to Finish</h3>
+                <p>At Fantasy Allstars, we don’t want you to lose interest after Gameweek 3. We want to keep you pumped up and raring to go from start to finish. Of course, you will still compete with players so good you suspect they might have psychic abilities. However, we will give you all the tools you need to match them or even be better. With Fantasy Allstars, you benefit from strategies and insider info only the best scouts can obtain. We also deliver the latest football news, and our community gives you tips so accurate you will think David Beckham was on the other end.
 
 </p>
 <h5>The Allstars community values are:

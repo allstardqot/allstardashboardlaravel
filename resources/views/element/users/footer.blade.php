@@ -22,15 +22,16 @@
                     </div>
                     <div class="col-lg-6 col-12">
                         <h3>CONTACT US</h3>
-                        <form>
+                        <form action="{{ url('create') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-12">
-                                    <input type="Name" class="form-control inputft bgcolorinput mt-4" id="Name" placeholder="Name" name="Name" />
-                                    <input type="email" class="form-control inputft bgcolorinput mt-4" id="email" placeholder="Email id " name="email" />
-                                    <input type="button" class="d-lg-block jsystdbh d-none form-control mt-4" value="SEND" />
+                                    <input type="Name" class="form-control inputft bgcolorinput mt-4" id="Name" placeholder="Name" name="fname" required />
+                                    <input type="email" class="form-control inputft bgcolorinput mt-4" id="email" placeholder="Email ID" name="email" required />
+                                    <input type="submit" class="d-lg-block jsystdbh d-none form-control mt-4" value="SEND" />
                                 </div>
                                 <div class="col-lg-6 col-12">
-                                    <textarea class="form-control jsystdbh inputft bgcolorinput mt-4 w-100 order-first order-lg-last" rows="5" placeholder="Your Message" id="comment"></textarea>
+                                    <textarea class="form-control jsystdbh inputft bgcolorinput mt-4 w-100 order-first order-lg-last" rows="5" placeholder="Your Message" id="comment" name="message" required></textarea>
                                 </div>
                                 <div class="col-lg-12 d-lg-none d-block">
                                     <input type="button" class="form-control btnColor mt-4 order-last order-lg-first" value="SEND" />

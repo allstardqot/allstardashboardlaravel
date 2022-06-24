@@ -14,8 +14,7 @@
                     <div class="pt-3 sdjhdksmn">
                         <h3 class="sdhjdl"><b>Manager’s Lounge</b></h3>
                         <p class="mt-4">
-                            Nullam lectus magna, dignissim tempus est in, volutpat scelerisque
-                            tortor. Curabitur nec ex risus.
+                            Express your delight with your team’s performance or vent your anger after a miserable match. Share insider info, present strategies, and communicate all things football and fantasy-related with fellow players.
                         </p>
                         <div class="jkasdhd78">
                             <form action="{{ url('store-post') }}" method="POST" id="postForm">

@@ -12,8 +12,8 @@
         <div class="bgcolor">
           <div class="text-center">
             <h1>Sing Up</h1>
-            <h3>Welcome aboard my friend</h3>
-            <p class="pb-1">just a couple of clicks and we start</p>
+            <h3>Welcome to the Top Crypto Fantasy Community</h3>
+            <p class="pb-1">We are honored to welcome a manager of your quality to our community.</p>
           </div>
           <div class="position_image">
             <img class="posting-img" src="{{asset('public/img/Group 42.png')}}" width="78.2%" height="auto"/>
