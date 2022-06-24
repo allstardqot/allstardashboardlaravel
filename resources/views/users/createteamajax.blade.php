@@ -73,6 +73,9 @@ if (!empty($_COOKIE['playerIdArray'])){
             <a class="sdjndk7" onclick="goalKeepar()" href="javascript:void(0)">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
             </a>
+            <a class="sdjndk788" onclick="removePlayerCookie()" href="javascript:void(0)">
+                Reset
+            </a>
             <a class="sdjndk788" href="javascript:void(0)" id="goalkeeper_filt">
               Apply
               </a>
@@ -282,6 +285,9 @@ if (!empty($_COOKIE['playerIdArray'])){
             <i class="fa fa-search icon sdcjd8" id="defender_search"></i>
             <a class="sdjndk7" onclick="defenderfilt()" href="javascript:void(0)">
               <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
+            </a>
+            <a class="sdjndk788" onclick="removePlayerCookie()" href="javascript:void(0)">
+                Reset
             </a>
             <a class="sdjndk788" href="javascript:void(0)" id="defender_filt">
               Apply
@@ -497,6 +503,9 @@ if (!empty($_COOKIE['playerIdArray'])){
               <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
               <a class="sdjndk7" onclick="midfielderfilt()" href="javascript:void(0)" >
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
+              </a>
+              <a class="sdjndk788" onclick="removePlayerCookie()" href="javascript:void(0)">
+                Reset
               </a>
               <a class="sdjndk788" href="javascript:void(0)" id="midfielder_filt">
               Apply
@@ -714,8 +723,11 @@ if (!empty($_COOKIE['playerIdArray'])){
               <a class="sdjndk7" onclick="forwardfilt()" href="javascript:void(0)" >
                 <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
               </a>
+              <a class="sdjndk788" onclick="removePlayerCookie()" href="javascript:void(0)">
+                Reset
+              </a>
               <a class="sdjndk788" href="javascript:void(0)" id="forward_filt">
-              Apply
+                Apply
               </a>
 
             </div>

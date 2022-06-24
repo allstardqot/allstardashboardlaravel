@@ -329,6 +329,11 @@ function cookiesCheck() {
         }
 }
 
+function removePlayerCookie(){
+    delete_cookie('playerIdArray');
+    location.reload();
+}
+
 nextBtn.addEventListener("click", (e) => {
     e.preventDefault()
     var createTeamBtns = $(".create-team-nav")
