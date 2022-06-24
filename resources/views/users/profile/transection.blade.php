@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-white">
-          <h3>User Transection</h3>
+          <h3>User Transaction</h3>
           <div class="table-responsive">
             <table class="table text-white">
               <thead>

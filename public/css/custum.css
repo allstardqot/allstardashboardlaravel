@@ -10,6 +10,60 @@
   margin-top: -293px;
   z-index: 1;
 }
+.picking-card {
+  width: 100%;
+  max-width: 374px;
+  height: 224px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+
+  border-radius: 15px;
+  border: 10px solid #fff;
+  position: relative;
+}
+.card-main .pickcartd-main .picking-card::before {
+  font-size: 177px;
+  position: absolute;
+  font-weight: 700;
+  z-index: 0;
+  opacity: 0.3;
+  letter-spacing: -17px;
+  top: 0;
+  left: 5px;
+  line-height: 135px;
+}
+.card-main:nth-child(1) .pickcartd-main .picking-card::before {
+  content: "01";
+}
+.card-main:nth-child(1) .pickcartd-main .picking-card {
+  background: #f7a400;
+}
+.card-main:nth-child(2) .pickcartd-main .picking-card {
+  background: #8edefd;
+}
+.card-main:nth-child(3) .pickcartd-main .picking-card {
+  background: #ffacac;
+}
+.card-main:nth-child(2) .pickcartd-main .picking-card::before {
+  content: "02";
+}
+.card-main:nth-child(3) .pickcartd-main .picking-card::before {
+  content: "03";
+}
+
+.pickcartd-main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.picking-card h4 {
+  font-size: 32px;
+}
 .heading-h3 span {
   border-bottom: 1px solid #fff;
   padding-bottom: 10px;

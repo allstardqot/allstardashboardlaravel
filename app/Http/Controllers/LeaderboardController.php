@@ -66,7 +66,7 @@ class LeaderboardController extends Controller
         $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
 
-        $userTeam = UserTeam::join('users','users.id','=','user_teams.user_id')->orOrderByDesc('user_teams.total_points')->get();
+        $userTeam = UserTeam::join('users','users.id','=','user_teams.user_id')->OrderByDesc('user_teams.total_points')->get();
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
         return view('users/leaderboard/grandleaderboard',compact('userTeam','trending','newsdata','topplayers'));
     }
