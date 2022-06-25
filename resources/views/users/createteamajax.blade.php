@@ -872,12 +872,21 @@ if (!empty($_COOKIE['playerIdArray'])){
 
 <script>
     $(".goalkeeper_staricon").hide();
+<<<<<<< HEAD
     $(".defender_staricon0").hide();
     $(".defender_staricon1").hide();
     $(".midfielder_staricon0").hide();
     $(".midfielder_staricon1").hide();
     $(".forward_staricon0").hide();
     $(".forward_staricon1").hide();
+=======
+$(".defender_staricon0").hide();
+$(".defender_staricon1").hide();
+$(".midfielder_staricon0").hide();
+$(".midfielder_staricon1").hide();
+$(".forward_staricon0").hide();
+$(".forward_staricon1").hide();
+>>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
     selectCount();
     goalKeepercheckbox();
 defendercheckbox();

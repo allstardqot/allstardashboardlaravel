@@ -8,9 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
+              <a class="remove_common_cookie nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
               </li>
             <li class="nav-item">
@@ -18,6 +19,15 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+=======
+                <a class="remove_common_cookie nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
+              </li>
+            <li class="nav-item">
+              <a class="remove_common_cookie nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}">Create Team</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="remove_common_cookie  nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+>>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
                 My Team
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
@@ -27,7 +37,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link droplink {{ (request()->is('my-pool')) || (request()->is('create-pool'))  ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="remove_common_cookie nav-link droplink {{ (request()->is('my-pool')) || (request()->is('create-pool'))  ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pool
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
@@ -37,7 +47,11 @@
               </ul>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
               <a class="nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
+=======
+              <a class="remove_common_cookie nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
+>>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
             </li>
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('latest-news')) ? 'active' : '' }}" href="{{ url('/latest-news') }}">News</a>
@@ -57,7 +71,10 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                   <li>
-                    <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
+                      <a class="dropdown-item" id="logout_click" href="{{ url('/logout') }}">Log out</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>

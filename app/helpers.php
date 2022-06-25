@@ -2,11 +2,15 @@
 
 use App\Models\Position;
 use App\Models\Week;
+<<<<<<< HEAD
 use App\Models\Setting;
+=======
+>>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
 use Illuminate\Support\Carbon;
 
 const FIXTURE_STATUS = ['NS', 'LIVE', 'HT', 'FT', 'ET' ,'PEN_LIVE' ,'AET' ,'BREAK' ,'FT_PEN' ,'CANCL' ,'POSTP' ,'INT' ,'ABAN' ,'SUSP' ,'TBA' ,'AWARDED' ,'DELAYED' ,'WO' ,'AU' ,'Deleted'];
 
+<<<<<<< HEAD
 function setting(){
     $setting = Setting::first();
     // prr($setting);
@@ -24,6 +28,8 @@ function setting(){
 
 
 // setting();
+=======
+>>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
 
 function prr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;

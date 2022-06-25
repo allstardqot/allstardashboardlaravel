@@ -42,8 +42,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
-        
         $user_id      = Auth::user()->id;
         $newsdata     = News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $searchData   = $request->searchData;
