@@ -41,10 +41,7 @@ use Illuminate\Support\Facades\Route;
 //     echo "fineee";die;
 // });
 //
-<<<<<<< HEAD
 setting();
-=======
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/teamdata',[DemoController::class,'teamData']);

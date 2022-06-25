@@ -20,17 +20,10 @@ function set_cookie(name, value) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
 $(document).ready(function () {
     $("#closeclaendar").click(function () {
         $(".hasDatepicker").toggleClass("active");
     });
-<<<<<<< HEAD
-=======
     $("#logout_click").click(function(){
         delete_cookie('playerIdArray');
     });
@@ -41,7 +34,6 @@ $(document).ready(function () {
         delete_cookie('editId');
         delete_cookie('substitude');
     });
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
 });
 
 $('#poolpassword').hide();

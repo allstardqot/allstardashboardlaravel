@@ -11,15 +11,6 @@
               <a class="remove_common_cookie nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}" >Create Team</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-=======
                 <a class="remove_common_cookie nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
               </li>
             <li class="nav-item">
@@ -27,7 +18,6 @@
             </li>
             <li class="nav-item dropdown">
               <a class="remove_common_cookie  nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
                 My Team
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
@@ -47,11 +37,7 @@
               </ul>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
-              <a class="nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
-=======
               <a class="remove_common_cookie nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
             </li>
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('latest-news')) ? 'active' : '' }}" href="{{ url('/latest-news') }}">News</a>
