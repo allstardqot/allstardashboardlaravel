@@ -8,13 +8,8 @@
       <div class="col-lg-6 text-white agjustHome">
         <div class="col-12 container col-lg-9">
           <div class="sdndj67">
-<<<<<<< HEAD
             <h3 style="font-size: 3em">Fantasy Football As It Should Be</h3>
             <h1 style="font-size: 5em"><b>Join for the Hat-Tricks - Stay for the Mates</b></h1>
-=======
-            <h3 style="font-size: 2em">Fantasy Football As It Should Be</h3>
-            <h1 style="font-size: 3em"><b>Join for the Hat-Tricks - Stay for the Mates</b></h1>
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
           </div>
           <p class="pregraph">
             At Fantasy Allstars, football and community go hand in hand. You challenge the next Guardiolas and future Klopps today but join them to watch El Clásico tomorrow. Winning means little to our crypto fantasy community if we can’t share the joy.

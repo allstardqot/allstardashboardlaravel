@@ -6,7 +6,7 @@
             <li class="active">Step - 2</li>
             <li class="active">Step - 3</li>
         </ul>
-        <h4 class="text-white text-center sdjskldj">Enter Team Name</h4>
+        <h4 class="text-white text-center sdjskldj">Enter Your Team's Name</h4>
         <div class="team-name-field">
             <input class="team-name-input" type="text" value="{{$user_team_name}}" id="team_name_enter" name="team name" placeholder="Enter team name" />
         </div>

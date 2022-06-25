@@ -58,15 +58,8 @@ So, how do you win? In a nutshell, players with the most points at the end of th
       <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3 card-main">
         <div class="pickcartd-main">
         <div class="picking-card">
-<<<<<<< HEAD
           <h4>Select Seven Players</h4>
-=======
-<<<<<<< HEAD
-          <h4>Select Seven Players</h4>
-=======
-          <h4>Select Players from Gameweek</h4>
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
->>>>>>> 120b8dee3362d27b7224ea652293ef3fef2367f2
+
         </div>
 </div>
 
@@ -74,15 +67,9 @@ So, how do you win? In a nutshell, players with the most points at the end of th
       <div class="col-lg-4 col-sm-6 px-1 col-12 mt-3 p-3 card-main">
         <div class="pickcartd-main">
         <div class="picking-card">
-<<<<<<< HEAD
+
           <h4>Pick a Starting Five and a Captain</h4>
-=======
-<<<<<<< HEAD
-          <h4>Pick a Starting Five and a Captain</h4>
-=======
-          <h4>Shortlist 15-players squad</h4>
->>>>>>> fc110dc4a4203bf6552d0e81c577d78c8ed4d31e
->>>>>>> 120b8dee3362d27b7224ea652293ef3fef2367f2
+
         </div>
 </div>
 
@@ -91,7 +78,6 @@ So, how do you win? In a nutshell, players with the most points at the end of th
         <div class="pickcartd-main">
         <div class="picking-card">
           <h4>Name Your Team and Start Playing</h4>
-          <h4>Create 11 Players Team</h4>
         </div>
 </div>
 

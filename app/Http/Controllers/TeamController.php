@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
+use Illuminate\Support\Facades\DB;
 use App\Models\UserTeam;
 use Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -140,7 +141,7 @@ class TeamController extends Controller
                     $user_selected_player = json_decode($userTeam['players'], true);
                 }
                 $playerQuery = Player::query();
-                $playerData = $playerQuery->select(['players.*'])->with('Team', 'Position')->get();
+                $playerData = $playerQuery->select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->with('Team', 'Position')->get();
                 foreach ($playerData as $playerValue) {
                     if ($playerValue['position_id'] == 1) {
                         $goalkeeperData[] = $playerValue;
@@ -177,7 +178,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $goalkeeperData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'defender') {
@@ -189,7 +190,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $defenderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'midfielder') {
@@ -201,7 +202,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $midfielderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type = 'forward') {
@@ -213,7 +214,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $forwardData = $playerQuery->with('Team', 'Position')->get();
                     }
@@ -281,7 +282,7 @@ class TeamController extends Controller
                     $user_selected_player = json_decode($userTeam['players'], true);
                 }
                 $playerQuery = Player::query();
-                $playerData = $playerQuery->select(['players.*'])->with('Team', 'Position')->get();
+                $playerData = $playerQuery->select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->with('Team', 'Position')->get();
                 foreach ($playerData as $playerValue) {
                     if ($playerValue['position_id'] == 1) {
                         $goalkeeperData[] = $playerValue;
@@ -318,7 +319,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $goalkeeperData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'defender') {
@@ -330,7 +331,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $defenderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type == 'midfielder') {
@@ -342,7 +343,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $midfielderData = $playerQuery->with('Team', 'Position')->get();
                     } elseif ($type = 'forward') {
@@ -354,7 +355,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.sell_price','<',$cost_range);
                         }
                         if (!empty($point)) {
-                            $playerQuery->orderBy('total_point', $point);
+                            $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $forwardData = $playerQuery->with('Team', 'Position')->get();
                     }

@@ -6,9 +6,9 @@
   <div class="sdjsdkn">
     <h4><b class="skdjskd">My Team Current Week</b></h4>
     <p class="skdjskdm">These are the players you had faith in and picked for this Gameweek. They are currently fighting tooth and nail for each clean sheet, goal, and assist so they can bring you glory.
-      Active Gameweek Teams
+      
       </p>
-    <h4 class="mt-3 text-white ">Teams Under War</h4>
+    <h4 class="mt-3 text-white ">Active Gameweek Teams</h4>
   </div>
 
 
@@ -50,7 +50,7 @@
           {{-- <a href="#" class="hjuy87">Go to manage Squad</a> --}}
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
-            <h4 class="ihnik8978">Fantasy Point {{ $total_fpoints  }}</h4>
+            <h4 class="ihnik8978">Fantasy Points {{ $total_fpoints  }}</h4>
 
           {{-- </a> --}}
 

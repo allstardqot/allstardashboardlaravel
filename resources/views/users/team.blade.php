@@ -6,9 +6,9 @@
   <div class="sdjsdkn">
     <h4><b class="skdjskd">My Team Next Week</b></h4>
     <p class="skdjskdm">These are the star players you picked for the next Gameweek. You can make changes to your squad and edit your teams before the Gameweek selection deadline.
-      Will Be in Action Soon
+      
       </p>
-    <h4 class="mt-3 text-white "> (previously Teams Under War)</h4>
+    <h4 class="mt-3 text-white "> Will Be in Action Soon</h4>
   </div>
 
 
@@ -51,10 +51,10 @@
           @endforeach
 
 
-          <a href="javascript:void(0)" onclick="editManageSquad({{$data['id']}})" id="go_to_manage_squad" class="hjuy87">Go to manage Squad</a>
+          <a href="javascript:void(0)" onclick="editManageSquad({{$data['id']}})" id="go_to_manage_squad" class="hjuy87">Go to Manage Squad</a>
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
-            <h4 class="ihnik8978">Fantasy Point {{ $total_fpoints  }}</h4>
+            <h4 class="ihnik8978">Fantasy Points {{ $total_fpoints  }}</h4>
 
           {{-- </a> --}}
 

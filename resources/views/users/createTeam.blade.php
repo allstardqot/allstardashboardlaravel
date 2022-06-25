@@ -412,7 +412,7 @@
                
 
                 sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
+                if( parseInt(spendCoin) < parseInt(sell_price)){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -504,7 +504,7 @@
 
                 sellprice = $(this).closest("tr").find(".defender_sell_price").html();
 
-                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
+                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -590,7 +590,7 @@
                 $(this).removeAttr("disabled");
 
                 sellprice = $(this).closest("tr").find(".midfielder_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
+                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -672,7 +672,7 @@
                 $(this).removeAttr("disabled");
 
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
-                if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sell_price))){
+                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sell_price))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -894,7 +894,7 @@
                 $(".midfielder_staricon" + select).show();
                 select += 1;
             });
-            // if(spendCoin == '0M' || parseInt(spendCoin) >= parseInt(sell_price)){
+            // if( parseInt(spendCoin) >= parseInt(sell_price)){
                 // $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr(
                 //         "disabled"
                 //     );
@@ -954,7 +954,7 @@
                 select += 1;
             });
 
-            if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
+            if( parseInt(spendCoin) < parseInt(sell_price)){
                 $("input.forwardcheck").attr("disabled", true);
                 $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
                 $.notify("Your Points are not sufficent!.", "info");
@@ -1169,7 +1169,7 @@
                         if (selectId.length >= 5 && $.inArray("Goalkeeper", categorie) == -1) {
                             $.notify("Please choose a goalkeeper.", "info");
                         } else if (selectId.length >= 5 && categorie.length < 4) {
-                            $.notify("Please chose a player to remaning category.", "info");
+                            $.notify("Please choose at least one player from each position.", "info");
                         } else if (selectId.length == 5) {
                             console.log("fineeee");
                         }

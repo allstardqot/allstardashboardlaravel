@@ -22,8 +22,8 @@
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Current Week Team</a></li>
-                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week Team</a></li>
+                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Active AllStars Teams</a></li>
+                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Gameweek Teams</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -62,9 +62,7 @@
                   <li>
                     <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
-                  </li>
+               
                 </ul>
               </li>
             </ul>

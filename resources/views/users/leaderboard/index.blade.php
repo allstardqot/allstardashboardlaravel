@@ -162,7 +162,7 @@
                                     <button class="nav-link active" id="manger-home-tab" data-bs-toggle="pill"
                                         data-bs-target="#manger-home" type="button" role="tab" aria-controls="manger-home"
                                         aria-selected="true">
-                                        Manager's
+                                        Managers
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">

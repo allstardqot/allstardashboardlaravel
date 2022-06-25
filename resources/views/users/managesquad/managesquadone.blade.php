@@ -1,6 +1,6 @@
 <div class="managing">
     <div class="container-fluid">
-        <h3 class="text-white mt-5 text-center">Managing Squad<?php //pr($midfielderData);
+        <h3 class="text-white mt-5 text-center">Manage Squad<?php //pr($midfielderData);
 ?></h3>
         <ul class="progressbar text-white jsdhsjdh">
             <li class="active">Step - 1</li>
@@ -8,7 +8,7 @@
             <li>Step - 3</li>
         </ul>
         <h4 class="text-white text-center sdjskldj">
-            From your 7-player squad, select 11 players by the Gameweek deadline to form your team.
+            Pick five players from your seven-player squad to from your team. Do this before the Gameweek deadline.
         </h4>
 
         <div class="m-bg text-white sdjkdxjnh">
