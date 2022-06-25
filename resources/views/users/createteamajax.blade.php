@@ -17,7 +17,7 @@ if (!empty($_COOKIE['playerIdArray'])){
         <div class="row">
           <div class="col-sm-5 sxdhd789">
             <div class="nhj89hn9">
-              <p class="h7h8j7">Pick 1 goalkeeper</p>
+              <p class="h7h8j7">Pick one goalkeeper. Choose a quality shot-stopper that will keep your net intact game after game.</p>
               <h1 class="dhcbn87">Goalkeeper</h1>
             </div>
           </div>
@@ -117,7 +117,7 @@ if (!empty($_COOKIE['playerIdArray'])){
           <div class="col-sm-4 mt-3">
             <div class="range-slider">
 
-                <p class="range-slider__subtitle">Cost Bar</p>
+                <p class="range-slider__subtitle">Price Range</p>
                 <div class="value-data"><p class="o-value">$0</p> <p class="goalkeeper_range range-slider__value">${{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p></div>
 
                 <div class="range-slider__slider">
@@ -230,8 +230,8 @@ if (!empty($_COOKIE['playerIdArray'])){
         <div class="row">
           <div class="col-sm-5 sxdhd789">
             <div class="nhj89hn9">
-              <p class="h7h8j7">Pick 2 Defender</p>
-              <h1 class="dhcbn87">Defender</h1>
+              <p class="h7h8j7">Pick two defenders. Choose two impervious defenders that are as impenetrable as the Chinese Wall.</p>
+              <h1 class="dhcbn87">Defenders </h1>
             </div>
           </div>
           <div class="col-sm-7 d-none d-md-block sd8j97j">
@@ -448,8 +448,8 @@ if (!empty($_COOKIE['playerIdArray'])){
           <div class="row">
             <div class="col-sm-5 sxdhd789">
               <div class="nhj89hn9">
-                <p class="h7h8j7">Pick 2 midfielder</p>
-                <h1 class="dhcbn87">Midfielder</h1>
+                <p class="h7h8j7">Pick two midfielders. Choose two midfield dynamos that will take each game by the scruff of the neck.</p>
+                <h1 class="dhcbn87">Midfielders</h1>
               </div>
             </div>
             <div class="col-sm-7 d-none d-md-block sd8j97j">
@@ -666,8 +666,8 @@ if (!empty($_COOKIE['playerIdArray'])){
           <div class="row">
             <div class="col-sm-5 sxdhd789">
               <div class="nhj89hn9">
-                <p class="h7h8j7">Pick 2 forward</p>
-                <h1 class="dhcbn87">Forward</h1>
+                <p class="h7h8j7">Pick two forwards. Select two strikers that will demolish any bus the opposition parks.</p>
+                <h1 class="dhcbn87">Forwards</h1>
               </div>
             </div>
             <div class="col-sm-7 d-none d-md-block sd8j97j">

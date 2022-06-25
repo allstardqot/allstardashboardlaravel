@@ -20,11 +20,19 @@ function set_cookie(name, value) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
-
-
 $(document).ready(function () {
     $("#closeclaendar").click(function () {
         $(".hasDatepicker").toggleClass("active");
+    });
+    $("#logout_click").click(function(){
+        delete_cookie('playerIdArray');
+    });
+    $(".remove_common_cookie").click(function(){
+        delete_cookie('playerIdArray');
+        delete_cookie('selected_player');
+        delete_cookie('step');
+        delete_cookie('editId');
+        delete_cookie('substitude');
     });
 });
 

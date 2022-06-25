@@ -4,14 +4,14 @@ body {
 .sdchsdsdh .table td {
   position: relative;
 }
-.check_span{
+.check_span {
   position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: transparent;
-    z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 2;
 }
 .editprofileText {
   font-size: 40px;
@@ -606,7 +606,7 @@ strong {
   padding-bottom: 0px !important;
 }
 .h7h8j7 {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: lighter;
 }
 .sdjhdksmn {
@@ -3146,7 +3146,6 @@ main {
   margin-left: 1em;
 }
 
-
 .hideMe {
   -moz-animation: cssAnimation 0s ease-in 5s forwards;
   /* Firefox */
@@ -3160,20 +3159,18 @@ main {
 }
 @keyframes cssAnimation {
   to {
-      width:0;
-      height:0;
-      overflow:hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
   }
 }
 @-webkit-keyframes cssAnimation {
   to {
-      width:0;
-      height:0;
-      visibility:hidden;
+    width: 0;
+    height: 0;
+    visibility: hidden;
   }
 }
-
-
 
 /*Responsive*/
 

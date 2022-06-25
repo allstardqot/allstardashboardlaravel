@@ -243,7 +243,7 @@
         </div>
         <div class="container jsdbdhsol" id="create_team_main">
             <div class="asdjd76">
-                <header>Select Team Player</header>
+                <header>Pick Your Players </header>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="progress-bar sdjhsdhdhjk">
@@ -317,34 +317,45 @@
         midfieldercheckbox();
         forwardcheckbox();
 
-        function playerTeamCheck() {
+        function playerTeamCheck(teamname=null) {
             var teamArray = [];
-            var status =true;
+            var status ='true';
+
             $(".form-check-input:checkbox[type=checkbox]:checked").each(function(e) {
                 var teamname = $(this).closest("tr").find("strong").html();
                 if (teamArray[teamname] === undefined) {
                     teamArray[teamname] = 1
-                    status =false;
-
+                    status = 'true';
                 } else {
                     teamArray[teamname] = parseInt(teamArray[teamname]) + 1
+                    status ='true';
                 }
-                // alert(teamArray[teamname]);
+                //console.log("fineeeeeeeeeeeeeeeeee");
+                console.log(teamArray);
                 if (teamArray[teamname] >= 2) {
-                    $.notify("You can only select 2 maximum players from one team.", "info");
-                    status =false;
-                    $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
-                    $(this).closest('tr').css('backgroundColor', '');
+                    // $.notify("You can only select 2 maximum players from one team.", "info");
+                    status ='false';
+                    //$(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
+                    //$(this).closest('tr').css('backgroundColor', '');
                     //$("#NextBtn").attr("class","firstNext next adisable");
                 } else {
                     //$("#NextBtn").attr("class","firstNext next");
+                     status ='true';
+
                 }
             });
-            // alert(status);
-
-                selectCount();
-
+            if(teamname){
+                status='true';
+                if (teamArray[teamname] >= 2) {
+                    
+                    status='false';
+                }
+            }
+            return status;
+            //selectCount();
         }
+
+
 
 
 
@@ -365,8 +376,11 @@
 
         $("body").on("click", ".goalkeeper_td", function() {
             var sell_price = "";
-            var status ="";
+            var teamname = $(this).closest("tr").find("strong").html();
+            var status = playerTeamCheck(teamname);
+            var coin_add = '';
             var spendCoin = $('#coin').html();
+            playerTeamCheck();
 
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
@@ -380,8 +394,8 @@
                     $("#goalkeeper_img").attr("src", image);
                     $("#goalkeeper_name").html(full_name);
                     $("#goalkeepersell_price").html(sell_price);
-                    status = "plus";
-                    coins(sell_price,status);
+                    coin_add = "plus";
+                    coins(sell_price,coin_add);
                     // alert(sell_price);
                 });
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked", false);
@@ -395,10 +409,14 @@
                 var full_name = "";
                 var spendCoin = $('#coin').html();
                 $(this).removeAttr("disabled");
+               
 
                 sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
                 if(spendCoin == '0M' || parseInt(spendCoin) < parseInt(sell_price)){
                     $.notify("Your Points are not sufficent!.", "info");
+                }else if(status == 'false'){
+                    $.notify("You can only select 2 maximum players from one team.", "info");
+
                 }else{
                     $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                         select += 1;
@@ -411,7 +429,7 @@
                         $(".goalkeeper_staricon").show();
 
                     }
-                    playerTeamCheck();
+                    
                     newselect = 0;
                     $(".goalkeepercheck:checkbox[type=checkbox]:checked").each(function() {
                         newselect += 1;
@@ -450,8 +468,11 @@
         $("body").on("click", ".defender_td", function() {
 
             var sell_price = "";
-            var status ="";
-
+            var teamname = $(this).closest("tr").find("strong").html();
+            var status = playerTeamCheck(teamname);
+            var coin_add = '';
+            // alert(playerTeamCheck())
+            
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
@@ -463,8 +484,8 @@
             var hiddenSellprice = $(this).closest("tr").find("#hiddenSellprice").val();
             var defender_name1 = $('#defender_name1').html();
             var defender_name0 = $('#defender_name0').html();
-                status = "plus";
-                coins(hiddenSellprice,status);
+                coin_add = "plus";
+                coins(hiddenSellprice,coin_add);
                 if( $.trim(defender_name0) == nameHidden){
                     $(".defender_staricon0").hide();
                 }
@@ -479,17 +500,15 @@
                 var full_name = "";
                 var spendCoin = $('#coin').html();
                 var sellprice ='';
-
-                playerTeamCheck();
-
-
-
                 $(this).removeAttr("disabled");
 
                 sellprice = $(this).closest("tr").find(".defender_sell_price").html();
 
                 if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
+                }else if(status == 'false'){
+                    $.notify("You can only select 2 maximum players from one team.", "info");
+
                 }else{
                     $(".defendercheck:checkbox[type=checkbox]:checked").each(function() {
                     select += 1;
@@ -510,6 +529,7 @@
                     if (newselect >= 2) {
                         $("input.defendercheck").prop("disabled", true);
                     }
+
 
                     // alert();
                     var n = 0;
@@ -538,7 +558,9 @@
         });
 
         $("body").on("click", ".midfielder_td", function() {
-            var status ="";
+            var teamname = $(this).closest("tr").find("strong").html();
+            var status = playerTeamCheck(teamname);
+            var coin_add = '';
             var nameHidden = $(this).closest("tr").find("input[type='hidden']").val();
             var hiddenSellprice = $(this).closest("tr").find("#midSellprice").val();
             if (
@@ -548,8 +570,8 @@
                 $("input.defendercheck").removeAttr("disabled");
                 var midfielder_name1 = $('#midfielder_name1').html();
                 var midfielder_name0 = $('#midfielder_name0').html();
-                status = "plus";
-                coins(hiddenSellprice,status);
+                coin_add = "plus";
+                coins(hiddenSellprice,coin_add);
 
                 if( $.trim(midfielder_name0) == nameHidden){
                     $(".midfielder_staricon0").hide();
@@ -570,6 +592,9 @@
                 sellprice = $(this).closest("tr").find(".midfielder_sell_price").html();
                 if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
+                }else if(status == 'false'){
+                    $.notify("You can only select 2 maximum players from one team.", "info");
+
                 }else{
                     $(".midfieldercheck:checkbox[type=checkbox]:checked").each(function() {
                         select += 1;
@@ -617,6 +642,9 @@
         });
 
         $("body").on("click", ".forward_td", function() {
+            var teamname = $(this).closest("tr").find("strong").html();
+            var status = playerTeamCheck(teamname);
+            var coin_add = '';
             if (
                 $(this).closest("tr").find("input[type=checkbox]").prop("checked") == true
             ) {
@@ -626,8 +654,8 @@
                 $("input.forwardcheck").removeAttr("disabled");
                 var forward_name1 = $('#forward_name1').html();
                 var forward_name0 = $('#forward_name0').html();
-                status = "plus";
-                coins(hiddenSellprice,status);
+                coin_add = "plus";
+                coins(hiddenSellprice,coin_add);
                 if( $.trim(forward_name0) == nameHidden){
                     // alert(forward_name1);
                     $(".forward_staricon0").hide();
@@ -640,13 +668,15 @@
                 var image = "";
                 var full_name = "";
                 var sell_price = "";
-                var sellprice  ='';
                 var spendCoin = $('#coin').html();
                 $(this).removeAttr("disabled");
 
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
                 if(spendCoin == '0M' || parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sell_price))){
                     $.notify("Your Points are not sufficent!.", "info");
+                }else if(status == 'false'){
+                    $.notify("You can only select 2 maximum players from one team.", "info");
+
                 }else{
                     $(".forwardcheck:checkbox[type=checkbox]:checked").each(function() {
                         select += 1;
@@ -755,11 +785,6 @@
                 $(".goalkeepercheck:checkbox[type=checkbox]:checked").closest('tr').css('backgroundColor', '#0ea5e0');
                 $(".goalkeepercheck:checkbox[type=checkbox]:not(:checked)").closest('tr').css('backgroundColor', '');
             playerTeamCheck();
-        }
-
-        function staticCoins(price,status,totalPoint){
-            var res = status == "plus" ? parseInt(totalPoint.replace('M', '')) + parseInt($.trim(price.replace('M', ''))) :totalPoint.replace('M', '') - $.trim(price.replace('M', ''));
-            $('#coin').html(res+'M');
         }
 
         function defendercheckbox() {
@@ -958,6 +983,7 @@
             fetchData("Search");
 
             function fetchData(data, type = null, status = null, team = null, cost_range = null) {
+                $('#coin').html('50M');
                 var point = ''
                 var editId = $("#edit_id").val();
                 if (status == 'filter') {
