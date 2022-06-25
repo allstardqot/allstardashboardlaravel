@@ -5,8 +5,9 @@
 <main>
   <div class="sdjsdkn">
     <h4><b class="skdjskd">My Team Current Week</b></h4>
-    <p class="skdjskdm">Nullam lectus magna, dignissim tempus est in, volutpat scelerisque tortor. Curabitur nec ex
-      risus.</p>
+    <p class="skdjskdm">These are the players you had faith in and picked for this Gameweek. They are currently fighting tooth and nail for each clean sheet, goal, and assist so they can bring you glory.
+      Active Gameweek Teams
+      </p>
     <h4 class="mt-3 text-white ">Teams Under War</h4>
   </div>
 
@@ -27,6 +28,9 @@
             </li>
 
           </ul>
+          @php
+          $total_fpoints=0;
+  @endphp
           @foreach($data as $key => $value)
           @if(empty($value['name']))
               @continue;
@@ -37,13 +41,16 @@
           <h6 class="mt-3 ml-4 jhjkhkl77"><b>{{ $value['name'] }}</b></h6>
           <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}</a>
           <hr class="htguy78">
+          @php
+          $total_fpoints += $value['total_point'];
+        @endphp
           @endforeach
 
 
           {{-- <a href="#" class="hjuy87">Go to manage Squad</a> --}}
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
-            <h4 class="ihnik8978">Fantasy Point 900</h4>
+            <h4 class="ihnik8978">Fantasy Point {{ $total_fpoints  }}</h4>
 
           {{-- </a> --}}
 

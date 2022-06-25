@@ -48,10 +48,10 @@
         </div>
         <div  class="col-lg-3 mt-3 col-12 text-center">
           <ul class="d-flex list-unstyled marginl">
-            <li class="px-2"><a href="https://telegram.me/" ><img src="{{asset('public/img/teligram.png')}}"></a></li>
-                <li class="px-3"><a href="https://www.instagram.com/"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
-                <li class="px-3"><a href="https://twitter.com/"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
-                <li class="px-3"><a href="https://discord.gg/"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
+            <li class="px-2"><a href="{{ TELEGRAM }}" ><img src="{{asset('public/img/teligram.png')}}"></a></li>
+            <li class="px-3"><a href="{{ INSTAGRAM }}"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
+            <li class="px-3"><a href="{{ TWITTER }}"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
+            <li class="px-3"><a href="{{ DISCORD }}"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
           </ul>
         </div>
       </div>

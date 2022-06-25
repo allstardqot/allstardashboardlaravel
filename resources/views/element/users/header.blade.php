@@ -62,6 +62,9 @@
                   <li>
                     <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
+                  </li>
                 </ul>
               </li>
             </ul>

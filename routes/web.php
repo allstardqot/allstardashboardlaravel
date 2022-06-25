@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
 //     echo "fineee";die;
 // });
 //
+setting();
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/teamdata',[DemoController::class,'teamData']);

@@ -2,10 +2,28 @@
 
 use App\Models\Position;
 use App\Models\Week;
+use App\Models\Setting;
 use Illuminate\Support\Carbon;
 
 const FIXTURE_STATUS = ['NS', 'LIVE', 'HT', 'FT', 'ET' ,'PEN_LIVE' ,'AET' ,'BREAK' ,'FT_PEN' ,'CANCL' ,'POSTP' ,'INT' ,'ABAN' ,'SUSP' ,'TBA' ,'AWARDED' ,'DELAYED' ,'WO' ,'AU' ,'Deleted'];
 
+function setting(){
+    $setting = Setting::first();
+    // prr($setting);
+    define('PHONE',$setting->phone);
+    define('EMAIL',$setting->admin_email);
+    define('ADDRESS',$setting->admin_address);
+    define('INSTAGRAM',$setting->instagram_url);
+    define('TWITTER',$setting->twitter_url);
+    define('TELEGRAM',$setting->telegram_link);
+    define('DISCORD',$setting->discord_url);
+    
+
+}
+
+
+
+// setting();
 
 function prr($data){
  echo "<pre>";print_r($data);echo "</pre>";die;
