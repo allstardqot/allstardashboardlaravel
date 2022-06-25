@@ -12,6 +12,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Team;
+use Illuminate\Support\Facades\Log;
+
 
 class GetSquad implements ShouldQueue
 {
@@ -43,10 +45,13 @@ class GetSquad implements ShouldQueue
      */
     public function handle()
     {
+        Log::info("squad running".$this->fixtureId);
+
         $api = new EntitySport();
         $fixtureData=Fixture::find($this->fixtureId);
         $teamArray = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
         $season_id=$fixtureData['season_id'];
+        $weekId=weekIdDate($fixtureData['starting_at']);
         foreach ($teamArray as $teamValue) {
             if (!empty($teamValue)) {
                 $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player');
@@ -60,8 +65,9 @@ class GetSquad implements ShouldQueue
                         }
                         $playerQuery = Player::query()->updateOrCreate([
                             'id' => $playerDetail['player_id'],
+                            'team_id' => $teamValue,
                         ], [
-                            'team_id' => $playerDetail['team_id'],
+                            //'team_id' => $playerDetail['team_id'],
                             'country_id' => $playerDetail['country_id'],
                             'position_id' => $playerDetail['position_id'],
                             'common_name' => $playerDetail['common_name'],
@@ -82,7 +88,11 @@ class GetSquad implements ShouldQueue
                             'fixture_id' => $this->fixtureId,
                             'team_id' => $teamValue,
                         ], [
+                            'fixture_starting_at' =>$fixtureData['starting_at'],
+                            'week_id' =>$weekId,
                             'team_id' => $teamValue,
+                            'rating' => $playerData['rating'],
+                            'card' => json_encode(['yellowcards' => $playerData['yellowcards'], 'redcards' => $playerData['redcards'], 'yellowredcards' => $playerData['yellowred']])
                         ]);
                     }
                 }

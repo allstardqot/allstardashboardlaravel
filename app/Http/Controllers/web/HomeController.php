@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
+        // echo PHONE;die;
         return view("web.home");
     }
+
+   
 }

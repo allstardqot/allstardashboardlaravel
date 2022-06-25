@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -48,13 +49,13 @@ class RegisterController extends Controller
     }
 
     
-    public function showRegistrationForm(){
-        // echo 'dflkhsadokf';die;
+    public function showRegistrationForm($referal=null){
+        // echo $referal;die;
         $nationlity = Nationalities::select('country')->get();
         $team = Team::select('name')->get();
         $player = Player::select('display_name')->get();
         // print_r($player);die;
-        return view("auth.register", compact("nationlity",'team','player'));
+        return view('auth.register', ["nationlity"=>$nationlity,'team'=>$team,'player'=>$player,'referal'=>$referal]);
     }
 
     /**
@@ -70,9 +71,7 @@ class RegisterController extends Controller
             'user_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'team_id' => ['required', ],
-            'player_id' => ['required', ],
-            'country_code' => ['required', ],
+            'country' => ['required', ],
         ]);
     }
 
@@ -85,13 +84,38 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // print_r($data['country_code']);die;
+        $user_data =  User::query()->orderByDesc('id')->limit(1)->first();
+        // prr();referal_id
+        $user_id = '';
+        if(!empty($data['referal_code'])){
+            $user = User::where(['referral_code'=>$data['referal_code']])->first();
+            // prr($user);
+            if(empty($user)){
+                session()->flash('error', 'Plz Enter Valid Referal Code!');
+                // return redirect('register')->with('info','Plz Enter Valid Referal Code!');
+                // return redirect()->route('register');
+            }else{
+
+                $user->wallet = $user->wallet + 100;
+                $user->save();
+                $user_id = $user->id;
+            }
+
+            
+
+        }
+        
+        // echo 'ASU000'.($user_data->id+1);die;
+        // prr($user->id);
+        $refer_code = 'ASU000'.($user_data->id+1);
+       
         return User::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'role_id'=> 3 ,
-            'country_code'=> $data['country_code'] ,
-            'team_id'=> $data['team_id'] ,
-            'player_id'=> $data['player_id'] ,
+            'country'=> $data['country'] ,
+           'referral_code'=>$refer_code,
+           'referal_id'=>$user_id,
             'password' => Hash::make($data['password']),
         ]);
 

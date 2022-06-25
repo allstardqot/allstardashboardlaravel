@@ -11,13 +11,20 @@
               <a class="nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}">Create Team</a>
+                <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}" >Create Team</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link {{ (request()->is('team')) ? 'active' : '' }}" href="{{ url('/team') }}" >
+              <a class="nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 My Team
-                {{-- <i class="fa fa-chevron-down" aria-hidden="true"></i> --}}
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Current Week Team</a></li>
+                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week Team</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link droplink {{ (request()->is('my-pool')) || (request()->is('create-pool'))  ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,7 +37,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
+              <a class="nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('latest-news')) ? 'active' : '' }}" href="{{ url('/latest-news') }}">News</a>
@@ -39,7 +46,7 @@
           <div class="d-flex">
             <ul class="navbar-nav head-drop">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url('/wallet') }}">
                   <img class="reat1" src="{{asset('public/assets/image/Rectangle 317.png')}}" width="65px"></a>
               </li>
               <li class="nav-item dropdown">
@@ -51,6 +58,9 @@
                   <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                   <li>
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
                 </ul>
               </li>

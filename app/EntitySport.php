@@ -12,14 +12,14 @@ class EntitySport
 {
     public function http($url, $params = []): Response
     {
-        $token = 'd4yUkubCa17GvW17MXtNjAhYokiXlNQeRnYhLscpMa1zfH8JkS2b42plhu6X';
-        //pr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
+        $token = 'ibXid00Vo8GJc3BqCW7laSehfNkNUWBaCB4ZhxcYzCvA0z92LgKshco4Zao0';
+        //prr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
         return Http::get('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
     }
 
     public function httpParameter($url, $params = []): Response
     {
-        $token = 'd4yUkubCa17GvW17MXtNjAhYokiXlNQeRnYhLscpMa1zfH8JkS2b42plhu6X';
+        $token = 'ibXid00Vo8GJc3BqCW7laSehfNkNUWBaCB4ZhxcYzCvA0z92LgKshco4Zao0';
         //pr('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'?api_token='.$token);
         return Http::get('https://soccer.sportmonks.com/api/v2.0/' . $url.'/'.$params.'&api_token='.$token);
     }
@@ -50,7 +50,7 @@ class EntitySport
     public function getFixture($params = []): array
     {
         // https://doc.entitysport.com/#matches-list-api
-        $response = $this->http('fixtures/between', $params);
+        $response = $this->httpParameter('fixtures/between', $params);
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
@@ -85,6 +85,26 @@ class EntitySport
         return [];
     }
 
+    public function getLeagueSeason($params = []): array
+    {
+        $response = $this->http('leagues/search', $params);
+
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+
+        return [];
+    }
+
+    public function team($params = []): array
+    {
+        $response = $this->http('teams', $params); 
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            return $arraData['data'];
+        }
+    }
 
     public function getSquad($params = []): array
     {
@@ -130,7 +150,9 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -140,7 +162,21 @@ class EntitySport
         $response = $this->httpParameter('squad/season', $params);
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
+        }
+        return [];
+    }
+
+    public function getLineup($params = []): array
+    {
+        $response = $this->httpParameter('fixtures', $params);
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
@@ -152,29 +188,36 @@ class EntitySport
 
         if ($response->successful()) {
             $arraData= json_decode($response,true);
-            return $arraData['data'];
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
         }
         return [];
     }
 
-    public function getLineup(Fixture $fixture)
+    public function getMacthScore($params = []): array
     {
-        // https://doc.entitysport.com/#match-squads-api
-        $response = $this->http('matches/' . $fixture->id . '/squads');
+        $response = $this->httpParameter('fixtures', $params);
 
         if ($response->successful()) {
-            $status = $response->json('status');
-            if ($status == 'ok') {
-                $data = $response->json('response');
-                if (!is_null($data)) {
-                    return $data;
-                }
-            } elseif ($status == 'unauthorized') {
-                $this->login();
+            $arraData= json_decode($response,true);
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
             }
         }
+        return [];
+    }
+    public function getAllNews()
+    {
+        $response = $this->http('news','fixtures');
 
-        return null;
+        if ($response->successful()) {
+            $arraData= json_decode($response,true);
+            if(!empty($arraData['data'])){
+                return $arraData['data'];
+            }
+        }
+        return [];
     }
 
     public function getFantasyPoints($fixtureId)

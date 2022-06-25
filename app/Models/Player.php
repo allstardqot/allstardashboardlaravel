@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Team;
+use App\Models\Position;
 
 class Player extends Model
 {
@@ -32,5 +33,10 @@ class Player extends Model
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(position::class);
     }
 }

@@ -104,7 +104,7 @@ line-height: 23px;
   left: 0px;
   bottom: -20px;
 }
-.progressbar li:last-child::after {    
+.progressbar li:last-child::after {
   left: auto;
   right: -4px;
 }

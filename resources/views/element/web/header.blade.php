@@ -5,21 +5,20 @@
           <div class="row hiokhn78">
             <div class="col-12 col-lg-4 py-1 py-lg-0">
               <div class="text-center">
-                <span><img src="{{asset('public/img/Icon feather-phone.png')}}"> <span class="spnColor">Call </span> <span class="ml-1 spnText"> : +020-000-0000</span></span>
+                <span><img src="{{asset('public/img/Icon feather-phone.png')}}"> <span class="spnColor">Call </span> <span class="ml-1 spnText"> : +{{ PHONE }}</span></span>
               </div>
             </div>
             <div class="col-12 col-lg-4 py-1 py-lg-0">
               <div class="text-center">
-                <span><i class="fa fa-envelope" aria-hidden="true"></i> <span class="spnColor">Email </span> <span class="ml-1 spnText"> : enquiry@allstars.com</span></span>
+                <span><i class="fa fa-envelope" aria-hidden="true"></i> <span class="spnColor">Email </span> <span class="ml-1 spnText"> : {{ EMAIL }}</span></span>
               </div>
             </div>
             <div class="col-12 col-lg-4 py-1 py-lg-0 hsakdjh56">
               <ul class="d-flex list-unstyled text-center sdbdjksd65">
-                <li class="px-2"><a href="https://www.facebook.com/"><img src="{{asset('public/img/Icon awesome-facebook.png')}}"></a></li>
-                <li class="px-3"><a href="https://www.instagram.com/"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
-                <li class="px-3"><a href="https://www.linkedin.com/"><img src="{{asset('public/img/Icon awesome-linkedin.png')}}"> </a></li>
-                <li class="px-3"><a href="https://twitter.com/"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
-                <li class="px-3"><a href="https://www.youtube.com/"><img src="{{asset('public/img/Icon awesome-youtube.png')}}"> </a></li>
+                <li class="px-2"><a href="{{ TELEGRAM }}" ><img src="{{asset('public/img/teligram.png')}}"></a></li>
+                <li class="px-3"><a href="{{ INSTAGRAM }}"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
+                <li class="px-3"><a href="{{ TWITTER }}"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
+                <li class="px-3"><a href="{{ DISCORD }}"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
               </ul>
             </div>
           </div>
