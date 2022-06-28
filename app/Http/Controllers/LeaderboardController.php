@@ -34,7 +34,7 @@ class LeaderboardController extends Controller
         
         $user_id=Auth::user()->id;
         $newsdata=News::query()->orderByDesc('news_created_at')->limit(5)->get();
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
+       
         $result = [];
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
         $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
@@ -55,6 +55,7 @@ class LeaderboardController extends Controller
             $result['joined']=$user_contest['joined'];
             $result['id'] = $userTeam['id'];
         }
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
         // foreach($leaderboardData as $ledValue){
         //     if($)
         // }
