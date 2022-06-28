@@ -5,7 +5,7 @@
           <div class="row hiokhn78">
             <div class="col-12 col-lg-4 py-1 py-lg-0">
               <div class="text-center">
-                <span><img src="{{asset('public/img/Icon feather-phone.png')}}"> <span class="spnColor">Call </span> <span class="ml-1 spnText"> : +{{ PHONE }}</span></span>
+                <!-- <span><img src="{{asset('public/img/Icon feather-phone.png')}}"> <span class="spnColor">Call </span> <span class="ml-1 spnText"> : +{{ PHONE }}</span></span> -->
               </div>
             </div>
             <div class="col-12 col-lg-4 py-1 py-lg-0">

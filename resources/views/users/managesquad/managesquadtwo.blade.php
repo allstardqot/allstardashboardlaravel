@@ -7,7 +7,7 @@
             <li>Step - 3</li>
         </ul>
         <h4 class="text-white text-center sdjskldj">
-            Choose one player that will be your caption.
+            Choose one player that will be your Captain.
         </h4>
 
         <div class="m-bg text-white  djkdxjnh">

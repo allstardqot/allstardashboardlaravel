@@ -33,15 +33,21 @@
     <div class="col-lg-12" >
       <div class="consectetur-head"  >
         <h3>Lifting Silverware Has Never Been This Easy</h3>
-        <p  class="mt-3" >Fantasy Allstars is a crypto fantasy sports site where everyone can win, and everyone does win. The whole Allstars community works towards making that happen, and together we help worthy champions get the prizes they deserve.</p>
-        <p>The best thing about Fantasy Allstars is that we redefine the fantasy sports concept but still keep things simple. You can look at Fantasy Allstars as a typical Carlo Ancelotti team - we play simple and yet dazzling football. Oh, we also always win - no eyebrows raised. <br>
-          Each Allstars season is divided into Gameweeks. Gameweeks are the fixtures that teams play each week. You know, the games you leave work early for. You compete in our fantasy leagues by joining weekly pools. These can be public or private. Public pools are available to all players. In private pools, you play against the mates you invite, and, depending on how well your team does, you either love or dread going to the office the next day.
-          <br>
-          And selecting a winning Fantasy Allstars team is a piece of cake. All you need to do is pick one goalkeeper, two defenders, two midfielders, and two strikers. From these seven, you select five starters and must include a goalkeeper and at least one player from each position. Basically, you can’t be Pep and pick a team consisting entirely of midfielders. You name a captain too.
-          The players you pick collect points for scoring, assisting, and keeping clean sheets, but are also penalized for picking up cards or missing penalties. You can create up to three teams for each Gameweek.
-So, how do you win? In a nutshell, players with the most points at the end of the Gameweek win the AFC amount assigned to the pool. Also, you get your fair share of achievement badges for completing specific milestones. Each of these will give you AFC coins and other prizes. So, you don’t have to wait for the season to end to get your crypto fantasy windfall. You can get it with every hat-trick or brace scored. The Fantasy Allstars community loves champions, and we feel you are one of them.
-
+        <p  class="mt-3 fs-5 " >Fantasy Allstars is a crypto fantasy sports site where everyone can win, and everyone does win. The whole Allstars community works towards making that happen, and together we help worthy champions get the prizes they deserve.</p>
+        <p class="mt-3 fs-5 ">The best thing about Fantasy Allstars is that we redefine the fantasy sports concept but still keep things simple. You can look at Fantasy Allstars as a typical Carlo Ancelotti team - we play simple and yet dazzling football. Oh, we also always win - no eyebrows raised.
         </p>
+        <p class="mt-3 fs-5 ">
+        Each Allstars season is divided into Gameweeks. Gameweeks are the fixtures that teams play each week. You know, the games you leave work early for. You compete in our fantasy leagues by joining weekly pools. These can be public or private. Public pools are available to all players. In private pools, you play against the mates you invite, and, depending on how well your team does, you either love or dread going to the office the next day.
+</p>
+<p class="mt-3 fs-5 ">
+And selecting a winning Fantasy Allstars team is a piece of cake. All you need to do is pick one goalkeeper, two defenders, two midfielders, and two strikers. From these seven, you select five starters and must include a goalkeeper and at least one player from each position. Basically, you can’t be Pep and pick a team consisting entirely of midfielders. You name a captain too.
+</p>
+<p class="mt-3 fs-5 ">
+The players you pick collect points for scoring, assisting, and keeping clean sheets, but are also penalized for picking up cards or missing penalties. You can create up to three teams for each Gameweek.
+</p>
+<p class="mt-3 fs-5 ">
+So, how do you win? In a nutshell, players with the most points at the end of the Gameweek win the AFC amount assigned to the pool. Also, you get your fair share of achievement badges for completing specific milestones. Each of these will give you AFC coins and other prizes. So, you don’t have to wait for the season to end to get your crypto fantasy windfall. You can get it with every hat-trick or brace scored. The Fantasy Allstars community loves champions, and we feel you are one of them.
+</p>
       </div>
     </div>
     <img class="consectetur-img"  src="{{asset('public/img/Group%2053.png')}}">

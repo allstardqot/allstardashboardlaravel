@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\CreatePost;
 use App\Models\Squad;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -36,7 +37,7 @@ class LeaderboardController extends Controller
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
         $result = [];
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
-
+        $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
         if(!empty($user_contest['user_team_id'])){
             $userTeam = UserTeam::find($user_contest['user_team_id'])->toArray();
             ///echo $userTeam['current_week'];die;
@@ -46,7 +47,7 @@ class LeaderboardController extends Controller
             //echo $userTeam['current_week'];die;
             $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->join('squads','squads.player_id','players.id')->whereIn('players.id', $plyArr)->where('squads.week_id',$userTeam['current_week'])->orderBy('positions.id', 'ASC')->select(['players.*','positions.name','squads.total_points'])->get()->toArray();
             if(empty($result)){
-                $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->join('squads','squads.player_id','players.id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->select(['players.*','positions.name','squads.total_points'])->get()->toArray();
+                $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->select(['players.*','positions.name'])->get()->toArray();
             }
             $result['team_name'] = $userTeam['name'];
             $result['captain_id'] = $userTeam['captain'];
@@ -58,7 +59,7 @@ class LeaderboardController extends Controller
         //     if($)
         // }
         //prr($result);
-        return view('users/leaderboard/index',compact('result','newsdata','trending','userTeam','leaderboardData','topplayers'));
+        return view('users/leaderboard/index',compact('user','result','newsdata','trending','userTeam','leaderboardData','topplayers'));
     }
 
     public function grandleaderboard(){

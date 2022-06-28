@@ -100,7 +100,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value">$0</p>
+                                <p class="o-value"> <img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
                                 <p class="goalkeeper_range range-slider__value">${{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 
@@ -283,9 +283,9 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                 <div class="col-sm-4 mt-3">
                     <div class="range-slider">
 
-                        <p class="range-slider__subtitle">Cost Bar</p>
+                        <p class="range-slider__subtitle">Price Range</p>
                         <div class="value-data">
-                            <p class="o-value">$0</p>
+                            <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
                             <p class="defender_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                         </div>
 
@@ -463,9 +463,9 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                     <div class="col-sm-4 mt-3">
                         <div class="range-slider">
 
-                            <p class="range-slider__subtitle">Cost Bar</p>
+                            <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value">$0</p>
+                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
                                 <p class="midfielder_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 
@@ -646,9 +646,9 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                     <div class="col-sm-4 mt-3">
                         <div class="range-slider">
 
-                            <p class="range-slider__subtitle">Cost Bar</p>
+                            <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value">$0</p>
+                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
                                 <p class="forward_range range-slider__value">$ {{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 

@@ -11,7 +11,7 @@
       <div class="col-sm-7" style="padding: 0px">
         <div class="bgcolor">
           <div class="text-center">
-            <h1>Sing Up</h1>
+            <h1>Sign Up</h1>
             <h3>Welcome to the Top Crypto Fantasy Community</h3>
             <p class="pb-1">We are honored to welcome a manager of your quality to our community.</p>
           </div>
@@ -85,7 +85,7 @@
                       </div> --}}
                        
                     <br />
-                    
+                    <p style="color: #828282;     width: 85%;    margin: auto;" class="mb-3" > By creating an account or using our services, you agree to our Terms and Conditions and Privacy Policy.</p>
                         <button type="submit" class="but">
                             {{ __('Register') }}
                         </button>

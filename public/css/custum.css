@@ -124,6 +124,9 @@ p {
   padding: 2%;
   margin-left: 7%;
 }
+.consectetur-head p {
+  font-size: 18px;
+}
 .consectetur-img {
   margin-left: 10%;
   width: 80%;

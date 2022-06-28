@@ -7,6 +7,7 @@ use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Support\Facades\DB;
 use App\Models\UserTeam;
+use App\Models\Squad;
 use Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -228,7 +229,7 @@ class TeamController extends Controller
     public function createTeam(Request $request, $editId = null)
     {
         if(nextWeek()<1){
-            return redirect('home')->with("message","Can't create team because admin not set week now.");
+            return redirect('home')->with("message","You Cannot Create Team As No Games Are Available.");
         }
         $editId = !empty($request->editId) ? $request->editId : $editId;
         preg_match_all('!\d+!', $editId, $matches);
@@ -270,7 +271,7 @@ class TeamController extends Controller
                 $nextWeek=nextWeek();
                 $teamCount=UserTeam::where([['week',$nextWeek],['user_id',$user_id]])->count();
                 if($teamCount>=3){
-                    return redirect('team')->with("message","Can't create team more then 3 in a week.");
+                    return redirect('team')->with("message","You Can Only Create 3 Teams in a Gameweek.");
                 }
             }
             if (!empty($searchData)) {
@@ -380,13 +381,20 @@ class TeamController extends Controller
     {
         $selected = is_array($request->selected) ? $request->selected : explode(',', $request->selected);
         $editId = !empty($request->editId) ? $request->editId : '';
-        $selectedData = Player::query()->whereIn('id', $selected)->get();
+        $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
+
+        // $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+        // $sumofpoint = DB::table('squads')->sum('squads.total_points')->whereIn('player_id', $selected)->get();
+
+      
+        // prr($currentweekcount);
         $user_selected_substitude = $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         if (!empty($editId)) {
             $userTeam = UserTeam::find($editId);
             $user_selected_substitude = json_decode($userTeam['substitude'], true);
         }
         foreach ($selectedData as $playerValue) {
+            
             if ($playerValue->position_id == 1) {
                 $goalkeeperData = $playerValue;
             }
@@ -401,7 +409,7 @@ class TeamController extends Controller
             }
         }
         
-        return view('users/managesquad/managesquadone', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'user_selected_substitude' => $user_selected_substitude]);
+        return view('users/managesquad/managesquadone', ['goalkeeperData' => $goalkeeperData,'defenderData' => $defenderData,'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'user_selected_substitude' => $user_selected_substitude]);
     }
 
     public function managesquadtwo(Request $request)

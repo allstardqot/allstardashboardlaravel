@@ -11,7 +11,7 @@
                             @foreach ($trending as $key => $value)
                                     {!! $value->description !!}
                                     <div class="like_share">
-                                        <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
+                                        <!-- <a class="hyujh45" href="#">{{ $value->comment }} Comment</a> -->
                                         <a class="jkyts778" href="#">Share</a>
                                     </div>
                                     <hr />
@@ -83,7 +83,7 @@
                                                     <tr>
                                                         <th class="bhytg">Rank</th>
                                                         <th>Username</th>
-                                                        <th class="shdghsdg">Fantesy Points</th>
+                                                        <th class="shdghsdg">Fantasy Points</th>
                                                     </tr>
                                                     @foreach ($leaderboardData as $key=>$userData)
                                                     <tr>
@@ -129,11 +129,17 @@
                                                                     </div>
                                                                 </td>
                                                                 <td class="points-text">
-                                                                    <small>Points :{{$data['total_points']}}</small>
+                                                                    @if(!empty($data['total_points']))
+                                                                        <small>Points :{{$data['total_points']}}</small>
+                                                                    @else
+                                                                        <small>Points :0</small>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             @php
-                                                                $total_fpoints+=$data['total_points'];
+                                                                if(!empty($data['total_points'])){
+                                                                    $total_fpoints+=$data['total_points'];
+                                                                }
                                                             @endphp
                                                             @endforeach
                                                             
@@ -154,127 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 mt-3">
-                    <div class="bgcxhdb78">
-                        <div class="managers-tab">
-                            <ul class="nav nav-pills mb-3" id="magers-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="manger-home-tab" data-bs-toggle="pill"
-                                        data-bs-target="#manger-home" type="button" role="tab" aria-controls="manger-home"
-                                        aria-selected="true">
-                                        Managers
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link private-1" id="player-tab" data-bs-toggle="pill"
-                                        data-bs-target="#player-tab1" type="button" role="tab" aria-controls="player-tab1"
-                                        aria-selected="false">
-                                        Top Players
-                                    </button>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade active show" id="manger-home" role="tabpanel"
-                                    aria-labelledby="manger-home-tab">
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="sdlsdjk">
-                                            <div class="sdj8678">
-                                                <p class="sdjdcj89"><b>Email:</b></p>
-                                            </div>
-                                            <div class="sdjjsh7">
-                                                <a class="sdjsjuy" href="#">fantasyallstars@gmail.com</a>
-                                            </div>
-                                        </div> --}}
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                    <div class="hsdhsd">
-                                        <div class="sdkdj">
-                                            <div class="sdksdlk">
-                                                <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
-                                            </div>
-                                            <div class="sdkjsdj">
-                                                <h5>Tammy Abraham</h5>
-                                            </div>
-                                        </div>
-                                        
-                                        <a class="sjsdjk78" href=""><i class="fa fa-user-plus sdjkdjkd"
-                                                aria-hidden="true"></i></a>
-                                        <hr />
-                                    </div>
-                                </div>
-                                @include('element/users/topplayers') 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('components/managers')
             </div>
         </div>
     </main>

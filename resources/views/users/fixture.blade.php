@@ -52,6 +52,7 @@
               <thead>
                 <tr>
                   <th scope="col"><h3>Matches</h3></th>
+                  <th scope="col" class="text-end"><h3>Result</h3></th>
 
                 </tr>
               </thead>
@@ -62,7 +63,7 @@
                     @continue
                 @endif
                 <tr>
-                    <td>
+                    <td >
                         <div class="tean-show">
                           <div class="tem-one">
                             <span>{{$fixturValue['teams1']['short_code']}}</span>
@@ -95,7 +96,9 @@
                           </div>
                         </div>
                       </td>
-                      <td></td>
+                      <td class="text-end">
+                    <h6 class="fs-5 text-white">Win</h6>
+                  </td>
                       {{-- <td>
                         <div class="fropdown-bar-menu">
                           <div class="dropdown">
@@ -113,7 +116,10 @@
                           </div>
                         </div>
                       </td> --}}
+
+                    
                 </tr>
+               
                 {{-- <tr class="collapse" id="collapseExample{{$key}}">
                     <td>
                       <table class="table table-in">

@@ -11,7 +11,7 @@
                             @foreach ($trending as $key => $value)
                                     {!! $value->description !!}
                                     <div class="like_share">
-                                        <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
+                                        {{-- <a class="hyujh45" href="#">{{ $value->comment }} Comment</a> --}}
                                         <a class="jkyts778" href="#">Share</a>
                                     </div>
                                     <hr />

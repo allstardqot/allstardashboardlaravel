@@ -99,10 +99,12 @@
 
                         <br>
                         <img class="mt-2 p-0" src="{{asset('public/img/Group 1.png')}}"><br><br>
-                        <p style="color: #828282;" href="#">Have An Account?</p>
+                        <p style="color: #828282;">Create An Account?</p>
+                        <p style="color: #828282;" >  Don't Have An Account, Sign Up Below</p>
+                      
                         <br><br>
                         <a href="{{url('/register')}}">
-                            <button class="but2"><b>Sing Up</b></button>
+                            <button class="but2"><b>Sign Up</b></button>
                         </a>
 
                     </div>

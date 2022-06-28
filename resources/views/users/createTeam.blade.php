@@ -1205,7 +1205,11 @@
 
             $('body').on("click", "#goalkeeper_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
-                var player_name = $(this).closest('div').find("h4").html();
+                var category_name = $(this).closest('div').find(".categorie").html();
+                var total_points = $(this).closest('div').find(".total_points").html();
+                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                $("#total_p_points").html(total_points);
+                $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
             })
@@ -1213,6 +1217,10 @@
             $('body').on("click", "#defender_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
                 var player_name = $(this).closest('div').find("h4").html();
+                var total_points = $(this).closest('div').find(".total_points").html();
+                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                $("#total_p_points").html(total_points);
+                $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
             })
@@ -1220,6 +1228,10 @@
             $('body').on("click", "#midfielder_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
                 var player_name = $(this).closest('div').find("h4").html();
+                var total_points = $(this).closest('div').find(".total_points").html();
+                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                $("#total_p_points").html(total_points);
+                $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
             })
@@ -1227,6 +1239,10 @@
             $('body').on("click", "#forward_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
                 var player_name = $(this).closest('div').find("h4").html();
+                var total_points = $(this).closest('div').find(".total_points").html();
+                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                $("#total_p_points").html(total_points);
+                $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
             })
