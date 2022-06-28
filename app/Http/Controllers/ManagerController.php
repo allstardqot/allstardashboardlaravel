@@ -52,4 +52,29 @@ class ManagerController extends Controller
         $post->save();
         return back()->with('success','Post created successfully!');
     }
+
+    public function showcomment(Request $request){
+        $id = $request->id;
+        // echo $id;die;
+        $comments = Comment::join('users','users.id','=','comments.user_id')->where('comments.post_id',$id)->get();
+        $html = '';
+        $id =1;
+        if(!empty($comments)){
+            foreach($comments as $data){
+                $html .= '<tr>
+                    <th scope="row">'. $id.'</th>
+                    <td>'.strtoupper( $data->comment).'</td>
+                    <td>'.strtoupper( $data->user_name).'</td>
+                  </tr>';
+
+            $id++;
+            }
+        }else{
+            $html = '<span >No Comment!</span>';
+        }
+        
+        return $html;
+
+
+    }
 }

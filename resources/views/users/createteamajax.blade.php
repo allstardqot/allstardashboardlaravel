@@ -794,10 +794,10 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
         function decimalSeparator(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
-        outputEl.textContent = `$ ${decimalSeparator(slider.value)} `; // Display the default slider value
+        outputEl.textContent = `${decimalSeparator(slider.value)} `; // Display the default slider value
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {
-            outputEl.textContent = `$ ${decimalSeparator(this.value)} `;
+            outputEl.textContent = `${decimalSeparator(this.value)} `;
         };
     }
 

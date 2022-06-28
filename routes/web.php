@@ -114,6 +114,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');
         Route::post('/store-post', [ManagerController::class, 'store'])->name('store-post');
+        Route::get('/show-comment', [ManagerController::class, 'showcomment'])->name('show-comment');
 
         Route::get('/leaderboard',[LeaderboardController::class,'index'])->name('leaderboard');
         Route::get('/view-detail/{id}',[LeaderboardController::class,'viewdetail'])->name('view-detail');

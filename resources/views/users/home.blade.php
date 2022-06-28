@@ -8,19 +8,7 @@
 
 </div>
             <div class="col-lg-3 order-lg-1">
-                <div class="htavb">
-                    <h4 class="mt-3 mkuytg">Trending Feeds</h4>
-                    <div class="news-col-content">
-                        @foreach ($trending as $key => $value)
-                                {!! $value->description !!}
-                                <div class="like_share">
-                                    <!-- <a class="hyujh45" href="#">{{ $value->comment }} Comment</a> -->
-                                    <a class="jkyts778" href="#">Share</a>
-                                </div>
-                                <hr />
-                            @endforeach
-                    </div>
-                </div>
+                @include('components/trendingfeeds')
 
                 <div class="hjuy4589">
                     <h4 class="mt-5 mkuytg">Premier League News</h4>

@@ -130,7 +130,7 @@ class TeamController extends Controller
                 $nextWeek=nextWeek();
                 $teamCount=UserTeam::where([['week',$nextWeek],['user_id',$user_id]])->count();
                 if($teamCount>=3){
-                    return redirect('team')->with("message","Can't create team more then 3 in a week.");
+                    return redirect('team')->with("message","You Can Only Create 3 Teams in a Gameweek");
                 }
             }
             if (!empty($searchData)) {

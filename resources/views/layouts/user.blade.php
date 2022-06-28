@@ -84,8 +84,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <select class="form-select typeoption" aria-label="Default select example " name="pool_type" id="typeoption" required>
-                                <option selected>Select Public or Private</option>
+                            <select class="form-select typeoption"  aria-label="Default select example " name="pool_type" id="typeoption" required>
+                                <option selected style="color:#fff;">Select Public or Private</option>
                                 <option value="Public Pool">Public Pool</option>
                                 <option value="Private Pool">Private Pool</option>
                                 
@@ -143,6 +143,43 @@
                                   </tr>
                                 </thead>
                                 <tbody id="poolusersname">
+                                </tbody >
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- Comments SHowing Popup --}}
+
+  <div class="modal fade" id="usersCommentss" tabindex="-1" aria-labelledby="userCommmets" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title fs-4" id="userCommmets">User Comments</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-in">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3" id="commentuser">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Comment</th>
+                                    <th scope="col">User Name</th>
+                                   
+                                  </tr>
+                                </thead>
+                                <tbody id="userscomments">
                                 </tbody >
                             </table>
                         </div>
