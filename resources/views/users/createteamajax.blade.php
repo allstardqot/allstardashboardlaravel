@@ -139,7 +139,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                                     @foreach ($goalkeeperData as $goakkeeperValue)
                                     {{$check=''}}
                                     @if((!empty($user_selected_player) && in_array($goakkeeperValue["id"],$user_selected_player)) || in_array($goakkeeperValue["id"],$cookiesArray))
-                                    @php $check="checked"; @endphp
+                                    @php $check="checked"; 
+                                        if($goakkeeperValue['position_id']!=1){
+                                            continue;
+                                        }
+                                    @endphp
                                     @endif
                                     @if(empty($goakkeeperValue["team"]["name"]))
                                     @continue;
@@ -323,7 +327,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                             @foreach ($defenderData as $defenderValue)
                             {{$check=''}}
                             @if((!empty($user_selected_player) && in_array($defenderValue["id"],$user_selected_player)) || in_array($defenderValue["id"],$cookiesArray))
-                            @php $check="checked"; @endphp
+                            @php $check="checked"; 
+                                        if($defenderValue['position_id']!=2){
+                                            continue;
+                                        }
+                            @endphp
                             @endif
                             @if(empty($defenderValue["team"]["name"]))
                             @continue;
@@ -503,7 +511,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                                 @foreach ($midfielderData as $midfielderValue)
                                 {{$check=''}}
                                 @if((!empty($user_selected_player) && in_array($midfielderValue["id"],$user_selected_player)) || in_array($midfielderValue["id"],$cookiesArray))
-                                @php $check="checked"; @endphp
+                                @php $check="checked";
+                                        if($midfielderValue['position_id']!=3){
+                                            continue;
+                                        }
+                                 @endphp
                                 @endif
                                 @if(empty($midfielderValue["team"]["name"]))
                                 @continue;
@@ -686,7 +698,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                                 @foreach ($forwardData as $forwardValue)
                                 {{$check=''}}
                                 @if((!empty($user_selected_player) && in_array($forwardValue["id"],$user_selected_player)) || in_array($forwardValue["id"],$cookiesArray))
-                                @php $check="checked"; @endphp
+                                @php $check="checked";
+                                        if($forwardValue['position_id']!=4){
+                                            continue;
+                                        }
+                                 @endphp
                                 @endif
                                 @if(empty($forwardValue["team"]["name"]))
                                 @continue;
