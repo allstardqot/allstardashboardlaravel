@@ -10,6 +10,9 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
+use App\Models\Week;
+
+use Mail;
 
 class WinningProcess implements ShouldQueue
 {
@@ -94,8 +97,10 @@ class WinningProcess implements ShouldQueue
                                 }
                                 foreach($value['user_id'] as $user_id){
                                     if(User::where('id', $user_id)->increment('wallet',$eachUser)){
+                                        $weeak=Week::find(priviousWeek())->toArray();
+
                                         $userData=User::find($user_id)->toArray();
-                                        $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser];
+                                        $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser,'starting_at'=>$weeak['starting_at'],'ending_at'=>$ending_at];
                                         $payment            = new Payment;
                                         $payment->user_id   = $user_id;
                                         $payment->amount    = $eachUser;

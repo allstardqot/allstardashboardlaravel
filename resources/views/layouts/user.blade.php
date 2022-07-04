@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example" name='pool_name' id="typename" required>
+                            <select class="form-select" aria-label="Default select example" name='pool_id' id="typename" required>
                                 <option selected>Select First Pool Type</option>
                                
                                 

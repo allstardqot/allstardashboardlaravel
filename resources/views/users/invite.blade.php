@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="majhyt">
                             <div class="clak">
-                                <input type="hidden" name="pool_name" value='{{$pool_name}}'/>
+                                <input type="hidden" name="pool_id" value='{{$id}}'/>
 
                                 <input class="inpotyahn" type="text" name="email[]" placeholder="Enter Email address" />
                             </div>

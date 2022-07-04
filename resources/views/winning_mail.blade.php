@@ -1,4 +1,4 @@
-<p>Congratulations {{ $name }}, you have won {{$amount}} AFC for Gameweek [gameweek date].</p>
+<p>Congratulations {{ $name }}, you have won {{$amount}} AFC for Gameweek {{$starting_at}} To {{$ending_at}}.</p>
 
 <p>You will shortly be receiving your AFC winnings!!</p>
 

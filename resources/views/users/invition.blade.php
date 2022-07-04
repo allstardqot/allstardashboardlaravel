@@ -1,9 +1,13 @@
 
 <main>
-<h1>All Star Invition</h1>
+<h1>Hi, User</h1>
 
-<p>You can Join from bellow Referal Code : {{ $referal }} link: </p>
+<p>You have been invited by {{ucfirst($user_name)}} to join Allstar Fantasy.</p>
+<p>Please use this link to register.</p>
 
 <a href="{{ route('register',$referal) }}">Sign Up</a>
+
+<p>Best of luck Allstar</p>
+
 </main>
 

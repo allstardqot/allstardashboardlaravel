@@ -136,6 +136,24 @@ class HomeController extends Controller
         $contest_data->user_id  = Auth::user()->id;
         $contest_data->user_team_id = $request->input('user_team_id');
         if($contest_data->save()){
+            $userPoolData=UserPool::find($join_pool_id)->toArray();
+            if(!empty($userPoolData)){
+                $weekData=Week::find(nextWeek())->toArray();
+                $type=($userPoolData['pool_type']==0)?"Public":"Private";
+                $starting_at=$ending_at='';
+                if(!empty($weekData)){
+                    $starting_at=$weekData['starting_at'];
+                    $ending_at=$weekData['ending_at'];
+
+                }
+                $emailValue=Auth::user()->email;
+                $data = ['name'=>Auth::user()->user_name,'email'=>$request->email,'pool_name'=>$userPoolData['pool_name'],'type'=>$type,'max_participants'=>$userPoolData['max_participants'],'entry_fees'=>$userPoolData['entry_fees'],'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+                Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
+                    $message->to($emailValue, 'Tutorials Point')->subject
+                    ('All Star Join Pool');
+                    
+                });
+            }
             return redirect('my-pool')->with('message','Pool Joined Successfully 😊.');
         }else{
             return redirect('home')->with('error',"Cant't Join this pool.");
@@ -147,11 +165,12 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
         $pool_type = $_GET['id'] == 'Private Pool' ? 1 : 0 ;
         
-        $user_pool = UserPool::select('pool_name')->where(['pool_type'=>$pool_type,'week_id'=>nextWeek(),'user_id'=>$user_id])->get();
+        $user_pool = UserPool::select(['id','pool_name'])->where(['pool_type'=>$pool_type,'week_id'=>nextWeek(),'user_id'=>$user_id])->get();
+        
         $html = '';
         if($user_pool->count() > 0){
             foreach($user_pool as $data){
-                $html .= '<option value="'.$data->pool_name.'">'.$data->pool_name.'</option>';
+                $html .= '<option value="'.$data->id.'">'.$data->pool_name.'</option>';
             }
         }else{
             $html = '<option value="">First Create Pool</option>';
@@ -161,25 +180,37 @@ class HomeController extends Controller
     }
 
     public function userinvite(Request $request){
-        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$request->pool_name];
-        $email = $request->email;
-        if(is_array($email)){
-            foreach($email as $emailValue){
-                Mail::send('mail', $data, function($message) use ($emailValue)  {
-                    $message->to($emailValue, 'Tutorials Point')->subject
-                       ('All Star Invite');
-                    
-                 });
-            }
-        }else{
-            Mail::send('mail', $data, function($message) use ($email)  {
-            $message->to($email, 'Tutorials Point')->subject
-                ('All Star Invite');
+        
+        $userPoolData=UserPool::find($request->pool_id)->toArray();
+        if(!empty($userPoolData)){
             
-            });
-        }
-        return redirect('home')->with('message',"Email(s) Sent Successfully.");
+                $type=($userPoolData['pool_type']==0)?"Public":"Private";
+                $weekData=Week::find($userPoolData['week_id'])->toArray();
+                $starting_at=$ending_at='';
+                if(!empty($weekData)){
+                    $starting_at=$weekData['starting_at'];
+                    $ending_at=$weekData['ending_at'];
 
+                }
+                $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$userPoolData['pool_name'],'type'=>$type,'max_participants'=>$userPoolData['max_participants'],'entry_fees'=>$userPoolData['entry_fees'],'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+                $email = $request->email;
+                if(is_array($email)){
+                    foreach($email as $emailValue){
+                        Mail::send('mail', $data, function($message) use ($emailValue)  {
+                            $message->to($emailValue, 'Tutorials Point')->subject
+                            ('All Star Invite');
+                            
+                        });
+                    }
+                }else{
+                    Mail::send('mail', $data, function($message) use ($email)  {
+                    $message->to($email, 'Tutorials Point')->subject
+                        ('All Star Invite');
+                    
+                    });
+                }
+                return redirect('home')->with('message',"Email(s) Sent Successfully.");
+        }
     }
 
     public function joinusers(){

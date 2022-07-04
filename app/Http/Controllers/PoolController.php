@@ -177,6 +177,21 @@ class PoolController extends Controller
             // }else{
                 // $pool->save();
             // }
+            $weekData=Week::find(nextWeek())->toArray();
+            $type=($request->input('pool_type')==0)?"Public":"Private";
+            $starting_at=$ending_at='';
+            if(!empty($weekData)){
+                $starting_at=$weekData['starting_at'];
+                $ending_at=$weekData['ending_at'];
+
+            }
+            $emailValue=Auth::user()->email;
+            $data = ['name'=>Auth::user()->user_name,'email'=>$request->email,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+            Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
+                $message->to($emailValue, 'Tutorials Point')->subject
+                ('All Star Join Pool');
+                
+            });
             return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
 
         }
@@ -189,7 +204,7 @@ class PoolController extends Controller
     public function invitePool($id){
         $pool = UserPool::find($id)->toArray();
         //prr($pool);
-        return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees']]);
+        return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees'],'id'=>$id]);
     }
 
 
