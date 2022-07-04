@@ -45,10 +45,26 @@ body {
 #joinusers .modal-content {
   background: #505281;
 }
+
+#playerDetails .modal-content {
+  background: #505281;
+}
+#playerDetails .btn-close {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3E%3C/svg%3E");
+}
+#playerDetails .modal-title {
+  color: #ff5000;
+  font-weight: 600;
+  font-size: 16px;
+}
 #joinusers .fs-4 {
   font-size: 1.5rem !important;
   color: #ff5000;
   font-weight: 600;
+}
+#playerDetails .btn-danger {
+  background: #ff5000;
+  padding: 9px;
 }
 #joinusers .btn-close {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3E%3C/svg%3E");
@@ -338,11 +354,13 @@ table.ui-datepicker-calendar td {
 }
 .range-slider__value::before {
   background-image: url("../image/coins.png");
-  background-size: 20px 17px;
+  background-size: 18px 18px;
   display: inline-block;
-  width: 20px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   content: "";
+  vertical-align: text-bottom;
+  margin-right: 4px;
 }
 .o-value {
   /* font-size: 2rem; */
@@ -655,16 +673,27 @@ strong {
   background: transparent;
   position: relative;
   z-index: 40;
+  width: 100%;
+
+  margin-left: 0px;
+  flex-wrap: wrap;
 }
+
 .nsd79 {
   background-color: #3b3c5e;
   border-radius: 10px;
   padding: 2% 2% 0% 2%;
   margin-top: 4%;
 }
-.sxdhd789 {
-  height: 100px;
+.search-box {
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 625px;
 }
+/* .sxdhd789 {
+  height: 100px;
+} */
 .nhj89hn9 {
   margin-top: 2%;
   padding-bottom: 0px !important;
@@ -1923,8 +1952,10 @@ textarea.jsystdbh {
 .dcs445 {
   background-color: #ff5000;
   border-radius: 50px;
-  padding: 4% 3.5%;
+  padding: 10px;
   margin-left: 18%;
+  width: 35px;
+  height: 35px;
 }
 .hytgfrp098 {
   background-color: #3b3c5e;
@@ -3929,6 +3960,7 @@ main {
 .managers-tab .sdkdfj89 {
   display: flex;
   width: 100%;
+  align-items: center;
 }
 
 .managers-tab .sdjdk0 {
@@ -4129,6 +4161,7 @@ main {
   .sxdjdj87 {
     width: 100%;
     height: 100%;
+    padding-right: 0;
   }
   .fixture-sec .head-content h3 {
     font-size: 23px;
@@ -4207,7 +4240,8 @@ main {
     margin-left: 0% !important;
   }
   .h7h8j7 {
-    font-size: 5.5vw;
+    font-size: 16px;
+    margin-bottom: 5px;
   }
   .dhcbn87 {
     font-size: 5vw;

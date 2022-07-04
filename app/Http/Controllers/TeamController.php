@@ -86,7 +86,10 @@ class TeamController extends Controller
 
     public function editTeam(Request $request, $editId = null){
         
-       
+        $cookiesArray=[];
+        if (!empty($_COOKIE['playerIdArray'])){
+            $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
+        }
         if(nextWeek()<1){
             return redirect('home')->with("message","Can't create team because admin not set week now.");
         }
@@ -159,13 +162,13 @@ class TeamController extends Controller
                 }
                 if ($searchData != "Search") {
                     if ($type == "goalkeeper") {
-                        $goalkeeperData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 1])->with('Team', 'Position')->get();
+                        $goalkeeperData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 1])->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type == 'defender') {
-                        $defenderData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 2])->with('Team', 'Position')->get();
+                        $defenderData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 2])->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type == 'midfielder') {
-                        $midfielderData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 3])->with('Team', 'Position')->get();
+                        $midfielderData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 3])->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type = 'forward') {
-                        $forwardData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 4])->with('Team', 'Position')->get();
+                        $forwardData = $playerQuery->where('fullname', 'LIKE', '%' . $searchData . '%')->where(['position_id' => 4])->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     }
                     //pr($goalkeeperData);
                 }
@@ -181,7 +184,7 @@ class TeamController extends Controller
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
                         }
-                        $goalkeeperData = $playerQuery->with('Team', 'Position')->get();
+                        $goalkeeperData = $playerQuery->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type == 'defender') {
                         $playerQuery->where('players.position_id', 2);
                         if(!empty($teamfilter)){
@@ -193,7 +196,7 @@ class TeamController extends Controller
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
                         }
-                        $defenderData = $playerQuery->with('Team', 'Position')->get();
+                        $defenderData = $playerQuery->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type == 'midfielder') {
                         $playerQuery->where('players.position_id', 3);
                         if(!empty($teamfilter)){
@@ -205,7 +208,7 @@ class TeamController extends Controller
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
                         }
-                        $midfielderData = $playerQuery->with('Team', 'Position')->get();
+                        $midfielderData = $playerQuery->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     } elseif ($type = 'forward') {
                         $playerQuery->where('players.position_id', 4);
                         if(!empty($teamfilter)){
@@ -217,7 +220,7 @@ class TeamController extends Controller
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
                         }
-                        $forwardData = $playerQuery->with('Team', 'Position')->get();
+                        $forwardData = $playerQuery->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
                     }
                 }
                 return view('users/createteamajax', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'type' => $type, 'team' => $team, 'request' => $request, 'user_selected_player' => $user_selected_player, 'editId' => $editId]);
@@ -389,11 +392,11 @@ class TeamController extends Controller
         $editId = !empty($request->editId) ? $request->editId : '';
         $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
 
-        // $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+        $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
         // $sumofpoint = DB::table('squads')->sum('squads.total_points')->whereIn('player_id', $selected)->get();
 
       
-        // prr($currentweekcount);
+         //prr($currentweekcount);
         $user_selected_substitude = $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         if (!empty($editId)) {
             $userTeam = UserTeam::find($editId);
@@ -415,7 +418,7 @@ class TeamController extends Controller
             }
         }
         
-        return view('users/managesquad/managesquadone', ['goalkeeperData' => $goalkeeperData,'defenderData' => $defenderData,'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'user_selected_substitude' => $user_selected_substitude]);
+        return view('users/managesquad/managesquadone', ['goalkeeperData' => $goalkeeperData,'currentweekcount'=>$currentweekcount,'defenderData' => $defenderData,'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'user_selected_substitude' => $user_selected_substitude]);
     }
 
     public function managesquadtwo(Request $request)

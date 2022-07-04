@@ -21,6 +21,37 @@ function set_cookie(name, value) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
+  function ShowPlayerDetails(id,name,position,total_point){
+
+    if(position == 1){
+        position = 'Goalkeeper';
+    }else if(position == 2){
+        position = 'Defender';
+    }else if(position == 3){
+        position = 'Midfielder';
+    }else{
+        position = 'Forward';
+
+    }
+
+    total_point = total_point != '' ? total_point: 0; 
+    $('#player_names').html(name);
+    $('#category_model').html(position);
+    $('#playTotalPoints').html(total_point);
+    $('#playerDetails').modal('show');
+    // $.ajax({
+    //     url: "player-detail",
+    //     method: "GET",
+    //     data: {
+    //         'id': id
+    //     },
+    //     success: function (result) {
+           
+            // $('#userscomments').html(result);
+        // }
+    // });
+
+  }
 
   function showComment(id){
 
@@ -186,7 +217,7 @@ $("body").on("click", "#managesquad_one_submit", function () {
                 msg = "Please choose a goalkeeper.";
             }
             else if (selectId.length >= 5 && categorie.length < 4) {
-                msg = 'Please chose a player to remaning category.';
+                msg = 'Please choose at least one player from each position';
                 //$.notify("Please chose a player to remaning category.", "info");
             } else if (selectId.length < 5) {
                 //$.notify("Please chose 5 players.", "info");

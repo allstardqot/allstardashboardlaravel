@@ -155,9 +155,9 @@
                                                 data-bs-target="#myModal"
                                                 onclick="showmodel({{ $privateValue['id'] }},{{ $privateValue['pool_type'] }})">+Join
                                                 this pool</a>
-                                            <a class="ahjl458" href="#">
+                                            {{-- <a class="ahjl458" href="#">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </div>
                                 </div>

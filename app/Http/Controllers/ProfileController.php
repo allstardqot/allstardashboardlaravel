@@ -103,4 +103,31 @@ class ProfileController extends Controller
 
         return view('users/profile/transection',compact('transection'));
     }
+
+    public function save_wallet_address(Request $request) {
+        $user = Auth::user();
+        $user->wallet_address = $request->input('wallet_address');
+        $user->save();
+        return 'Success';
+    }
+
+    public function update_wallet(Request $request) {
+
+        $user = Auth::user();
+        $type = $request->input('type');
+
+        if( $type == 'add' ) {
+            $user->wallet += $request->input('token_value');
+        } else {
+            $user->wallet -= $request->input('token_value');
+        }
+        
+        $user->save();
+        return 'Success';
+    }
+
+    public function get_wallet(Request $request) {
+        return Auth::user()->wallet;
+    }
+
 }

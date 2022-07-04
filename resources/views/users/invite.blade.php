@@ -13,7 +13,12 @@
                                 <a href="#" class="btn nhy"><b>{{$pool_name}}</b></a>
                             </div>
                             <div class="shdjshd">
-                                <a href="#" class="najxcbn" class="btn">Entry Amount $ {{$entry_fees}}</a>
+                                <a href="#" class="najxcbn" class="btn">Entry Amount <img
+                src="{{ asset('public/assets/image/coins.png') }}"
+                class="img-fluid"
+                width="18"
+                alt=""
+              /> {{$entry_fees}}</a>
                             </div>
                         </div>
                     </div>
@@ -26,7 +31,7 @@
                     <div class="bayrt">
                         <div class="tayui">
                             <p class="p111">
-                                Please join  pool {{ $pool_name }} using password fantasy at
+                                Please join  pool {{ $pool_name }} at
                                 allstarsfans.com
                             </p>
                         </div>
@@ -36,12 +41,15 @@
                     </div>
                 </div>
             </div>
-            <form name="add_email" id="add_email">
+            <form name="add_email" id="add_email" action="{{url('user-invite')}}" method="post">
+                @csrf
                 <div class="baytjh" id="field_add">
                     <div class="row">
                         <div class="majhyt">
                             <div class="clak">
-                                <input class="inpotyahn" type="text" id="fname" name="fname" placeholder="Enter Email address" />
+                                <input type="hidden" name="pool_name" value='{{$pool_name}}'/>
+
+                                <input class="inpotyahn" type="text" name="email[]" placeholder="Enter Email address" />
                             </div>
                             <div class="lkahty">
                                 {{-- <button  name="buttton">+ Add More</button> --}}
@@ -50,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="form-control btnColor mt-4 order-last order-lg-first tbnayr" name="submit" id="submit">
+                <button type="submit" class="form-control btnColor mt-4 order-last order-lg-first tbnayr" name="submit" id="submit">
                     Invite
                 </button>
             </form> 
@@ -87,7 +95,7 @@
       var i=1;  
       $('#add').click(function(){  
            i++;  
-           $('#field_add').append('<div class="row" id="row'+i+'"><div class="majhyt"><div class="clak"><input class="inpotyahn" type="text" name="fname[]" placeholder="Enter Email address" /></div><div class="lkahty"><input class="bants btn_remove" name="remove" id="'+i+'" type="button" value="X Remove"></div></div></div>');
+           $('#field_add').append('<div class="row" id="row'+i+'"><div class="majhyt"><div class="clak"><input class="inpotyahn" type="text" name="email[]" placeholder="Enter Email address" /></div><div class="lkahty"><input class="bants btn_remove" name="remove" id="'+i+'" type="button" value="X Remove"></div></div></div>');
            //$('#fname').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
            
       });  
@@ -95,12 +103,20 @@
            var button_id = $(this).attr("id");   
            $('#row'+button_id+'').remove();  
       });  
-      $('#submit').click(function(){      
-        let dataa=$('#add_email').serialize();      
+      /*$('#submit').click(function(){      
+        let dataa=$('#add_email').serialize();
+        $.ajax({
+            url:'/allstarsfan.com/user-invite',
+            type:'POST',
+            data:{dataa},
+            success:function(response){
+                console.log(response);
+            }
+        });
         alert(dataa);
-        console.log(dataa);
+        
            
-      });  
+      });  */
  });  
  </script>
 @endsection

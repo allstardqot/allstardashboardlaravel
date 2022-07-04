@@ -22,7 +22,7 @@
     <link href="{{ asset('public/assets/css/rte_theme_default.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/editor.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link href="{{ asset('public/assets/css/jquery.toast.min.css') }}" rel="stylesheet">
    
 </head>
 
@@ -374,6 +374,20 @@
     var editor1 = new RichTextEditor("#div_editor1");
 
 </script>
+
+
+    <?php 
+        $currentURL = Request::path();
+        if ( $currentURL == 'wallet' ) {
+    ?>
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@metamask/onboarding@1.0.1/dist/metamask-onboarding.bundle.js" ></script>
+        <script src="{{asset('public/assets/js/jquery.toast.min.js')}}"></script>
+        <script src="{{asset('public/assets/js/ido.js')}}"></script>
+
+    <?php 
+        }
+    ?>
 
 </body>
 

@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-white">
-          <h3>User Transaction</h3>
+          <h3>User Transactions</h3>
           <div class="table-responsive">
             <table class="table text-white">
               <thead>
@@ -13,7 +13,7 @@
                   <th scope="col">Amount</th>
                   <th scope="col">Type</th>
                   
-                  <th scope="col">Description</th>
+                  {{-- <th scope="col">Description</th> --}}
                 </tr>
               </thead>
               <tbody class="table-group-divider">
@@ -35,7 +35,7 @@
                       <td>{{ $value->amount }}</td>
                       <td>{{ $value->type }}</td>
 
-                      <td> Payment {{ $status }} for {{ $value->type }} .</td>                    
+                      {{-- <td> Payment {{ $status }} for {{ $value->type }} .</td>                     --}}
                     
                     </tr>
                     @php

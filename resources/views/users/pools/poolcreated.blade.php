@@ -27,7 +27,7 @@
                     <div class="bayrt">
                         <div class="tayui">
                             <p class="p111">
-                                Please join  pool {{ $pool_name }} using password fantasy at
+                                Please join  pool {{ $pool_name }} at
                                 allstarsfans.com
                             </p>
                         </div>

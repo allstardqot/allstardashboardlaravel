@@ -59,7 +59,7 @@ Route::get('/gaming-policy',[PagelayoutController::class,'gamingPolicy']);
 Route::get('/about_us', [AboutusController::class,'index']);
 Route::get('/contact_us', [ContactusController::class,'index']);
 Route::post('/create', [ContactusController::class,'create'])->name('contactus.create');
-Route::get('/faq', [FaqController::class,'index']);
+Route::get('/faq', [FaqController::class,'index'])->name('faq');
 
 
 
@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/fetchpool', [App\Http\Controllers\HomeController::class, 'fetchpool'])->name('fetchpool');
         Route::post('/user-invite', [App\Http\Controllers\HomeController::class, 'userinvite'])->name('user-invite');
         Route::get('/joinusers', [App\Http\Controllers\HomeController::class, 'joinusers'])->name('joinusers');
+        // Route::get('/player-detail', [App\Http\Controllers\HomeController::class, 'playerdetail'])->name('player-detail');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/send-invition', [ProfileController::class, 'send_invition'])->name('send-invition');
@@ -86,6 +87,10 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/team', [TeamController::class, 'index'])->name('team');
         Route::get('/current-team', [TeamController::class, 'currentTeam'])->name('current-team');
+
+        Route::post('/save-wallet-address', [ProfileController::class, 'save_wallet_address'])->name('save-wallet-address');
+        Route::post('/update-wallet', [ProfileController::class, 'update_wallet'])->name('update-wallet');
+        Route::get('/get-wallet', [ProfileController::class, 'get_wallet'])->name('get-wallet');
 
 
 

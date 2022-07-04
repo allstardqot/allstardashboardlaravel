@@ -66,6 +66,7 @@ class GetScore implements ShouldQueue
                 $mathcScore = $api->getMacthScore($this->fixtureId . '?include=lineup.player,bench.player');
                 if($mathcScore['time']){
                     $fixture->status=isset($mathcScore['time']['status'])?$mathcScore['time']['status']:$fixture->status;
+                    $fixture->score=is_array($mathcScore['scores'])?json_encode($mathcScore['scores']):'';
                     $fixture->update();
                 }
 

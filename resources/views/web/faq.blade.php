@@ -40,7 +40,7 @@
                 ><span class="fa fa-arrow-down"></span> {{ $value->title }}</a>
               <ul class="dropdown-menu Fantasyone" role="menu">
                 <li class="drop-li-sub">
-                  {{ $value->description }}
+                  {!! $value->description !!}
                 </li>
               </ul>
             </li>

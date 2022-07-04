@@ -4,8 +4,8 @@
 
 <main>
   <div class="navmate">
-    <div class="row w-100">
-      <div class="col-lg-6 text-white agjustHome">
+    <div class="row w-100 align-items-center pb-5">
+      <div class="col-lg-7 text-white">
         <div class="col-12 container col-lg-9">
           <div class="sdndj67">
             <h3 style="font-size: 2em">Fantasy Football As It Should Be</h3>
@@ -18,7 +18,7 @@
           <a class="ml-3 text-white" href=""><b>Learn More</b></a>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-5 mt-5">
         <img
           class="jhdhdfjh"
           src="{{ asset('public/img/Group%2042(1).png') }}"

@@ -25,10 +25,9 @@
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie" data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
-                            {{-- @if($goalkeeperData['position_id'] == $currentweekcount[0]['position_id'])
-                                
-                            <p class="cmg_totalpoints">{{ $currentweekcount[0]['cmg_totalPoints']}} CGW Point</p>
-                            @endif --}}
+                            @if(!empty($currentweekcount[0]['position_id']) && $goalkeeperData['position_id'] == $currentweekcount[0]['position_id'])
+                            <p class="cmg_totalpoints">{{ !empty($currentweekcount[0]['cmg_totalPoints'])?$currentweekcount[0]['cmg_totalPoints']:'0'}} CGW Point</p>
+                            @endif
                             <p class="total_points">{{ $goalkeeperData['sum_totalPoints'] }} T F Points</p>
                         </div>
                         <p>${{ $goalkeeperData['sell_price'] }}</p>
@@ -49,11 +48,11 @@
                             <h4>{{ $defenderData[0]['fullname'] }}</h4>
                             <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defenders</p>
                             <div class="playerdetails">
-                                {{-- @if($defenderData[0]['position_id'] == $currentweekcount[1]['position_id'])
+                                @if(!empty($currentweekcount[1]['position_id']) && $defenderData[0]['position_id'] == $currentweekcount[1]['position_id'])
                                    
                                 
                                 <p class="cmg_totalpoints">{{ $currentweekcount[1]['cmg_totalPoints']}} CGW Point</p>
-                                @endif --}}
+                                @endif
                                 <p class="total_points">{{ $goalkeeperData['sum_totalPoints'] }}T F Points</p>
                             </div>
                             <p>${{ $defenderData[0]['sell_price'] }}</p>
@@ -78,12 +77,12 @@
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
                             <p class="categorie" data-id="{{ $defenderData[1]['id'] }}">Defenders</p>
                             <div class="playerdetails">
-                                {{-- @if($defenderData[1]['position_id'] == $currentweekcount[2]['position_id']) --}}
+                                @if(!empty($currentweekcount[2]['position_id']) && $defenderData[1]['position_id'] == $currentweekcount[2]['position_id'])
                                  {{-- {{ $defenderData[0]['position_id'] }}
                                     {{ $currentweekcount[2]['position_id'] }} --}}
                                 
-                                {{-- <p class="cmg_totalpoints">{{ $currentweekcount[2]['cmg_totalPoints']}} CGW Point</p> --}}
-                                {{-- @endif --}}
+                                <p class="cmg_totalpoints">{{ $currentweekcount[2]['cmg_totalPoints']}} CGW Point</p>
+                                @endif
                                 <p class="total_points">{{ $defenderData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
                             <p>${{ $defenderData[1]['sell_price'] }}</p>
@@ -109,10 +108,10 @@
                             <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                             <p class="categorie" data-id="{{ $midfielderData[0]['id'] }}">Midfielders</p>
                             <div class="playerdetails">
-                                {{-- @if($midfielderData[0]['position_id'] == $currentweekcount[3]['position_id'])
+                                @if(!empty($currentweekcount[3]['position_id']) && $midfielderData[0]['position_id'] == $currentweekcount[3]['position_id'])
                                 
                                 <p class="cmg_totalpoints">{{ $currentweekcount[3]['cmg_totalPoints']}} CGW Point</p>
-                                @endif --}}
+                                @endif
                                 <p>{{ $midfielderData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
                             <p class="total_points">${{ $midfielderData[0]['sell_price'] }}</p>
@@ -135,10 +134,10 @@
                             <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                             <p class="categorie" data-id="{{ $midfielderData[1]['id'] }}">Midfielders</p>
                             <div class="playerdetails">
-                                {{-- @if($midfielderData[1]['position_id'] == $currentweekcount[4]['position_id'])
+                                @if(!empty($currentweekcount[4]['position_id']) && $midfielderData[1]['position_id'] == $currentweekcount[4]['position_id'])
                                 
                                 <p class="cmg_totalpoints">{{ $currentweekcount[4]['cmg_totalPoints']}} CGW Point</p>
-                                @endif --}}
+                                @endif
                                 <p class="total_points">{{ $midfielderData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
                             <p>${{ $midfielderData[1]['sell_price'] }}</p>
@@ -164,10 +163,10 @@
                             <h4>{{ $forwardData[0]['fullname'] }}</h4>
                             <p class="categorie" data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                             <div class="playerdetails">
-                                {{-- @if($forwardData[0]['position_id'] == $currentweekcount[5]['position_id'])
+                                @if(!empty($currentweekcount[5]['position_id']) && $forwardData[0]['position_id'] == $currentweekcount[5]['position_id'])
                                 
                                 <p class="cmg_totalpoints">{{ $currentweekcount[5]['cmg_totalPoints']}} CGW Point</p>
-                                @endif --}}
+                                @endif
                                 <p class="total_points">{{ $forwardData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
                             <p>${{ $forwardData[0]['sell_price'] }}</p>
@@ -190,10 +189,10 @@
                             <h4>{{ $forwardData[1]['fullname'] }}</h4>
                             <p class="categorie" data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                             <div class="playerdetails">
-                                {{-- @if($forwardData[1]['position_id'] == $currentweekcount[6]['position_id'])
+                                @if(!empty($currentweekcount[6]['position_id']) && $forwardData[1]['position_id'] == $currentweekcount[6]['position_id'])
                                 
                                 <p class="cmg_totalpoints">{{ $currentweekcount[6]['cmg_totalPoints']}} CGW Point</p>
-                                @endif --}}
+                                @endif
                                 <p class="total_points">{{ $forwardData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
                             <p>${{ $forwardData[1]['sell_price'] }}</p>

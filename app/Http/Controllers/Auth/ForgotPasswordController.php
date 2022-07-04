@@ -36,7 +36,8 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
-
+        $user = User::where('email', $request->email)->first()->toArray();
+        $username=!empty($user['user_name'])?$user['user_name']:'User';
         $token = Str::random(64);
         DB::table('password_resets')->insert([ 
             'email' => $request->email,
@@ -44,7 +45,7 @@ class ForgotPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('auth.forget-password-email', ['token' => $token], function($message) use($request){
+        Mail::send('auth.forget-password-email', ['token' => $token,'user' => $username], function($message) use($request){
             $message->to($request->email);
             $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
             $message->subject('Reset Password');

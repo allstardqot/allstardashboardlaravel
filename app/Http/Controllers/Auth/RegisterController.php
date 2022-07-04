@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Nationalities;
 use App\Models\Team;
+use Mail;
 use App\Models\Player;
 
 
@@ -108,7 +109,12 @@ class RegisterController extends Controller
         // echo 'ASU000'.($user_data->id+1);die;
         // prr($user->id);
         $refer_code = 'ASU000'.($user_data->id+1);
-       
+
+        Mail::send('auth.register-email', ['user' => $data['user_name']], function($message) use($data){
+            $message->to($data['email']);
+            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $message->subject('Welcome Email');
+        });
         return User::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],

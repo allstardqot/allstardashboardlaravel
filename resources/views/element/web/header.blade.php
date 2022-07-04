@@ -15,10 +15,10 @@
             </div>
             <div class="col-12 col-lg-4 py-1 py-lg-0 hsakdjh56">
               <ul class="d-flex list-unstyled text-center sdbdjksd65">
-                <li class="px-2"><a href="{{ TELEGRAM }}" ><img src="{{asset('public/img/teligram.png')}}"></a></li>
-                <li class="px-3"><a href="{{ INSTAGRAM }}"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
-                <li class="px-3"><a href="{{ TWITTER }}"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
-                <li class="px-3"><a href="{{ DISCORD }}"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
+                <li class="px-2"><a href="{{ TELEGRAM }}" target="telegram"><img src="{{asset('public/img/teligram.png')}}"></a></li>
+                <li class="px-3"><a href="{{ INSTAGRAM }}" target="instagram"><img src="{{asset('public/img/Icon awesome-instagram.png')}}"> </a></li>
+                <li class="px-3"><a href="{{ TWITTER }}" target="twitter"><img src="{{asset('public/img/Icon awesome-twitter.png')}}"> </a></li>
+                <li class="px-3"><a href="{{ DISCORD }}" target="discord"><img src="{{asset('public/img/discord-50.png')}}"> </a></li>
               </ul>
             </div>
           </div>

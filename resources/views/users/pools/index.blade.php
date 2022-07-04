@@ -98,9 +98,16 @@
                                                         <div class="col-sm-5 mt-4 w-90 pb-3">
                                                             <div class="okiuj456">
                                                                 <a href="{{ url('view-detail',$value['ucid']) }}" class="hjytg458">+View Detail</a>
+                                                                @if ($value['pool_type']==0)
+                                                                    <a class="ahjl458" href="{{url('/invite/'.$value['id'])}}">
+                                                            <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
+                                                        </a>    
+                                                                @endif
+                                                                
 
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             @endforeach

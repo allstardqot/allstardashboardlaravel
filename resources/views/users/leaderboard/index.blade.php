@@ -73,7 +73,15 @@
                                                         <th>Username</th>
                                                         <th class="shdghsdg">Fantasy Points</th>
                                                     </tr>
+                                                    @php
+                                                    $loginUserFantasyPoint=0;
+                                                    @endphp
                                                     @foreach ($leaderboardData as $key=>$userData)
+                                                    @php
+                                                    if($userData['id']==$user_id){
+                                                        $loginUserFantasyPoint=$userData['total_points'];
+                                                    }
+                                                    @endphp
                                                     <tr>
                                                         <td>{{$userData['rank']}}</td>
                                                         <td>{{$userData['user_name']}}</td>
@@ -91,7 +99,9 @@
                                             <div class="mypoint">
                                                 <div class="my-point-head">
                                                     <h4>{{isset($result['team_name'])?$result['team_name']:''}}</h4>
-                                                    <a href="{{ route('edit-team',$userTeam['id'])  }}" class="btn btn-danger">Edit Team</a>
+                                                    @if($result['week']>currentWeek())
+                                                        <a href="{{ route('edit-team',$userTeam['id'])  }}" class="btn btn-danger">Edit Team</a>
+                                                    @endif
                                                 </div>
                                                 <div class="table-responsive">
                                                     <table class="table">
@@ -99,10 +109,15 @@
                                                         @php
                                                                 $total_fpoints=0;
                                                         @endphp
-                                                        @foreach($result as $key => $data)    
+                                                        @foreach($result as $key => $data) 
                                                         @if(!isset($data['name']))
                                                             @continue;
                                                         @endif
+                                                        @php
+                                                            if(isset($playersData[$data['id']])){
+                                                                $data['total_points']=$playersData[$data['id']];
+                                                            }
+                                                        @endphp   
                                                             <tr>
                                                                 <td>
                                                                     <h5>{{$data['name']}}</h5>
@@ -137,7 +152,7 @@
                                                     
                                                  @endphp
                                                     <div class="fantacy-point">
-                                                        <h3>Fantasy Point <strong> ${{$total_fpoints}}</strong></h3>
+                                                        <h3>Total Fantasy Points<strong> <img class="img-fluid" width="28" src="{{ asset('public/assets/image/coins.png') }}" alt="">{{$loginUserFantasyPoint}}</strong></h3>
                                                     </div>
                                                 </div>
                                             </div>

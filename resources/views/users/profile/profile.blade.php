@@ -48,7 +48,7 @@
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
             <h3>{{ $usercontest }}</h3>
-            <h6>Total Contest</h6>
+            <h6>Total Contest(s)</h6>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
             <h3>
               <img src="{{ asset('public/assets/image/coins.png') }}" alt="" class="img-fluid" width="38">
               {{$totalCoins}}</h3>
-            <h6>Total Coins</h6>
+            <h6>Total AFC Tokens</h6>
           </div>
         </div>
         <div class="col-lg-3 mt-3">
@@ -69,7 +69,7 @@
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
             <h3>{{$fantasyPoint}}</h3>
-            <h6>Fantasy Point</h6>
+            <h6>Fantasy Points</h6>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ class WinningProcess implements ShouldQueue
      */
     public function __construct()
     {
-        $this->queue = 'setuserteamtotal';
+        $this->queue = 'winningprocess';
     }
 
     /**
@@ -94,12 +94,20 @@ class WinningProcess implements ShouldQueue
                                 }
                                 foreach($value['user_id'] as $user_id){
                                     if(User::where('id', $user_id)->increment('wallet',$eachUser)){
+                                        $userData=User::find($user_id)->toArray();
+                                        $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser];
                                         $payment            = new Payment;
-                                        $payment->user_id   = $poolValue['user_id'];
+                                        $payment->user_id   = $user_id;
                                         $payment->amount    = $eachUser;
                                         $payment->type      = 'CONTEST WON';
                                         $payment->transaction_id = uniqid();
-                                        $payment->save();
+                                        if($payment->save()){
+                                            Mail::send('winning_mail', $data, function($message) use ($userData)  {
+                                                $message->to($userData['email'], 'Tutorials Point')->subject
+                                                    ('Winnings Distribution All Star');
+                                                
+                                                });
+                                        }
                                         UserContest::where('pool_id',$pool_id)->update(['winning_distribute'=>1]);
                                     }
                                 }

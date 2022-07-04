@@ -52,7 +52,12 @@ class HomeController extends Controller
 
         $jointuser = UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->select(['user_pools.id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->pluck('joined','user_pools.id')->toArray();
 
+        
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
+        if($_SERVER['REMOTE_ADDR'] == '49.204.163.246'){
+
+            // prr($topplayers);die;
+        }
 
         $contest_pool = UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
         //$team = Team::get();
@@ -156,14 +161,23 @@ class HomeController extends Controller
     }
 
     public function userinvite(Request $request){
-
-        $data = ['name'=>$request->name,'email'=>$request->email,'pool_name'=>$request->pool_name];
+        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$request->pool_name];
         $email = $request->email;
-        Mail::send('mail', $data, function($message) use ($email)  {
-           $message->to($email, 'Tutorials Point')->subject
-              ('All Star Invite');
-           
-        });
+        if(is_array($email)){
+            foreach($email as $emailValue){
+                Mail::send('mail', $data, function($message) use ($emailValue)  {
+                    $message->to($emailValue, 'Tutorials Point')->subject
+                       ('All Star Invite');
+                    
+                 });
+            }
+        }else{
+            Mail::send('mail', $data, function($message) use ($email)  {
+            $message->to($email, 'Tutorials Point')->subject
+                ('All Star Invite');
+            
+            });
+        }
         return redirect('home')->with('message',"Email(s) Sent Successfully.");
 
     }
@@ -189,4 +203,10 @@ class HomeController extends Controller
         
         return $html;
     }
+
+    // public function playerdetail(Request $request){
+    //     $id = $request->id;
+
+
+    // }
 }

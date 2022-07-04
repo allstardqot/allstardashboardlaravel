@@ -48,9 +48,13 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                             </div>
                         </div>
                     </div>
-                    <div class="input-container sdhnd87 sdsdsde44">
+                    <div class="col-md-12">
+                    <div class="input-container sdhnd87 sdsdsde44 align-items-center justify-content-center justify-content-lg-between">
+                        <div class="search-box mb-2 mb-lg-0">
                         <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="goal_keeper" value="{{!empty($request['searchData']) && $request['type']=='goalkeeper'?$request['searchData']:''}}" />
                         <i class="fa fa-search icon sdcjd8" id="goal_keeper_search"></i>
+                        </div>
+                        <div class="d-flex align-items-center  ">
                         <a class="sdjndk7" onclick="goalKeepar()" href="javascript:void(0)">
                             <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
                         </a>
@@ -60,13 +64,15 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         <a class="sdjndk788" href="javascript:void(0)" id="goalkeeper_filt">
                             Apply
                         </a>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
 
 
 
-                <div class="row mt-2 sortby" id="sortbyby">
+                <div class="row mt-2 sortby justify-content-sm-between" id="sortbyby">
                     <div class="col-sm-7 mt-3">
                         <div class="sxdjdj87">
                             <div class="sdjd787">
@@ -100,7 +106,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value"> <img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
+                                <p class="o-value"> <img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-bottom;margin-right: 4px;" alt="" class="img-fluid" width="18">0</p>
                                 <p class="goalkeeper_range range-slider__value">${{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 
@@ -240,9 +246,12 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         @endfor
                     </div>
                 </div>
-                <div class="input-container sdhnd87 sdsdsde44">
-                    <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="defender" value="{{!empty($request['searchData']) && $request['type']=='defender'?$request['searchData']:''}}" />
+                <div class="input-container sdhnd87 sdsdsde44 align-items-center justify-content-center justify-content-lg-between">
+                <div class="search-box mb-2 mb-lg-0">    
+                <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="defender" value="{{!empty($request['searchData']) && $request['type']=='defender'?$request['searchData']:''}}" />
                     <i class="fa fa-search icon sdcjd8" id="defender_search"></i>
+                    </div>
+                    <div class="d-flex align-items-center  ">
                     <a class="sdjndk7" onclick="defenderfilt()" href="javascript:void(0)">
                         <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
                     </a>
@@ -252,10 +261,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                     <a class="sdjndk788" href="javascript:void(0)" id="defender_filt">
                         Apply
                     </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mt-2 sortby" id="sortbydefender">
+            <div class="row mt-2 sortby justify-content-sm-between"  id="sortbydefender">
                 <div class="col-sm-7 mt-3">
                     <div class="sxdjdj87">
                         <div class="sdjd787">
@@ -289,7 +299,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                         <p class="range-slider__subtitle">Price Range</p>
                         <div class="value-data">
-                            <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
+                            <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-bottom;margin-right: 4px;" alt="" class="img-fluid" width="18">0</p>
                             <p class="defender_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                         </div>
 
@@ -424,9 +434,12 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                             @endfor
                         </div>
                     </div>
-                    <div class="input-container sdhnd87 sdsdsde44">
-                        <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="midfielder" value="{{!empty($request['searchData']) && $request['type']=='midfielder'?$request['searchData']:''}}" />
+                    <div class="input-container sdhnd87 sdsdsde44 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="search-box mb-2 mb-lg-0">        
+                    <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="midfielder" value="{{!empty($request['searchData']) && $request['type']=='midfielder'?$request['searchData']:''}}" />
                         <i class="fa fa-search icon sdcjd8" id="midfielder_search"></i>
+                </div>
+                <div class="d-flex align-items-center  ">
                         <a class="sdjndk7" onclick="midfielderfilt()" href="javascript:void(0)">
                             <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
                         </a>
@@ -436,10 +449,11 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         <a class="sdjndk788" href="javascript:void(0)" id="midfielder_filt">
                             Apply
                         </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row mt-2 sortby" id="sortbymidfielder">
+                <div class="row mt-2 sortby justify-content-sm-between" id="sortbymidfielder">
                     <div class="col-sm-7 mt-3">
                         <div class="sxdjdj87">
                             <div class="sdjd787">
@@ -473,7 +487,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
+                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-bottom;margin-right: 4px;" alt="" class="img-fluid" width="18">0</p>
                                 <p class="midfielder_range range-slider__value">${{!empty($request['type']=='defender') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 
@@ -609,9 +623,12 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         </div>
                     </div>
 
-                    <div class="input-container sdhnd87 sdsdsde44">
-                        <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="forward" value="{{!empty($request['searchData']) && $request['type']=='forward'?$request['searchData']:''}}" />
+                    <div class="input-container sdhnd87 sdsdsde44 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="search-box mb-2 mb-lg-0">          
+                    <input class="input-field inputcolor sdjd8u7" type="text" placeholder="search" name="usrnm" id="forward" value="{{!empty($request['searchData']) && $request['type']=='forward'?$request['searchData']:''}}" />
                         <i class="fa fa-search icon sdcjd8" id="forward_search"></i>
+                        </div>
+                        <div class="d-flex align-items-center  ">
                         <a class="sdjndk7" onclick="forwardfilt()" href="javascript:void(0)">
                             <i class="fa fa-filter sdjd87" aria-hidden="true"></i>
                         </a>
@@ -621,11 +638,12 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         <a class="sdjndk788" href="javascript:void(0)" id="forward_filt">
                             Apply
                         </a>
+                        </div>
 
                     </div>
                 </div>
 
-                <div class="row mt-2 sortby" id="sortbyforward">
+                <div class="row mt-2 sortby justify-content-sm-between" id="sortbyforward">
 
                     <div class="col-sm-7 mt-3">
                         <div class="sxdjdj87">
@@ -660,7 +678,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
-                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-top;" alt="" class="img-fluid" width="20">0</p>
+                                <p class="o-value"><img src="{{ asset('public/assets/image/coins.png') }}" style="vertical-align: text-bottom; margin-right: 4px;" alt="" class="img-fluid" width="18">0</p>
                                 <p class="forward_range range-slider__value">$ {{!empty($request['type']=='forward') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
                             </div>
 

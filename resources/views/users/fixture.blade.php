@@ -52,6 +52,7 @@
               <thead>
                 <tr>
                   <th scope="col"><h3>Matches</h3></th>
+                  <th scope="col"><h3>Starting Date</h3></th>
                   <th scope="col" class="text-end"><h3>Result</h3></th>
 
                 </tr>
@@ -95,9 +96,22 @@
                             />
                           </div>
                         </div>
-                      </td>
-                      <td class="text-end">
-                    <h6 class="fs-5 text-white">Win</h6>
+                    </td>
+                    <td><p>{{$fixturValue['starting_at']}}</p></td>
+                    <td class="text-end">
+                      @php
+                      $scoreData='';
+                      if(!empty($fixturValue['scores'])){
+                        $scoreData=json_decode($fixturValue['scores'],true);
+                      }
+                      if(!empty($scoreData)){
+                        echo '<h6 class="fs-5 text-white">'.$scoreData['localteam_score'].'/'.$scoreData['visitorteam_score'].'</h6>';
+                      }else{
+                        echo '<h6 class="fs-5 text-white">1/1</h6>';
+                      }
+                      @endphp
+
+                      
                   </td>
                       {{-- <td>
                         <div class="fropdown-bar-menu">
