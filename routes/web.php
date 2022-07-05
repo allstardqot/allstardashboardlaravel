@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
 setting();
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
+Route::get('/test',[DemoController::class,'test']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
 Route::get('/rankUpdate',[DemoController::class,'rankUpdate']);
 Route::get('/setuserTeamtotal/{fixtureId}',[DemoController::class,'setuserTeamtotal']);
@@ -131,9 +132,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/email/verify', [VerificationController::class ,'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', [VerificationController::class,'resend'])->name('verification.resend');
-   
 
-   
+
+
     // Route::get('/fixture-data',function(){
     //     return view('users/fixture');
     // });

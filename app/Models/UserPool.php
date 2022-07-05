@@ -13,10 +13,11 @@ class UserPool extends Model
         'id',
         'user_id',
         'pool_name',
+        'email_send',
         'pool_Type',
         'max_participants',
         'team_id',
         'password',
-        
+
     ];
 }

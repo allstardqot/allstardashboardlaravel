@@ -18,7 +18,9 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\UserTeam;
 use App\Models\UserContest;
+use App\Models\UserPool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 
 
@@ -48,6 +50,28 @@ class DemoController extends Controller
         }
     }
 
+    public function test(){
+        // $poolData=UserPool::join('weeks','weeks.id','user_pools.week_id')->whereDate('weeks.starting_at','<=',Carbon::now())->where('user_pools.email_send',0)->get()->toArray();
+        $poolData=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('weeks','weeks.id','user_pools.week_id')->join('users','users.id','user_contests.user_id')->whereDate('weeks.starting_at','<=',Carbon::now())->where('user_pools.email_send',0)->select(['users.email','users.user_name','user_contests.pool_id','user_pools.pool_name'])->get()->toArray();
+        $poolIdArray=[];
+        foreach($poolData as $poolValue){
+            $data = ['pool_name'=>$poolValue['pool_name'],'user_name'=>$poolValue['user_name']];
+
+            Mail::send('contest_live_mail', $data, function($message) use ($poolValue)  {
+                $message->to($poolValue['email'], 'Tutorials Point')->subject
+                    ('Contest Gone Live All Star');
+
+                });
+
+            $poolIdArray[]=$poolValue['pool_id'];
+
+        }
+        $poolIdArray=array_unique($poolIdArray);
+        if(!empty($poolIdArray)){
+            UserPool::whereIn('id', $poolIdArray)->update(['email_send' => 1]);
+        }
+    }
+
     public function rankUpdate(){
         //echo "fine";
         $priviousWeek=24;
@@ -58,7 +82,7 @@ class DemoController extends Controller
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
-        
+
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){
                 //prr($winningData);
@@ -80,7 +104,7 @@ class DemoController extends Controller
                         $newArray['admin_price']=$adminPrice;
                         if($rank==0 || $poolValue['rank']==$rank){
                             $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
-                            $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
+                            $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
                             $countRank=$countRank+1;
                         }else{
                             $newArray['rank'][$poolValue['rank']]['count']=$countRank;
@@ -107,7 +131,7 @@ class DemoController extends Controller
                                     //echo $eachUser;die;
                                     foreach($value['user_id'] as $user_id){
                                         if(User::where('id', $user_id)->increment('wallet',$eachUser)){
-                                            
+
                                             $payment            = new Payment;
                                             $payment->user_id   = $user_id;
                                             $payment->amount    = $eachUser;
@@ -125,14 +149,14 @@ class DemoController extends Controller
                         }
                     }
                 }
-            }   
+            }
         }
         echo "ttttttT";die;
 
         // $week=24;
         // $user_team = UserTeam::where('current_week',$week)->get();
         // foreach($user_team as $key=>$teamValue){
-            
+
         //     $total_points=0;
         //     $players = $teamValue['players'];
         //     $selected_player = json_decode($players, true);
@@ -244,7 +268,7 @@ class DemoController extends Controller
         //             $newArray['admin_price']=$adminPrice;
         //             if($rank==0 || $poolValue['rank']==$rank){
         //                 $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
-        //                 $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
+        //                 $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
         //                 $countRank=$countRank+1;
         //             }else{
         //                 $newArray['rank'][$poolValue['rank']]['count']=$countRank;
@@ -285,7 +309,7 @@ class DemoController extends Controller
         //                 }
         //             }
         //         }
-        //     }   
+        //     }
         // }
         echo "Ttt";die;
         prr($winningData);
@@ -299,7 +323,7 @@ class DemoController extends Controller
             if($teamValue['user_id']!=7){
                 continue;
             }
-            
+
             $total_points=0;
             $players = $teamValue['players'];
             $selected_player = json_decode($players, true);
@@ -501,7 +525,7 @@ class DemoController extends Controller
                                 'is_placeholder' => $visitorTeamData['is_placeholder'],
                             ]);
                         }
-                        
+
                         // GetSquad::dispatch($value['id']);
                         // $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
                         // log::info($lineupSchedule);

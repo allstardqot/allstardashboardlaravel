@@ -48,6 +48,13 @@ module.exports = {
             interpreter: "php",
             exec_mode: "fork",
             args: ["queue:work", "--daemon", "--queue=winningprocess"],
+        },
+        {
+            name: "Contest live Email send",
+            script: "artisan",
+            interpreter: "php",
+            exec_mode: "fork",
+            args: ["queue:work", "--daemon", "--queue=contestliveemail"],
         }
     ],
 };
