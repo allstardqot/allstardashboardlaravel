@@ -19,7 +19,13 @@
          <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a>
       </div>
       <div class="col-lg-4 mt-2 text-white">
-        <img width="85" height="85" style="border-radius: 100%" src="{{ asset('public/profileImage/'.auth()->user()->profile_image) }}" />
+        {{-- <img width="85" height="85" style="border-radius: 100%" src="{{ asset('public/profileImage/'.auth()->user()
+        ->profile_image) }}" /> --}}
+        @if(auth()->user()->profile_image)
+            <img width="35" height="35" style="border-radius: 100%" src="{{asset('public/profileImage/'.auth()->user()->profile_image)}}" width="35px" >
+        @else
+            <img src="{{asset('public/assets/image/Rectangle 276.png')}}" width="35px" >
+        @endif
         <h5 class="mt-2">{{$user->user_name}}</h5>
       </div>
       <div class="col-lg-4 mt-2">

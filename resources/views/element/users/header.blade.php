@@ -52,7 +52,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{Auth::user()->user_name}}
-                  <img width="35" height="35" style="border-radius: 100%" src="{{asset('public/profileImage/'.auth()->user()->profile_image)}}" width="35px" >
+                    @if(auth()->user()->profile_image)
+                        <img width="35" height="35" style="border-radius: 100%" src="{{asset('public/profileImage/'.auth()->user()->profile_image)}}" width="35px" >
+                    @else
+                        <img src="{{asset('public/assets/image/Rectangle 276.png')}}" width="35px" >
+                    @endif
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
