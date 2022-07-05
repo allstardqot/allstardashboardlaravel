@@ -8,36 +8,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="remove_common_cookie nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
+              <a class="nav-link {{ (request()->is('home')) ? 'active' : '' }}" aria-current="page" href="{{ url('/home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="remove_common_cookie nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
+                <a class="nav-link {{ (request()->is('fixture-data')) ? 'active' : '' }}" aria-current="page" href="{{ url('/fixture-data') }}">Fixtures</a>
               </li>
             <li class="nav-item">
-              <a class="remove_common_cookie nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}">Create Team</a>
+              <a class="nav-link {{ (request()->is('create-team')) ? 'active' : '' }}" href="{{ url('/create-team') }}" >Create Team</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="remove_common_cookie  nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link {{ (request()->is('team') || request()->is('current-team')) ? 'active' : '' }}" href="{{ url('/team') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 My Team
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Active AllStars Teams</a></li>
-                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Gameweek Teams</a></li>
+                <li><a class="dropdown-item" href="{{ url('/current-team') }}">Current Week Team</a></li>
+                <li><a class="dropdown-item" href="{{ url('/team') }}">Next Week Team</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="remove_common_cookie nav-link droplink {{ (request()->is('my-pool')) || (request()->is('create-pool'))  ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link droplink {{ (request()->is('my-pool')) || (request()->is('create-pool'))  ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pool
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/my-pool') }}">My Pools</a></li>
+                <li><a class="dropdown-item" href="{{ url('/my-pool') }}">My Pool</a></li>
                 <li><a class="dropdown-item" href="{{ url('/create-pool') }}">Create Pool</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="remove_common_cookie nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
+              <a class="nav-link {{ (request()->is('manager-lounge')) ? 'active' : '' }}" aria-current="page" href="{{ url('/manager-lounge') }}">Manager’s Lounge</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{ (request()->is('latest-news')) ? 'active' : '' }}" href="{{ url('/latest-news') }}">News</a>
@@ -52,17 +52,16 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{Auth::user()->user_name}}
-                  <img src="{{asset('public/assets/image/Rectangle 276.png')}}" width="35px" >
+                  <img width="35" height="35" style="border-radius: 100%" src="{{asset('public/profileImage/'.auth()->user()->profile_image)}}" width="35px" >
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
                   <li>
-                      <a class="dropdown-item" id="logout_click" href="{{ url('/logout') }}">Log out</a>
+                    <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{{ url('/transection') }}">Transactions</a>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
                   </li>
-               
                 </ul>
               </li>
             </ul>

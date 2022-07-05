@@ -4,12 +4,13 @@
 <main>
     <div class="container hgftrsde">
         <h3 class="text-white text-center mt-5 editprofileText">Edit Profile</h3>
-        <form method="POST" action="{{ url('update') }}">
-            
-           
+        <form method="POST" action="{{ url('update') }}" enctype="multipart/form-data">
+
+
             @csrf
             <div class="row">
                 <div class="col-lg-6 mt-5 text-center">
+                    <input class="inpuytgfcv" type="file" name="profile_image">
                     <input class="inpuytgfcv" type="text" id="user_name" name="user_name" placeholder="Name" value="{{$user['user_name']}}" /><br />
                     <input class="inpuytgfcv mt-4" type="text" id="email" name="email" placeholder="Email" value="{{$user['email']}}" /><br />
                     <br>
@@ -56,7 +57,7 @@
                         </select>
                     </div>
 
-                   
+
 
                     <input class="inpuytgfcv mt-4" type="text" id="city" name="city" placeholder="City" value={{$user['city']}}><br />
                 </div>

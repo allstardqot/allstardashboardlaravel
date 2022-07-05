@@ -16,10 +16,10 @@
   <div class="container sdhdjhsio">
     <div class="row mt-5 text-center sxdcnd">
       <div class="col-lg-4 mt-2">
-         <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a> 
+         <a href="#" class="sddmmnd767" id='inviteBtn'>Invite Friend</a>
       </div>
       <div class="col-lg-4 mt-2 text-white">
-        <img src="{{ asset('public/assets/image/Rectangle%20276.png') }}" />
+        <img width="85" height="85" style="border-radius: 100%" src="{{ asset('public/profileImage/'.auth()->user()->profile_image) }}" />
         <h5 class="mt-2">{{$user->user_name}}</h5>
       </div>
       <div class="col-lg-4 mt-2">
@@ -82,7 +82,7 @@
     />
 
     </a>
-    
+
   </div>
   <script>
     function closeAlert() {
@@ -117,7 +117,7 @@
         </div>
        </form>
       </div>
-     
+
     </div>
   </div>
 </div>
