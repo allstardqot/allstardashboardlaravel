@@ -10,6 +10,38 @@
   margin-top: -293px;
   z-index: 1;
 }
+.allstar-about-all .heading {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.allstar-about-all .image img {
+  max-width: 500px;
+}
+.allstar-about-all .content h3 {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23px;
+  color: #fff;
+  margin: 32px 0px 25px;
+}
+.allstar-about-all .btn-danger {
+  font-weight: 400;
+  font-size: 15px;
+  padding: 18px 52px;
+  border-radius: 50px;
+  background: #ff5000;
+  border-color: #ff5000;
+}
+.allstar-about-all .buy-token {
+  margin-right: 20px;
+}
+.allstar-about-all .image {
+  text-align: right;
+}
 .picking-card {
   width: 100%;
   max-width: 374px;
@@ -454,11 +486,11 @@ header .hsakdjh56 {
     padding: 0px 0px !important;
   }
   .sdndj67 h3 {
-    font-size: 2em !important;
+    font-size: 1em !important;
   }
 
   .sdndj67 h1 {
-    font-size: 4em !important;
+    font-size: 2em !important;
   }
   .agjustHome .pregraph {
     font-size: 18px;
@@ -479,14 +511,17 @@ header .hsakdjh56 {
     top: -12px;
   }
   .leftSide::before {
-    width: 150px;
-    height: 475px;
+    width: 76px;
+    height: 238px;
   }
 }
 @media (max-width: 991px) {
   .about-us-section {
     padding-left: 0px;
     padding-right: 0px;
+  }
+  .sdndj67 {
+    margin-top: 50px;
   }
   .input-one {
     width: 100%;
@@ -521,13 +556,23 @@ header .hsakdjh56 {
   header ul.navbar-nav.mt-2.mt-lg-0 {
     margin-top: 0px !important;
   }
+  .allstar-about-all .btn-danger {
+    padding: 8px 25px;
+  }
 }
 @media (max-width: 767.98px) {
   .sdhnsk7 {
-    font-size: 2.5em;
+    font-size: 2rem;
   }
   .faq-qustion .dropdown {
     padding: 4%;
+  }
+  .allstar-about-all .buy-token {
+    margin-right: 6px;
+  }
+  .allstar-about-all .heading {
+    font-size: 28px;
+    line-height: 34px;
   }
   .consectetur-head {
     padding: 2% 0px;
@@ -542,7 +587,7 @@ header .hsakdjh56 {
     font-size: 17px;
   }
   .rightSide img {
-    height: 239px;
+    height: 128px;
   }
   .leftSide::before {
     width: 70px;

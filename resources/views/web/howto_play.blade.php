@@ -12,18 +12,19 @@
       <div class="row justify-content-center">
         <div class="col-12 col-sm-6  col-lg-4 text-center text-white">
           <img class="img-fluid"   src="{{asset('public/img/Step%2002.png')}}" >
-          <h3><b>Get Your Coins</b></h3>
-          <p>Buy Allstar coins on major DEXs and on-site Payment Providers.</p>
+          <h3><b>Choose Your Allstars</b></h3>
+          <p>Pick a winning team of 7 by Choosing Your Favorite Players. Show your Management skills by selecting your starting 5 Allstars each week.
+</p>
         </div>
         <div class="col-12 col-sm-6 col-lg-4  text-center text-white">
           <img class="img-fluid" src="{{asset('public/img/Step%2003.png')}}">
-          <h3><b>Choose Your Champions</b></h3>
-          <p >Pick a winning team by buying and owning your favorite players just as you would a real stock.</p>
+          <h3><b>Fund Your Wallet</b></h3>
+          <p >Buy Allstar Fantasy Coins (AFC) on major DEXs and on-site Payment Providers. Use AFC to buy-in Allstars Fantasy contests.</p>
         </div>
         <div class="col-12 col-sm-6 col-lg-4  text-center text-white">
           <img class="img-fluid" src="{{asset('public/img/Step%2004.png')}}">
           <h3 ><b>Compete and Win</b></h3>
-          <p> Challenge the best managers in public pools and battle your friends in private tournaments. When your players perform well, you win and we all celebrate with you.</p>
+          <p>Challenge the best managers in public pools and battle your friends in private tournaments. When your players perform well, you win AFC and we all celebrate with you.</p>
         </div>
       </div>
     </div>

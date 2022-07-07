@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>All Stars @yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.ico') }}">
 
     <!-- Styles -->
 
@@ -240,6 +241,9 @@
 
    
     $(document).ready(function() {
+        
+        var obj = document.getElementById("wallet-sec");
+        obj.style.display = "none";
 
 
         $(".typeoption").change(function(){

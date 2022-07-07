@@ -111,8 +111,25 @@ body {
   background-color: #ff5000;
   border-color: #ff5000;
 }
+.hgftrsde .form-check-input {
+  margin-top: 0.1em;
+}
+.btn-profile {
+  left: 11px;
+  top: 50%;
+  transform: translate(0px, -50%);
+
+  border-radius: 4px;
+  outline: none;
+  border: 0;
+  padding: 4px;
+}
+.profile-images {
+  padding-left: 146px !important;
+}
 .transition-sec .page-link {
   color: #ff5000;
+  height: 32px;
 }
 #invitemodal .modal-title {
   font-size: 1.2rem;
@@ -644,11 +661,15 @@ strong {
 }
 .news-content {
   background: #fff;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px;
   padding: 5px;
 }
 .sdjd787 {
   width: 25%;
+}
+.head-drop #navbarDropdown img {
+  object-fit: cover;
+  object-position: center;
 }
 
 .sdhnd7789 {
@@ -4369,7 +4390,7 @@ main {
     height: 145px;
   }
   .inpuytgfcv {
-    width: 95%;
+    width: 100%;
   }
   .sdjdjh {
     padding-left: 10px !important;
@@ -4392,13 +4413,19 @@ main {
     font-size: 14px;
   }
   .hgtfr56 {
-    width: 95%;
+    width: 100%;
   }
   .hgvfr56 {
     margin: 0px auto;
   }
+  .edit-profile-form .form-group {
+    width: 100%;
+  }
+  .edit-profile-form .form-group label {
+    font-size: 14px;
+  }
   .hgyui89 {
-    width: 95%;
+    width: 100%;
   }
   .input-container {
     width: 80%;

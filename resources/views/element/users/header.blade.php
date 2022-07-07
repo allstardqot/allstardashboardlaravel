@@ -32,7 +32,7 @@
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ url('/my-pool') }}">My Pool</a></li>
+                <li><a class="dropdown-item" href="{{ url('/my-pool') }}">My Pools</a></li>
                 <li><a class="dropdown-item" href="{{ url('/create-pool') }}">Create Pool</a></li>
               </ul>
             </li>
@@ -64,7 +64,7 @@
                     <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{{ url('/transection') }}">Transaction</a>
+                    <a class="dropdown-item" href="{{ url('/transection') }}">Transactions</a>
                   </li>
                 </ul>
               </li>

@@ -25,7 +25,7 @@
 
                     <div class="input-group">
 
-                      <span class="input-group-text" > <label for="basic-url" class="form-label">Starting Date</label></span>
+                      <span class="input-group-text" > <label for="basic-url" class="form-label">Date/Time</label></span>
 
   <input  class="form-control" type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
 

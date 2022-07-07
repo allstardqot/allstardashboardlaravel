@@ -16,6 +16,7 @@ class Squad extends Model
         'fixture_starting_at',
         'team',
         'is_active',
+        'injured',
         'team_id',
         'shots',
         'shot_point',

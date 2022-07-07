@@ -90,9 +90,10 @@ class GetSquad implements ShouldQueue
                         ], [
                             'fixture_starting_at' =>$fixtureData['starting_at'],
                             'week_id' =>$weekId,
+                            'injured' => ($playerData['injured'])?1:0,
                             'team_id' => $teamValue,
                             'rating' => $playerData['rating'],
-                            'card' => json_encode(['yellowcards' => $playerData['yellowcards'], 'redcards' => $playerData['redcards'], 'yellowredcards' => $playerData['yellowred']])
+                            'cards' => json_encode(['yellowcards' => $playerData['yellowcards'], 'redcards' => $playerData['redcards'], 'yellowredcards' => $playerData['yellowred']])
                         ]);
                     }
                 }

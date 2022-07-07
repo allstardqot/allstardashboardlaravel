@@ -4,14 +4,18 @@
 <main>
     <div class="container hgftrsde">
         <h3 class="text-white text-center mt-5 editprofileText">Edit Profile</h3>
-        <form method="POST" action="{{ url('update') }}" enctype="multipart/form-data">
+        <form method="POST" class="edit-profile-form" action="{{ url('update') }}" enctype="multipart/form-data">
 
 
             @csrf
             <div class="row">
                 <div class="col-lg-6 mt-5 text-center">
-                    <input class="inpuytgfcv" type="file" name="profile_image">
-                    <input class="inpuytgfcv" type="text" id="user_name" name="user_name" placeholder="Name" value="{{$user['user_name']}}" /><br />
+
+                <div class="form-group  position-relative mt-0 mb-4 pe-0">
+                    <button class="btn-profile position-absolute" type="button" onclick="document.getElementById('profileimg').click()">Upload Your Profile Picture Here</button>
+                    <input class="inpuytgfcv profile-images w-100" type="file" name="profile_image " id="profileimg">
+                    </div>
+                    <input class="inpuytgfcv" type="text" id="user_name" name="user_name" placeholder="User Name" value="{{$user['user_name']}}"  /><br />
                     <input class="inpuytgfcv mt-4" type="text" id="email" name="email" placeholder="Email" value="{{$user['email']}}" /><br />
                     <br>
 
@@ -39,6 +43,12 @@
                             <input class="form-check-input" type="radio" name="gender" id="gender" value="Female" <?= ($user['gender']=='Female')?"checked":''; ?> />
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name=" Prefer Not to Say" id="gender" value="Female" <?= ($user['gender']=='Female')?"checked":''; ?> />
+                            <label class="form-check-label" for="flexRadioDefault2">
+                            Prefer Not to Say
                             </label>
                         </div>
                     </div>

@@ -100,7 +100,10 @@ class WinningProcess implements ShouldQueue
                                         $weeak=Week::find(priviousWeek())->toArray();
 
                                         $userData=User::find($user_id)->toArray();
-                                        $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser,'starting_at'=>$weeak['starting_at'],'ending_at'=>$weeak['ending_at']];
+                                        $data = ['name'=>'','amount'=>'','gameweek_date'=>'','starting_at'=>'','ending_at'=>''];
+                                        if(!empty($userData) && !empty($weeak)){
+                                            $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser,'starting_at'=>$weeak['starting_at'],'ending_at'=>$weeak['ending_at']];
+                                        }
                                         $payment            = new Payment;
                                         $payment->user_id   = $user_id;
                                         $payment->amount    = $eachUser;

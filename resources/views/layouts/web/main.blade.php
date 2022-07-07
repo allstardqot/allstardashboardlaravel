@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>All Stars @yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/favicon.ico') }}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css"  href="{{asset('public/css/bootstrap.min.css')}}" />

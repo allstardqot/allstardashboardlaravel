@@ -93,8 +93,7 @@ class PoolController extends Controller
             //     // prr($completeDate->starting_at);
             // }
         }
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where(['user_id'=>$user_id])->orderBy("comment",'desc')->get();
-        //prr($upcomingPool);
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
            return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'trending'=>$trending,'completeDate'=>$completeDate,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
     }
 

@@ -6,7 +6,7 @@
     <div class="main1">
         <div class="container-fluid p-0 text-white">
             <div class="text-white omne2">
-                <h1 class="conra1">Congratulation! Pool Created!!!</h1>
+                <h1 class="conra1">Congratulations, Pool Created!</h1>
                 <div class="row">
                     <div class="bottom-container roqq">
                         <div class="nigblue">

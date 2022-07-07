@@ -4,30 +4,8 @@
     <main>
         <div class="container-fluid p-4 text-white sdhdfksk">
             <div class="row">
-                <div class="col-lg-3">
-                    @include('components/trendingfeeds')
-
-                    <div class="hjuy4589">
-                        <h4 class="mt-5 mkuytg">Premier League News</h4>
-                        <div class="latest-image-sec">
-                            @foreach($newsdata as $key => $value)
-                            <div class="latest-card">
-                                <a href="{{ url('/latest-news') }}" class="latest-anchor">
-                                    <div class="news-content">
-                                        <h4>{{ $value['title'] }}</h4>
-                                    <p>{!! $value['localteam']!!}</p>
-    
-                                    <small>Read More..</small>
-                                    </div>
-    
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-    
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-3">
+             
+                <div class="col-lg-6 mt-3 order-lg-2">
                     <div class="njkas985">
                         <div class="dashboard-tab">
                             <ul class="nav nav-pills mb-3" id="pools-tab" role="tablist">
@@ -161,6 +139,29 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-1">
+                    @include('components/trendingfeeds')
+
+                    <div class="hjuy4589">
+                        <h4 class="mt-5 mkuytg">Premier League News</h4>
+                        <div class="latest-image-sec">
+                            @foreach($newsdata as $key => $value)
+                            <div class="latest-card">
+                                <a href="{{ url('/latest-news') }}" class="latest-anchor">
+                                    <div class="news-content">
+                                        <h4>{{ $value['title'] }}</h4>
+                                    <p>{!! $value['localteam']!!}</p>
+    
+                                    <small>Read More..</small>
+                                    </div>
+    
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+    
                     </div>
                 </div>
                 @include('components/managers')
