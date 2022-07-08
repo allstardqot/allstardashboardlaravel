@@ -12,12 +12,12 @@
           </div>
           <div class="col-lg-3 col-12 text-center text-lg-left">
             <h3>LEGAL</h3>
-            <p>Terms and Conditions</p>
+            <p><a href="{{ url('/terms-condition') }}" >Terms and Conditions</a></p>
             <p>Responsible gaming</p>
-            <p>AML Policy</p>
-            <p>KYC Policy</p>
+            <p><a href="{{ url('/aml-policy') }}" >AML Policy</a></p>
+            <p><a href="{{ url('/kyc-policy') }}" >KYC Policy</a></p>
             <p>Self Exclusion</p>
-            <p>Underage Gaming Policy</p>
+            <p><a href="{{ url('/gaming-policy') }}" >Underage Gaming Policy</a></p>
           </div>
           <div class="col-lg-6 col-12 text-center text-lg-left">
             <h3>CONTACT US</h3>

@@ -167,17 +167,20 @@ class PoolController extends Controller
             $pool->entry_fees =  $entry_fees;
             $pool->save();
             //prr($pool);
+            $team_id = $request->input('team_id');
             // if($request->input('pool_type') == '1' && $pool->save() ){
                 $contest = new UserContest;
                 $contest->user_id    = Auth::user()->id;
                 $contest->pool_id    = $pool->id;
-                $contest->user_team_id = $request->input('team_id');
+                $contest->user_team_id = $team_id;
                 $contest->save();
             // }else{
                 // $pool->save();
             // }
             $weekData=Week::find(nextWeek())->toArray();
             $type=($request->input('pool_type')==0)?"Public":"Private";
+            $UserTeam = UserTeam::find($team_id);
+            // prr($UserTeam->name);
             $starting_at=$ending_at='';
             if(!empty($weekData)){
                 $starting_at=$weekData['starting_at'];
@@ -185,7 +188,8 @@ class PoolController extends Controller
 
             }
             $emailValue=Auth::user()->email;
-            $data = ['name'=>Auth::user()->user_name,'email'=>$request->email,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+            $data = ['name'=>Auth::user()->user_name,'team_name'=>$UserTeam->name,'email'=>$request->email,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+            // prr($data);
             Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
                 $message->to($emailValue, 'Tutorials Point')->subject
                 ('All Star Join Pool');

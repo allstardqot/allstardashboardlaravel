@@ -93,7 +93,7 @@ So, how do you win? In a nutshell, players with the most points at the end of th
     <div class="row">
     <div class="col-md-12 text-center mt-5 pb-5">
      
-        <a class="butget" href="#">Pick Your Winners</a>
+        <a class="butget" href="{{route('create-team')}}">Pick Your Winners</a>
   </div>
      
     </div>

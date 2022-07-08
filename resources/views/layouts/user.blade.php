@@ -240,10 +240,10 @@
     }
 
    
+    var obj = document.getElementById("wallet-sec");
+    obj.style.display = "none";
     $(document).ready(function() {
         
-        var obj = document.getElementById("wallet-sec");
-        obj.style.display = "none";
 
 
         $(".typeoption").change(function(){
@@ -280,6 +280,31 @@
                   console.log(result)
                   $.notify("Email(s) Sent Successfully", "success");
 
+                }
+            });
+            // alert(invite_email)
+        });
+
+        $("#otp_submit").click(function () {
+            var otpVerfiy = $('#otpVerfiy').serialize();
+            // alert(invite_email)
+            // $("#modal").modal('hide');
+
+            $.ajax({
+                url: "otp-verify",
+                method: "get",
+                data: otpVerfiy,
+                success: function(result) {
+                    if(result == 'Success'){
+                        var obj = document.getElementById("wallet-sec");
+                        obj.style.display = "block";
+
+                        var invmodal = document.getElementById("invitemodal");
+                        invmodal.style.display = "none";
+                        $.notify("OTP Verfiy Successfully", "success");
+                    }else{
+                        $.notify("OTP Invaild", "warning");
+                    }
                 }
             });
             // alert(invite_email)

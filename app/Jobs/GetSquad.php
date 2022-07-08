@@ -45,7 +45,6 @@ class GetSquad implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("squad running".$this->fixtureId);
 
         $api = new EntitySport();
         $fixtureData=Fixture::find($this->fixtureId);
@@ -55,6 +54,9 @@ class GetSquad implements ShouldQueue
         foreach ($teamArray as $teamValue) {
             if (!empty($teamValue)) {
                 $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player');
+                
+                Log::info("squad running".json_encode($players));
+
                 foreach ($players as $playerData) {
                     if (!empty($playerData['player']['data'])) {
                         $playerDetail = $playerData['player']['data'];

@@ -123,7 +123,7 @@ class GetScore implements ShouldQueue
                             'other' => !empty($scoreValue['stats']['other']) ? json_encode($scoreValue['stats']['other']) : '',
                             'other_points' => json_encode($otherPoint),
                             'total_points' => $totalPoints,
-                            'rating' => !empty($scoreValue['stats']['rating']) ? $scoreValue['stats']['rating'] : '',
+                            //'rating' => !empty($scoreValue['stats']['rating']) ? $scoreValue['stats']['rating'] : '',
                         ]);
                     }
                     //SetUserTeamTotal::dispatch($this->fixtureId);

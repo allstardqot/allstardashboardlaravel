@@ -45,7 +45,7 @@
                         </span>
                     @enderror
                     <br />
-                    <input id="password" type="password" class="input-reis form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                    <input id="password" type="password" class="input-reis form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                         </span>
                     @enderror
                     <br />
-                    <input id="password-confirm" type="password" class="input-reis form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                    <input id="password-confirm" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="input-reis form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                         <br>
                     <div class="form-group">
                         <select class="form-control input-reis" name="country" >
@@ -66,6 +66,7 @@
                       </div>
                       {{-- <br /> --}}
                     <input id="referal-code" type="text" class="input-reis form-control" name="referal_code"  autocomplete="Referal Code" placeholder="Referal Code" value="{{ $referal }}">
+                    <div class="g-recaptcha brochure__form__captcha input-reis form-group" data-sitekey="6LctDc8gAAAAACQlsdFzTaVcji_VDVpoHgH2GZ-N" name="brochure__form__captcha"></div>
                         <br>
                       {{-- <div class="form-group">
                         <select class="form-control input-reis" name="team_id" >
@@ -85,7 +86,7 @@
                       </div> --}}
                        
                     <br />
-                    <p style="color: #828282;     width: 85%;    margin: auto;" class="mb-3" > By creating an account or using our services, you agree to our Terms and Conditions and Privacy Policy.</p>
+                    <p style="color: #828282;     width: 85%;    margin: auto;" class="mb-3" > By creating an account or using our services, you agree to our <a href="{{ url('/terms-condition') }}" >Terms and Conditions</a> and Privacy Policy.</p>
                         <button type="submit" class="but">
                             {{ __('Register') }}
                         </button>

@@ -84,6 +84,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         // print_r($data['country_code']);die;
         $user_data =  User::query()->orderByDesc('id')->limit(1)->first();
         // prr();referal_id
@@ -101,30 +102,53 @@ class RegisterController extends Controller
                 $user->save();
                 $user_id = $user->id;
             }
-
-            
-
         }
+        
         
         // echo 'ASU000'.($user_data->id+1);die;
         // prr($user->id);
         $refer_code = 'ASU000'.($user_data->id+1);
-
-        Mail::send('auth.register-email', ['user' => $data['user_name']], function($message) use($data){
-            $message->to($data['email']);
-            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
-            $message->subject('Welcome Email');
-        });
-        return User::create([
-            'user_name' => $data['user_name'],
-            'email' => $data['email'],
-            'role_id'=> 3 ,
-            'country'=> $data['country'] ,
-           'referral_code'=>$refer_code,
-           'referal_id'=>$user_id,
-            'password' => Hash::make($data['password']),
-        ]);
+        //prr($data);
+        $res = $this->reCaptcha($data['g-recaptcha-response']);
+        //prr($res);
+        if($res['success']){
+            Mail::send('auth.register-email', ['user' => $data['user_name']], function($message) use($data){
+                $message->to($data['email']);
+                $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+                $message->subject('Welcome Email');
+            });
+            return User::create([
+                'user_name' => $data['user_name'],
+                'email' => $data['email'],
+                'role_id'=> 3 ,
+                'country'=> $data['country'] ,
+            'referral_code'=>$refer_code,
+            'referal_id'=>$user_id,
+                'password' => Hash::make($data['password']),
+            ]);
+        }else{
+            
+            $this->showRegistrationForm();
+            //return false;
+        }
 
         
     }
+
+    public function reCaptcha($recaptcha){
+        $secret = "6LctDc8gAAAAAJkzKDsNSVuuFzdwDTKcklRGaoN-";
+        $ip = $_SERVER['REMOTE_ADDR'];
+      
+        $postvars = array("secret"=>$secret, "response"=>$recaptcha, "remoteip"=>$ip);
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
+        $data = curl_exec($ch);
+        curl_close($ch);
+      
+        return json_decode($data, true);
+      }
 }

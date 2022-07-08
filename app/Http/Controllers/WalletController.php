@@ -12,6 +12,7 @@ use App\Models\UserPool;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Auth;
+use Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
 
@@ -42,54 +43,50 @@ class WalletController extends Controller
      */
     public function index()
     {
+        $otp = rand(1000,9999);
+        $user_id = Auth::user()->id;
+        $user_name = Auth::user()->user_name;
+        $user_mail = Auth::user()->email;
+        $user = User::where('id','=',$user_id)->update(['otp' => $otp]);
 
+        if($user){
         
-        
-
-            return view('users/wallet/index');
-    }
-
-    public function createPool()
-    {
        
+            Mail::send('users.otpVerify',['user_name'=>$user_name,'otp'=>$otp], function($message) use($user_mail){
+                $message->to($user_mail);
+                $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+                $message->subject('Verify OTP');
+            });
+       
+            return view('users/wallet/index');
+        }
+        else{
+            return redirect('/wallet')->with('message', 'OTP Not Send!');
+
+        }
+
+        
+        
+
+            
     }
 
-    public function insert(Request $request){
-        request()->validate([
-            'pool_name' => 'required',
-            'pool_type' => 'required',
-            'max_participants' => 'required|numeric',
-            'entry_fees' => 'required|numeric',
-        ]);
-        if($request->pool_type==1){
-            request()->validate([
-                'pool_name' => 'required',
-                'pool_type' => 'required',
-                'max_participants' => 'required|numeric',
-                'entry_fees' => 'required|numeric',
-                'password' => 'required',
-                'team_id'=>'required'
-            ]);
-        }
-        $pool = new UserPool;
-        $pool->user_id    = Auth::user()->id;
-        $pool->pool_name   = $request->input('pool_name');
-        $pool->pool_type   = $request->input('pool_type');
-        $pool->max_participants = $request->input('max_participants');
-        // $pool->team_id = $request->input('team_id');
-        if($request->input('pool_type') == '1'){
-            $pool->password =  Hash::make($request->input('password'));
-        }
-        $pool->entry_fees =  $request->input('entry_fees');
-        if($request->input('pool_type') == '1' && $pool->save() ){
-            $contest = new UserContest;
-            $contest->user_id    = Auth::user()->id;
-            $contest->pool_id    = $pool->id;
-            $contest->user_team_id = $request->input('team_id');
-            $contest->save();
-        }
-        return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
-        // return redirect()->back()->with('status','Student Added Successfully');
+    public function otpverify(Request $request){
+        $otp = $request->otp;
+        $user_id = Auth::user()->id;
+        // return $otp;die;
+        $user  = User::where([['otp','=',$otp]])->first();
+        if($user){
+            
+            User::where('id','=',$user_id)->update(['otp' => null]);
+            
 
+            return 'Success';
+        }
+        else{
+            return 'Invalid';
+        }
     }
+
+   
 }

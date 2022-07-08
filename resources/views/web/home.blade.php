@@ -17,8 +17,10 @@
             to watch El Clásico tomorrow. Winning means little to our crypto
             fantasy community if we can’t share the joy.
           </p>
+          <a href="{{url('/register')}}">
           <button class="bou">Start Playing</button>
-          <a class="ml-3 text-white" href=""><b>Learn More</b></a>
+          </a>
+          <a class="ml-3 text-white" href="{{url('/how_to_play')}}"><b>Learn More</b></a>
         </div>
       </div>
       <div class="col-lg-5 mt-5">
@@ -45,7 +47,7 @@
                 blockchain technology to unite fans and give them a voice.
               </h3>
 
-              <a href="#" class="btn btn-danger buy-token">BUY TOKEN</a>
+              <a href="http://3.110.104.72/offer" class="btn btn-danger buy-token">BUY TOKEN</a>
               <a
                 href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Whitepaper - Final.pdf"
                 target="_blank"
@@ -82,7 +84,9 @@
                 head-to-head duels, pick super-talented players and join the
                 banter. Once you are done, collect your prizes!
               </p>
+              <a href="{{url('/register')}}">
               <button class="boutton"><b>Join Now</b></button>
+</a>
             </div>
           </div>
         </div>
@@ -155,7 +159,9 @@
                 joy when you win and helps you get back on your feet when you
                 are down on your luck.
               </p>
+              <a href="{{url('/register')}}">
               <button class="boutt"><b>Join Now</b></button>
+              </a>
             </div>
           </div>
           <div class="col-sm-4">

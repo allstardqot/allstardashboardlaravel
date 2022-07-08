@@ -24,6 +24,7 @@
             @yield('content')
         </main>
     </div>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="{{asset('public/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('public/js/script.js')}}"></script>

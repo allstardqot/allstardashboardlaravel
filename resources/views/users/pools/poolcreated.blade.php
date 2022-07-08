@@ -1,5 +1,5 @@
 @extends('layouts.user')
-@section('title','Congratulation! Pool Created!!')
+@section('title','Congratulations, Pool Created!!!')
 @section('content')
 
 <main>

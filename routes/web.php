@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
 setting();
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
+Route::get('/getsquad/{fixtureId}',[DemoController::class,'getsquad']);
 Route::get('/test',[DemoController::class,'test']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
 Route::get('/rankUpdate',[DemoController::class,'rankUpdate']);
@@ -116,6 +117,7 @@ Route::group(['middleware' => ['auth']], function() {
         //Route::post('/invite/{id}', [PoolController::class, 'invitePool'])->name('invite');
         Route::get('/latest-news', [App\Http\Controllers\NewsController::class, 'index'])->name('latest-news');
         Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');
+        Route::get('/otp-verify', [App\Http\Controllers\WalletController::class, 'otpverify'])->name('otp-verify');
 
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');
         Route::post('/create-post', [ManagerController::class, 'index'])->name('create-post');

@@ -192,55 +192,32 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Please select your pool to share</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Enter Otp Which is Send On Mail</h4>
         </div>
         <div class="modal-body">
-        <div class="modal-in">
-            <form action="{{ url('/user-invite') }}" method="post">
+          <div class="modal-in">
+            <form id="otpVerfiy">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Email">
-                            <input type="text" class="form-control" id="formname" name="name" placeholder="Name" required>
+                            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP" required>
                         </div>
-
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <select class="form-select typeoption"  aria-label="Default select example " name="pool_type" id="typeoption" required>
-                                <option selected style="color:#fff;">Select Public or Private</option>
-                                <option value="Public Pool">Public Pool</option>
-                                <option value="Private Pool">Private Pool</option>
-                                
-                              </select>
+                        <input
+                  class="btn btn-primary"
+                  id="otp_submit"
+                  value="Submit"
+                />
+                          <!-- <button  class="btn btn-danger">Submit</button> -->
                         </div>
-
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example" name='pool_id' id="typename" required>
-                                <option selected>Select First Pool Type</option>
-                               
-                                
-                              </select>
-                        </div>
-
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                          <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-
-                    </div>
-
                 </div>
-              
-            </form>
+              </form>
+          </div>
         </div>
-       
-        </div>
-      
       </div>
     </div>
 </div>
