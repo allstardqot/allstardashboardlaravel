@@ -81,7 +81,7 @@
                                         <div class="okiuj456">
                                             <a href="#" class="hjytg458" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"
-                                                onclick="showmodel({{ $publicValue['id'] }},{{ $publicValue['pool_type'] }})">+Join
+                                                onclick="showmodel('{{ $publicValue['id'] }}','{{ $publicValue['pool_type'] }}','{{ $publicValue['pool_name'] }}','{{$publicValue['entry_fees']}}')">+Join
                                                 this pool</a>
                                             <a class="ahjl458" href="{{url('/invite/'.$publicValue['id'])}}">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
@@ -153,7 +153,7 @@
                                         <div class="okiuj456">
                                             <a href="#" class="hjytg458" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"
-                                                onclick="showmodel({{ $privateValue['id'] }},{{ $privateValue['pool_type'] }})">+Join
+                                                onclick="showmodel('{{ $privateValue['id'] }}','{{ $privateValue['pool_type'] }}','{{ $privateValue['pool_name'] }}','{{$privateValue['entry_fees']}}')">+Join
                                                 this pool</a>
                                             {{-- <a class="ahjl458" href="#">
                                                 <i class="fa fa-user-plus dcs445" aria-hidden="true"></i>
@@ -174,20 +174,26 @@
 </div>
 
 <script>
-    function showmodel(id, type) {
+    function showmodel(id, type, pool_name,entry_fees) {
+        ///console.log(type+"fffffffffffff");
         if (type == 0) {
+            //console.log(type+"fffffffffffff");
 
-            document.getElementById('pooltypebtn').hidden = true;
+            // document.getElementById('pooltypebtn').hidden = true;
             document.getElementById('joinPass').hidden = true;
             document.getElementById('passLabel').hidden = true;
-            
         } else {
-            
-            document.getElementById('pooltypebtn').hidden = false;
+            //console.log(type+"uuuuuuuuuuuuuuu");
+            // document.getElementById('pooltypebtn').hidden = false;
             document.getElementById('joinPass').hidden = false;
             document.getElementById('passLabel').hidden = false;
         }
-        document.getElementById("join_pool_id").value = id;
+        //$("#pop_pool_name").html(pool_name);
+        var PoolName    = pool_name;
+        var JoinAmount  = "Amount to join : "+entry_fees;
+        document.getElementById("join_pool_id").value  = id;
+        document.getElementById("PoolName").innerHTML  = PoolName;
+        document.getElementById("JoinAmount").innerHTML = JoinAmount;
         document.getElementById("hiddenpooltype").value = type;
     }
 </script>

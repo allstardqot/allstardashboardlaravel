@@ -36,7 +36,7 @@
                             </p>
                         </div>
                         <div class="nyary">
-                            <a href="javascript:void(0);" class="jnsdxi" data-bs-toggle="modal" data-bs-target="#exampleModal">share</a>
+                            <a href="javascript:void(0);" class="jnsdxi sharei" >share</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
             <!-- Modal content-->
             <div class="namtrs" class="modal-content">
                 <div class="modal-header mt-5">
-                    <h4 class="modal-title">share</h4>
+                    <h4 class="modal-title ">share</h4>
                 </div>
                 <div class="modal-body">
                     <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -91,6 +91,26 @@
     <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
 
  <script>  
+        const shareData = {
+            title: 'All Star',
+            text: "This is the All Star Football Game Online: https://allstarsfan.com/ \n Winning Pool successfully!",
+            // url: 'https://mynataraja.live/',
+
+
+        }
+        const btni = document.querySelector('.sharei');
+        const resultParai = document.querySelector('.result');
+
+        // Share must be triggered by "user activation"
+        btni.addEventListener('click', async () => {
+            // alert('adfd');
+            try {
+                await navigator.share(shareData)
+                resultParai.textContent = 'MDN shared successfully'
+            } catch (err) {
+                resultParai.textContent = 'Error: ' + err
+            }
+        });
  $(document).ready(function(){  
       var i=1;  
       $('#add').click(function(){  

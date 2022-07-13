@@ -43,6 +43,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $user_id      = Auth::user()->id;
+        $wallet      = Auth::user()->wallet;
         $newsdata     = News::query()->orderByDesc('news_created_at')->limit(5)->get();
         $searchData   = $request->searchData;
         $type         = $request->type;
@@ -81,18 +82,19 @@ class HomeController extends Controller
             if(currentWeek()>0){
                 $weeak=Week::find(nextWeek())->toArray();
             }
-            return view('users/homehtml',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser,'weeak'=>$weeak]);
+            return view('users/homehtml',['publicData'=>$publicData,'wallet'=>$wallet,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser,'weeak'=>$weeak]);
         }
         $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
 
         //prr($publicData);
-        return view('users/home',['publicData'=>$publicData,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending,'user'=>$user,'topplayers'=>$topplayers]);
+        return view('users/home',['publicData'=>$publicData,'wallet'=>$wallet,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending,'user'=>$user,'topplayers'=>$topplayers]);
     }
 
     public function jointeam(Request $request){
         request()->validate([
             'user_team_id' => 'required',
         ]);
+        
         $join_pool_id =     $request->input('join_pool_id');
         $pool = UserPool::findOrFail($join_pool_id);
         // echo 'sg';die;
@@ -146,8 +148,10 @@ class HomeController extends Controller
                     $ending_at=$weekData['ending_at'];
 
                 }
+                $userTeamData=UserTeam::find($request->input('user_team_id'))->toArray();
+                $teamName=$userTeamData['name'];
                 $emailValue=Auth::user()->email;
-                $data = ['name'=>Auth::user()->user_name,'email'=>$request->email,'pool_name'=>$userPoolData['pool_name'],'type'=>$type,'max_participants'=>$userPoolData['max_participants'],'entry_fees'=>$userPoolData['entry_fees'],'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+                $data = ['name'=>Auth::user()->user_name,'email'=>$request->email,'pool_name'=>$userPoolData['pool_name'],'type'=>$type,'max_participants'=>$userPoolData['max_participants'],'entry_fees'=>$userPoolData['entry_fees'],'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$teamName];
                 Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
                     $message->to($emailValue, 'Tutorials Point')->subject
                     ('All Star Join Pool');

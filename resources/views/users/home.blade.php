@@ -39,13 +39,13 @@
             <!-- Modal content-->
             <div class="modal-content jsdhdgdtsb">
                 <div class="modal-header mnhjityfg">
-                    <h4 class="mjnhgt">Big Blues Pool Public</h4>
-                    <button class="nhbjkloui " id='pooltypebtn'>Private</button>
+                    <h4 class="mjnhgt" id="PoolName"></h4>
+                    {{-- <button class="nhbjkloui " id='pooltypebtn'>Private</button> --}}
                 </div>
                 <div class="modal-body text-white">
                     <div class=" text-center">
-                        <p class="mjnhiok">Amount to join : All Star Coins 20</p>
-                        <p class="mjnhiok">Amount in Wallet : All Star Coins 30</p>
+                        <p class="mjnhiok" id="JoinAmount"></p>
+                        <p class="mjnhiok">Amount in Wallet : {{ $wallet }}</p>
                     </div>
                     <form class="hbngtdf" action="{{ route('home') }}" method="POST">
                         @csrf

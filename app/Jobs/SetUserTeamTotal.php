@@ -45,6 +45,7 @@ class SetUserTeamTotal implements ShouldQueue
      */
     public function handle()
     {
+        //total point update
         $week=currentWeek();
         $user_team = UserTeam::where('current_week',$week)->get();
         foreach($user_team as $key=>$teamValue){
@@ -90,7 +91,6 @@ class SetUserTeamTotal implements ShouldQueue
         }
 
         //rank update
-
         $userContestQuery=UserContest::join('user_teams as ut','ut.id','user_contests.user_team_id')->select(['ut.total_points','user_contests.pool_id','user_contests.rank','user_contests.id'])->orderBy('pool_id','asc')->orderBy('total_points','desc')->get();
         $rank=$pool_id=$total_points=0;
         foreach($userContestQuery as $key=>$value){
@@ -107,6 +107,23 @@ class SetUserTeamTotal implements ShouldQueue
             $pool_id=$value['pool_id'];
             $value['rank']=$rank;
             $value->update();
+        }
+
+        //grand leaderboard rank update
+        $userTeam = UserTeam::OrderByDesc('user_teams.total_points')->get();
+        $i=$c=$point=0;
+        foreach($userTeam as $value){
+            if($value['total_points']==$point){
+                $value['grand_leaderboard_rank']=$i;
+                $c++;
+            }else{
+                $i++;
+                $i+=$c;
+                $value['grand_leaderboard_rank']=$i;
+                $c=0;
+            }
+            $point=$value['total_points'];         
+            $value->update();   
         }
 
 

@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>All Stars @yield('title')</title>
+    <title>Allstars @yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.ico') }}">
 
     <!-- Styles -->
@@ -24,6 +24,15 @@
     <link href="{{ asset('public/assets/css/editor.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('public/assets/css/jquery.toast.min.css') }}" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YLJ8NL5151"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YLJ8NL5151');
+</script>
    
 </head>
 
@@ -127,7 +136,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title fs-4" id="exampleModalLabel">Pool Join Users</h4>
+          <h4 class="modal-title fs-4" id="exampleModalLabel">Managers in Pool</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -213,6 +222,13 @@
 
 <script>
 
+    // var obj = document.getElementById("wallet-sec");
+    // obj.style.display = "none";
+       
+
+        
+        
+
     function openpop(email,username){
         // alert(email);
         $('#exampleFormControlInput1').val(email);
@@ -240,8 +256,7 @@
     }
 
    
-    var obj = document.getElementById("wallet-sec");
-    obj.style.display = "none";
+    
     $(document).ready(function() {
         
 
@@ -297,11 +312,14 @@
                 success: function(result) {
                     if(result == 'Success'){
                         var obj = document.getElementById("wallet-sec");
-                        obj.style.display = "block";
+
+                        obj.classList.remove("visually-hidden");
+
 
                         var invmodal = document.getElementById("invitemodal");
+                        
                         invmodal.style.display = "none";
-                        $.notify("OTP Verfiy Successfully", "success");
+                        $.notify("OTP Verified Successfully", "success");
                     }else{
                         $.notify("OTP Invaild", "warning");
                     }
@@ -374,31 +392,21 @@
         } else {
             $.notify("Plz Enter Your Post", "info");
         }
-
-
-        // Share Api
-        const shareData = {
-            title: 'All Star',
-            text: "This is the All Star Football Game Online: http://3.0.113.116/all_stars/ \n Winning Pool successfully!",
-            // url: 'https://mynataraja.live/',
-
-
-        }
-        const btn = document.querySelector('.share');
-        const resultPara = document.querySelector('.result');
-
-        // Share must be triggered by "user activation"
-        btn.addEventListener('click', async () => {
-            // alert('adfd');
-            try {
-                await navigator.share(shareData)
-                // resultPara.textContent = 'MDN shared successfully'
-            } catch (err) {
-                // resultPara.textContent = 'Error: ' + err
-            }
-        });
+        
     });
 
+
+    // if ('serviceWorker' in navigator) {
+    //         // console.log("Will the service worker register?");
+    //         navigator.serviceWorker.register('service-worker.js')
+    //         .then(function(reg){
+    //             // console.log("Yes, it did.");
+    //         }).catch(function(err) {
+    //             console.log("No it didn't. This happened:", err)
+    //         });
+    //     }
+        // Share Api
+        
    
     var editor1 = new RichTextEditor("#div_editor1");
 

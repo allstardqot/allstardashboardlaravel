@@ -69,13 +69,16 @@
                                                     </tr>
                                                     @foreach ($userTeam as $key=>$userData)
                                                     <tr>
-                                                        <td>{{$userData['rank']}}</td>
+                                                        <td>{{$userData['grand_leaderboard_rank']}}</td>
                                                         <td>{{$userData['user_name']}}</td>
                                                         <td>{{$userData['total_points']}}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                        </div>
+                                        <div class="d-felx justify-content-center">
+                                            {!! $userTeam->links() !!}  
                                         </div>
                                     </div>
                                 </div>

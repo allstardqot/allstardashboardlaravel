@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>All Stars @yield('title')</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/img/favicon.ico') }}">
+    <title>Allstars @yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.ico') }}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css"  href="{{asset('public/css/bootstrap.min.css')}}" />
@@ -10,6 +10,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/jquery-ui.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/custum.css')}}" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YLJ8NL5151"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YLJ8NL5151');
+</script>
   </head>
   <body >
     @include('element/web/header')

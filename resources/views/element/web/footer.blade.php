@@ -44,7 +44,7 @@
     <div class="container-fluid">
       <div class="row text-white footer-bar" >
         <div  class="offset-lg-1 col-lg-8 mt-3 col-12  text-center text-lg-left">
-          <p class=""><b>2022 © AllStars. All rights reserved.</b></p>
+          <p class=""><b>2022 © AllStars. All rights reserved.</b> <script type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=PqvRODZG7RIlmxTFAseQdNJnjmup9qZ8S2zb5vmrUjx0B6cN4OZGv4fU8A8C"></script></p>
         </div>
         <div  class="col-lg-3 mt-3 col-12 text-center">
           <ul class="d-flex list-unstyled marginl">

@@ -47,7 +47,7 @@
 
                             <div class="input-group">
                                 
-                                <input type="password" id="password" class="input-login form-control" name="password" required autofocus placeholder="Enter Your Password">
+                                <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="input-login form-control" name="password" required autofocus placeholder="Enter Your Password">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="show-pass"><i class="fa fa-eye" aria-hidden="true"></i></span>
                                 </div>

@@ -45,6 +45,7 @@ setting();
 Route::get('/',[HomeController::class,'index']);
 Route::get('/fixture',[DemoController::class,'fixtureData']);
 Route::get('/getsquad/{fixtureId}',[DemoController::class,'getsquad']);
+Route::get('/defaultCron/{fixtureId}',[DemoController::class,'defaultCron']);
 Route::get('/test',[DemoController::class,'test']);
 Route::get('/teamdata',[DemoController::class,'teamData']);
 Route::get('/rankUpdate',[DemoController::class,'rankUpdate']);

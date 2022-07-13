@@ -12,6 +12,7 @@ use App\EntitySport;
 use App\Models\Fixture;
 use App\Models\Payment;
 use App\Models\News;
+use App\Jobs\GetScore;
 use App\Models\Season;
 use App\Models\Squad;
 use App\Models\Team;
@@ -48,6 +49,94 @@ class DemoController extends Controller
 
             }
         }
+    }
+
+    public function defaultCron($fixtureId){
+        //$fixtureQuery=Fixture::find($fixtureId)->toArray();
+        $userTeam = UserTeam::OrderByDesc('user_teams.total_points')->get();
+        $i=$c=$point=0;
+        foreach($userTeam as $value){
+            if($value['total_points']==$point){
+                $value['grand_leaderboard_rank']=$i;
+                $c++;
+            }else{
+                $i++;
+                $i+=$c;
+                $value['grand_leaderboard_rank']=$i;
+                $c=0;
+            }
+            $point=$value['total_points'];         
+            $value->update();   
+        }
+        //$userTeam->save();
+        prr($userTeam);
+
+        // $user_team = UserTeam::where('current_week',$fixtureId)->get();
+        // foreach($user_team as $key=>$teamValue){
+        //     $total_points=0;
+        //     $players = $teamValue['players'];
+        //     $selected_player = json_decode($players, true);
+
+        //     $squads = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('total_points','player_id')->toArray();
+
+        //     $playing11Data = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('playing11','player_id')->toArray();
+
+        //         $substitude_player=json_decode($teamValue->substitude,true);
+
+        //         $count=0;
+        //         $final_substitude_player=$new_substitude_players=[];
+        //         $positionGet=Player::whereIn('id',$selected_player)->where('position_id',1)->select(['players.id'])->get()->first()->toArray();
+        //         foreach($playing11Data as $key=>$status){
+        //             if($status==0 && count($new_substitude_players)<2){
+        //                 $new_substitude_players[]=$key;
+        //                 $count+=1;
+        //             }
+        //         }
+        //         if(count($new_substitude_players)<2){
+        //             $new_substitude_players=[];
+        //         }
+        //         $goalKeeperSubstitude='';
+        //         if(in_array($positionGet['id'],$new_substitude_players)){
+        //             $goalKeeperSubstitude=$positionGet['id'];
+        //         }
+        //         $final_substitude_player=!empty($new_substitude_players)?$new_substitude_players:$substitude_player;
+        //         $played_player=array_diff($selected_player,$final_substitude_player);
+
+        //         foreach($played_player as $player_id){
+        //             if($teamValue->captain==$player_id && empty($goalKeeperSubstitude)){
+        //                 $total_points += isset($squads[$player_id])?$squads[$player_id]*2:0;
+        //             }else{
+        //                 $total_points += isset($squads[$player_id])?$squads[$player_id]:0;
+        //             }
+        //         }
+        //         $teamValue->total_points=$total_points;
+        //         $teamValue->substitude=json_encode($final_substitude_player);
+        //         $teamValue->update();
+        // }
+
+        //rank update
+
+        // $userContestQuery=UserContest::join('user_teams as ut','ut.id','user_contests.user_team_id')->select(['ut.total_points','user_contests.pool_id','user_contests.rank','user_contests.id'])->orderBy('pool_id','asc')->orderBy('total_points','desc')->get();
+        // $rank=$pool_id=$total_points=0;
+        // foreach($userContestQuery as $key=>$value){
+        //     if($pool_id==0 || $pool_id!=$value['pool_id']){
+        //         $rank=0;
+        //     }
+
+        //     if($pool_id==$value['pool_id'] && $total_points==$value['total_points']){
+        //         $rank=$rank;
+        //     }else{
+        //         $rank+=1;
+        //     }
+        //     $total_points=$value['total_points'];
+        //     $pool_id=$value['pool_id'];
+        //     $value['rank']=$rank;
+        //     $value->update();
+        // }
+        //GetScore::dispatch($fixtureId)->delay(now()->addSeconds(2));
+
+        //prr($fixtureQuery);
+
     }
 
     public function test(){
@@ -450,16 +539,18 @@ class DemoController extends Controller
     }
 
     public function getsquad($fixtureId){
+        //echo "fineee";die;
         $api = new EntitySport();
         $fixtureData=Fixture::find($fixtureId);
-        //prr($fixtureData);
         $teamArray = [$fixtureData['localteam_id'], $fixtureData['visitorteam_id']];
         $season_id=$fixtureData['season_id'];
         $weekId=weekIdDate($fixtureData['starting_at']);
         foreach ($teamArray as $teamValue) {
             if (!empty($teamValue)) {
-                $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player&stats');
-                prr($players);
+                $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player');
+                //echo "<pre>";print_r($players);die;
+                Log::info("squad running".json_encode($players));
+
                 foreach ($players as $playerData) {
                     if (!empty($playerData['player']['data'])) {
                         $playerDetail = $playerData['player']['data'];
@@ -468,7 +559,7 @@ class DemoController extends Controller
                             $date = date_create($convert);
                             $playerDetail['birthdate'] = date_format($date, "Y/m/d H:i:s");
                         }
-                        echo $playerDetail['player_id'].'---'.$playerData['rating'];die;
+                        //echo $playerDetail['player_id'].'---'.$playerData['rating']."<br>";
                         $playerQuery = Player::query()->updateOrCreate([
                             'id' => $playerDetail['player_id'],
                             'team_id' => $teamValue,
@@ -487,18 +578,20 @@ class DemoController extends Controller
                             'birthplace' => $playerDetail['birthplace'],
                             'height' => $playerDetail['height'],
                             'weight' => $playerDetail['weight'],
+                            'sell_price' => $playerData['rating'],
                             'image_path' => $playerDetail['image_path'],
                         ]);
+                        
                         $s = Squad::query()->updateOrCreate([
                             'player_id' => $playerDetail['player_id'],
-                            'fixture_id' => $this->fixtureId,
+                            'fixture_id' => $fixtureId,
                             'team_id' => $teamValue,
                         ], [
                             'fixture_starting_at' =>$fixtureData['starting_at'],
                             'week_id' =>$weekId,
                             'injured' => ($playerData['injured'])?1:0,
                             'team_id' => $teamValue,
-                            'rating' => $playerData['rating'],
+                            'player_rating' => $playerData['rating'],
                             'cards' => json_encode(['yellowcards' => $playerData['yellowcards'], 'redcards' => $playerData['redcards'], 'yellowredcards' => $playerData['yellowred']])
                         ]);
                     }

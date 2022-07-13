@@ -370,7 +370,7 @@ table.ui-datepicker-calendar td {
   content: "M";
 }
 .range-slider__value::before {
-  background-image: url("../image/coins.png");
+  /* background-image: url("../image/coins.png"); */
   background-size: 18px 18px;
   display: inline-block;
   width: 18px;
@@ -530,7 +530,7 @@ h6 {
   margin-top: 0 !important;
   margin-bottom: 7px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 22px;
   line-height: 18px;
 }
 .news-col-content {

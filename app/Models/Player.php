@@ -27,7 +27,8 @@ class Player extends Model
         'birthplace',
         'height',
         'weight',
-        'image_path'
+        'image_path',
+        'sell_price'
     ];
 
     public function team()

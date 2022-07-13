@@ -47,6 +47,13 @@
                         <div class="majhyt">
                             <div class="clak">
                                 <input class="inpotyahn" type="email" id="email" name="email[]" placeholder="Enter Email address" />
+                                <input class="inpotyahn" type="hidden"  name="pool_name" value="{{ $pool_name }}"/>
+                                <input class="inpotyahn" type="hidden" name="entry_fees" value="{{ $entry_fees }}"/>
+                                <input class="inpotyahn" type="hidden"  name="starting_at" value="{{ $starting_at }}"/>
+                                <input class="inpotyahn" type="hidden"  name="ending_at"  value="{{ $ending_at }}"/>
+                                <input class="inpotyahn" type="hidden"  name="max_participants"  value="{{ $max_participants }}"/>
+                                <input class="inpotyahn" type="hidden"  name="team_name"  value="{{ $team_name }}"/>
+                                <input class="inpotyahn" type="hidden"  name="pool_type"  value="{{ $pool_type }}"/>
                             </div>
                             <div class="lkahty">
                                 <input class="bants add_more" type="button"  value="+ Add More">
@@ -85,5 +92,26 @@
         </div>
     </div>
 </main>
+<script>
+     const shareData = {
+            title: 'All Star',
+            text: "This is the All Star Football Game Online: https://allstarsfan.com/ \n Winning Pool successfully!",
+            // url: 'https://mynataraja.live/',
 
+
+        }
+        const btn = document.querySelector('.share');
+        const resultPara = document.querySelector('.result');
+
+        // Share must be triggered by "user activation"
+        btn.addEventListener('click', async () => {
+            // alert('adfd');
+            try {
+                await navigator.share(shareData)
+                resultPara.textContent = 'MDN shared successfully'
+            } catch (err) {
+                resultPara.textContent = 'Error: ' + err
+            }
+        });
+</script>
 @endsection

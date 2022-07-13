@@ -35,6 +35,7 @@ class Squad extends Model
         'other',
         'other_points',
         'player_rating',
-        'total_points'
+        'total_points',
+        'rating'
     ];
 }

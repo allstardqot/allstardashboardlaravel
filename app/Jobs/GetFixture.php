@@ -63,7 +63,6 @@ class GetFixture implements ShouldQueue
                 if($value['league_id']!='779'){
                     continue;
                 }
-
                 $fixtureQuery = Fixture::query()->updateOrCreate([
                     'id' => $value['id'],
                 ], [
@@ -129,49 +128,6 @@ class GetFixture implements ShouldQueue
                         Getlineup::dispatch($value['id'])->delay($lineupSchedule);
                         GetScore::dispatch($value['id'])->delay(Carbon::parse($fixtureQuery->starting_at)->addMinute(1));
                         //Getlineup::dispatch($value['id']);
-
-
-                    // if(!Season::find($value['season_id'])){
-                    //     $seasonData = $api->getSeason('');
-                    //     foreach ($seasonData as $season) {
-                    //         $competition = Season::query()->updateOrCreate([
-                    //             'id' => $season['id'],
-                    //         ], [
-                    //             'name' => $season['name'],
-                    //             'league_id' => $season['league_id'],
-                    //             'is_current_season' => $season['is_current_season'],
-                    //             'current_round_id' => $season['current_round_id'],
-                    //             'current_stage_id' => $season['current_stage_id'],
-                    //         ]);
-                    //     }
-                    // }
-
-                    // if(!League::find($value['league_id'])){
-                    //     $leagueData = $api->getLeague('');
-                    //     foreach ($leagueData as $league) {
-                    //         $leagueQuery = League::query()->updateOrCreate([
-                    //             'id' => $league['id'],
-                    //         ], [
-                    //             'name' => $league['name'],
-                    //             'active' => $league['active'],
-                    //             'type' => $league['type'],
-                    //             'legacy_id' => $league['legacy_id'],
-                    //             'country_id' => $league['country_id'],
-                    //             'is_cup' => $league['is_cup'],
-                    //             'logo_path' => $league['logo_path'],
-                    //             'is_friendly' => $league['is_friendly'],
-                    //             'current_season_id' => $league['current_season_id'],
-                    //             'current_round_id' => $league['current_round_id'],
-                    //             'current_stage_id' => $league['current_stage_id'],
-                    //             'live_standings' => $league['live_standings'],
-                    //             'coverage' => json_encode($league['coverage']),
-
-                    //         ]);
-                    //     }
-                    // }
-                }else{
-                Log::info("nnnnnnnnnnnnn");
-
                 }
         }
     }

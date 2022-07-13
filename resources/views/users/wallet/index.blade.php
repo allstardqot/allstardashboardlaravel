@@ -89,7 +89,7 @@
   }
 </style>
 
-<section class="about-sec" id="wallet-sec">
+<section class="about-sec visually-hidden" id="wallet-sec" >
   <div class="container">
     <div class="user-coin-main">
       <div class="row">
@@ -188,11 +188,11 @@
   </div>
 </section>
 
-<div  id="invitemodal">
+<div class="my-5 py-5" id="invitemodal">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content mt-0">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Enter Otp Which is Send On Mail</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Please Enter the OTP Sent To Your Registered Email</h4>
         </div>
         <div class="modal-body">
           <div class="modal-in">

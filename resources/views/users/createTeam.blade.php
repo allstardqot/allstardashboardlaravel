@@ -288,7 +288,9 @@
                                 </p>
                             </div>
                             <div class="sxdhdcn9908">
-                                <h1 class="sdhsdks87" id="coin">50M</h1>
+                                @php
+                                    echo '<h1 class="sdhsdks87" id="coin">50M</h1>';
+                                @endphp
                                 <p class="sdjhs7tyh">
                                 <b
                                     >Money<br />
@@ -363,6 +365,7 @@
         function coins(price,status){
             var spendCoin = $('#coin').html();
             var res = status == "plus" ? parseInt(spendCoin.replace('M', '')) + parseInt($.trim(price.replace('M', ''))) :spendCoin.replace('M', '') - $.trim(price.replace('M', ''));
+            res=Math.round(res * 100) / 100
             $('#coin').html(res+'M');
         }
 

@@ -39,9 +39,11 @@
                                                         <button class="sjdhjsdh">{{!empty($result['joined'])?$result['joined']:'';}} Users</button>
                                                     </div>
                                                 </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
+                                     <p>{{date('d M Y', strtotime($starting_at))}} - {{date('d M Y', strtotime($ending_at))}}</p>
                                     <div class="row">
                                         <div class="col-sm-12 mt-4">
                                             <table class="hdtdusjk">
@@ -130,7 +132,7 @@
                                                     
                                                  @endphp
                                                     <div class="fantacy-point">
-                                                        <h3>Total Fantasy Points<strong> <img class="img-fluid" width="28" src="{{ asset('public/assets/image/coins.png') }}" alt="">{{$loginUserFantasyPoint}}</strong></h3>
+                                                        <h3>Total Fantasy Points : <strong> {{$loginUserFantasyPoint}}</strong></h3>
                                                     </div>
                                                 </div>
                                             </div>

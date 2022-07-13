@@ -106,7 +106,7 @@ class PoolController extends Controller
         $team     = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
         // prr(count($team));
         if(count($team) == 0){
-            return redirect('/create-team')->with('info','You Cant Create Pool, first create team');
+            return redirect('/create-team')->with('info','Create Team Before Creating A Pool');
         }
         // if()
         return view('users/pools/createpool',['team'=>$team]);
@@ -135,12 +135,19 @@ class PoolController extends Controller
         if(nextWeek() != 0){
             $wallet = Auth::user()->wallet;
             // echo $wallet;die;
-            $entry_fees = $request->input('entry_fees');
+            $entry_fees       = $request->input('entry_fees');
             if($entry_fees > $wallet){
                 return redirect()->back()->with('message','You have not sufficant balance!');
-
+                
             }
-
+            
+            $weekData=Week::find(nextWeek())->toArray();
+            $starting_at=$ending_at='';
+            if(!empty($weekData)){
+                $starting_at=$weekData['starting_at'];
+                $ending_at=$weekData['ending_at'];
+                
+            }
             
             $user = Auth::user();
             $user->wallet    = $wallet - $entry_fees;
@@ -154,14 +161,17 @@ class PoolController extends Controller
             //$payment->status = 1;
             $payment->save();
             
+            $pool_type = $request->input('pool_type');
+            $max_participants = $request->input('max_participants');
+
 
             $pool = new UserPool;
             $pool->user_id    = Auth::user()->id;
             $pool->pool_name   = $request->input('pool_name');
-            $pool->pool_type   = $request->input('pool_type');
-            $pool->max_participants = $request->input('max_participants');
+            $pool->pool_type   = $pool_type;
+            $pool->max_participants = $max_participants;
             $pool->week_id = nextWeek();
-            if($request->input('pool_type') == '1'){
+            if($pool_type == '1'){
                 $pool->password =  Hash::make($request->input('password'));
             }
             $pool->entry_fees =  $entry_fees;
@@ -177,8 +187,8 @@ class PoolController extends Controller
             // }else{
                 // $pool->save();
             // }
-            $weekData=Week::find(nextWeek())->toArray();
-            $type=($request->input('pool_type')==0)?"Public":"Private";
+            $weekData = Week::find(nextWeek())->toArray();
+            $type     = ($pool_type==0) ? "Public" : "Private";
             $UserTeam = UserTeam::find($team_id);
             // prr($UserTeam->name);
             $starting_at=$ending_at='';
@@ -195,7 +205,7 @@ class PoolController extends Controller
                 ('All Star Join Pool');
                 
             });
-            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'entry_fees'=>$request->input('entry_fees')]);
+            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$UserTeam->name,'pool_type'=>$pool_type,'entry_fees'=>$request->input('entry_fees'),'max_participants'=>$max_participants]);
 
         }
         
@@ -214,9 +224,17 @@ class PoolController extends Controller
     public function invite(Request $request){
        
         $users = $request->input('email');
+        $type = $request->pool_type == 1 ? 'Private' : 'Public';
   
+        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$request->pool_name,'type'=>$type,'max_participants'=>$request->max_participants,'entry_fees'=>$request->entry_fees,'starting_at'=>$request->starting_at,'ending_at'=>$request->ending_at,'team_name'=>$request->team_name];
+        $email = $request->email;
         foreach ($users as $key => $user) {
-            Mail::to($user)->send(new UserEmail($user));
+            // Mail::to($user)->send(new UserEmail($user));
+            Mail::send('mail', $data, function($message) use ($user)  {
+                $message->to($user, 'Allstar User')->subject
+                ('All Star Invite');
+                
+            });
         }
         return redirect('/my-pool')->with('message','Email(s) Sent Successfully..');
         // return response()->json(['success'=>'Send email successfully.']);

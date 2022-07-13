@@ -48,8 +48,6 @@ class GetScore implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("getScore running".$this->fixtureId);
-
         $api = new EntitySport();
         $fixture = Fixture::query()
                 ->where('id', $this->fixtureId)
@@ -64,9 +62,10 @@ class GetScore implements ShouldQueue
             } else {
 
                 $mathcScore = $api->getMacthScore($this->fixtureId . '?include=lineup.player,bench.player');
+                //Log::info("getScore running".$this->fixtureId.'--'.json_encode($mathcScore));
                 if($mathcScore['time']){
                     $fixture->status=isset($mathcScore['time']['status'])?$mathcScore['time']['status']:$fixture->status;
-                    $fixture->score=is_array($mathcScore['scores'])?json_encode($mathcScore['scores']):'';
+                    $fixture->scores=is_array($mathcScore['scores'])?json_encode($mathcScore['scores']):'';
                     $fixture->update();
                 }
 
