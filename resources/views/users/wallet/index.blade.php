@@ -89,7 +89,15 @@
   }
 </style>
 
-<section class="about-sec visually-hidden" id="wallet-sec" >
+@php
+  $class = '';
+  $wallet_sec = 'visually-hidden';
+  if(isset($_COOKIE['wallet-cookie'])){
+    $class = 'visually-hidden';
+    $wallet_sec = '';
+  }
+@endphp
+<section class="about-sec {{ $wallet_sec }}" id="wallet-sec" >
   <div class="container">
     <div class="user-coin-main">
       <div class="row">
@@ -122,8 +130,8 @@
                 <h5>
                   <a
                     class="btn btn-primary"
-                    href="http://3.110.104.72/offer"
-                    target="http://3.110.104.72/offer"
+                    href="http://afctoken.io/offer"
+                    target="http://afctoken.io/offer"
                     >Buy AFC</a
                   >
                 </h5>
@@ -188,7 +196,7 @@
   </div>
 </section>
 
-<div class="my-5 py-5" id="invitemodal">
+<div class="my-5 py-5 {{ $class }}" id="invitemodal">
     <div class="modal-dialog">
       <div class="modal-content mt-0">
         <div class="modal-header">

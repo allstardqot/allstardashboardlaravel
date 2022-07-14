@@ -54,6 +54,7 @@
                                 <input class="inpotyahn" type="hidden"  name="max_participants"  value="{{ $max_participants }}"/>
                                 <input class="inpotyahn" type="hidden"  name="team_name"  value="{{ $team_name }}"/>
                                 <input class="inpotyahn" type="hidden"  name="pool_type"  value="{{ $pool_type }}"/>
+                                <input class="inpotyahn" type="hidden"  name="pass"  value="{{ $pass }}"/>
                             </div>
                             <div class="lkahty">
                                 <input class="bants add_more" type="button"  value="+ Add More">

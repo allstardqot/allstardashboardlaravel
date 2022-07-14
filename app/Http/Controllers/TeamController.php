@@ -55,7 +55,6 @@ class TeamController extends Controller
 
     public function currentTeam(){
         
-       
         $user_id=Auth::user()->id;
         $currentWeek=currentWeek();
         //$teamCount=UserTeam::where([['week',$currentWeek],['user_id',$user_id]])->count();
@@ -72,14 +71,15 @@ class TeamController extends Controller
             $players = $data['players'];
             $plyArr = json_decode($players, true);
 
-            $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->get()->toArray();
+            $result = Player::join('positions', 'positions.id', '=', 'players.position_id')->whereIn('players.id', $plyArr)->orderBy('positions.id', 'ASC')->select(['players.*','positions.name'])->get()->toArray();
             $result['team_name'] = $data['name'];
+            $result['captain_id'] = $data['captain'];
+            $result['total_points'] = $data['total_points'];
             $result['id'] = $data['id'];
 
             array_push($mainData, $result);
-            //$result['team_name']=$data['name'];
         }
-
+        //prr($mainData);
         return view('users/currentteam', compact('mainData', 'userTeam'));
     }
 
@@ -391,12 +391,26 @@ class TeamController extends Controller
         $selected = is_array($request->selected) ? $request->selected : explode(',', $request->selected);
         $editId = !empty($request->editId) ? $request->editId : '';
         $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
+        // $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints'),DB::raw("(select count(ut.id) from user_teams as ut where ut.players LIKE '%players.id%') as totalpoints")])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
 
-        $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+        $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id and sq.week_id='.currentWeek().') as cmg_totalpoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+
+        //if($_SERVER['REMOTE_ADDR']=='49.204.161.65'){
+       
+            foreach($currentweekcount as $value){
+                $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value['id'].'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal')])->first()->toArray();
+                $value['pictotal']      = $playerpointTotal['pictotal'];
+                $value['gw_pictotal']   = $playerpointTotal['gw_pictotal'];
+                $value['total_cap']     = 3;
+                $value['cgw_cap']       = 2;
+            }
+            //prr($currentweekcount);die;
+        //}
+        
+        //prr($last_query);die;
         // $sumofpoint = DB::table('squads')->sum('squads.total_points')->whereIn('player_id', $selected)->get();
+        //$sumofpoint = DB::table('user_teams')->count('user_teams.id')->whereIn('players', $selected)->get();
 
-      
-         //prr($currentweekcount);
         $user_selected_substitude = $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         if (!empty($editId)) {
             $userTeam = UserTeam::find($editId);

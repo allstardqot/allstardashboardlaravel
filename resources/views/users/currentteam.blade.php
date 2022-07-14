@@ -30,6 +30,7 @@
           </ul>
           @php
           $total_fpoints=0;
+          $total_fpoints += $data['total_points'];
   @endphp
           @foreach($data as $key => $value)
           @if(empty($value['name']))
@@ -39,18 +40,20 @@
 
           {{-- {{ pr($value) }} --}}
           <h6 class="mt-3 ml-4 jhjkhkl77"><b>{{ $value['name'] }}</b></h6>
-          <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}</a>
+          <a><img class="sdhdgdgd" src="{{ $value['image_path'] }}" style="width: 50px">{{ $value['display_name'] }}
+            @if($data['captain_id']==$value['id'])
+              <img src="{{url('public/assets/image/c_captain.png')}}" class="float-end img-fluid" style="margin-right:6%">
+              @endif
+          </a>
           <hr class="htguy78">
-          @php
-          $total_fpoints += $value['total_point'];
-        @endphp
+         
           @endforeach
 
 
           {{-- <a href="#" class="hjuy87">Go to manage Squad</a> --}}
 
           {{-- <a href="{{ url('/leaderboard') }}"> --}}
-            <h4 class="ihnik8978">Fantasy Points {{ $total_fpoints  }}</h4>
+            <h4 class="ihnik8978">Fantasy Points : {{ $total_fpoints  }}</h4>
 
           {{-- </a> --}}
 

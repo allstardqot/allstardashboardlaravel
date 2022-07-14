@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <p>{{date('d M Y', strtotime($starting_at))}} - {{date('d M Y', strtotime($ending_at))}}</p>
+                                     <p class="leader-date">{{date('d M Y', strtotime($starting_at))}} - {{date('d M Y', strtotime($ending_at))}}</p>
                                     <div class="row">
                                         <div class="col-sm-12 mt-4">
                                             <table class="hdtdusjk">

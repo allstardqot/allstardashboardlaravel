@@ -60,6 +60,11 @@ class PoolController extends Controller
 
         $user     = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
+        foreach($topplayers as $value){
+            $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value->player_id.'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal')])->first()->toArray();
+            $value['pictotal']      = $playerpointTotal['pictotal'];
+            
+        }
 
         $nextWeek = nextWeek();
         $currentWeek = currentWeek();
@@ -99,16 +104,11 @@ class PoolController extends Controller
 
     public function createPool()
     {
-
-
-        // echo 'sljhf';die;
         $user_id  = Auth::user()->id;
         $team     = UserTeam::where([['user_id',$user_id],['week',nextWeek()]])->get();
-        // prr(count($team));
         if(count($team) == 0){
             return redirect('/create-team')->with('info','Create Team Before Creating A Pool');
         }
-        // if()
         return view('users/pools/createpool',['team'=>$team]);
     }
 
@@ -119,7 +119,6 @@ class PoolController extends Controller
             'max_participants' => 'required|numeric',
             'entry_fees' => 'required|numeric',
         ]);
-
 
        
         if($request->pool_type==1){
@@ -136,9 +135,13 @@ class PoolController extends Controller
             $wallet = Auth::user()->wallet;
             // echo $wallet;die;
             $entry_fees       = $request->input('entry_fees');
-            if($entry_fees > $wallet){
-                return redirect()->back()->with('message','You have not sufficant balance!');
-                
+            $pass ='';
+            if($entry_fees > $wallet  ){
+                return redirect()->back()->with('error','You have not sufficant balance!');
+            }
+
+            if($entry_fees < 0){
+                return redirect()->back()->with('error',"You can't Enter in Minus Entry Fees!");
             }
             
             $weekData=Week::find(nextWeek())->toArray();
@@ -146,7 +149,6 @@ class PoolController extends Controller
             if(!empty($weekData)){
                 $starting_at=$weekData['starting_at'];
                 $ending_at=$weekData['ending_at'];
-                
             }
             
             $user = Auth::user();
@@ -158,7 +160,6 @@ class PoolController extends Controller
             $payment->amount    = $entry_fees;
             $payment->type      = 'POOL JOIN';
             $payment->transaction_id = uniqid();
-            //$payment->status = 1;
             $payment->save();
             
             $pool_type = $request->input('pool_type');
@@ -173,6 +174,8 @@ class PoolController extends Controller
             $pool->week_id = nextWeek();
             if($pool_type == '1'){
                 $pool->password =  Hash::make($request->input('password'));
+                $pool->decrypt_pass =  $request->input('password');
+                $pass = $request->input('password');
             }
             $pool->entry_fees =  $entry_fees;
             $pool->save();
@@ -198,14 +201,14 @@ class PoolController extends Controller
 
             }
             $emailValue=Auth::user()->email;
-            $data = ['name'=>Auth::user()->user_name,'team_name'=>$UserTeam->name,'email'=>$request->email,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
+            $data = ['name'=>Auth::user()->user_name,'team_name'=>$UserTeam->name,'email'=>$request->email,'pass'=>$pass,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
             // prr($data);
             Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
                 $message->to($emailValue, 'Tutorials Point')->subject
                 ('All Star Join Pool');
                 
             });
-            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$UserTeam->name,'pool_type'=>$pool_type,'entry_fees'=>$request->input('entry_fees'),'max_participants'=>$max_participants]);
+            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'pass'=>$pass,'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$UserTeam->name,'pool_type'=>$pool_type,'entry_fees'=>$request->input('entry_fees'),'max_participants'=>$max_participants]);
 
         }
         
@@ -216,8 +219,18 @@ class PoolController extends Controller
 
     public function invitePool($id){
         $pool = UserPool::find($id)->toArray();
+        $weekData=Week::find(nextWeek())->toArray();
+        $starting_at=$ending_at='';
+        if(!empty($weekData)){
+            $starting_at=$weekData['starting_at'];
+            $ending_at=$weekData['ending_at'];
+        }
+        $pool_type = $pool['pool_type'] == 1 ? 'Private' : 'Public' ;
+        $pass      = !empty($pool['decrypt_pass'])  ? $pool['decrypt_pass'] : '';
         //prr($pool);
-        return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees'],'id'=>$id]);
+        // echo $pass;die;
+        return view('users/invite',['pool_name'=>$pool['pool_name'],'pass'=>$pass,'starting_at'=>$starting_at,'ending_at'=>$ending_at,'pool_type'=>$pool_type,'entry_fees'=>$pool['entry_fees'],'max_participants'=>$pool['max_participants'],'id'=>$id]);
+        // return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees'],'id'=>$id]);
     }
 
 
@@ -225,8 +238,7 @@ class PoolController extends Controller
        
         $users = $request->input('email');
         $type = $request->pool_type == 1 ? 'Private' : 'Public';
-  
-        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$request->pool_name,'type'=>$type,'max_participants'=>$request->max_participants,'entry_fees'=>$request->entry_fees,'starting_at'=>$request->starting_at,'ending_at'=>$request->ending_at,'team_name'=>$request->team_name];
+        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pass'=>$request->pass,'pool_name'=>$request->pool_name,'type'=>$type,'max_participants'=>$request->max_participants,'entry_fees'=>$request->entry_fees,'starting_at'=>$request->starting_at,'ending_at'=>$request->ending_at];
         $email = $request->email;
         foreach ($users as $key => $user) {
             // Mail::to($user)->send(new UserEmail($user));

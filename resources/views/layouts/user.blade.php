@@ -222,23 +222,12 @@
 
 <script>
 
-    // var obj = document.getElementById("wallet-sec");
-    // obj.style.display = "none";
-       
-
-        
-        
-
     function openpop(email,username){
         // alert(email);
         $('#exampleFormControlInput1').val(email);
         $('#formname').val(username);
         $('#invitemodal').modal('show');
     }
-
-   
-    
-    
 
     function userdetail(id){
         $.ajax
@@ -258,8 +247,6 @@
    
     
     $(document).ready(function() {
-        
-
 
         $(".typeoption").change(function(){
             var id = $(this).val();
@@ -314,7 +301,10 @@
                         var obj = document.getElementById("wallet-sec");
 
                         obj.classList.remove("visually-hidden");
-
+                        var date = new Date();
+                        var minutes = 15;
+                        date.setTime(date.getTime() + (minutes * 60 * 1000));
+                        $.cookie("wallet-cookie","Verify", { expires: date });
 
                         var invmodal = document.getElementById("invitemodal");
                         
@@ -395,25 +385,18 @@
         
     });
 
-
-    // if ('serviceWorker' in navigator) {
-    //         // console.log("Will the service worker register?");
-    //         navigator.serviceWorker.register('service-worker.js')
-    //         .then(function(reg){
-    //             // console.log("Yes, it did.");
-    //         }).catch(function(err) {
-    //             console.log("No it didn't. This happened:", err)
-    //         });
-    //     }
-        // Share Api
-        
-   
-    var editor1 = new RichTextEditor("#div_editor1");
-
+    
 </script>
 
+<?php 
+$currentURL = Request::path();
+if ( $currentURL == 'manager-lounge' ) {
+    ?>
+    <script>
 
-    <?php 
+        var editor1 = new RichTextEditor("#div_editor1");
+    </script>
+<?php }  
         $currentURL = Request::path();
         if ( $currentURL == 'wallet' ) {
     ?>

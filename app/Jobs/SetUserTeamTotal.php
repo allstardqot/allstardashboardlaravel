@@ -108,24 +108,5 @@ class SetUserTeamTotal implements ShouldQueue
             $value['rank']=$rank;
             $value->update();
         }
-
-        //grand leaderboard rank update
-        $userTeam = UserTeam::OrderByDesc('user_teams.total_points')->get();
-        $i=$c=$point=0;
-        foreach($userTeam as $value){
-            if($value['total_points']==$point){
-                $value['grand_leaderboard_rank']=$i;
-                $c++;
-            }else{
-                $i++;
-                $i+=$c;
-                $value['grand_leaderboard_rank']=$i;
-                $c=0;
-            }
-            $point=$value['total_points'];         
-            $value->update();   
-        }
-
-
     }
 }

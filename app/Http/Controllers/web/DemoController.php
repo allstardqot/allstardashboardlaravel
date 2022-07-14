@@ -53,6 +53,96 @@ class DemoController extends Controller
 
     public function defaultCron($fixtureId){
         //$fixtureQuery=Fixture::find($fixtureId)->toArray();
+        $priviousWeek=$fixtureId;
+        //echo $priviousWeek."<br>";
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('user_teams','user_teams.id','user_contests.user_team_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id','user_teams.total_points'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
+        $winningData=[];
+        foreach($userTeamQuery as $key=>$value){
+            $winningData[$value['pool_id']][]=$value;
+        }
+        //prr($winningData);
+
+        if(!empty($winningData)){
+            foreach($winningData as $pool_id=>$poolData){
+                
+                $totalUserJoin=count($winningData[$pool_id]);
+                $countRank=$rank=0;
+                $userIdArray=$newArray=[];
+                foreach($poolData as $poolValue){
+                    echo $poolValue['total_points'].'------'.$poolValue['user_id']."<br>";
+                    User::where('id', $poolValue['user_id'])->increment('total_points',$poolValue['total_points']);
+                    //prr($poolValue);
+                    $totalPriceGet=$poolValue['entry_fees']*$totalUserJoin;
+                    $firstRankprice=$totalPriceGet*75/100;
+                    $secondRankprice=$totalPriceGet*15/100;
+                    $adminPrice=$totalPriceGet*10/100;
+                    if($rank!=0 && $poolValue['rank']!=$rank){
+                        $countRank=1;
+                    }
+                    $newArray['total_points']=$poolValue['total_points'];
+                    $newArray['first_price']=$firstRankprice;
+                    $newArray['second_price']=$secondRankprice;
+                    $newArray['admin_price']=$adminPrice;
+                    if($rank==0 || $poolValue['rank']==$rank){
+                        $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
+                        $countRank=$countRank+1;
+                    }else{
+                        $newArray['rank'][$poolValue['rank']]['count']=$countRank;
+                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
+                    }
+                    $rank=$poolValue['rank'];
+                }
+                //p($newArray);
+                if(!empty($newArray)){
+                    foreach($newArray as $key=>$count){
+                        if($key=='rank' && !empty($count)){
+                            foreach($count as $rank=>$value){
+                                $total_price=$eachUser=0;
+                                if($rank==1 && $value['count']>1){
+                                    $total_price=$newArray['first_price']+$newArray['second_price'];
+                                    $eachUser=$total_price/$value['count'];
+                                    //prr($value);
+                                }elseif($rank==1 && $value['count']==1){
+                                    $eachUser=$newArray['first_price'];
+                                }elseif($rank==2){
+                                    $eachUser=$newArray['second_price']/$value['count'];
+                                }
+                                foreach($value['user_id'] as $user_id){
+                                    //if(User::where('id', $user_id)->increment('wallet',$eachUser)){
+                                        // $weeak=Week::find(priviousWeek())->toArray();
+
+                                        // $userData=User::find($user_id)->toArray();
+                                        // $data = ['name'=>'','amount'=>'','gameweek_date'=>'','starting_at'=>'','ending_at'=>''];
+                                        // if(!empty($userData) && !empty($weeak)){
+                                        //     $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser,'starting_at'=>$weeak['starting_at'],'ending_at'=>$weeak['ending_at']];
+                                        // }
+                                        // $payment            = new Payment;
+                                        // $payment->user_id   = $user_id;
+                                        // $payment->amount    = $eachUser;
+                                        // $payment->type      = 'CONTEST WON';
+                                        // $payment->transaction_id = uniqid();
+                                        // if($payment->save()){
+                                        //     Mail::send('winning_mail', $data, function($message) use ($userData)  {
+                                        //         $message->to($userData['email'], 'Tutorials Point')->subject
+                                        //             ('Winnings Distribution All Star');
+                                                
+                                        //         });
+                                        // }
+                                        // UserContest::where('pool_id',$pool_id)->update(['winning_distribute'=>1]);
+                                    //}
+                                }
+                                if($rank==1 && $value['count']>1){
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+        echo "fineee";die;
+
         $userTeam = UserTeam::OrderByDesc('user_teams.total_points')->get();
         $i=$c=$point=0;
         foreach($userTeam as $value){
@@ -162,7 +252,7 @@ class DemoController extends Controller
     }
 
     public function rankUpdate(){
-        //echo "fine";
+        //echo "fine";die;
         $priviousWeek=24;
         //echo $priviousWeek."<br>";
         $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
@@ -171,6 +261,7 @@ class DemoController extends Controller
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
+        prr($winningData);
 
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){

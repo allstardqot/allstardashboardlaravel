@@ -4,8 +4,13 @@
 <table>
 <tr><td>Pool Type</td><td>{{$type}}</td></tr>
 <tr><td>Participants</td><td>{{$max_participants}}</td></tr>
+
+@php
+    $password = !empty($pass) ? '<tr><td>Password </td><td>'.$pass.'</td></tr>' : '' ;
+@endphp
+{!! $password !!}
 <tr><td>Total AFC in Pool</td><td>{{$entry_fees}}</td></tr>
 </table>
 <p>To accept the invite, please click on the link below and complete the steps:</p>
 
-<a href="{{ url('/') }}">Click Here, Join</a>
+<a href="{{ url('/home') }}">Click Here, Join</a>

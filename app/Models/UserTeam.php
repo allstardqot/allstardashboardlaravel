@@ -13,7 +13,6 @@ class UserTeam extends Model
         'user_id',
         'week',
         'current_week',
-        'grand_leaderboard_rank',
         'captain',
         'substitude',
         'players',

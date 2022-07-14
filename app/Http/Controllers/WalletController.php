@@ -49,26 +49,26 @@ class WalletController extends Controller
         $user_mail = Auth::user()->email;
         $user = User::where('id','=',$user_id)->update(['otp' => $otp]);
 
-        if($user){
-        
+        if(!isset($_COOKIE['wallet-cookie'])){
+            if($user ){
+            
        
-            Mail::send('users.otpVerify',['user_name'=>$user_name,'otp'=>$otp], function($message) use($user_mail){
-                $message->to($user_mail);
-                $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
-                $message->subject('Verify OTP');
-            });
-       
+                Mail::send('users.otpVerify',['user_name'=>$user_name,'otp'=>$otp], function($message) use($user_mail){
+                    $message->to($user_mail);
+                    $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+                    $message->subject('Verify OTP');
+                });
+           
+                return view('users/wallet/index');
+            }
+            else{
+                return redirect('/wallet')->with('message', 'OTP Not Send!');
+    
+            }
+        }else{
+
             return view('users/wallet/index');
         }
-        else{
-            return redirect('/wallet')->with('message', 'OTP Not Send!');
-
-        }
-
-        
-        
-
-            
     }
 
     public function otpverify(Request $request){

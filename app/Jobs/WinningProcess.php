@@ -46,20 +46,23 @@ class WinningProcess implements ShouldQueue
     {
         //winning distribute
         $priviousWeek=priviousWeek();
-        //echo $priviousWeek."<br>";
-        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
-        //prr($userTeamQuery);die;
+        Log::info("winning cron running---".$priviousWeek.'------'.currentWeek());
+        
+        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('user_teams','user_teams.id','user_contests.user_team_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id','user_teams.total_points'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
+        
         $winningData=[];
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){
-                //prr($winningData);
                 $totalUserJoin=count($winningData[$pool_id]);
                 $countRank=$rank=0;
                 $userIdArray=$newArray=[];
                 foreach($poolData as $poolValue){
+                    //grand leaderboard points update
+                    User::where('id', $poolValue['user_id'])->increment('total_points',$poolValue['total_points']);
+                    //grand leaderboard points end
                     $totalPriceGet=$poolValue['entry_fees']*$totalUserJoin;
                     $firstRankprice=$totalPriceGet*75/100;
                     $secondRankprice=$totalPriceGet*15/100;
@@ -127,6 +130,26 @@ class WinningProcess implements ShouldQueue
                     }
                 }
             }   
+        }
+
+        //grand leaderboard rank update
+        $user = User::orderBy('total_points','desc')->get();
+        $i=$c=$point=0;
+        foreach($user as $value){
+            if($value['total_points']==0){
+                break;
+            }
+            if($value['total_points']==$point){
+                $value['grand_leaderboard_rank']=$i;
+                $c++;
+            }else{
+                $i++;
+                $i+=$c;
+                $value['grand_leaderboard_rank']=$i;
+                $c=0;
+            }
+            $point=$value['total_points'];         
+            $value->update();   
         }
     }
 }

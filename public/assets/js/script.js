@@ -21,7 +21,7 @@ function set_cookie(name, value) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
-  function ShowPlayerDetails(id,name,position,total_point){
+  function ShowPlayerDetails(id,name,position,total_point,picks){
 
     if(position == 1){
         position = 'Goalkeeper';
@@ -38,6 +38,7 @@ function set_cookie(name, value) {
     $('#player_names').html(name);
     $('#category_model').html(position);
     $('#playTotalPoints').html(total_point);
+    $('#totalPicks').html(picks);
     $('#playerDetails').modal('show');
     // $.ajax({
     //     url: "player-detail",

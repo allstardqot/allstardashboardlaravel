@@ -50,6 +50,13 @@
                                 <input type="hidden" name="pool_id" value='{{$id}}'/>
 
                                 <input class="inpotyahn" type="text" name="email[]" placeholder="Enter Email address" />
+                                <input class="inpotyahn" type="hidden"  name="pool_name" value="{{ $pool_name }}"/>
+                                <input class="inpotyahn" type="hidden" name="entry_fees" value="{{ $entry_fees }}"/>
+                                <input class="inpotyahn" type="hidden"  name="starting_at" value="{{ $starting_at }}"/>
+                                <input class="inpotyahn" type="hidden"  name="ending_at"  value="{{ $ending_at }}"/>
+                                <input class="inpotyahn" type="hidden"  name="max_participants"  value="{{ $max_participants }}"/>
+                                <input class="inpotyahn" type="hidden"  name="pool_type"  value="{{ $pool_type }}"/>
+                                <input class="inpotyahn" type="hidden"  name="pass"  value="{{ $pass }}"/>
                             </div>
                             <div class="lkahty">
                                 {{-- <button  name="buttton">+ Add More</button> --}}

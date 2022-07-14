@@ -45,7 +45,7 @@ class ContactusController extends Controller
         $enquiry->email = $user;
         $enquiry->message = $request->message;
         $enquiry->save();
-        return redirect('/')->with('message', 'Thanks For Submission!');
+        return redirect('/contact_us')->with('message', 'Thanks For Submission!');
 
         
     }

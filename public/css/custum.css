@@ -31,13 +31,17 @@
 .allstar-about-all .btn-danger {
   font-weight: 400;
   font-size: 15px;
-  padding: 18px 52px;
+  padding: 12px 30px;
   border-radius: 50px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+
   background: #ff5000;
   border-color: #ff5000;
 }
-.allstar-about-all .buy-token {
-  margin-right: 20px;
+.leader-date {
+  margin-left: 6.9%;
+  margin-top: 4px;
 }
 .allstar-about-all .image {
   text-align: right;

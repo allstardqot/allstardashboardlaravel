@@ -1208,46 +1208,85 @@
 
             $('body').on("click", "#goalkeeper_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
-                var category_name = $(this).closest('div').find(".categorie").html();
-                var total_points = $(this).closest('div').find(".total_points").html();
-                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                var player_name   = $(this).closest('div').find("h4").html();
+                var total_points  = 'Total Fantasy Points : '+$(this).closest('div').find(".total_points").val();
+                var cgw_points    = 'Current GW points : '+$(this).closest('div').find(".cmg_totalpoints").val();
+                var totalpicks    = 'Total Picks : '+$(this).closest('div').find(".total_picks").val();
+                var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
+                var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
+                var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
+                // alert(cgw_cap);
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
+                $("#total_picks_id").html(totalpicks);
+                $("#gm_picks").html(gm_picks);
+                $("#total_cap").html(total_cap);
+                $("#cgw_cap").html(cgw_cap);
             })
 
             $('body').on("click", "#defender_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
-                var player_name = $(this).closest('div').find("h4").html();
-                var total_points = $(this).closest('div').find(".total_points").html();
-                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                var player_name   = $(this).closest('div').find("h4").html();
+                var total_points  = 'Total Fantasy Points : '+$(this).closest('div').find(".total_points").val();
+                var cgw_points    = 'Current GW points : '+$(this).closest('div').find(".cmg_totalpoints").val();
+                var totalpicks    = 'Total Picks : '+$(this).closest('div').find(".total_picks").val();
+                var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
+                var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
+                var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
+                // alert(cgw_cap);
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
+                $("#total_picks_id").html(totalpicks);
+                $("#gm_picks").html(gm_picks);
+                $("#total_cap").html(total_cap);
+                $("#cgw_cap").html(cgw_cap);
+
             })
 
             $('body').on("click", "#midfielder_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
-                var player_name = $(this).closest('div').find("h4").html();
-                var total_points = $(this).closest('div').find(".total_points").html();
-                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                var player_name   = $(this).closest('div').find("h4").html();
+                var total_points  = 'Total Fantasy Points : '+$(this).closest('div').find(".total_points").val();
+                var cgw_points    = 'Current GW points : '+$(this).closest('div').find(".cmg_totalpoints").val();
+                var totalpicks    = 'Total Picks : '+$(this).closest('div').find(".total_picks").val();
+                var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
+                var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
+                var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
+                // alert(cgw_cap);
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
+                $("#total_picks_id").html(totalpicks);
+                $("#gm_picks").html(gm_picks);
+                $("#total_cap").html(total_cap);
+                $("#cgw_cap").html(cgw_cap);
+
             })
 
             $('body').on("click", "#forward_detail", function(e) {
                 var category_name = $(this).closest('div').find(".categorie").html();
-                var player_name = $(this).closest('div').find("h4").html();
-                var total_points = $(this).closest('div').find(".total_points").html();
-                var cgw_points = $(this).closest('div').find(".cmg_totalpoints").html();
+                var player_name   = $(this).closest('div').find("h4").html();
+                var total_points  = 'Total Fantasy Points : '+$(this).closest('div').find(".total_points").val();
+                var cgw_points    = 'Current GW points : '+$(this).closest('div').find(".cmg_totalpoints").val();
+                var totalpicks    = 'Total Picks : '+$(this).closest('div').find(".total_picks").val();
+                var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
+                var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
+                var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
+                // alert(cgw_cap);
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
                 $("#player_name_model").html(player_name);
+                $("#total_picks_id").html(totalpicks);
+                $("#gm_picks").html(gm_picks);
+                $("#total_cap").html(total_cap);
+                $("#cgw_cap").html(cgw_cap);
+
             })
         })
     </script>

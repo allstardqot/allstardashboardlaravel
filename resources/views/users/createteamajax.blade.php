@@ -102,7 +102,8 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                     </div>
 
                     <div class="col-sm-4 mt-3">
-                        <div class="range-slider">
+                        
+                        <!-- <div class="range-slider">
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
@@ -112,8 +113,136 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                             <div class="range-slider__slider">
                                 <input type="range" min="0" max="50" value="{{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}" class="slider" id="rangeSlider" />
+
+                              
                             </div>
-                        </div>
+                        </div> -->
+                        <div class="flex jcsa aifs f-wrap w-100vw">
+		<div class="main-card m-m rubber-ipt-ctn">
+			<div class="main-card-head cardhead-light flex jcc aic">
+				<h5>What is your price range?</h5>
+			</div>
+			<div class="main-card-ctt flex jcc aic">
+				<div class="rubber-ipt mb-m mt-s">
+					<div class="rubber-ipt-range"></div>
+
+					<div class="rubber-ipt-min"></div>
+					<div class="rubber-ipt-max"></div>
+
+					<div class="w-100 flex jcsb mt-s">
+						<p class="rubber-value-min">10</p>
+						<p class="rubber-value-max">1000</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <style>
+        /*  ###  Rubberband range input   */
+
+
+
+
+
+.rubber-ipt-min{
+	transform: translate(-9px, -9px);
+	left: 0;
+}
+.rubber-ipt-max{
+	transform: translate(191px, -9px);
+	left: 0;
+}
+.rubber-value-min{
+	top:10px;
+	transform: translateX(-10px);
+}
+.rubber-value-max{
+	top:10px;
+	right: 0;
+	transform: translateX(10px);
+}
+
+/* #########  Styling */
+
+body, html{
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	max-width: 100vw;
+	min-width: 100vw;
+	min-height: 200vh;
+
+	background: linear-gradient(25deg,#a9f3f9, #f0fffb);
+}
+
+h1,h2,h3,h4,h5,h6,p{
+	margin: 0;
+	padding: 0;
+}
+a, a:hover{
+	text-decoration: none;
+	color: #000;
+}
+
+:root{
+	--main-lighter: #f0fffb;
+	--main-light: #a9f3f9;
+	--main-sublight: #bffaff;
+	--main: #00e1da;
+	--main-dark: #00b7b4;
+	--main-darker: #003f3c;
+
+}
+
+body{
+	font-family: Verdana, Geneva, sans-serif;
+}
+h5{
+	font-size: 24px;
+	color: var(--main-dark);
+	font-weight: 400;
+}
+
+.flex{
+	display: flex;
+}
+.f-wrap{
+	flex-wrap: wrap;
+}
+.jcsb{
+	justify-content: space-between;
+}
+.jcsa{
+	justify-content: space-around;
+}
+.jcc{
+	justify-content: center;
+}
+.aifs{
+	align-items: flex-start;
+}
+.aic{
+	align-items: center;
+}
+.w-100{
+	width: 100%;
+}
+
+.m-m{
+	margin: 20px;
+}
+.mb-m{
+	margin-bottom: 20px;
+}
+.mt-s{
+	margin-top: 10px;
+}
+
+
+
+    </style>
+
                     </div>
                 </div>
 
@@ -773,6 +902,134 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
     </div>
 </div>
 </div>
+
+<script>
+        // Rubberband Input
+        const rubberIpts = document.querySelectorAll(".rubber-ipt");
+
+        for (var i = 0; i < rubberIpts.length; i++) {
+            const rubberRange = rubberIpts[i].querySelector(".rubber-ipt-range");
+            const rubberMin = rubberIpts[i].querySelector(".rubber-ipt-min");
+            const rubberMax = rubberIpts[i].querySelector(".rubber-ipt-max");
+            var initialMousePosMin;
+            var initialMousePosMax;
+
+
+    // Rubber Minimum
+            rubberMin.style.left = '0px'
+            function dragTargetMin(dragOffsetMin) {
+                rubberMin.style.left = `${dragOffsetMin}px`;
+            }
+            function getDragOffsetMin(e) {
+                if (initialMousePosMin == null) {
+                    initialMousePosMin = e.clientX;
+                }
+                var mousePos = e.clientX;
+                var dragOffsetMin = mousePos - initialMousePosMin;
+                var rubberMinMax = 200 + (parseInt(rubberMax.style.left, 10)) - 10;
+
+                if (dragOffsetMin < 0){dragOffsetMin = 0}
+                else if (dragOffsetMin > rubberMinMax) {
+                    dragOffsetMin = rubberMinMax;
+                };
+                if (dragOffsetMin > 190) {
+                    dragOffsetMin = 190;
+                }
+
+                dragTargetMin(dragOffsetMin);
+                updateRubberRangeMin(dragOffsetMin);
+                getMinPrice(dragOffsetMin);
+            }
+
+            function SetDragStartMin(e) {
+                document.addEventListener("mousemove", getDragOffsetMin);
+            }
+            function stopDragMin() {
+                document.removeEventListener("mousemove", getDragOffsetMin);
+            }
+
+            rubberMin.addEventListener("mousedown", SetDragStartMin);
+            document.addEventListener("mouseup", stopDragMin);
+
+
+    // Rubber Maximum
+            rubberMax.style.left = '0px'
+            function dragTargetMax(dragOffsetMax) {
+                rubberMax.style.left = `${dragOffsetMax}px`;
+            }
+            function getDragOffsetMax(e) {
+                if (initialMousePosMax == null) {
+                    initialMousePosMax = e.clientX;
+                }
+                var mousePos = e.clientX;
+                var dragOffsetMax = mousePos - initialMousePosMax;
+                var rubberMaxMin = (parseInt(rubberMin.style.left, 10) - 200 + 10);
+
+                if (dragOffsetMax > 0){dragOffsetMax = 0}
+                else if (dragOffsetMax < rubberMaxMin) {
+                    dragOffsetMax = rubberMaxMin;
+                };
+                if (dragOffsetMax < -190) {
+                    dragOffsetMax = -190;
+                };
+
+                dragTargetMax(dragOffsetMax);
+                updateRubberRangeMax(dragOffsetMax);
+                getMaxPrice(dragOffsetMax);
+            }
+
+            function SetDragStartMax() {
+                document.addEventListener("mousemove", getDragOffsetMax);
+            }
+            function stopDragMax() {
+                document.removeEventListener("mousemove", getDragOffsetMax);
+            }
+
+            rubberMax.addEventListener("mousedown", SetDragStartMax);
+            document.addEventListener("mouseup", stopDragMax);
+
+
+    // Update Range between Min and Max
+
+            rubberRange.style.width = '200px';
+            function updateRubberRangeMin(dragOffsetMin){
+                rubberRange.style.left = `${dragOffsetMin}px`;
+
+                var rubberRangeWidth = 200 - ((parseInt(rubberMax.style.left, 10)) * -1) - dragOffsetMin;
+                if (rubberRangeWidth <= 0) {
+                    rubberRangeWidth = 0;
+                }
+                rubberRange.style.width = `${rubberRangeWidth}px`;
+            }
+            function updateRubberRangeMax(dragOffsetMax){
+                var rubberRangeWidth = 200 - parseInt(rubberMin.style.left, 10) - (dragOffsetMax * -1);
+                if (rubberRangeWidth <= 0) {
+                    rubberRangeWidth = 0;
+                }
+                rubberRange.style.width = `${rubberRangeWidth}px`;
+            }
+
+    // Update price range
+
+            const minPrice = rubberIpts[i].querySelector(".rubber-value-min");
+            const maxPrice = rubberIpts[i].querySelector(".rubber-value-max");
+
+            var RubberMinPrice = 10;
+            var RubberMaxPrice = 1000;
+
+            function getMinPrice(dragOffsetMin) {
+                rubberMinPrice = ((RubberMaxPrice/200) * dragOffsetMin) + (((RubberMinPrice - ((RubberMinPrice/200) * dragOffsetMin))));
+                minPrice.innerHTML = `${rubberMinPrice}`
+
+            }
+            function getMaxPrice(dragOffsetMax) {
+                rubberMaxPrice = ((RubberMaxPrice/200) * (dragOffsetMax + 200)) + ((RubberMinPrice - ((RubberMinPrice/200) * (dragOffsetMax + 200))));
+                maxPrice.innerHTML = `${rubberMaxPrice}`
+
+            }
+        };
+
+    </script>
 
 <script>
     $(".goalkeeper_staricon").hide();

@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(GetFixture::class)->everyFifteenMinutes();
         $schedule->job(SetUserTeamTotal::class)->everyFifteenMinutes();
         $schedule->job(ContestliveEmailSend::class)->everyFifteenMinutes();
-        $schedule->job(WinningProcess::class)->daily();
+        $schedule->job(WinningProcess::class)->dailyAt('2:00');
         //$schedule->job(GetTeam::class)->everyMinute();
         //$schedule->command('demo:cron')->everyMinute();
         $schedule->job(NewsData::class)->daily();

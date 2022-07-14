@@ -10,7 +10,7 @@
     json_decode($value->goals,true); @endphp
 
     <div class="sdnnsk7">
-      <div class="sdjdj78" onclick="ShowPlayerDetails('{{ $value->id }}','{{ $value->display_name }}','{{ $value->position_id }}','{{ $value->total_point }}')">
+      <div class="sdjdj78" onclick="ShowPlayerDetails('{{ $value->id }}','{{ $value->display_name }}','{{ $value->position_id }}','{{ $value->total_points }}',{{ $value->pictotal }})">
         <div class="sdkdfj89">
           <div class="sdjdk0">
             <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
@@ -137,10 +137,10 @@
           <li class="mb-3" id="total_p_points">
             <strong> Total Fantasy Points:</strong> <span id="playTotalPoints">100</span>
           </li>
-          <li class="mb-3" id="total_cgw_points">
-            <strong> Bought:</strong> <span> 100</span>
-          </li>
-          <li class="mb-3"><strong>Total Picks:</strong> <span> 0</span></li>
+          {{-- <li class="mb-3" id="total_cgw_points">
+            <strong> Bought:</strong> <span> 100</span> 
+          </li> --}}
+          <li class="mb-3"><strong>Total Picks:</strong> <span id="totalPicks"> 0</span></li>
           {{-- <li class="mb-3">
             <strong>Sold:</strong> <span> 0</span>
           </li>

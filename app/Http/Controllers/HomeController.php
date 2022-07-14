@@ -55,9 +55,15 @@ class HomeController extends Controller
 
         
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
-        if($_SERVER['REMOTE_ADDR'] == '49.204.163.246'){
+        foreach($topplayers as $value){
+            $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value->player_id.'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal')])->first()->toArray();
+            $value['pictotal']      = $playerpointTotal['pictotal'];
+            
+        }
+        
+        if($_SERVER['REMOTE_ADDR'] == '49.204.161.65'){
 
-            // prr($topplayers);die;
+            // prr($topplayers);
         }
 
         $contest_pool = UserContest::where('user_id',$user_id)->pluck('pool_id')->toArray();
