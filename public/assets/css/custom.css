@@ -24,19 +24,19 @@ body {
   border: 1px solid #fff;
 }
 .rubber-ipt-range {
-  width: 200px;
-  height: 2px;
+  width: 100%;
+  height: 3px;
   background-color: #ff5000;
   position: relative;
 }
 .rubber-ipt {
   width: 100%;
-  height: 2px;
+  height: 3px;
   background-color: #ddd;
   position: relative;
 }
 .rubber-ipt-min {
-  transform: translate(-9px, -9px);
+  transform: translate(-2px, -9px);
   left: 0;
 }
 .rubber-ipt-max {
@@ -45,12 +45,10 @@ body {
 }
 .rubber-value-min {
   top: 10px;
-  transform: translateX(-10px);
 }
 .rubber-value-max {
   top: 10px;
   right: 0;
-  transform: translateX(10px);
 }
 #invitemodal .modal-content {
   background: #505281;

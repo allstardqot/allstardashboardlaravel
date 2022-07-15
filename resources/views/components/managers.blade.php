@@ -18,7 +18,10 @@
                         @foreach($user as $key => $value)
                         <div class="sdkdj">
                             <div class="user-details">
-                                <div class="sdksdlk"><img src="{{ asset('public/assets/image/Rectangle 312.png') }}"></div>
+                                @php
+                                    $img = !empty($value->profile_image)  ? asset('public/profileImage/'.$value->profile_image.'' ) : asset('public/assets/image/Rectangle 312.png');
+                                @endphp
+                                <div class="sdksdlk"><img src="{{ $img }}"></div>
                                 <div class="sdkjsdj">
                                     <h5>{{ $value->user_name }}</h5>
                                 </div>

@@ -63,11 +63,12 @@ class ProfileController extends Controller
         // print_r($request->input());die;
         $data=[];
 
-
+        //prr($request->file('profile_image'));
         $user = Auth::user();
         if($request->file('profile_image')){
 
             $file= $request->file('profile_image');
+            //echo $file."tttt";die;
             if(auth()->user()->profile_image){
                 unlink(public_path('profileImage/').auth()->user()->profile_image);
                 //echo "finee.<br>".auth()->user()->profile_image;die;
@@ -77,6 +78,7 @@ class ProfileController extends Controller
             $file-> move(public_path('profileImage'), $filename);
             $user->profile_image= $filename;
         }
+        //echo "fineeeee";die;
 
         $user->user_name       = $request->input('user_name');
         $user->email          = $request->input('email');

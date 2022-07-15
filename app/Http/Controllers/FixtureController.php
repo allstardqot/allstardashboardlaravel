@@ -36,8 +36,15 @@ class FixtureController extends Controller
             $fixtureQuery->whereBetween('starting_at', [$request->start_fixture." 00:00:00", $request->end_fixture." 23:59:59"]);
             $weeak=array('starting_at'=>$request->start_fixture,'ending_at'=>$request->end_fixture);
         }else{
-            $weeak=Week::find(currentWeek())->toArray();        
+            $weeak=Week::find(currentWeek())->toArray();     
+            //echo $weeak['starting_at'];die;
+            if(!empty($weeak['starting_at']) && !empty($weeak['ending_at'])){
+                $fixtureQuery->whereBetween('starting_at', [$weeak['starting_at']." 00:00:00", $weeak['ending_at']." 23:59:59"]);
+                $weeak=array('starting_at'=>$weeak['starting_at'],'ending_at'=>$weeak['ending_at']);
+            }
+
         }
+        //prr($weeak);
         $fixturedata = $fixtureQuery->with(['teams1','teams2'])->get()->toArray();
 
         return view('users/fixture',['fixturedata'=>$fixturedata,'weeak'=>$weeak]);

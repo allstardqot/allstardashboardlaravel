@@ -5,6 +5,68 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 }
 
 @endphp
+
+<style>
+    .om-sliderrange {
+	min-height: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.om-sliderrange-range {
+	height: 4px;
+	position: relative;
+	margin: 8px 4px;
+}
+
+.om-sliderrange-display {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0% 0;
+    font-size: 12px;
+}
+
+.om-sliderrange-range:before {
+	display: block;
+	content: '';
+	height: 4px;
+	border-radius: 4px;
+	background: #c2c0c2;
+}
+
+.om-sliderrange-range-indicator {
+	height: 4px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+    background: #ff5000;
+}
+
+.om-sliderrange-button-start,
+.om-sliderrange-button-end {
+	cursor: pointer;
+	position: absolute;
+    width: 15px;
+    height: 15px;
+	border-radius: 12px;
+    background: #fff;
+    border: 2px solid #ff5000;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: visible;
+    outline: 0;
+    
+}
+.om-sliderrange-display span:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -898;
+}
+</style>
 <div class="tab-pane fade home-tab <?= $type == 'goalkeeper' || $type == '' ? 'show active' : '' ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="form-outer">
         <div class="page slide-page">
@@ -117,131 +179,21 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                               
                             </div>
                         </div> -->
-                        <div class="flex jcsa aifs f-wrap w-100vw">
-		<div class="main-card m-m rubber-ipt-ctn">
-			<div class="main-card-head cardhead-light flex jcc aic">
-				<h5>What is your price range?</h5>
-			</div>
-			<div class="main-card-ctt flex jcc aic">
-				<div class="rubber-ipt mb-m mt-s">
-					<div class="rubber-ipt-range"></div>
-
-					<div class="rubber-ipt-min"></div>
-					<div class="rubber-ipt-max"></div>
-
-					<div class="w-100 flex jcsb mt-s">
-						<p class="rubber-value-min">10</p>
-						<p class="rubber-value-max">1000</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    <style>
-        /*  ###  Rubberband range input   */
+                       
+                            <div>
+                                <p class="range-slider__subtitle text-white mb-4">Price Range</p>
+                            <input type="range" name="pieces" id="rangeSlider" multiple unit="$" value="0,50" min="0" max="50"  style="width: 250px">
+                        </div>
+                           
+                       
 
 
 
 
+                       
 
-.rubber-ipt-min{
-	transform: translate(-9px, -9px);
-	left: 0;
-}
-.rubber-ipt-max{
-	transform: translate(191px, -9px);
-	left: 0;
-}
-.rubber-value-min{
-	top:10px;
-	transform: translateX(-10px);
-}
-.rubber-value-max{
-	top:10px;
-	right: 0;
-	transform: translateX(10px);
-}
-
-/* #########  Styling */
-
-body, html{
-	margin: 0;
-	padding: 0;
-	width: 100vw;
-	max-width: 100vw;
-	min-width: 100vw;
-	min-height: 200vh;
-
-	background: linear-gradient(25deg,#a9f3f9, #f0fffb);
-}
-
-h1,h2,h3,h4,h5,h6,p{
-	margin: 0;
-	padding: 0;
-}
-a, a:hover{
-	text-decoration: none;
-	color: #000;
-}
-
-:root{
-	--main-lighter: #f0fffb;
-	--main-light: #a9f3f9;
-	--main-sublight: #bffaff;
-	--main: #00e1da;
-	--main-dark: #00b7b4;
-	--main-darker: #003f3c;
-
-}
-
-body{
-	font-family: Verdana, Geneva, sans-serif;
-}
-h5{
-	font-size: 24px;
-	color: var(--main-dark);
-	font-weight: 400;
-}
-
-.flex{
-	display: flex;
-}
-.f-wrap{
-	flex-wrap: wrap;
-}
-.jcsb{
-	justify-content: space-between;
-}
-.jcsa{
-	justify-content: space-around;
-}
-.jcc{
-	justify-content: center;
-}
-.aifs{
-	align-items: flex-start;
-}
-.aic{
-	align-items: center;
-}
-.w-100{
-	width: 100%;
-}
-
-.m-m{
-	margin: 20px;
-}
-.mb-m{
-	margin-bottom: 20px;
-}
-.mt-s{
-	margin-top: 10px;
-}
-
-
-
-    </style>
+                        
+   
 
                     </div>
                 </div>
@@ -260,9 +212,9 @@ h5{
                                     <th scope="col">
                                         <h6>Team</h6>
                                     </th>
-                                    <th scope="col">
+                                    {{-- <th scope="col">
                                         <h6>Goals</h6>
-                                    </th>
+                                    </th> --}}
                                     <th scope="col">
                                         <h6>Fantasy points</h6>
                                     </th>
@@ -305,9 +257,9 @@ h5{
                           : ""
                       }}</strong>
                                         </td>
-                                        <td class="goalkeeper_td">
-                                            <p>18 Goals</p>
-                                        </td>
+                                        {{-- <td class="goalkeeper_td">
+                                            <p>{{ $goakkeeperValue["goals"] }} Goals</p>
+                                        </td> --}}
                                         <td class="goalkeeper_td">
                                             <p>{{ $goakkeeperValue["sum_totalPoints"] }} Points</p>
                                         </td>
@@ -495,7 +447,7 @@ h5{
                     }}</strong>
                                 </td>
                                 <td class="defender_td">
-                                    <p>18 Goals</p>
+                                    <p>{{ !empty($defenderValue["goals"])?$defenderValue["goals"]:'0' }} Goals</p>
                                 </td>
                                 <td class="defender_td">
                                     <p>{{ $defenderValue["sum_totalPoints"] }} Points</p>
@@ -683,7 +635,7 @@ h5{
                       }}</strong>
                                     </td>
                                     <td class="midfielder_td">
-                                        <p>18 Goals</p>
+                                        <p>{{ !empty($midfielderValue["goals"])?$midfielderValue["goals"]:'0' }} Goals</p>
                                     </td>
                                     <td class="midfielder_td">
                                         <p>{{ $midfielderValue["sum_totalPoints"] }} Points</p>
@@ -875,7 +827,7 @@ h5{
                       }}</strong>
                                     </td>
                                     <td class="forward_td">
-                                        <p>18 Goals</p>
+                                        <p>{{ !empty($forwardValue["goals"])?$forwardValue["goals"]:'0' }} Goals</p>
                                     </td>
                                     <td class="forward_td">
                                         <p>{{ $forwardValue["sum_totalPoints"] }} Points</p>
@@ -904,132 +856,19 @@ h5{
 </div>
 
 <script>
-        // Rubberband Input
-        const rubberIpts = document.querySelectorAll(".rubber-ipt");
+    document.getElementById("rangeSlider").addEventListener(
+"rangechange",
+function (e) {
+document.getElementById("displaySelectedRange").innerText =
+e.detail.join(" - ");
+},
+true
+);
 
-        for (var i = 0; i < rubberIpts.length; i++) {
-            const rubberRange = rubberIpts[i].querySelector(".rubber-ipt-range");
-            const rubberMin = rubberIpts[i].querySelector(".rubber-ipt-min");
-            const rubberMax = rubberIpts[i].querySelector(".rubber-ipt-max");
-            var initialMousePosMin;
-            var initialMousePosMax;
-
-
-    // Rubber Minimum
-            rubberMin.style.left = '0px'
-            function dragTargetMin(dragOffsetMin) {
-                rubberMin.style.left = `${dragOffsetMin}px`;
-            }
-            function getDragOffsetMin(e) {
-                if (initialMousePosMin == null) {
-                    initialMousePosMin = e.clientX;
-                }
-                var mousePos = e.clientX;
-                var dragOffsetMin = mousePos - initialMousePosMin;
-                var rubberMinMax = 200 + (parseInt(rubberMax.style.left, 10)) - 10;
-
-                if (dragOffsetMin < 0){dragOffsetMin = 0}
-                else if (dragOffsetMin > rubberMinMax) {
-                    dragOffsetMin = rubberMinMax;
-                };
-                if (dragOffsetMin > 190) {
-                    dragOffsetMin = 190;
-                }
-
-                dragTargetMin(dragOffsetMin);
-                updateRubberRangeMin(dragOffsetMin);
-                getMinPrice(dragOffsetMin);
-            }
-
-            function SetDragStartMin(e) {
-                document.addEventListener("mousemove", getDragOffsetMin);
-            }
-            function stopDragMin() {
-                document.removeEventListener("mousemove", getDragOffsetMin);
-            }
-
-            rubberMin.addEventListener("mousedown", SetDragStartMin);
-            document.addEventListener("mouseup", stopDragMin);
-
-
-    // Rubber Maximum
-            rubberMax.style.left = '0px'
-            function dragTargetMax(dragOffsetMax) {
-                rubberMax.style.left = `${dragOffsetMax}px`;
-            }
-            function getDragOffsetMax(e) {
-                if (initialMousePosMax == null) {
-                    initialMousePosMax = e.clientX;
-                }
-                var mousePos = e.clientX;
-                var dragOffsetMax = mousePos - initialMousePosMax;
-                var rubberMaxMin = (parseInt(rubberMin.style.left, 10) - 200 + 10);
-
-                if (dragOffsetMax > 0){dragOffsetMax = 0}
-                else if (dragOffsetMax < rubberMaxMin) {
-                    dragOffsetMax = rubberMaxMin;
-                };
-                if (dragOffsetMax < -190) {
-                    dragOffsetMax = -190;
-                };
-
-                dragTargetMax(dragOffsetMax);
-                updateRubberRangeMax(dragOffsetMax);
-                getMaxPrice(dragOffsetMax);
-            }
-
-            function SetDragStartMax() {
-                document.addEventListener("mousemove", getDragOffsetMax);
-            }
-            function stopDragMax() {
-                document.removeEventListener("mousemove", getDragOffsetMax);
-            }
-
-            rubberMax.addEventListener("mousedown", SetDragStartMax);
-            document.addEventListener("mouseup", stopDragMax);
-
-
-    // Update Range between Min and Max
-
-            rubberRange.style.width = '200px';
-            function updateRubberRangeMin(dragOffsetMin){
-                rubberRange.style.left = `${dragOffsetMin}px`;
-
-                var rubberRangeWidth = 200 - ((parseInt(rubberMax.style.left, 10)) * -1) - dragOffsetMin;
-                if (rubberRangeWidth <= 0) {
-                    rubberRangeWidth = 0;
-                }
-                rubberRange.style.width = `${rubberRangeWidth}px`;
-            }
-            function updateRubberRangeMax(dragOffsetMax){
-                var rubberRangeWidth = 200 - parseInt(rubberMin.style.left, 10) - (dragOffsetMax * -1);
-                if (rubberRangeWidth <= 0) {
-                    rubberRangeWidth = 0;
-                }
-                rubberRange.style.width = `${rubberRangeWidth}px`;
-            }
-
-    // Update price range
-
-            const minPrice = rubberIpts[i].querySelector(".rubber-value-min");
-            const maxPrice = rubberIpts[i].querySelector(".rubber-value-max");
-
-            var RubberMinPrice = 10;
-            var RubberMaxPrice = 1000;
-
-            function getMinPrice(dragOffsetMin) {
-                rubberMinPrice = ((RubberMaxPrice/200) * dragOffsetMin) + (((RubberMinPrice - ((RubberMinPrice/200) * dragOffsetMin))));
-                minPrice.innerHTML = `${rubberMinPrice}`
-
-            }
-            function getMaxPrice(dragOffsetMax) {
-                rubberMaxPrice = ((RubberMaxPrice/200) * (dragOffsetMax + 200)) + ((RubberMinPrice - ((RubberMinPrice/200) * (dragOffsetMax + 200))));
-                maxPrice.innerHTML = `${rubberMaxPrice}`
-
-            }
-        };
-
-    </script>
+OmRangeSlider.init({
+inputValueStyle: OmRangeSliderInputValueStyles.PHP_ARRAY,
+});
+</script>
 
 <script>
     $(".goalkeeper_staricon").hide();

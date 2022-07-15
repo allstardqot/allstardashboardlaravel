@@ -52,7 +52,7 @@ class LeaderboardController extends Controller
                 $ending_at=$weekData['ending_at'];
             }
         }
-        $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user         = User::select('user_name','profile_image','email')->where(['role_id'=>3])->inRandomOrder()->limit(10)->get();
         if(!empty($user_contest['user_team_id'])){
             $userTeam = UserTeam::find($user_contest['user_team_id'])->toArray();
             ///echo $userTeam['current_week'];die;
@@ -72,7 +72,7 @@ class LeaderboardController extends Controller
             $result['id'] = $userTeam['id'];
             $result['week'] = $userTeam['week'];
         }
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where('create_posts.status',1)->orderBy("comment",'desc')->get();
         
         return view('users/leaderboard/index',compact('user','result','playersData','newsdata','trending','userTeam','leaderboardData','topplayers','user_id','starting_at','ending_at'));
     }
@@ -86,9 +86,9 @@ class LeaderboardController extends Controller
             $value['pictotal']      = $playerpointTotal['pictotal'];
             
         }
-        $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user         = User::select('user_name','profile_image','email')->where(['role_id'=>3])->inRandomOrder()->limit(10)->get();
         $userTeam = User::select('grand_leaderboard_rank','user_name','total_points')->orderBy('grand_leaderboard_rank')->where('total_points','!=',0)->paginate(20);
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where('create_posts.status',1)->orderBy("comment",'desc')->get();
         return view('users/leaderboard/grandleaderboard',compact('userTeam','user','trending','newsdata','topplayers'));
     }
 

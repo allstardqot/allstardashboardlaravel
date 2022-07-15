@@ -45,7 +45,6 @@ class GetFixture implements ShouldQueue
     public function handle()
     {
         //Getlineup::dispatch('18138818');
-        Log::info("fixture runningghhhhhhhhhhhh");
         $api = new EntitySport();
 
         $fixtures = $api->getFixture(now()->toDateString() .'/' . now()->addDays(14)->toDateString().'?leagues=779&include=news,localTeam,visitorTeam');
@@ -54,6 +53,7 @@ class GetFixture implements ShouldQueue
 
         $setSeasonId='';
         foreach($fixtures as $value){
+
                 // if($value['season_id']!='18378'){
                 //     continue;
                 // }
@@ -120,8 +120,7 @@ class GetFixture implements ShouldQueue
                                 'is_placeholder' => $visitorTeamData['is_placeholder'],
                             ]);
                         }
-                        Log::info("fixture id get".$value['id']);
-
+                        
                         GetSquad::dispatch($value['id']);
                         $lineupSchedule = Carbon::parse($fixtureQuery->starting_at)->addMinutes(-45);
                         Log::info($lineupSchedule);

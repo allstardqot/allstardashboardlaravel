@@ -25,6 +25,7 @@ class Player extends Model
         'birthdate',
         'birthcountry',
         'birthplace',
+        'goals',
         'height',
         'weight',
         'image_path',

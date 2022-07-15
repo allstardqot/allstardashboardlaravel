@@ -49,7 +49,7 @@ class HomeController extends Controller
         $type         = $request->type;
         $publicQuery  = UserPool::query();
         $privateQuery = UserPool::query();
-        $user         = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user         = User::select('user_name','profile_image','email')->where(['role_id'=>3])->inRandomOrder()->limit(10)->get();
 
         $jointuser = UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->select(['user_pools.id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->pluck('joined','user_pools.id')->toArray();
 
@@ -90,7 +90,7 @@ class HomeController extends Controller
             }
             return view('users/homehtml',['publicData'=>$publicData,'wallet'=>$wallet,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'contest_pool'=>$contest_pool,'jointuser'=>$jointuser,'weeak'=>$weeak]);
         }
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where('create_posts.status',1)->orderBy("comment",'desc')->get();
 
         //prr($publicData);
         return view('users/home',['publicData'=>$publicData,'wallet'=>$wallet,'privateData'=>$privateData,'type'=>$type,'team'=>$team,'newsdata'=>$newsdata,'trending'=>$trending,'user'=>$user,'topplayers'=>$topplayers]);

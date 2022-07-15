@@ -55,7 +55,7 @@ class GetSquad implements ShouldQueue
             if (!empty($teamValue)) {
                 $players = $api->getSquads($season_id.'/team/' . $teamValue . '?include=player');
                 
-                //Log::info("squad running".json_encode($players));
+                Log::info("squad running".json_encode($players));
 
                 foreach ($players as $playerData) {
                     if (!empty($playerData['player']['data'])) {
@@ -83,6 +83,7 @@ class GetSquad implements ShouldQueue
                             'birthplace' => $playerDetail['birthplace'],
                             'height' => $playerDetail['height'],
                             'weight' => $playerDetail['weight'],
+                            'goals' => $playerData['goals'],
                             'sell_price' => $playerData['rating'],
                             'image_path' => $playerDetail['image_path'],
                         ]);

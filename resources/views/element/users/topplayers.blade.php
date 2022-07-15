@@ -12,8 +12,11 @@
     <div class="sdnnsk7">
       <div class="sdjdj78" onclick="ShowPlayerDetails('{{ $value->id }}','{{ $value->display_name }}','{{ $value->position_id }}','{{ $value->total_points }}',{{ $value->pictotal }})">
         <div class="sdkdfj89">
-          <div class="sdjdk0">
-            <img src="{{ asset('public/assets/image/Rectangle 312.png') }}" />
+          <div class="sdjdk0 sdksdlk">
+            @php
+              $img = !empty($value->image_path) ? $value->image_path : asset('public/assets/image/Rectangle 312.png') ;
+            @endphp
+            <img src="{{ $img }}" />
           </div>
           <div class="askak76">
             <h5>{{ $value->display_name}}</h5>

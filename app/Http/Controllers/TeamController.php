@@ -264,6 +264,7 @@ class TeamController extends Controller
             $userTeam->substitude = json_encode($substitude);
             $userTeam->players = json_encode($selected);
             $userTeam->name = $teamName;
+            //prr($userTeam);
             if ($userTeam->save()) {
                 return true;
             }
@@ -391,25 +392,20 @@ class TeamController extends Controller
         $selected = is_array($request->selected) ? $request->selected : explode(',', $request->selected);
         $editId = !empty($request->editId) ? $request->editId : '';
         $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
-        // $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as cmg_totalPoints'),DB::raw("(select count(ut.id) from user_teams as ut where ut.players LIKE '%players.id%') as totalpoints")])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+        
 
         $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id and sq.week_id='.currentWeek().') as cmg_totalpoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
 
-        //if($_SERVER['REMOTE_ADDR']=='49.204.161.65'){
+        
        
             foreach($currentweekcount as $value){
-                $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value['id'].'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal')])->first()->toArray();
+                $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value['id'].'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.captain = "'.$value['id'].'") as total_cap'),DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.captain = "'.$value['id'].'") as cgw_cap')])->first()->toArray();
                 $value['pictotal']      = $playerpointTotal['pictotal'];
                 $value['gw_pictotal']   = $playerpointTotal['gw_pictotal'];
-                $value['total_cap']     = 3;
-                $value['cgw_cap']       = 2;
+                $value['total_cap']     = $playerpointTotal['total_cap'];
+                $value['cgw_cap']       = $playerpointTotal['cgw_cap'];
             }
-            //prr($currentweekcount);die;
-        //}
-        
-        //prr($last_query);die;
-        // $sumofpoint = DB::table('squads')->sum('squads.total_points')->whereIn('player_id', $selected)->get();
-        //$sumofpoint = DB::table('user_teams')->count('user_teams.id')->whereIn('players', $selected)->get();
+            
 
         $user_selected_substitude = $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         if (!empty($editId)) {
@@ -440,6 +436,8 @@ class TeamController extends Controller
         $selected = is_array($request->selected) ? $request->selected : explode(',', $request->selected);
         $substitude = is_array($request->selectData) ? $request->selectData : explode(',', $request->selectData);
         $editId = !empty($request->editId) ? $request->editId : '';
+
+        
         $selectedData = Player::query()->whereIn('id', $selected)->get();
         $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         $user_selected_captain = '';
@@ -509,6 +507,10 @@ class TeamController extends Controller
                 $playerData[] = $playerValue;
             }
         }
+        // p($goalkeeperData);
+        // prr($substitude);
+
+
         return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captain, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name,'selected'=>$selected]);
     }
 }

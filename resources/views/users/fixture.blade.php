@@ -27,13 +27,13 @@
 
                       <span class="input-group-text" > <label for="basic-url" class="form-label">Date/Time</label></span>
 
-  <input  class="form-control" type="date" id="start_fixture" name="start_fixture" value="{{!empty($_POST['start_fixture'])?$_POST['start_fixture']:''}}">
+  <input  class="form-control" type="date" id="start_fixture" name="start_fixture" value="{{!empty($weeak['starting_at'])?$weeak['starting_at']:''}}">
 
 
   <span class="input-group-text" >
   <label for="basic-url" class="form-label">End Date</label>
 </span>
-  <input type="date" class="form-control" id="end_fixture" name="end_fixture" value="{{!empty($_POST['end_fixture'])?$_POST['end_fixture']:''}}">
+  <input type="date" class="form-control" id="end_fixture" name="end_fixture" value="{{!empty($weeak['ending_at'])?$weeak['ending_at']:''}}">
   <span class="input-group-text" >
   <input type="submit" class="btn btn-danger" value="Apply">
 </span>

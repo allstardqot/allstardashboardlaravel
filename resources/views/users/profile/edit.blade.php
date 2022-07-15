@@ -13,7 +13,7 @@
 
                 <div class="form-group  position-relative mt-0 mb-4 pe-0">
                     <button class="btn-profile position-absolute" type="button" onclick="document.getElementById('profileimg').click()">Upload Your Profile Picture Here</button>
-                    <input class="inpuytgfcv profile-images w-100" type="file" name="profile_image " id="profileimg">
+                    <input class="inpuytgfcv profile-images w-100" type="file" name="profile_image" id="profileimg">
                     </div>
                     <input class="inpuytgfcv" type="text" id="user_name" name="user_name" placeholder="User Name" value="{{$user['user_name']}}"  /><br />
                     <input class="inpuytgfcv mt-4" type="text" id="email" name="email" placeholder="Email" value="{{$user['email']}}" /><br />
@@ -46,7 +46,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name=" Prefer Not to Say" id="gender" value="Female" <?= ($user['gender']=='Female')?"checked":''; ?> />
+                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Other" <?= ($user['gender']=='Female')?"checked":''; ?> />
                             <label class="form-check-label" for="flexRadioDefault2">
                             Prefer Not to Say
                             </label>

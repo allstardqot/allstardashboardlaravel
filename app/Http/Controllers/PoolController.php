@@ -58,7 +58,7 @@ class PoolController extends Controller
         $poolQuery=UserContest::join('user_pools','user_pools.id','=','pool_id')->join('user_teams','user_teams.id','=','user_team_id')->where('user_contests.user_id',$user_id)->select(['user_pools.*','user_contests.id as ucid','user_contests.user_id','user_teams.week',DB::raw('(select count(uc.id) from user_contests as uc where uc.pool_id=user_pools.id) as joined')])->get();
         $completeDate = $currentDate=$upcomingDate=$upcomingPool=$livePool=$completePool=[];
 
-        $user     = User::select('user_name','email')->where(['role_id'=>3])->inRandomOrder()->limit(5)->get();
+        $user     = User::select('user_name','profile_image','email')->where(['role_id'=>3])->inRandomOrder()->limit(10)->get();
         $topplayers = Squad::join('players','players.id','=','squads.player_id')->where(['squads.week_id'=>currentWeek()])->orderByDesc('total_points')->limit(10)->get();
         foreach($topplayers as $value){
             $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value->player_id.'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal')])->first()->toArray();
@@ -98,7 +98,7 @@ class PoolController extends Controller
             //     // prr($completeDate->starting_at);
             // }
         }
-        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->orderBy("comment",'desc')->get();
+        $trending = CreatePost::select(['create_posts.*',DB::raw('(SELECT count(id) FROM comments as c WHERE c.post_id=create_posts.id) as comment')])->where('create_posts.status',1)->orderBy("comment",'desc')->get();
            return view('users/pools/index',['newsdata'=>$newsdata,'user'=>$user,'trending'=>$trending,'completeDate'=>$completeDate,'upcomingPool'=>$upcomingPool,'livePool'=>$livePool,'completePool'=>$completePool,'currentDate'=>$currentDate,'upcomingDate'=>$upcomingDate,'topplayers'=>$topplayers]);
     }
 

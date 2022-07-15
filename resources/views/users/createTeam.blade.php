@@ -228,6 +228,7 @@
         }
 
     </style>
+    <link href='{{ asset('public/assets/css/om-javascript-range-slider.css') }}'>
     <main>
         @if ($message = Session::get('info'))
             <div class="alert alert-info alert-block">
@@ -312,6 +313,7 @@
         </div>
     </main>
     <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('public/assets/js/om-javascript-range-slider.js') }}"></script>
     <script>
         //var checkedisquad=$("#edit_manage_squad").val();
         goalKeepercheckbox();
@@ -329,7 +331,7 @@
                     teamArray[teamname] = 1
                     status = 'true';
                 } else {
-                    teamArray[teamname] = parseInt(teamArray[teamname]) + 1
+                    teamArray[teamname] = parseFloat(teamArray[teamname]) + 1
                     status ='true';
                 }
                 //console.log("fineeeeeeeeeeeeeeeeee");
@@ -363,8 +365,9 @@
 
 
         function coins(price,status){
+            //alert(price);
             var spendCoin = $('#coin').html();
-            var res = status == "plus" ? parseInt(spendCoin.replace('M', '')) + parseInt($.trim(price.replace('M', ''))) :spendCoin.replace('M', '') - $.trim(price.replace('M', ''));
+            var res = status == "plus" ? parseFloat(spendCoin.replace('M', '')) + parseFloat($.trim(price.replace('M', ''))) :spendCoin.replace('M', '') - $.trim(price.replace('M', ''));
             res=Math.round(res * 100) / 100
             $('#coin').html(res+'M');
         }
@@ -383,6 +386,7 @@
             var status = playerTeamCheck(teamname);
             var coin_add = '';
             var spendCoin = $('#coin').html();
+            //alert(spendCoin);
             playerTeamCheck();
 
             if (
@@ -415,7 +419,7 @@
                
 
                 sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
-                if( parseInt(spendCoin) < parseInt(sell_price)){
+                if( parseFloat(spendCoin) < parseFloat(sell_price)){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -507,7 +511,7 @@
 
                 sellprice = $(this).closest("tr").find(".defender_sell_price").html();
 
-                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
+                if( parseFloat(spendCoin.replace('M', '')) < parseFloat($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -593,7 +597,7 @@
                 $(this).removeAttr("disabled");
 
                 sellprice = $(this).closest("tr").find(".midfielder_sell_price").html();
-                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sellprice))){
+                if( parseFloat(spendCoin.replace('M', '')) < parseFloat($.trim(sellprice))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -675,7 +679,7 @@
                 $(this).removeAttr("disabled");
 
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
-                if( parseInt(spendCoin.replace('M', '')) < parseInt($.trim(sell_price))){
+                if( parseFloat(spendCoin.replace('M', '')) < parseFloat($.trim(sell_price))){
                     $.notify("Your Points are not sufficent!.", "info");
                 }else if(status == 'false'){
                     $.notify("You can only select 2 maximum players from one team.", "info");
@@ -706,7 +710,7 @@
                         $(this).removeAttr("disabled");
                         image = $(this).closest("tr").find("img").attr("src");
                         full_name = $(this).closest("tr").find(".forward_fullname").html();
-                        sellprice = parseInt($(this).closest("tr").find(".forward_sell_price").html());
+                        sellprice = parseFloat($(this).closest("tr").find(".forward_sell_price").html());
                         $("#forward_img" + n).attr("src", image);
                         $("#forward_name" + n).html(full_name);
                         $("#forwardsell_price" + n).html(sellprice);
@@ -761,7 +765,7 @@
                     full_name = $(this).closest("tr").find(".goalkep_fullname").html();
                     sell_price = $(this).closest("tr").find(".goalkeeper_sell_price").html();
                         //alert(sell_price);
-                    if(spendCoin != '0M' && parseInt(spendCoin) >= parseInt(sell_price)){
+                    if(spendCoin != '0M' && parseFloat(spendCoin) >= parseFloat(sell_price)){
                         coins(sell_price);
                     }
                     select += 1;
@@ -821,7 +825,7 @@
                     image = $(this).closest("tr").find("img").attr("src");
                     full_name = $(this).closest("tr").find(".defender_fullname").html();
                     sell_price = $(this).closest("tr").find(".defender_sell_price").html();
-                    if(spendCoin != '0M' && parseInt(spendCoin) >= parseInt(sell_price)){
+                    if(spendCoin != '0M' && parseFloat(spendCoin) >= parseFloat(sell_price)){
 
                         coins(sell_price);
                     }
@@ -888,7 +892,7 @@
                 image = $(this).closest("tr").find("img").attr("src");
                 full_name = $(this).closest("tr").find(".midfielder_fullname").html();
                 sell_price = $(this).closest("tr").find(".midfielder_sell_price").html();
-                if(spendCoin != '0M' && parseInt(spendCoin) >= parseInt(sell_price)){
+                if(spendCoin != '0M' && parseFloat(spendCoin) >= parseFloat(sell_price)){
                     coins(sell_price);
                 }
                 $("#midfielder_img" + select).attr("src", image);
@@ -897,7 +901,7 @@
                 $(".midfielder_staricon" + select).show();
                 select += 1;
             });
-            // if( parseInt(spendCoin) >= parseInt(sell_price)){
+            // if( parseFloat(spendCoin) >= parseFloat(sell_price)){
                 // $(".midfieldercheck:checkbox[type=checkbox]:checked").removeAttr(
                 //         "disabled"
                 //     );
@@ -945,7 +949,7 @@
                 sell_price = $(this).closest("tr").find(".forward_sell_price").html();
                 // alert(sell_price);
                 // alert(spendCoin);
-                if(spendCoin != '0M' && parseInt(spendCoin) >= parseInt(sell_price)){
+                if(spendCoin != '0M' && parseFloat(spendCoin) >= parseFloat(sell_price)){
                     coins(sell_price);
                 }
 
@@ -957,7 +961,7 @@
                 select += 1;
             });
 
-            if( parseInt(spendCoin) < parseInt(sell_price)){
+            if( parseFloat(spendCoin) < parseFloat(sell_price)){
                 $("input.forwardcheck").attr("disabled", true);
                 $(".forwardcheck:checkbox[type=checkbox]:checked").removeAttr("disabled");
                 $.notify("Your Points are not sufficent!.", "info");
@@ -1019,8 +1023,9 @@
             $("body").on('click', "#goalkeeper_filt", function(e) {
                 point = $("#goal_keeper_point").val();
                 cost_range = $("#rangeSlider").val();
+                alert(cost_range)
                 team = $("#goal_keeper_team").val();
-                fetchData(point, 'goalkeeper', "filter", team, cost_range)
+                //fetchData(point, 'goalkeeper', "filter", team, cost_range)
             })
 
             $("body").on('click', "#defender_filt", function(e) {
