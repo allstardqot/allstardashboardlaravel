@@ -542,6 +542,7 @@ header .hsakdjh56 {
   .leftSide::before {
     width: 130px;
     height: 412px;
+    display: none;
   }
   header .logo-img {
     left: 15px;

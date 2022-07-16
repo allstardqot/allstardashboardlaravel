@@ -49,9 +49,12 @@ The players you pick collect points for scoring, assisting, and keeping clean sh
 <p class="mt-3 fs-5 ">
 So, how do you win? In a nutshell, players with the most points at the end of the Gameweek win the AFC amount assigned to the pool. Also, you get your fair share of achievement badges for completing specific milestones. Each of these will give you AFC coins and other prizes. So, you don’t have to wait for the season to end to get your crypto fantasy windfall. You can get it with every hat-trick or brace scored. The Fantasy Allstars community loves champions, and we feel you are one of them.
 </p>
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/730039136?h=35c39ceed3" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
       </div>
     </div>
-    <img class="consectetur-img"  src="{{asset('public/img/Group%2053.png')}}">
+    <!-- <img class="consectetur-img"  src="{{asset('public/img/Group%2053.png')}}"> -->
+    
   </div>
   <div class="team-head"  class="col-lg-12 mx-auto text-white  py-5">
   <div class="container-fluid">

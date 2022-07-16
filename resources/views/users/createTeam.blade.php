@@ -1220,7 +1220,8 @@
                 var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
                 var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
                 var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
-                // alert(cgw_cap);
+                // alert(total_points);
+                
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
@@ -1240,7 +1241,7 @@
                 var gm_picks      = 'Picks current GW : '+$(this).closest('div').find(".gm_picks").val();
                 var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
                 var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
-                // alert(cgw_cap);
+                // alert(total_points);
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
@@ -1262,6 +1263,8 @@
                 var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
                 var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
                 // alert(cgw_cap);
+                // alert(total_points);
+
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);
@@ -1283,6 +1286,8 @@
                 var total_cap     = 'Total Times Captained : '+$(this).closest('div').find(".total_cap").val();
                 var cgw_cap       = 'Current GW Captain : '+$(this).closest('div').find(".cgw_cap").val();
                 // alert(cgw_cap);
+                // alert(total_points);
+
                 $("#total_p_points").html(total_points);
                 $("#total_cgw_points").html(cgw_points);
                 $("#category_model").html(category_name);

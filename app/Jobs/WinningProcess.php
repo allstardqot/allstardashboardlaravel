@@ -46,7 +46,7 @@ class WinningProcess implements ShouldQueue
     {
         //winning distribute
         $priviousWeek=priviousWeek();
-        Log::info("winning cron running---".$priviousWeek.'------'.currentWeek());
+        //Log::info("winning cron running---".$priviousWeek.'------'.currentWeek());
         
         $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('user_teams','user_teams.id','user_contests.user_team_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id','user_teams.total_points'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
         
@@ -109,6 +109,7 @@ class WinningProcess implements ShouldQueue
                                         }
                                         $payment            = new Payment;
                                         $payment->user_id   = $user_id;
+                                        $payment->user_pool_id   = $pool_id;
                                         $payment->amount    = $eachUser;
                                         $payment->type      = 'CONTEST WON';
                                         $payment->transaction_id = uniqid();

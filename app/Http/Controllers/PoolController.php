@@ -155,17 +155,11 @@ class PoolController extends Controller
             $user->wallet    = $wallet - $entry_fees;
             $user->save();
 
-            $payment            = new Payment;
-            $payment->user_id   = Auth::user()->id;
-            $payment->amount    = $entry_fees;
-            $payment->type      = 'POOL JOIN';
-            $payment->transaction_id = uniqid();
-            $payment->save();
             
             $pool_type = $request->input('pool_type');
             $max_participants = $request->input('max_participants');
-
-
+            
+            
             $pool = new UserPool;
             $pool->user_id    = Auth::user()->id;
             $pool->pool_name   = $request->input('pool_name');
@@ -180,6 +174,15 @@ class PoolController extends Controller
             $pool->entry_fees =  $entry_fees;
             $pool->save();
             //prr($pool);
+            $payment            = new Payment;
+            $payment->user_id   = Auth::user()->id;
+            $payment->amount    = $entry_fees;
+            $payment->type      = 'POOL JOIN';
+            $payment->user_pool_id  = $pool->id;
+            $payment->transaction_id = uniqid();
+            $payment->save();
+
+            
             $team_id = $request->input('team_id');
             // if($request->input('pool_type') == '1' && $pool->save() ){
                 $contest = new UserContest;

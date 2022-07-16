@@ -2,7 +2,7 @@
 
 <main style="background: #12133d">
   <div class="navmate">
-    <div class="row w-100 align-items-center pb-5">
+    <div class="row w-100 align-items-center py-5">
       <div class="col-lg-7 text-white">
         <div class="col-12 container col-lg-9">
           <div class="sdndj67">
@@ -17,18 +17,36 @@
             to watch El Clásico tomorrow. Winning means little to our crypto
             fantasy community if we can’t share the joy.
           </p>
-          <a href="{{url('/register')}}">
-          <button class="bou">Start Playing</button>
+          <a href="{{ url('/register') }}">
+            <button class="bou">Start Playing</button>
           </a>
-          <a class="ml-3 text-white" href="{{url('/how_to_play')}}"><b>Learn More</b></a>
+          <a class="ml-3 text-white" href="{{ url('/how_to_play') }}"
+            ><b>Learn More</b></a
+          >
         </div>
       </div>
       <div class="col-lg-5 mt-5">
-        <img
+        <!-- <img
           class="jhdhdfjh img-fluid"
           src="{{ asset('public/img/Group%2042(1).png') }}"
           width="100%"
-        />
+        /> -->
+        <div style="padding: 56.25% 0 0 0; position: relative">
+          <iframe
+            src="https://player.vimeo.com/video/730039136?h=35c39ceed3"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
       </div>
     </div>
   </div>
@@ -48,10 +66,20 @@
               </h3>
 
               <div class="d-flex flex-wrap align-items-center">
-            <a href="#" class="btn btn-danger">BUY TOKEN</a>
-            <a href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Whitepaper - Final.pdf" target="_blank" class="btn btn-danger">WHITEPAPER</a>
-            <a href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Pitch Deck.pdf" target="_blank" class="btn btn-danger">PITCH DECK </a>
-            </div>
+                <a href="#" class="btn btn-danger">BUY TOKEN</a>
+                <a
+                  href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Whitepaper - Final.pdf"
+                  target="_blank"
+                  class="btn btn-danger"
+                  >WHITEPAPER</a
+                >
+                <a
+                  href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Pitch Deck.pdf"
+                  target="_blank"
+                  class="btn btn-danger"
+                  >PITCH DECK
+                </a>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -82,9 +110,9 @@
                 head-to-head duels, pick super-talented players and join the
                 banter. Once you are done, collect your prizes!
               </p>
-              <a href="{{url('/register')}}">
-              <button class="boutton"><b>Join Now</b></button>
-</a>
+              <a href="{{ url('/register') }}">
+                <button class="boutton"><b>Join Now</b></button>
+              </a>
             </div>
           </div>
         </div>
@@ -157,8 +185,8 @@
                 joy when you win and helps you get back on your feet when you
                 are down on your luck.
               </p>
-              <a href="{{url('/register')}}">
-              <button class="boutt"><b>Join Now</b></button>
+              <a href="{{ url('/register') }}">
+                <button class="boutt"><b>Join Now</b></button>
               </a>
             </div>
           </div>

@@ -101,54 +101,56 @@ class HomeController extends Controller
             'user_team_id' => 'required',
         ]);
         
-        $join_pool_id =     $request->input('join_pool_id');
-        $pool = UserPool::findOrFail($join_pool_id);
-        // echo 'sg';die;
+        $join_pool_id   =     $request->input('join_pool_id');
+        $pool           = UserPool::findOrFail($join_pool_id);
+        $entry_fees = $pool['entry_fees'];
+
         if($request->input('hiddenpooltype') == 1){
             request()->validate([
                 'password' => 'required',
             ]);
             $password = $request->input('password');
             if (!Hash::check($password, $pool->password)) {
-                return redirect()->back()->with('error', 'Join Failed, pls check password');
+                return redirect()->back()->with('error', 'Join Failed, plz check password');
              }
-            
         }
 
         $wallet = Auth::user()->wallet;
-            // echo $wallet;die;
-        
-
-        
-        // prr();
-        $entry_fees = $pool['entry_fees'];
+       
         if($entry_fees > $wallet){
             return redirect()->back()->with('error','You have not sufficant balance!');
-
         }
 
-        $user = Auth::user();
-        $user->wallet    = $wallet - $entry_fees;
-        $user->save();
-
-        $payment            = new Payment;
-        $payment->user_id   = Auth::user()->id;
-        $payment->amount    = $entry_fees;
-        $payment->type      = 'POOL JOIN';
-        $payment->transaction_id = uniqid();
-        //$payment->status = 1;
-        $payment->save();
         
         $contest_data           = new UserContest();
         $contest_data->pool_id  = $join_pool_id;
         $contest_data->user_id  = Auth::user()->id;
         $contest_data->user_team_id = $request->input('user_team_id');
+        
         if($contest_data->save()){
+            
+            $user = Auth::user();
+            $user->wallet    = $wallet - $entry_fees;
+            $user->save();
+    
+            $payment            = new Payment;
+            $payment->user_id   = Auth::user()->id;
+            $payment->amount    = $entry_fees;
+            $payment->type      = 'POOL JOIN';
+            $payment->user_pool_id  = $join_pool_id;
+    
+            $payment->transaction_id = uniqid();
+            //$payment->status = 1;
+            $payment->save();
+            
             $userPoolData=UserPool::find($join_pool_id)->toArray();
+
             if(!empty($userPoolData)){
+
                 $weekData=Week::find(nextWeek())->toArray();
                 $type=($userPoolData['pool_type']==0)?"Public":"Private";
                 $starting_at=$ending_at='';
+
                 if(!empty($weekData)){
                     $starting_at=$weekData['starting_at'];
                     $ending_at=$weekData['ending_at'];

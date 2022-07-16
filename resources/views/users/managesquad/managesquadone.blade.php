@@ -39,7 +39,7 @@
                             <input type="hidden" class="total_points" value={{ $goalkeeperData['sum_totalPoints'] }}>
                             <p class="">{{ $goalkeeperData['sum_totalPoints'] }} T F Points</p>
                         </div>
-                        <p>${{ $goalkeeperData['sell_price'] }}</p>
+                        <p>{{ round($goalkeeperData['sell_price']) }}</p>
                     </div>
                     <a class="skdhhjh" href="" id="goalkeeper_detail" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
                 </div>
@@ -73,7 +73,7 @@
 
                                 <p class="">{{ $defenderData[0]['sum_totalPoints'] }}T F Points</p>
                             </div>
-                            <p>${{ $defenderData[0]['sell_price'] }}</p>
+                            <p>{{ round($defenderData[0]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -111,7 +111,7 @@
                                 <input type="hidden" class="total_points" value={{ $defenderData[1]['sum_totalPoints'] }}>
                                 <p class="">{{ $defenderData[1]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p>${{ $defenderData[1]['sell_price'] }}</p>
+                            <p>{{ round($defenderData[1]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -148,7 +148,7 @@
                                 <input type="hidden" class="total_points" value={{ $midfielderData[0]['sum_totalPoints'] }}>
                                 <p>{{ $midfielderData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p class="">${{ $midfielderData[0]['sell_price'] }}</p>
+                            <p class="">{{ round($midfielderData[0]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -182,7 +182,7 @@
                                 <input type="hidden" class="total_points" value={{ $midfielderData[1]['sum_totalPoints'] }}>
                                 <p class="">{{ $midfielderData[1]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p>${{ $midfielderData[1]['sell_price'] }}</p>
+                            <p>{{ round($midfielderData[1]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -219,7 +219,7 @@
                                 <input type="hidden" class="total_points" value={{ $forwardData[0]['sum_totalPoints'] }}>
                                 <p class="">{{ $forwardData[0]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p>${{ $forwardData[0]['sell_price'] }}</p>
+                            <p>{{ round($forwardData[0]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -252,7 +252,7 @@
                                 <input type="hidden" class="total_points" value={{ $forwardData[1]['sum_totalPoints'] }}>
                                 <p class="">{{ $forwardData[1]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p>${{ $forwardData[1]['sell_price'] }}</p>
+                            <p>{{ round($forwardData[1]['sell_price']) }}</p>
                         </div>
                         <a class="sdhdhsnik" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>

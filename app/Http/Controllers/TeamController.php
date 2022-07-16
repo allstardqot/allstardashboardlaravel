@@ -438,7 +438,20 @@ class TeamController extends Controller
         $editId = !empty($request->editId) ? $request->editId : '';
 
         
-        $selectedData = Player::query()->whereIn('id', $selected)->get();
+        $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
+
+        $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id and sq.week_id='.currentWeek().') as cmg_totalpoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+
+        
+       
+            foreach($currentweekcount as $value){
+                $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value['id'].'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.captain = "'.$value['id'].'") as total_cap'),DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.captain = "'.$value['id'].'") as cgw_cap')])->first()->toArray();
+                $value['pictotal']      = $playerpointTotal['pictotal'];
+                $value['gw_pictotal']   = $playerpointTotal['gw_pictotal'];
+                $value['total_cap']     = $playerpointTotal['total_cap'];
+                $value['cgw_cap']       = $playerpointTotal['cgw_cap'];
+            }
+        
         $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
         $user_selected_captain = '';
         if (!empty($editId)) {
@@ -460,7 +473,7 @@ class TeamController extends Controller
             }
         }
         //prr($user_selected_captain);
-        return view('users/managesquad/managesquadtwo', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'substitude' => $substitude, 'user_selected_captain' => $user_selected_captain,'selected'=>$selected]);
+        return view('users/managesquad/managesquadtwo', ['goalkeeperData' => $goalkeeperData, 'currentweekcount'=>$currentweekcount,'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData, 'substitude' => $substitude, 'user_selected_captain' => $user_selected_captain,'selected'=>$selected]);
     }
 
     public function managesquadthree(Request $request)
@@ -471,11 +484,23 @@ class TeamController extends Controller
         $editId = !empty($request->editId) ? $request->editId : '';
 
         $captain = $request->captain;
-        $selectedData = Player::query()->whereIn('id', $selected)->with('position')->get();
+        $selectedData = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id) as sum_totalPoints')])->whereIn('id', $selected)->get();
         $captainData = $substitudeData = $playerData = $goalkeeperData = [];
         $user_team_name = '';
 
         $forwardData = $midfielderData = $defenderData = $goalkeeperData = [];
+
+        $currentweekcount = Player::select(['players.*',DB::raw('(select sum(sq.total_points) from squads as sq where sq.player_id=players.id and sq.week_id='.currentWeek().') as cmg_totalpoints')])->join('squads','squads.player_id','=','players.id')->where(['squads.week_id'=>currentWeek()])->whereIn('players.id', $selected)->orderBy('players.position_id')->get();
+
+        
+       
+        foreach($currentweekcount as $value){
+            $playerpointTotal = UserTeam::select([DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.players like "%'.$value['id'].'%") as gw_pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.players like "%'.$value['id'].'%") as pictotal'),DB::raw('(select count(ut.id) from user_teams as ut where ut.captain = "'.$value['id'].'") as total_cap'),DB::raw('(select count(ut.id) from user_teams as ut where ut.current_week='.currentWeek().' and ut.captain = "'.$value['id'].'") as cgw_cap')])->first()->toArray();
+            $value['pictotal']      = $playerpointTotal['pictotal'];
+            $value['gw_pictotal']   = $playerpointTotal['gw_pictotal'];
+            $value['total_cap']     = $playerpointTotal['total_cap'];
+            $value['cgw_cap']       = $playerpointTotal['cgw_cap'];
+        }
 
 
         if (!empty($editId)) {
@@ -511,6 +536,6 @@ class TeamController extends Controller
         // prr($substitude);
 
 
-        return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captain, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name,'selected'=>$selected]);
+        return view('users/managesquad/managesquadthree', ['goalkeeperData' => $goalkeeperData, 'currentweekcount'=>$currentweekcount,'defenderData' => $defenderData, 'midfielderData' => $midfielderData, 'forwardData' => $forwardData,'substitude' => $substitude,'playerData' => $playerData, 'captainData' => $captain, 'substitudeData' => $substitudeData, 'user_team_name' => $user_team_name,'selected'=>$selected]);
     }
 }

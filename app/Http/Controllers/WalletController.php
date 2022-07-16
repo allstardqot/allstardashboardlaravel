@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Auth;
 use Mail;
+use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie;
 
@@ -86,6 +87,37 @@ class WalletController extends Controller
         else{
             return 'Invalid';
         }
+    }
+
+
+    public function withdrawl(Request $request){
+        // echo 'success'.$request->amt;die;
+        $request_amt = $request->amt;
+        $status = '';
+        $user_wallet = Auth::user()->wallet;
+        $user_id = Auth::user()->id;
+
+        if($request_amt > $user_wallet ){
+            $status = 1;
+            return $status;
+        }
+        $left_wallet = $user_wallet - $request_amt;
+        $user = User::where('id','=',$user_id)->update(['wallet' => $left_wallet]);
+        $status = 0; 
+
+        $payment            = new Payment;
+        $payment->user_id   = Auth::user()->id;
+        $payment->amount    = $request_amt;
+        $payment->type      = 'WITHDRAW REQUEST';
+        $payment->status    = 1;
+        $payment->transaction_id = uniqid();
+        $payment->save();
+
+        return $left_wallet;
+
+
+
+
     }
 
    

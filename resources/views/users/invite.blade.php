@@ -37,6 +37,7 @@
                         </div>
                         <div class="nyary">
                             <a href="javascript:void(0);" class="jnsdxi sharei" >share</a>
+                            <p class="result"></p>
                         </div>
                     </div>
                 </div>
@@ -79,6 +80,7 @@
             <div class="namtrs" class="modal-content">
                 <div class="modal-header mt-5">
                     <h4 class="modal-title ">share</h4>
+
                 </div>
                 <div class="modal-body">
                     <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -113,9 +115,9 @@
             // alert('adfd');
             try {
                 await navigator.share(shareData)
-                resultParai.textContent = 'MDN shared successfully'
+                // resultParai.textContent = 'MDN shared successfully'
             } catch (err) {
-                resultParai.textContent = 'Error: ' + err
+                // resultParai.textContent = 'Error: ' + err
             }
         });
  $(document).ready(function(){  

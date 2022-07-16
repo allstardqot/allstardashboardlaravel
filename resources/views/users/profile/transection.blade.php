@@ -12,6 +12,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Type</th>
+                  <td scope="col">Status</td>
                   
                   {{-- <th scope="col">Description</th> --}}
                 </tr>
@@ -19,23 +20,30 @@
               <tbody class="table-group-divider">
                 @php
                   $i = 1;
-                  $status = ''; 
+                  
                 @endphp
                  @if (!empty($transection) && $transection->count() > 0)
                   @foreach($transection as $key => $value)
-                    @php
-                      if($value->type == 'ADMIN ADDED'  ){
-                        $status = 'Added';
+                  @php
+                  $status = ''; 
+                  $color = '';
+
+                      if($value->status == 1){
+                        $status = 'Pending';
+                        $color = 'red';
                       }else{
-                        $status = 'Deducted';
+                        $status = 'Success';
+                        $color = '#209f00';
+
                       }
-                    @endphp
+                      // echo $status;die;
+                      @endphp
                     <tr>
                       <th scope="row">{{ $i }}</th>
                       <td>{{ $value->amount }}</td>
                       <td>{{ $value->type }}</td>
 
-                      {{-- <td> Payment {{ $status }} for {{ $value->type }} .</td>                     --}}
+                      <td style="color:{{ $color }};">  {{ $status }} </td>                    
                     
                     </tr>
                     @php

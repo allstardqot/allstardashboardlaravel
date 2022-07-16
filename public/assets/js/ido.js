@@ -28,7 +28,7 @@ const reversePrice = async() => {
 		else{
 			// console.log(result);
 			
-			var res = (tokenAmt*0.0013)/result;;
+			var res = (tokenAmt*0.07)/result;;
 			// alert(res);
 			res = res.toFixed(8);
 			$('#bnbAmt').val(res);
@@ -55,7 +55,7 @@ const price = async() => {
 		}
 		else{
 			// console.log(result);
-			var res = (bnbAmt*result)/0.0013;
+			var res = (bnbAmt*result)/0.07;
 			// alert(res);
 			$('#tokenAmt').val(res);
 

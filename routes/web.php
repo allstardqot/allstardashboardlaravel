@@ -118,6 +118,7 @@ Route::group(['middleware' => ['auth']], function() {
         //Route::post('/invite/{id}', [PoolController::class, 'invitePool'])->name('invite');
         Route::get('/latest-news', [App\Http\Controllers\NewsController::class, 'index'])->name('latest-news');
         Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');
+        Route::get('/withdrawl-request', [App\Http\Controllers\WalletController::class, 'withdrawl'])->name('withdrawl-request');
         Route::get('/otp-verify', [App\Http\Controllers\WalletController::class, 'otpverify'])->name('otp-verify');
 
         Route::get('/manager-lounge', [ManagerController::class, 'index'])->name('manager-lounge');

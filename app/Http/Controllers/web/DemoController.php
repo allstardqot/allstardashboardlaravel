@@ -60,7 +60,7 @@ class DemoController extends Controller
         foreach($userTeamQuery as $key=>$value){
             $winningData[$value['pool_id']][]=$value;
         }
-        //prr($winningData);
+        prr($winningData);
 
         if(!empty($winningData)){
             foreach($winningData as $pool_id=>$poolData){

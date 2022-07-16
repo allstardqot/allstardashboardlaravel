@@ -165,6 +165,8 @@
     </div>
   </div>
 
+  
+
 
   {{-- Comments SHowing Popup --}}
 
@@ -229,6 +231,34 @@
         $('#invitemodal').modal('show');
     }
 
+
+    function withdrawtoken(){
+        var withdrawtoken = $('#withdrawtoken').val();
+        if(withdrawtoken < 100){
+            $.notify("Minimum Withdrawl Off Above 100", "info");
+        }else{
+
+            $.ajax
+            ({
+                type: "GET",
+                url: "withdrawl-request",
+                data: 'amt='+withdrawtoken,
+                cache: false,
+                success: function(data)
+                {
+                    if(data == 1){
+                        $.notify("Insufficient Balance in Wallet....", "info");
+                    }else{
+                        $('#userAvailableWallet').html(data);
+                        $.notify("You Request Has Been Pending....", "success");
+                        console.log(data);     
+                    }
+                        
+                } 
+            });
+        }
+
+    }
     function userdetail(id){
         $.ajax
         ({

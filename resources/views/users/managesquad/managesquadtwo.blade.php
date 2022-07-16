@@ -19,10 +19,21 @@
                         <h4>{{ $goalkeeperData['fullname'] }}</h4>
                         <p class="categorie"  data-id="{{ $goalkeeperData['id'] }}">Goalkeeper</p>
                         <div class="playerdetails">
-                            <p>0 CGW Point</p>
-                            <p>0 T F Points</p>
+                            @if(!empty($currentweekcount[0]['position_id']) && $goalkeeperData['position_id'] == $currentweekcount[0]['position_id'])
+                            <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[0]['cmg_totalPoints'])?$currentweekcount[0]['cmg_totalPoints']:'0' }}>
+                            <p class="">{{ !empty($currentweekcount[0]['cmg_totalPoints']) ? $currentweekcount[0]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                            @else
+                            <p class="">0 CGW Point</p>
+                                <input type="hidden" class="cmg_totalpoints" value='0'>
+                            @endif
+                            <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[0]['pictotal'])?$currentweekcount[0]['pictotal']:'0'}}>
+                            <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[0]['gw_pictotal'])?$currentweekcount[0]['gw_pictotal']:'0'}}>
+                            <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[0]['total_cap'])?$currentweekcount[0]['total_cap']:'0'}}>
+                            <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[0]['cgw_cap'])?$currentweekcount[0]['cgw_cap']:'0'}}>
+                            <input type="hidden" class="total_points" value={{ !empty($goalkeeperData['sum_totalPoints']) ? $goalkeeperData['sum_totalPoints'] : '0' }}>
+                            <p class="">{{ !empty($goalkeeperData['sum_totalPoints']) ? $goalkeeperData['sum_totalPoints'] : '0' }} T F Points</p>
                         </div>
-                        <p>$5.25 M</p>
+                        <p>{{ round($goalkeeperData['sell_price']) }}</p>
                     </div>
                     <a class="kdjkjd" href="" id="goalkeeper_detail" data-bs-toggle="modal" data-bs-target="#myModal">View Details</a>
                 </div>
@@ -36,10 +47,24 @@
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
+                                    @if(!empty($currentweekcount[1]['position_id']) && $defenderData[0]['position_id'] == $currentweekcount[1]['position_id'])
+                                   
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[1]['cmg_totalPoints'])?$currentweekcount[1]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[1]['cmg_totalPoints']) ? $currentweekcount[1]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                    <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[1]['pictotal'])?$currentweekcount[1]['pictotal']:'0'}}>
+                                    <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[1]['gw_pictotal'])?$currentweekcount[1]['gw_pictotal']:'0'}}>
+                                    <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[1]['total_cap'])?$currentweekcount[1]['total_cap']:'0'}}>
+                                    <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[1]['cgw_cap'])?$currentweekcount[1]['cgw_cap']:'0'}}>
+                                    <input type="hidden" class="total_points" value={{ !empty($defenderData[0]['sum_totalPoints']) ? $defenderData[0]['sum_totalPoints'] : '0' }}>
+    
+                                    <p class="">{{ !empty($defenderData[0]['sum_totalPoints']) ? $defenderData[0]['sum_totalPoints'] : '0' }} T F Points</p>
                                 </div>
-                                <p>$5.25 M</p>
+                                <p>{{ round($defenderData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -53,10 +78,24 @@
                                 <h4>{{ $defenderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[0]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[1]['position_id']) && $defenderData[0]['position_id'] == $currentweekcount[1]['position_id'])
+                                   
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[1]['cmg_totalPoints'])?$currentweekcount[1]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[1]['cmg_totalPoints']) ? $currentweekcount[1]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[1]['pictotal'])?$currentweekcount[1]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[1]['gw_pictotal'])?$currentweekcount[1]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[1]['total_cap'])?$currentweekcount[1]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[1]['cgw_cap'])?$currentweekcount[1]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ !empty($defenderData[0]['sum_totalPoints']) ? $defenderData[0]['sum_totalPoints'] : '0' }}>
+    
+                                <p class="">{{ !empty($defenderData[0]['sum_totalPoints']) ? $defenderData[0]['sum_totalPoints'] : '0' }}T F Points</p>
+                            </div>
+                            <p>{{ round($defenderData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -74,10 +113,24 @@
                                 <h4>{{ $defenderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[2]['position_id']) && $defenderData[1]['position_id'] == $currentweekcount[2]['position_id'])
+                                 {{-- {{ $defenderData[0]['position_id'] }}
+                                    {{ $currentweekcount[2]['position_id'] }} --}}
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[2]['cmg_totalPoints'])?$currentweekcount[2]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[2]['cmg_totalPoints']) ? $currentweekcount[2]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[2]['pictotal'])?$currentweekcount[2]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[2]['gw_pictotal'])?$currentweekcount[2]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[2]['total_cap'])?$currentweekcount[2]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[2]['cgw_cap'])?$currentweekcount[2]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $defenderData[1]['sum_totalPoints'] }}>
+                                <p class="">{{ $defenderData[1]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p>{{ round($defenderData[1]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -91,10 +144,24 @@
                             <h4>{{ $defenderData[1]['fullname'] }}</h4>
                             <p class="categorie"  data-id="{{ $defenderData[1]['id'] }}">Defender</p>
                             <div class="playerdetails">
-                                <p>0 CGW Point</p>
-                                <p>0 T F Points</p>
+                                @if(!empty($currentweekcount[2]['position_id']) && $defenderData[1]['position_id'] == $currentweekcount[2]['position_id'])
+                                 {{-- {{ $defenderData[0]['position_id'] }}
+                                    {{ $currentweekcount[2]['position_id'] }} --}}
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[2]['cmg_totalPoints'])?$currentweekcount[2]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[2]['cmg_totalPoints']) ? $currentweekcount[2]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[2]['pictotal'])?$currentweekcount[2]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[2]['gw_pictotal'])?$currentweekcount[2]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[2]['total_cap'])?$currentweekcount[2]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[2]['cgw_cap'])?$currentweekcount[2]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $defenderData[1]['sum_totalPoints'] }}>
+                                <p class="">{{ $defenderData[1]['sum_totalPoints'] }} T F Points</p>
                             </div>
-                            <p>$5.25 M</p>
+                            <p>{{ round($defenderData[1]['sell_price']) }}</p>
                         </div>
                         <a class="kdjkjd" href="" id="defender_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                             Details</a>
@@ -115,10 +182,22 @@
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[3]['position_id']) && $midfielderData[0]['position_id'] == $currentweekcount[3]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[3]['cmg_totalPoints'])?$currentweekcount[3]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[3]['cmg_totalPoints']) ? $currentweekcount[3]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[3]['pictotal'])?$currentweekcount[3]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[3]['gw_pictotal'])?$currentweekcount[3]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[3]['total_cap'])?$currentweekcount[3]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[3]['cgw_cap'])?$currentweekcount[3]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $midfielderData[0]['sum_totalPoints'] }}>
+                                <p>{{ $midfielderData[0]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p class="">{{ round($midfielderData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -132,10 +211,22 @@
                                 <h4>{{ $midfielderData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[0]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[3]['position_id']) && $midfielderData[0]['position_id'] == $currentweekcount[3]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[3]['cmg_totalPoints'])?$currentweekcount[3]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[3]['cmg_totalPoints']) ? $currentweekcount[3]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[3]['pictotal'])?$currentweekcount[3]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[3]['gw_pictotal'])?$currentweekcount[3]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[3]['total_cap'])?$currentweekcount[3]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[3]['cgw_cap'])?$currentweekcount[3]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $midfielderData[0]['sum_totalPoints'] }}>
+                                <p>{{ $midfielderData[0]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p class="">{{ round($midfielderData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -153,10 +244,22 @@
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
+                                    @if(!empty($currentweekcount[4]['position_id']) && $midfielderData[1]['position_id'] == $currentweekcount[4]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[4]['cmg_totalPoints'])?$currentweekcount[4]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[4]['cmg_totalPoints']) ? $currentweekcount[4]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                    <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[4]['pictotal'])?$currentweekcount[4]['pictotal']:'0'}}>
+                                    <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[4]['gw_pictotal'])?$currentweekcount[4]['gw_pictotal']:'0'}}>
+                                    <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[4]['total_cap'])?$currentweekcount[4]['total_cap']:'0'}}>
+                                    <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[4]['cgw_cap'])?$currentweekcount[4]['cgw_cap']:'0'}}>
+                                    <input type="hidden" class="total_points" value={{ $midfielderData[1]['sum_totalPoints'] }}>
+                                    <p class="">{{ $midfielderData[1]['sum_totalPoints'] }} T F Points</p>
                                 </div>
-                                <p>$5.25 M</p>
+                                <p>{{ round($midfielderData[1]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -170,10 +273,22 @@
                                 <h4>{{ $midfielderData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $midfielderData[1]['id'] }}">Midfielder</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[4]['position_id']) && $midfielderData[1]['position_id'] == $currentweekcount[4]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[4]['cmg_totalPoints'])?$currentweekcount[4]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[4]['cmg_totalPoints']) ? $currentweekcount[4]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                @else
+                                    <p class="">0 CGW Point</p>
+                                    <input type="hidden" class="cmg_totalpoints" value='0'>
+                                @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[4]['pictotal'])?$currentweekcount[4]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[4]['gw_pictotal'])?$currentweekcount[4]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[4]['total_cap'])?$currentweekcount[4]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[4]['cgw_cap'])?$currentweekcount[4]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $midfielderData[1]['sum_totalPoints'] }}>
+                                <p class="">{{ $midfielderData[1]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p>{{ round($midfielderData[1]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="midfielder_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -193,10 +308,22 @@
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[5]['position_id']) && $forwardData[0]['position_id'] == $currentweekcount[5]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[5]['cmg_totalPoints'])?$currentweekcount[5]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[5]['cmg_totalPoints']) ? $currentweekcount[5]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[5]['pictotal'])?$currentweekcount[5]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[5]['gw_pictotal'])?$currentweekcount[5]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[5]['total_cap'])?$currentweekcount[5]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[5]['cgw_cap'])?$currentweekcount[5]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $forwardData[0]['sum_totalPoints'] }}>
+                                <p class="">{{ $forwardData[0]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p>{{ round($forwardData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -210,10 +337,22 @@
                                 <h4>{{ $forwardData[0]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[0]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
+                                    @if(!empty($currentweekcount[5]['position_id']) && $forwardData[0]['position_id'] == $currentweekcount[5]['position_id'])
+                                
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[5]['cmg_totalPoints'])?$currentweekcount[5]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[5]['cmg_totalPoints']) ? $currentweekcount[5]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                    <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[5]['pictotal'])?$currentweekcount[5]['pictotal']:'0'}}>
+                                    <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[5]['gw_pictotal'])?$currentweekcount[5]['gw_pictotal']:'0'}}>
+                                    <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[5]['total_cap'])?$currentweekcount[5]['total_cap']:'0'}}>
+                                    <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[5]['cgw_cap'])?$currentweekcount[5]['cgw_cap']:'0'}}>
+                                    <input type="hidden" class="total_points" value={{ $forwardData[0]['sum_totalPoints'] }}>
+                                    <p class="">{{ $forwardData[0]['sum_totalPoints'] }} T F Points</p>
                                 </div>
-                                <p>$5.25 M</p>
+                                <p>{{ round($forwardData[0]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -231,10 +370,21 @@
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[6]['position_id']) && $forwardData[1]['position_id'] == $currentweekcount[6]['position_id'])
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[6]['cmg_totalPoints'])?$currentweekcount[6]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[6]['cmg_totalPoints']) ? $currentweekcount[6]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                    @else
+                                    <p class="">0 CGW Point</p>
+                                        <input type="hidden" class="cmg_totalpoints" value='0'>
+                                    @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[6]['pictotal'])?$currentweekcount[6]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[6]['gw_pictotal'])?$currentweekcount[6]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[6]['total_cap'])?$currentweekcount[6]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[6]['cgw_cap'])?$currentweekcount[6]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $forwardData[1]['sum_totalPoints'] }}>
+                                <p class="">{{ $forwardData[1]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p>{{ round($forwardData[1]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -248,10 +398,21 @@
                                 <h4>{{ $forwardData[1]['fullname'] }}</h4>
                                 <p class="categorie"  data-id="{{ $forwardData[1]['id'] }}">Forward</p>
                                 <div class="playerdetails">
-                                    <p>0 CGW Point</p>
-                                    <p>0 T F Points</p>
-                                </div>
-                                <p>$5.25 M</p>
+                                    @if(!empty($currentweekcount[6]['position_id']) && $forwardData[1]['position_id'] == $currentweekcount[6]['position_id'])
+                                    <input type="hidden" class="cmg_totalpoints" value={{ !empty($currentweekcount[6]['cmg_totalPoints'])?$currentweekcount[6]['cmg_totalPoints']:'0' }}>
+                                    <p class="">{{ !empty($currentweekcount[6]['cmg_totalPoints']) ? $currentweekcount[6]['cmg_totalPoints'] : '0'}} CGW Point</p>
+                                @else
+                                <p class="">0 CGW Point</p>
+                                    <input type="hidden" class="cmg_totalpoints" value='0'>
+                                @endif
+                                <input type="hidden" class="total_picks" value={{ !empty($currentweekcount[6]['pictotal'])?$currentweekcount[6]['pictotal']:'0'}}>
+                                <input type="hidden" class="gm_picks" value={{ !empty($currentweekcount[6]['gw_pictotal'])?$currentweekcount[6]['gw_pictotal']:'0'}}>
+                                <input type="hidden" class="total_cap" value={{ !empty($currentweekcount[6]['total_cap'])?$currentweekcount[6]['total_cap']:'0'}}>
+                                <input type="hidden" class="cgw_cap" value={{ !empty($currentweekcount[6]['cgw_cap'])?$currentweekcount[6]['cgw_cap']:'0'}}>
+                                <input type="hidden" class="total_points" value={{ $forwardData[1]['sum_totalPoints'] }}>
+                                <p class="">{{ $forwardData[1]['sum_totalPoints'] }} T F Points</p>
+                            </div>
+                            <p>{{ round($forwardData[1]['sell_price']) }}</p>
                             </div>
                             <a class="kdjkjd" href="" id="forward_detail" data-bs-toggle="modal" data-bs-target="#myModal">View
                                 Details</a>
@@ -278,7 +439,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog text-white">
             <!-- Modal content-->
@@ -288,12 +448,12 @@
                 </div>
                 <div class="modal-body text-center">
                     <p class="jsdhjdh" id="category_model">Forward</p>
-                    <p class="jsdhjdh">Total Fantasy Points:xxx</p>
-                    <p class="jsdhjdh">Current GW points: xxx</p>
-                    <p class="jsdhjdh">Total Picks: xx</p>
-                    <p class="jsdhjdh">Picks current GW: xx</p>
-                    <p class="jsdhjdh">Total Times Captained: xx</p>
-                    <p class="jsdhjdh">Current GW Captain: xx</p>
+                    <p class="jsdhjdh" id="total_p_points">Total Fantasy Points:xxx</p>
+                    <p class="jsdhjdh" id="total_cgw_points">Current GW points: xxx</p>
+                    <p class="jsdhjdh" id="total_picks_id">Total Picks: </p>
+                    <p class="jsdhjdh" id="gm_picks">Picks current GW: 0</p>
+                    <p class="jsdhjdh" id="total_cap">Total Times Captained: 0</p>
+                    <p class="jsdhjdh" id="cgw_cap">Current GW Captain: 0</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default fjdfjjh" data-bs-dismiss="modal">
@@ -303,4 +463,7 @@
             </div>
         </div>
     </div>
+
+   
 </div>
+

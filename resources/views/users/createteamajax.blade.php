@@ -6,67 +6,9 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
 @endphp
 
-<style>
-    .om-sliderrange {
-	min-height: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
 
-.om-sliderrange-range {
-	height: 4px;
-	position: relative;
-	margin: 8px 4px;
-}
 
-.om-sliderrange-display {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 0% 0;
-    font-size: 12px;
-}
 
-.om-sliderrange-range:before {
-	display: block;
-	content: '';
-	height: 4px;
-	border-radius: 4px;
-	background: #c2c0c2;
-}
-
-.om-sliderrange-range-indicator {
-	height: 4px;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	position: absolute;
-    background: #ff5000;
-}
-
-.om-sliderrange-button-start,
-.om-sliderrange-button-end {
-	cursor: pointer;
-	position: absolute;
-    width: 15px;
-    height: 15px;
-	border-radius: 12px;
-    background: #fff;
-    border: 2px solid #ff5000;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	pointer-events: visible;
-    outline: 0;
-    
-}
-.om-sliderrange-display span:nth-child(2) {
-    opacity: 0;
-    visibility: hidden;
-    z-index: -898;
-}
-</style>
 <div class="tab-pane fade home-tab <?= $type == 'goalkeeper' || $type == '' ? 'show active' : '' ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="form-outer">
         <div class="page slide-page">
@@ -165,7 +107,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                     <div class="col-sm-4 mt-3">
                         
-                        <!-- <div class="range-slider">
+                        <div class="range-slider">
 
                             <p class="range-slider__subtitle">Price Range</p>
                             <div class="value-data">
@@ -178,12 +120,9 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                               
                             </div>
-                        </div> -->
-                       
-                            <div>
-                                <p class="range-slider__subtitle text-white mb-4">Price Range</p>
-                            <input type="range" name="pieces" id="rangeSlider" multiple unit="$" value="0,50" min="0" max="50"  style="width: 250px">
                         </div>
+                       
+                          
                            
                        
 
@@ -855,20 +794,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 </div>
 </div>
 
-<script>
-    document.getElementById("rangeSlider").addEventListener(
-"rangechange",
-function (e) {
-document.getElementById("displaySelectedRange").innerText =
-e.detail.join(" - ");
-},
-true
-);
 
-OmRangeSlider.init({
-inputValueStyle: OmRangeSliderInputValueStyles.PHP_ARRAY,
-});
-</script>
 
 <script>
     $(".goalkeeper_staricon").hide();
