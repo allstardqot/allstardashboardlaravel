@@ -13,7 +13,7 @@ use App\Models\Nationalities;
 use App\Models\Team;
 use Mail;
 use App\Models\Player;
-
+use App\Models\Payment;
 
 class RegisterController extends Controller
 {
@@ -98,9 +98,18 @@ class RegisterController extends Controller
                 // return redirect()->route('register');
             }else{
 
-                $user->wallet = $user->wallet + 100;
+                $user->wallet = $user->wallet + REFERRALBOUNSAMOUNT;
                 $user->save();
                 $user_id = $user->id;
+
+                $payment            = new Payment;
+                $payment->user_id   = $user_id;
+                $payment->amount    = REFERRALBOUNSAMOUNT;
+                $payment->type      = 'REFERRAL BONUS';
+                $payment->transaction_id = uniqid();
+                $payment->save();
+
+                
             }
         }
         

@@ -72,6 +72,8 @@ Route::get('/register/{referal}', [RegisterController::class, 'showRegistrationF
 Auth::routes();
 
 
+
+
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['middleware' => ['verified']], function() {
         /**

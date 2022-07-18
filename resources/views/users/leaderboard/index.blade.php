@@ -58,8 +58,8 @@
                                                     @endphp
                                                     @foreach ($leaderboardData as $key=>$userData)
                                                     @php
-                                                    if($userData['id']==$user_id){
-                                                        $loginUserFantasyPoint=$userData['total_points'];
+                                                    if($userData['id'] == $user_id){
+                                                        $loginUserFantasyPoint = $userData['total_points'];
                                                     }
                                                     @endphp
                                                     <tr>
@@ -88,6 +88,7 @@
                                                         <tbody>
                                                         @php
                                                                 $total_fpoints=0;
+                                                                
                                                         @endphp
                                                         @foreach($result as $key => $data) 
                                                         @if(!isset($data['name']))
@@ -95,8 +96,10 @@
                                                         @endif
                                                         @php
                                                             if(isset($playersData[$data['id']])){
+                                                                // prr($playersData[$data['id']]);
                                                                 $data['total_points']=$playersData[$data['id']];
                                                             }
+                                                            
                                                         @endphp   
                                                             <tr>
                                                                 <td>
@@ -124,6 +127,7 @@
                                                                     $total_fpoints+=$data['total_points'];
                                                                 }
                                                             @endphp
+                                                          
                                                             @endforeach
                                                             
                                                         </tbody>

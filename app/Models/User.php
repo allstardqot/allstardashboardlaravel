@@ -27,7 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'team_id' ,
         'player_id' ,
         'referral_code',
-        'referal_id'
+        'referal_id',
+        'wallet_address'
     ];
 
     /**

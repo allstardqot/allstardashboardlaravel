@@ -7,8 +7,8 @@
                 {!! $value->description !!}
                 <div class="like_share">
                     <a class="hyujh45" href="#" onclick="showComment('{{ $value->id }}')">{{ $value->comment }} Comment</a>
-                    <a class="jkyts778 sharei" href="#">Share</a>
-                    <p class="result"></p>
+                    <a class="jkyts778 sharei" href="javascript:void(0);">Share</a>
+                    {{-- <p class="result"></p> --}}
                 </div>
                 <hr />
             @endforeach
@@ -22,13 +22,13 @@
         text: "This is the All Star Football Game Online: https://allstarsfan.com/ \n Winning Pool successfully!",
         // url: 'https://mynataraja.live/',
 
-
     }
-    const btni = document.querySelector('.sharei');
+    const btn = document.querySelectorAll(".sharei");
+    console.log(btn)
     const resultParai = document.querySelector('.result');
 
-    // Share must be triggered by "user activation"
-    btni.addEventListener('click', async () => {
+    Array.from(btn).forEach((e)=>{
+        e.addEventListener('click', async () => {
         // alert('adfd');
         try {
             await navigator.share(shareData)
@@ -37,5 +37,9 @@
             resultParai.textContent = 'Error: ' + err
         }
     });
+    })
+
+    // Share must be triggered by "user activation"
+    
 
     </script>

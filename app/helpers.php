@@ -17,6 +17,7 @@ function setting(){
     define('TWITTER',$setting->twitter_url);
     define('TELEGRAM',$setting->telegram_link);
     define('DISCORD',$setting->discord_url);
+    define('REFERRALBOUNSAMOUNT',$setting->referral_bouns_amount);
     
 
 }

@@ -183,7 +183,7 @@
                   <a
                     class="btn btn-primary"
                     href="javascript:void(0)"
-                    onclick="withdrawtoken();"
+                    onclick="withdrawrequest();"
                     >Withdraw AFC</a
                   >
                 </div>

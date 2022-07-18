@@ -58,6 +58,7 @@
 
                     <input class="inpuytgfcv mt-4" type="text" id="pincode" name="pincode" placeholder="Zipcode" value="{{$user['pincode']}}" /><br />
 
+                    
                     <div class="text-white">
                         <select class="hgtfr56" name="country">
                             <option value="{{old('country')}}">Select Country</option>
@@ -66,10 +67,11 @@
                             @endforeach
                         </select>
                     </div>
-
-
-
+                    
+                    
+                    
                     <input class="inpuytgfcv mt-4" type="text" id="city" name="city" placeholder="City" value={{$user['city']}}><br />
+                    <input class="inpuytgfcv mt-4" type="text" id="wallet_address" name="wallet_address" placeholder="Wallet Address" value="{{$user['wallet_address']}}" /><br />
                 </div>
             </div>
             <input type="submit" class="form-control btnColor mt-4 order-last order-lg-first hgvfr56" value="Save" />

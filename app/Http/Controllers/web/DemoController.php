@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Player;
+use App\Models\FantasyPoint;
 
 use App\Models\League;
 
@@ -51,95 +52,123 @@ class DemoController extends Controller
         }
     }
 
-    public function defaultCron($fixtureId){
-        //$fixtureQuery=Fixture::find($fixtureId)->toArray();
-        $priviousWeek=$fixtureId;
-        //echo $priviousWeek."<br>";
-        $userTeamQuery=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('user_teams','user_teams.id','user_contests.user_team_id')->where('user_pools.week_id',$priviousWeek)->select(['user_pools.entry_fees','user_contests.pool_id','user_contests.rank','user_contests.user_id','user_contests.user_team_id','user_contests.winning_distribute','user_contests.id','user_teams.total_points'])->where('user_contests.winning_distribute',0)->orderby('user_contests.rank','asc')->get()->toArray();
-        $winningData=[];
-        foreach($userTeamQuery as $key=>$value){
-            $winningData[$value['pool_id']][]=$value;
+    public function staticPoint($code)
+    {
+        $data = FantasyPoint::query()->where(['code' => $code])->first();
+        if (!empty($data['point'])) {
+            return $data['point'];
         }
-        prr($winningData);
+        return 0;
+    }
 
-        if(!empty($winningData)){
-            foreach($winningData as $pool_id=>$poolData){
-                
-                $totalUserJoin=count($winningData[$pool_id]);
-                $countRank=$rank=0;
-                $userIdArray=$newArray=[];
-                foreach($poolData as $poolValue){
-                    echo $poolValue['total_points'].'------'.$poolValue['user_id']."<br>";
-                    User::where('id', $poolValue['user_id'])->increment('total_points',$poolValue['total_points']);
-                    //prr($poolValue);
-                    $totalPriceGet=$poolValue['entry_fees']*$totalUserJoin;
-                    $firstRankprice=$totalPriceGet*75/100;
-                    $secondRankprice=$totalPriceGet*15/100;
-                    $adminPrice=$totalPriceGet*10/100;
-                    if($rank!=0 && $poolValue['rank']!=$rank){
-                        $countRank=1;
-                    }
-                    $newArray['total_points']=$poolValue['total_points'];
-                    $newArray['first_price']=$firstRankprice;
-                    $newArray['second_price']=$secondRankprice;
-                    $newArray['admin_price']=$adminPrice;
-                    if($rank==0 || $poolValue['rank']==$rank){
-                        $newArray['rank'][$poolValue['rank']]['count']=$countRank+1;
-                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];                        
-                        $countRank=$countRank+1;
-                    }else{
-                        $newArray['rank'][$poolValue['rank']]['count']=$countRank;
-                        $newArray['rank'][$poolValue['rank']]['user_id'][]=$poolValue['user_id'];
-                    }
-                    $rank=$poolValue['rank'];
+    public function defaultCron($fixtureId){
+        $api = new EntitySport();
+
+        $fixture = Fixture::query()
+                ->where('id', $fixtureId)
+                ->first();
+
+        if ($fixture) {
+
+            // if( ($fixture->status == FIXTURE_STATUS[0]) || (strtotime($fixture->starting_at) >= time())  ) {
+            //     if ($this->autoSet) {
+            //         self::dispatch($fixtureId)->delay(now()->addMinutes(2));
+            //     }
+            // } else {
+
+                $matchScore = $api->getMacthScore($fixtureId . '?include=lineup.player,bench.player');
+                //prr($matchScore);
+                //Log::info("getScore runningfff".$this->fixtureId.'--'.json_encode($matchScore));
+                if($matchScore['time']){
+                    $fixture->status=isset($matchScore['time']['status'])?$matchScore['time']['status']:$fixture->status;
+                    $fixture->scores=is_array($matchScore['scores'])?json_encode($matchScore['scores']):'';
+                    $fixture->update();
                 }
-                //p($newArray);
-                if(!empty($newArray)){
-                    foreach($newArray as $key=>$count){
-                        if($key=='rank' && !empty($count)){
-                            foreach($count as $rank=>$value){
-                                $total_price=$eachUser=0;
-                                if($rank==1 && $value['count']>1){
-                                    $total_price=$newArray['first_price']+$newArray['second_price'];
-                                    $eachUser=$total_price/$value['count'];
-                                    //prr($value);
-                                }elseif($rank==1 && $value['count']==1){
-                                    $eachUser=$newArray['first_price'];
-                                }elseif($rank==2){
-                                    $eachUser=$newArray['second_price']/$value['count'];
-                                }
-                                foreach($value['user_id'] as $user_id){
-                                    //if(User::where('id', $user_id)->increment('wallet',$eachUser)){
-                                        // $weeak=Week::find(priviousWeek())->toArray();
 
-                                        // $userData=User::find($user_id)->toArray();
-                                        // $data = ['name'=>'','amount'=>'','gameweek_date'=>'','starting_at'=>'','ending_at'=>''];
-                                        // if(!empty($userData) && !empty($weeak)){
-                                        //     $data = ['name'=>$userData['user_name'],'amount'=>$eachUser,'gameweek_date'=>$eachUser,'starting_at'=>$weeak['starting_at'],'ending_at'=>$weeak['ending_at']];
-                                        // }
-                                        // $payment            = new Payment;
-                                        // $payment->user_id   = $user_id;
-                                        // $payment->amount    = $eachUser;
-                                        // $payment->type      = 'CONTEST WON';
-                                        // $payment->transaction_id = uniqid();
-                                        // if($payment->save()){
-                                        //     Mail::send('winning_mail', $data, function($message) use ($userData)  {
-                                        //         $message->to($userData['email'], 'Tutorials Point')->subject
-                                        //             ('Winnings Distribution All Star');
-                                                
-                                        //         });
-                                        // }
-                                        // UserContest::where('pool_id',$pool_id)->update(['winning_distribute'=>1]);
-                                    //}
-                                }
-                                if($rank==1 && $value['count']>1){
-                                    break;
-                                }
-                            }
+                if (!empty($matchScore['lineup']['data'])) {
+                    foreach ($matchScore['lineup']['data'] as $scoreValue) {
+                        if($scoreValue['player_id']!='334036'){
+                            continue;
                         }
+                        //echo $scoreValue['player_id']."finee";die;
+                        $savePoint=$commonTotalPoints=$totalPoints = 0;
+
+                        $goalsPoint = ['scored' => 0, 'assists' => 0, 'conceded' => 0, 'owngoals' => 0, 'team_conceded' => 0];
+                        if($scoreValue['position'] == 'G'){
+                            $savePreThreeShot = intval($scoreValue['stats']['other']['saves'] / 3);
+                            $savePoint = $savePreThreeShot * $this->staticPoint('3_shot_goalkeeper');
+                        }
+                        
+                        $minute_play = ($scoreValue['stats']['other']['minutes_played'] <= 60) ? $this->staticPoint('play_60_min') : $this->staticPoint('play_60_min_more');
+                        //echo $minute_play;die;
+                        $otherPoint = ['aerials_won' => 0, 'punches' => 0, 'offsides' => 0, 'saves' => $savePoint, 'inside_box_saves' => 0, 'pen_scored' => 0, 'pen_missed' => 0, 'pen_saved' => 0, 'pen_committed' => 0, 'pen_won' => 0, 'hit_woodwork' => 0, 'tackles' => 0, 'blocks' => 0, 'interceptions' => 0, 'clearances' => 0, 'dispossesed' => 0, 'minutes_played' => $minute_play];
+                        $yellowCardPoint = $scoreValue['stats']['cards']['yellowcards'] * $this->staticPoint('yellow_card');
+                        $redCardPoint = $scoreValue['stats']['cards']['redcards'] * $this->staticPoint('red_card');
+                        $yellowredCardPoint = $scoreValue['stats']['cards']['yellowredcards'] * $this->staticPoint('yellowredcards');
+                        $assistsPoint = $scoreValue['stats']['goals']['assists'] * $this->staticPoint('assists');
+                        $commonTotalPoints = $minute_play + $yellowCardPoint + $redCardPoint + $yellowredCardPoint + $assistsPoint;
+                        //echo $commonTotalPoints;die;
+                        $cardsPoint = ['yellowcards' => $yellowCardPoint, 'redcards' => $redCardPoint, 'yellowredcards' => $yellowredCardPoint];
+
+                        if ($scoreValue['position'] == 'G' || $scoreValue['position'] == 'D') {
+                            $scorePoint = $scoreValue['stats']['goals']['scored'] * $this->staticPoint('goalkeeper_defender_goal');
+                            $cleanSheetPoint = ($scoreValue['stats']['goals']['conceded']==0) ? $this->staticPoint('clean_sheet_goalkeeper_defender'):0;
+                            $concededPoint=0;
+                            if($scoreValue['stats']['goals']['conceded']>2){
+                                $concededPoint = $scoreValue['stats']['goals']['conceded'] * $this->staticPoint('goal_conceded_goalkeeper_defender');
+                            }
+                            $owngoalsPoints = $scoreValue['stats']['goals']['owngoals'] * $this->staticPoint('own_goal');
+                            $teamConcededPoints = $scoreValue['stats']['goals']['team_conceded'] * $this->staticPoint('team_conceded');
+                             
+                            $totalPoints = $scorePoint + $concededPoint + $owngoalsPoints + $teamConcededPoints + $savePoint + $cleanSheetPoint;
+
+                            $goalsPoint = ['scored' => $scorePoint, 'assists' => $assistsPoint, 'conceded' => $concededPoint, 'owngoals' => $owngoalsPoints, 'team_conceded' => $teamConcededPoints,'cleansheet'=>$cleanSheetPoint];
+                        }
+
+                        if ($scoreValue['position'] == 'M') {
+                            $scorePoint = $scoreValue['stats']['goals']['scored'] * $this->staticPoint('midfielder_goal');
+                            
+                            $cleanSheetPoint = ($scoreValue['stats']['goals']['conceded']==0) ? $this->staticPoint('clean_sheet_midfielder'):0;
+                            //echo $cleanSheetPoint;die;
+                            $concededPoint = $scoreValue['stats']['goals']['conceded'] * $this->staticPoint('conceded');
+                            $owngoalsPoints = $scoreValue['stats']['goals']['owngoals'] * $this->staticPoint('own_goal');
+                            $teamConcededPoints = $scoreValue['stats']['goals']['team_conceded'] * $this->staticPoint('team_conceded');
+
+                            $totalPoints = $scorePoint + $concededPoint + $owngoalsPoints + $teamConcededPoints + $cleanSheetPoint;
+                            $goalsPoint = ['scored' => $scorePoint, 'assists' => $assistsPoint, 'conceded' => $concededPoint, 'owngoals' => $owngoalsPoints, 'team_conceded' => $teamConcededPoints,'cleansheet'=>$cleanSheetPoint];
+                        }
+                        $totalPoints=$totalPoints+$commonTotalPoints;
+
+                        echo $totalPoints."+".$commonTotalPoints;die;
+
+                        // $s = Squad::query()->updateOrCreate([
+                        //     'player_id' => $scoreValue['player_id'],
+                        //     'fixture_id' => $scoreValue['fixture_id'],
+                        //     'team_id' => $scoreValue['team_id'],
+                        // ], [
+                        //     'shots' => !empty($scoreValue['stats']['shots']) ? json_encode($scoreValue['stats']['shots']) : '',
+                        //     'goals' => !empty($scoreValue['stats']['goals']) ? json_encode($scoreValue['stats']['goals']) : '',
+                        //     'goal_points' => json_encode($goalsPoint),
+                        //     'fouls' => !empty($scoreValue['stats']['fouls']) ? json_encode($scoreValue['stats']['fouls']) : '',
+                        //     'cards' => !empty($scoreValue['stats']['cards']) ? json_encode($scoreValue['stats']['cards']) : '',
+                        //     'card_points' => json_encode($cardsPoint),
+                        //     'passing' => !empty($scoreValue['stats']['passing']) ? json_encode($scoreValue['stats']['passing']) : '',
+                        //     'dribbles' => !empty($scoreValue['stats']['dribbles']) ? json_encode($scoreValue['stats']['dribbles']) : '',
+                        //     'duels' => !empty($scoreValue['stats']['duels']) ? json_encode($scoreValue['stats']['duels']) : '',
+                        //     'other' => !empty($scoreValue['stats']['other']) ? json_encode($scoreValue['stats']['other']) : '',
+                        //     'other_points' => json_encode($otherPoint),
+                        //     'total_points' => $totalPoints,
+                        //     //'rating' => !empty($scoreValue['stats']['rating']) ? $scoreValue['stats']['rating'] : '',
+                        // ]);
                     }
+                    //SetUserTeamTotal::dispatch($this->fixtureId);
                 }
-            }   
+                // if ($this->autoSet) {
+                //     if ($fixture->status === FIXTURE_STATUS[0] || $fixture->status === FIXTURE_STATUS[1] || $fixture->status === FIXTURE_STATUS[2]) {
+                //         self::dispatch($fixtureId)->delay(now()->addMinutes(2));
+                //     }
+                // }
+            //}
         }
         echo "fineee";die;
 

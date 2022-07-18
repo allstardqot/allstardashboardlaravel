@@ -47,22 +47,22 @@ class SetUserTeamTotal implements ShouldQueue
     {
         //total point update
         $week=currentWeek();
-        $user_team = UserTeam::where('current_week',$week)->get();
+        $user_team = UserTeam::where('week',$week)->get();
         foreach($user_team as $key=>$teamValue){
             $total_points=0;
             $players = $teamValue['players'];
             $selected_player = json_decode($players, true);
 
-            $squads = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('total_points','player_id')->toArray();
+            $squads = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['week'])->pluck('total_points','player_id')->toArray();
 
-            $playing11Data = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['current_week'])->pluck('playing11','player_id')->toArray();
+            $playing5Data = Squad::whereIn('squads.player_id', $selected_player)->where('squads.week_id',$teamValue['week'])->pluck('playing11','player_id')->toArray();
 
                 $substitude_player=json_decode($teamValue->substitude,true);
 
                 $count=0;
                 $final_substitude_player=$new_substitude_players=[];
                 $positionGet=Player::whereIn('id',$selected_player)->where('position_id',1)->select(['players.id'])->get()->first()->toArray();
-                foreach($playing11Data as $key=>$status){
+                foreach($playing5Data as $key=>$status){
                     if($status==0 && count($new_substitude_players)<2){
                         $new_substitude_players[]=$key;
                         $count+=1;

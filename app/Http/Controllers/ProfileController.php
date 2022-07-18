@@ -80,17 +80,18 @@ class ProfileController extends Controller
         }
         //echo "fineeeee";die;
 
-        $user->user_name       = $request->input('user_name');
-        $user->email          = $request->input('email');
-        $user->phone    = $request->input('phone');
-        $user->gender    = $request->input('gender');
-        $user->address    = $request->input('address');
-        $user->dob    = $request->input('dob');
-        $user->pincode    = $request->input('pincode');
-        $user->country    = $request->input('country');
-        $user->country_code    = $request->input('country_code');
-        $user->team_id    = $request->input('team_id');
-        $user->city                 = $request->input('city');
+        $user->user_name    = $request->input('user_name');
+        $user->email        = $request->input('email');
+        $user->phone        = $request->input('phone');
+        $user->gender       = $request->input('gender');
+        $user->address      = $request->input('address');
+        $user->dob          = $request->input('dob');
+        $user->pincode      = $request->input('pincode');
+        $user->country      = $request->input('country');
+        $user->country_code = $request->input('country_code');
+        $user->team_id      = $request->input('team_id');
+        $user->city         = $request->input('city');
+        $user->wallet_address  = $request->input('wallet_address');
 
         $user->save();
 
