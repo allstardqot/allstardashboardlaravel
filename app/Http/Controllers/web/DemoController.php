@@ -87,7 +87,7 @@ class DemoController extends Controller
 
                 if (!empty($matchScore['lineup']['data'])) {
                     foreach ($matchScore['lineup']['data'] as $scoreValue) {
-                        if($scoreValue['player_id']!='334036'){
+                        if($scoreValue['player_id']!='257881'){
                             continue;
                         }
                         //echo $scoreValue['player_id']."finee";die;
@@ -105,8 +105,12 @@ class DemoController extends Controller
                         $yellowCardPoint = $scoreValue['stats']['cards']['yellowcards'] * $this->staticPoint('yellow_card');
                         $redCardPoint = $scoreValue['stats']['cards']['redcards'] * $this->staticPoint('red_card');
                         $yellowredCardPoint = $scoreValue['stats']['cards']['yellowredcards'] * $this->staticPoint('yellowredcards');
+
+                        $panaltySavePoint = $scoreValue['stats']['other']['pen_saved'] * $this->staticPoint('penalty_save');
+                        $panaltyMissPoint = $scoreValue['stats']['other']['pen_missed'] * $this->staticPoint('penalty_miss');
+                        
                         $assistsPoint = $scoreValue['stats']['goals']['assists'] * $this->staticPoint('assists');
-                        $commonTotalPoints = $minute_play + $yellowCardPoint + $redCardPoint + $yellowredCardPoint + $assistsPoint;
+                        $commonTotalPoints = $minute_play + $yellowCardPoint + $redCardPoint + $yellowredCardPoint + $assistsPoint + $panaltySavePoint + $panaltyMissPoint;
                         //echo $commonTotalPoints;die;
                         $cardsPoint = ['yellowcards' => $yellowCardPoint, 'redcards' => $redCardPoint, 'yellowredcards' => $yellowredCardPoint];
 
@@ -123,19 +127,19 @@ class DemoController extends Controller
                             $totalPoints = $scorePoint + $concededPoint + $owngoalsPoints + $teamConcededPoints + $savePoint + $cleanSheetPoint;
 
                             $goalsPoint = ['scored' => $scorePoint, 'assists' => $assistsPoint, 'conceded' => $concededPoint, 'owngoals' => $owngoalsPoints, 'team_conceded' => $teamConcededPoints,'cleansheet'=>$cleanSheetPoint];
-                        }
-
-                        if ($scoreValue['position'] == 'M') {
+                        }elseif ($scoreValue['position'] == 'M') {
                             $scorePoint = $scoreValue['stats']['goals']['scored'] * $this->staticPoint('midfielder_goal');
-                            
                             $cleanSheetPoint = ($scoreValue['stats']['goals']['conceded']==0) ? $this->staticPoint('clean_sheet_midfielder'):0;
-                            //echo $cleanSheetPoint;die;
                             $concededPoint = $scoreValue['stats']['goals']['conceded'] * $this->staticPoint('conceded');
                             $owngoalsPoints = $scoreValue['stats']['goals']['owngoals'] * $this->staticPoint('own_goal');
                             $teamConcededPoints = $scoreValue['stats']['goals']['team_conceded'] * $this->staticPoint('team_conceded');
-
                             $totalPoints = $scorePoint + $concededPoint + $owngoalsPoints + $teamConcededPoints + $cleanSheetPoint;
                             $goalsPoint = ['scored' => $scorePoint, 'assists' => $assistsPoint, 'conceded' => $concededPoint, 'owngoals' => $owngoalsPoints, 'team_conceded' => $teamConcededPoints,'cleansheet'=>$cleanSheetPoint];
+                        }elseif ($scoreValue['position'] == 'A') {
+                            $scorePoint = $scoreValue['stats']['goals']['scored'] * $this->staticPoint('forward_goal');
+                            $totalPoints = $scorePoint;
+                            
+                            $goalsPoint = ['scored' => $scorePoint];
                         }
                         $totalPoints=$totalPoints+$commonTotalPoints;
 
