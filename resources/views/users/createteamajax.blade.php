@@ -109,7 +109,7 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
                         
                         <div class="range-slider">
 
-                            <p class="range-slider__subtitle">Price Range</p>
+                            <p class="range-slider__subtitle mb-3" >Price Range</p>
                             <div class="value-data">
                                 <p class="o-value"> 0</p>
                                 <p class="goalkeeper_range range-slider__value">${{!empty($request['type']=='goalkeeper') && !empty($request['cost_range']) ?$request['cost_range']:'50' }}</p>
@@ -120,6 +120,8 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
 
                               
                             </div>
+                       
+                        
                         </div>
                        
                           
@@ -793,7 +795,6 @@ $cookiesArray=explode(',',$_COOKIE['playerIdArray']);
     </div>
 </div>
 </div>
-
 
 
 <script>

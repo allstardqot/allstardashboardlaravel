@@ -66,15 +66,15 @@
               </h3>
 
               <div class="d-flex flex-wrap align-items-center">
-                <a href="#" class="btn btn-danger">BUY TOKEN</a>
+                <a href="https://afctoken.io/offer" class="btn btn-danger">BUY TOKEN</a>
                 <a
-                  href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Whitepaper - Final.pdf"
+                  href="https://afctoken.io/public/assets/img/image/Fantasy Allstars Whitepaper - Final.pdf"
                   target="_blank"
                   class="btn btn-danger"
                   >WHITEPAPER</a
                 >
                 <a
-                  href="http://3.110.104.72/public/assets/img/image/Fantasy Allstars Pitch Deck.pdf"
+                  href="https://afctoken.io/public/assets/img/image/Fantasy Allstars Pitch Deck.pdf"
                   target="_blank"
                   class="btn btn-danger"
                   >PITCH DECK

@@ -313,7 +313,7 @@
         </div>
     </main>
     <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/om-javascript-range-slider.js') }}"></script>
+ 
     <script>
         //var checkedisquad=$("#edit_manage_squad").val();
         goalKeepercheckbox();
@@ -1023,9 +1023,9 @@
             $("body").on('click', "#goalkeeper_filt", function(e) {
                 point = $("#goal_keeper_point").val();
                 cost_range = $("#rangeSlider").val();
-                alert(cost_range)
+                //alert(cost_range)
                 team = $("#goal_keeper_team").val();
-                //fetchData(point, 'goalkeeper', "filter", team, cost_range)
+                fetchData(point, 'goalkeeper', "filter", team, cost_range)
             })
 
             $("body").on('click', "#defender_filt", function(e) {

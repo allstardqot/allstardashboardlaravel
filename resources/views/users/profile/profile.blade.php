@@ -109,7 +109,7 @@
         </div>
         <div class="col-lg-3 mt-3">
           <div class="profile-card-sec">
-            <h3>{{ $fantasyPoint }}</h3>
+            <h3>{{ $user->total_points }}</h3>
             <h6>Fantasy Points</h6>
           </div>
         </div>
