@@ -11,15 +11,13 @@ class PagelayoutController extends Controller
         return view("web.terms_condition");
     }
 
-    public function amlPolicy(){
-        return view("web.aml_policy");
+    public function cookiePolicy(){
+        return view("web.cookie_policy");
     }
 
-    public function kycPolicy(){
-        return view("web.kyc_policy");
+    public function privacyPolicy(){
+        return view("web.privacy_policy");
     }
 
-    public function gamingPolicy(){
-        return view("web.gaming_policy");
-    }
+   
 }

@@ -812,7 +812,6 @@ $('input[type="range"]').on( 'input', rangeInputChangeEventHandler);
 </script>
 
 
-
 <script>
     $(".goalkeeper_staricon").hide();
     $(".defender_staricon0").hide();

@@ -1,7 +1,7 @@
 p{
 	font-size: 15px;
 	Font family: Roboto;
-    Font style: Regular;
+   
 }
 
 .bgHome{
@@ -139,8 +139,8 @@ background: #FF5000;
 .leftSide::before{
   content:'';
   background: url(../img/Pattern.png);
-  width: 190px;
-  height: 602px;
+  width: 81px;
+  height: 250px;
   background-size: cover;
 }
 

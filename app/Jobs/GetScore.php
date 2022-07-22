@@ -54,6 +54,7 @@ class GetScore implements ShouldQueue
                 ->first();
 
         if ($fixture) {
+            //Log::info("getScore runningfffffffrtttff".$this->fixtureId);
 
             if( ($fixture->status == FIXTURE_STATUS[0]) || (strtotime($fixture->starting_at) >= time())  ) {
                 if ($this->autoSet) {
@@ -62,7 +63,7 @@ class GetScore implements ShouldQueue
             } else {
 
                 $matchScore = $api->getMacthScore($this->fixtureId . '?include=lineup.player,bench.player');
-                //Log::info("getScore runningfff".$this->fixtureId.'--'.json_encode($matchScore));
+                Log::info("getScore runningfff".$this->fixtureId.'--'.json_encode($matchScore));
                 if($matchScore['time']){
                     $fixture->status=isset($matchScore['time']['status'])?$matchScore['time']['status']:$fixture->status;
                     $fixture->scores=is_array($matchScore['scores'])?json_encode($matchScore['scores']):'';

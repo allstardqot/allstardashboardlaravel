@@ -55,8 +55,8 @@ Route::get('/setuserTeamtotal/{fixtureId}',[DemoController::class,'setuserTeamto
 
 
 Route::get('/terms-condition',[PagelayoutController::class,'termsCondition']);
-Route::get('/aml-policy',[PagelayoutController::class,'amlPolicy']);
-Route::get('/kyc-policy',[PagelayoutController::class,'kycPolicy']);
+Route::get('/privacy-policy',[PagelayoutController::class,'privacyPolicy']);
+Route::get('/cookie-policy',[PagelayoutController::class,'cookiePolicy']);
 Route::get('/gaming-policy',[PagelayoutController::class,'gamingPolicy']);
 
 Route::get('/about_us', [AboutusController::class,'index']);

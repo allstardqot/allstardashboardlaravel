@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Allstars @yield('title')</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.png') }}">
 
     <!-- Styles -->
     

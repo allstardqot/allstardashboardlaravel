@@ -161,7 +161,7 @@ const addtoken = async() => {
 			params: [
 				{
 				from: accounts[0],
-				to: '0xf5E66433E526901dE513AE52A99598D2621a68C3', 
+				to: '0xc752Cd0EAFcde014a4f86C76d229b1df0e87876D', 
 				value: hexaDecimal,
 				gasPrice: '0x09184e72a000',
 				gas: '0x2710',
@@ -242,7 +242,7 @@ const withdrawtoken = async() => {
 			params: [
 				{
 				from: accounts[0],
-				to: '0xf5E66433E526901dE513AE52A99598D2621a68C3',
+				to: '0xc752Cd0EAFcde014a4f86C76d229b1df0e87876D',
 				value: hexaDecimal,
 				gasPrice: '0x09184e72a000',
 				gas: '0x2710',
