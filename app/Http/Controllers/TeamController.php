@@ -193,7 +193,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
                         if(!empty($min)){
-                            $playerQuery->where('players.sell_price','<',$min);
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -205,7 +205,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
                         if(!empty($min)){
-                            $playerQuery->where('players.sell_price','<',$min);
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -217,7 +217,7 @@ class TeamController extends Controller
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
                         if(!empty($min)){
-                            $playerQuery->where('players.sell_price','<',$min);
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);

@@ -80,9 +80,9 @@ $(document).ready(function () {
     delete_cookie("max");
     delete_cookie("min_for");
     delete_cookie("max_for");
-    delete_cookie("max_dif");
-    delete_cookie("max_dif");
-    delete_cookie("max_mid");
+    delete_cookie("min_def");
+    delete_cookie("max_def");
+    delete_cookie("min_mid");
     delete_cookie("max_mid");
   });
 });
@@ -396,9 +396,9 @@ function removePlayerCookie() {
   delete_cookie("max");
   delete_cookie("min_for");
   delete_cookie("max_for");
-  delete_cookie("max_dif");
-  delete_cookie("max_dif");
-  delete_cookie("max_mid");
+  delete_cookie("min_def");
+  delete_cookie("max_def");
+  delete_cookie("min_mid");
   delete_cookie("max_mid");
 
   location.reload();
