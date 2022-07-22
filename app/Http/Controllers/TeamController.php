@@ -125,7 +125,8 @@ class TeamController extends Controller
             $searchData = $request->searchData;
             $point = $request->point;
             $teamfilter = $request->team;
-            $cost_range = $request->cost_range;
+            $min = $request->min;
+            $max = $request->max;
             $type = $request->type;
             $team = Team::pluck('name', 'id');
 
@@ -172,26 +173,27 @@ class TeamController extends Controller
                     }
                     //pr($goalkeeperData);
                 }
-                if (!empty($point) || !empty($teamfilter) || !empty($cost_range)) {
+                if (!empty($point) || !empty($teamfilter) || !empty($min) || !empty($max)) {
                     if ($type == "goalkeeper") {
                         $playerQuery->where('players.position_id', 1);
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
                         }
                         $goalkeeperData = $playerQuery->orWhereIn('id',$cookiesArray)->with('Team', 'Position')->get();
+                        // prr($goalkeeperData);
                     } elseif ($type == 'defender') {
                         $playerQuery->where('players.position_id', 2);
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -202,8 +204,8 @@ class TeamController extends Controller
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -214,8 +216,8 @@ class TeamController extends Controller
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -272,7 +274,8 @@ class TeamController extends Controller
             $searchData = $request->searchData;
             $point = $request->point;
             $teamfilter = $request->team;
-            $cost_range = $request->cost_range;
+            $min = $request->min;
+            $max = $request->max;
             $type = $request->type;
             $team = Team::pluck('name', 'id');
 
@@ -319,14 +322,14 @@ class TeamController extends Controller
                     }
                     //pr($goalkeeperData);
                 }
-                if (!empty($point) || !empty($teamfilter) || !empty($cost_range)) {
+                if (!empty($point) || !empty($teamfilter) || !empty($min)) {
                     if ($type == "goalkeeper") {
                         $playerQuery->where('players.position_id', 1);
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -338,8 +341,8 @@ class TeamController extends Controller
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);
@@ -350,8 +353,8 @@ class TeamController extends Controller
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orWhereIn('players.id',$cookiesArray)->orderBy('sum_totalPoints', $point);
@@ -362,8 +365,8 @@ class TeamController extends Controller
                         if(!empty($teamfilter)){
                             $playerQuery->where('players.team_id', $teamfilter);
                         }
-                        if(!empty($cost_range)){
-                            $playerQuery->where('players.sell_price','<',$cost_range);
+                        if(!empty($min)){
+                            $playerQuery->where('players.sell_price','>=',$min)->where('players.sell_price','<=',$max);
                         }
                         if (!empty($point)) {
                             $playerQuery->orderBy('sum_totalPoints', $point);

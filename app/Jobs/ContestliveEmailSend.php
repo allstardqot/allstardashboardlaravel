@@ -48,12 +48,20 @@ class ContestliveEmailSend implements ShouldQueue
     {
         $poolData=UserContest::join('user_pools','user_pools.id','user_contests.pool_id')->join('weeks','weeks.id','user_pools.week_id')->join('users','users.id','user_contests.user_id')->whereDate('weeks.starting_at','<=',Carbon::now())->where('user_pools.email_send',0)->select(['users.email','users.user_name','user_contests.pool_id','user_pools.pool_name'])->get()->toArray();
         $poolIdArray=[];
-        foreach($poolData as $poolValue){
-            $data = ['pool_name'=>$poolValue['pool_name'],'user_name'=>$poolValue['user_name']];
 
-            Mail::send('contest_live_mail', $data, function($message) use ($poolValue)  {
+        $email_name     = 'CONTEST LIVE';
+        $email_template =  emailTemplate($email_name);
+        $subject = $email_template->subject;
+
+        foreach($poolData as $poolValue){
+            // $data = ['pool_name'=>$poolValue['pool_name'],'user_name'=>$poolValue['user_name']];
+            $link  = '<a href="'. url('/my-pool') .'">My Pools</a>';
+            $message1	= str_replace(['{{USER_NAME}}','{{POOL_NAME}}','{{LINK}}'],[$poolValue['user_name'],$poolValue['pool_name'],$link],$email_template->template);
+            $data  = ['message1'=>$message1];
+
+            Mail::send('contest_live_mail', $data, function($message) use ($poolValue,$subject)  {
                 $message->to($poolValue['email'], 'Tutorials Point')->subject
-                    ('Contest Gone Live All Star');
+                    ($subject);
 
                 });
 

@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/image/favicon.png') }}">
 
     <!-- Styles -->
-
+    
     <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
 
@@ -209,12 +209,17 @@
 @show
 
 <script src="{{ asset('public/assets/js/jquery-3.5.1.min.js') }}"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/jquery-ui.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="{{ asset('public/assets/js/script.js') }}"></script>
+{{-- <script src="{{ asset('public/assets/js/rangejs.js') }}"></script> --}}
+<script src="{{ asset('public/assets/js/script.js') }}" async></script>
 <script src="{{ asset('public/assets/js/notify.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/user_script.js') }}"></script>
 <script src="{{ asset('public/assets/js/rte.js') }}"></script>

@@ -37,9 +37,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         // echo 'sljhf';die;
-        $usercontest = UserContest::where(['user_id'=>$user->id])->count();
-        $totalCoin = User::where(['id'=>$user->id])->get()->first();
-        $totalCoins=!empty($totalCoin['wallet'])?$totalCoin['wallet']:0;
+        $usercontest    = UserContest::where(['user_id'=>$user->id])->count();
+        $totalCoin      = User::where(['id'=>$user->id])->get()->first();
+        $totalCoins     =   !empty($totalCoin['wallet'])?$totalCoin['wallet']:0;
         $winningContest = UserContest::where([['user_id',$user->id],['winning_distribute',1],['rank',[1,2]]])->get()->count();
         $fantasyPoint = UserTeam::where([['user_id',$user->id]])->sum('total_points');
 
@@ -102,12 +102,23 @@ class ProfileController extends Controller
     }
 
     public function send_invition(Request $request){
+
         $referal      = Auth::user()->referral_code;
         $user_name      = Auth::user()->user_name;
-        Mail::send('users.invition',['token' => $request->token,'referal'=>$referal,'user_name'=>$user_name], function($message) use($request){
+
+        $email_name     = 'USER INVITE';
+        $email_template =  emailTemplate($email_name);
+        $subject = $email_template->subject;
+
+        $link  = '<a href="'. url("register",$referal) .'">Sign Up</a>';
+
+        $message1	=	str_replace(['{{USER_NAME}}','{{LINK}}'],[ucfirst($user_name),$link],$email_template->template);
+        // print_r($message1);die;
+
+        Mail::send('users.invition',['token' => $request->token,'referal'=>$referal,'message1'=>$message1], function($message) use($request,$subject){
             $message->to($request->email);
             $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
-            $message->subject('Invition');
+            $message->subject($subject);
         });
         return 'Success';
 

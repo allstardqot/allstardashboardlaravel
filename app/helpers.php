@@ -3,6 +3,7 @@
 use App\Models\Position;
 use App\Models\Week;
 use App\Models\Setting;
+use App\Models\EmailTemplate;
 use Illuminate\Support\Carbon;
 
 const FIXTURE_STATUS = ['NS', 'LIVE', 'HT', 'FT', 'ET' ,'PEN_LIVE' ,'AET' ,'BREAK' ,'FT_PEN' ,'CANCL' ,'POSTP' ,'INT' ,'ABAN' ,'SUSP' ,'TBA' ,'AWARDED' ,'DELAYED' ,'WO' ,'AU' ,'Deleted'];
@@ -18,6 +19,16 @@ function setting(){
     define('TELEGRAM',$setting->telegram_link);
     define('DISCORD',$setting->discord_url);
     define('REFERRALBOUNSAMOUNT',$setting->referral_bouns_amount);
+    
+
+}
+
+
+function emailTemplate($email_name){
+    $setting = EmailTemplate::where(['email_name'=>$email_name])->first();
+    // prr($setting);
+    return $setting;
+   
     
 
 }

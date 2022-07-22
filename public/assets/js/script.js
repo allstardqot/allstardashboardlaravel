@@ -70,11 +70,20 @@ $(document).ready(function () {
     delete_cookie("playerIdArray");
   });
   $(".remove_common_cookie").click(function () {
+    // alert('dekete Cookie');
     delete_cookie("playerIdArray");
     delete_cookie("selected_player");
     delete_cookie("step");
     delete_cookie("editId");
     delete_cookie("substitude");
+    delete_cookie("min");
+    delete_cookie("max");
+    delete_cookie("min_for");
+    delete_cookie("max_for");
+    delete_cookie("min_def");
+    delete_cookie("max_def");
+    delete_cookie("min_mid");
+    delete_cookie("max_mid");
   });
 });
 
@@ -383,6 +392,15 @@ function cookiesCheck() {
 
 function removePlayerCookie() {
   delete_cookie("playerIdArray");
+  delete_cookie("min");
+  delete_cookie("max");
+  delete_cookie("min_for");
+  delete_cookie("max_for");
+  delete_cookie("min_def");
+  delete_cookie("max_def");
+  delete_cookie("min_mid");
+  delete_cookie("max_mid");
+
   location.reload();
 }
 
@@ -450,12 +468,7 @@ backBtn.addEventListener("click", (e) => {
       return false;
     }
   });
-})(
-  // function myAdd() {
-  //     var element = document.getElementById("commentArea");
-  //     element.classList.toggle("active");
-  //  }
-
+}),(
   function ($) {
     $(document).ready(function () {
       $("button").click(function () {
@@ -470,6 +483,11 @@ backBtn.addEventListener("click", (e) => {
       }
     });
   }
+  // function myAdd() {
+  //     var element = document.getElementById("commentArea");
+  //     element.classList.toggle("active");
+  //  }
+
 )(jQuery);
 
 function ShowAndHide() {
