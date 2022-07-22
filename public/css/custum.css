@@ -325,6 +325,8 @@ p {
 }
 .slide-one {
   background-color: #12133d;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .upcoming-main {
   background: #292a50;

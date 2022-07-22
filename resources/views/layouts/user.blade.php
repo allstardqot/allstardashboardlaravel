@@ -224,6 +224,33 @@
 
 <script>
 
+    const shareData = {
+        title: 'All Star',
+        text: "This is the All Star Football Game Online: https://allstarsfan.com/ \n Winning Pool successfully!",
+        // url: 'https://mynataraja.live/',
+
+    }
+    const btn = document.querySelectorAll(".sharei");
+    console.log(btn)
+    const resultParai = document.querySelector('.result');
+
+    Array.from(btn).forEach((e)=>{
+        e.addEventListener('click', async () => {
+        // alert('adfd');
+        try {
+            await navigator.share(shareData)
+            // resultParai.textContent = 'MDN shared successfully'
+        } catch (err) {
+            resultParai.textContent = 'Error: ' + err
+        }
+    });
+    })
+
+    // Share must be triggered by "user activation"
+    
+
+    
+
     function openpop(email,username){
         // alert(email);
         $('#exampleFormControlInput1').val(email);

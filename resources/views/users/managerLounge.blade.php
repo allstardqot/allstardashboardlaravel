@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="sdjsks89">
                                             <a class="sdjksj98" href="">{{ $value->comment }} Comment</a>
-                                            <a class="sdkjd8909 share" href="#" id='share'>
+                                            <a class="sdkjd8909 sharei" href="#" id='share'>
                                                 Share
                                                 <p class="result"></p>
                                             </a>
@@ -77,7 +77,7 @@
                             {!! $value->description !!}
                             <div class="like_share">
                                 <a class="hyujh45" href="#">{{ $value->comment }} Comment</a>
-                                <a class="jkyts778" href="#">Share</a>
+                                <a class="jkyts778 sharei" href="#">Share</a>
                             </div>
                             <hr />
                         @endforeach
