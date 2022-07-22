@@ -114,6 +114,7 @@ class WinningProcess implements ShouldQueue
                                         $payment->type      = 'CONTEST WON';
                                         $payment->transaction_id = uniqid();
                                         if($payment->save()){
+                                            
                                             Mail::send('winning_mail', $data, function($message) use ($userData)  {
                                                 $message->to($userData['email'], 'Tutorials Point')->subject
                                                     ('Winnings Distribution All Star');

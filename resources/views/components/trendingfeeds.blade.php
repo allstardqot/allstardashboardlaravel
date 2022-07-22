@@ -24,7 +24,7 @@
 
     }
     const btn = document.querySelectorAll(".sharei");
-    console.log(btn)
+    // console.log(btn)
     const resultParai = document.querySelector('.result');
 
     Array.from(btn).forEach((e)=>{

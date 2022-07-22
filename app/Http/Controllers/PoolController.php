@@ -132,10 +132,14 @@ class PoolController extends Controller
             ]);
         }
         if(nextWeek() != 0){
-            $wallet = Auth::user()->wallet;
-            // echo $wallet;die;
-            $entry_fees       = $request->input('entry_fees');
+
             $pass ='';
+            $starting_at=$ending_at='';
+
+            $wallet         = Auth::user()->wallet;
+            $user_name      = Auth::user()->user_name;
+            $entry_fees     = $request->input('entry_fees');
+
             if($entry_fees > $wallet  ){
                 return redirect()->back()->with('error','You have not sufficant balance!');
             }
@@ -145,73 +149,75 @@ class PoolController extends Controller
             }
             
             $weekData=Week::find(nextWeek())->toArray();
-            $starting_at=$ending_at='';
+            
             if(!empty($weekData)){
-                $starting_at=$weekData['starting_at'];
-                $ending_at=$weekData['ending_at'];
+                $starting_at  = $weekData['starting_at'];
+                $ending_at    = $weekData['ending_at'];
             }
             
             $user = Auth::user();
             $user->wallet    = $wallet - $entry_fees;
             $user->save();
-
             
-            $pool_type = $request->input('pool_type');
+            
+            $pool_type        = $request->input('pool_type');
             $max_participants = $request->input('max_participants');
+            $pool_name        = $request->input('pool_name');
+            $team_id          = $request->input('team_id');
             
             
             $pool = new UserPool;
-            $pool->user_id    = Auth::user()->id;
-            $pool->pool_name   = $request->input('pool_name');
+            $pool->user_id     = Auth::user()->id;
+            $pool->pool_name   = $pool_name;
             $pool->pool_type   = $pool_type;
             $pool->max_participants = $max_participants;
             $pool->week_id = nextWeek();
+
             if($pool_type == '1'){
                 $pool->password =  Hash::make($request->input('password'));
                 $pool->decrypt_pass =  $request->input('password');
-                $pass = $request->input('password');
+                $pass = 'Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$request->input('password');
             }
+
             $pool->entry_fees =  $entry_fees;
             $pool->save();
-            //prr($pool);
-            $payment            = new Payment;
-            $payment->user_id   = Auth::user()->id;
-            $payment->amount    = $entry_fees;
-            $payment->type      = 'POOL JOIN';
+
+            $payment                = new Payment;
+            $payment->user_id       = Auth::user()->id;
+            $payment->amount        = $entry_fees;
+            $payment->type          = 'POOL JOIN';
             $payment->user_pool_id  = $pool->id;
             $payment->transaction_id = uniqid();
             $payment->save();
 
             
-            $team_id = $request->input('team_id');
-            // if($request->input('pool_type') == '1' && $pool->save() ){
-                $contest = new UserContest;
-                $contest->user_id    = Auth::user()->id;
-                $contest->pool_id    = $pool->id;
-                $contest->user_team_id = $team_id;
-                $contest->save();
-            // }else{
-                // $pool->save();
-            // }
-            $weekData = Week::find(nextWeek())->toArray();
+           
+            $contest = new UserContest;
+            $contest->user_id    = Auth::user()->id;
+            $contest->pool_id    = $pool->id;
+            $contest->user_team_id = $team_id;
+            $contest->save();
+            
+           
             $type     = ($pool_type==0) ? "Public" : "Private";
             $UserTeam = UserTeam::find($team_id);
             // prr($UserTeam->name);
-            $starting_at=$ending_at='';
-            if(!empty($weekData)){
-                $starting_at=$weekData['starting_at'];
-                $ending_at=$weekData['ending_at'];
+           
+            $emailValue     =  Auth::user()->email;
+            $email_name     = 'JOIN POOL';
+            $email_template =  emailTemplate($email_name);
+            $subject = $email_template->subject;
 
-            }
-            $emailValue=Auth::user()->email;
-            $data = ['name'=>Auth::user()->user_name,'team_name'=>$UserTeam->name,'email'=>$request->email,'pass'=>$pass,'pool_name'=>$request->input('pool_name'),'type'=>$type,'max_participants'=>$request->input('max_participants'),'entry_fees'=>$entry_fees,'starting_at'=>$starting_at,'ending_at'=>$ending_at];
-            // prr($data);
-            Mail::send('joinpool_mail', $data, function($message) use ($emailValue)  {
+            $message1	=	str_replace(['{{USER_NAME}}','{{POOL_NAME}}','{{STARTING_DATE}}','{{END_DATE}}','{{TYPE}}','{{PASSWORD}}','{{TEAM_NAME}}','{{MAX_PARTICIPANTS}}','{{ENTRY_FEES}}'],[$user_name,$pool_name,$starting_at,$ending_at,$type,$pass,$UserTeam->name,$max_participants,$entry_fees],$email_template->template);
+            $data  = ['message1'=>$message1];
+
+            Mail::send('joinpool_mail', $data, function($message) use ($emailValue ,$subject )   {
                 $message->to($emailValue, 'Tutorials Point')->subject
-                ('All Star Join Pool');
+                ($subject);
                 
             });
-            return view('users/pools/poolcreated',['pool_name'=>$request->input('pool_name'),'pass'=>$pass,'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$UserTeam->name,'pool_type'=>$pool_type,'entry_fees'=>$request->input('entry_fees'),'max_participants'=>$max_participants]);
+
+            return view('users/pools/poolcreated',['pool_name'=>$pool_name,'pass'=>$pass,'starting_at'=>$starting_at,'ending_at'=>$ending_at,'team_name'=>$UserTeam->name,'pool_type'=>$pool_type,'entry_fees'=>$request->input('entry_fees'),'max_participants'=>$max_participants]);
 
         }
         
@@ -221,19 +227,21 @@ class PoolController extends Controller
 
 
     public function invitePool($id){
+
         $pool = UserPool::find($id)->toArray();
         $weekData=Week::find(nextWeek())->toArray();
         $starting_at=$ending_at='';
+
         if(!empty($weekData)){
             $starting_at=$weekData['starting_at'];
             $ending_at=$weekData['ending_at'];
         }
+
         $pool_type = $pool['pool_type'] == 1 ? 'Private' : 'Public' ;
         $pass      = !empty($pool['decrypt_pass'])  ? $pool['decrypt_pass'] : '';
-        //prr($pool);
-        // echo $pass;die;
+
+
         return view('users/invite',['pool_name'=>$pool['pool_name'],'pass'=>$pass,'starting_at'=>$starting_at,'ending_at'=>$ending_at,'pool_type'=>$pool_type,'entry_fees'=>$pool['entry_fees'],'max_participants'=>$pool['max_participants'],'id'=>$id]);
-        // return view('users/invite',['pool_name'=>$pool['pool_name'],'entry_fees'=>$pool['entry_fees'],'id'=>$id]);
     }
 
 
@@ -241,13 +249,32 @@ class PoolController extends Controller
        
         $users = $request->input('email');
         $type = $request->pool_type == 1 ? 'Private' : 'Public';
-        $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pass'=>$request->pass,'pool_name'=>$request->pool_name,'type'=>$type,'max_participants'=>$request->max_participants,'entry_fees'=>$request->entry_fees,'starting_at'=>$request->starting_at,'ending_at'=>$request->ending_at];
-        $email = $request->email;
+        $pool_name = $request->pool_name;
+        $max_participants = $request->max_participants;
+        $entry_fees = $request->entry_fees;
+        $starting_at = $request->starting_at;
+        $ending_at = $request->ending_at;
+        $user_name = !empty($request->name)?$request->name:'User';
+        $pass      = !empty($request->pass) ? '<tr><td>Password </td><td>'.$request->pass.'</td></tr>' : '';
+        $sender_name  = Auth::user()->user_name;
+        // $data = ['entry_fees'=>$request->entry_fees,'starting_at'=>$request->starting_at,'ending_at'=>$request->ending_at];
+        // $email = $request->email;
+
+
+        $email_name     = 'INVITE POOL';
+        $email_template =  emailTemplate($email_name);
+        $subject = $email_template->subject;
+
+        $message1	=	str_replace(['{{USER_NAME}}','{{SENDER_NAME}}','{{POOL_NAME}}','{{START_DATE}}','{{END_DATE}}','{{TYPE}}','{{PASSWORD}}','{{MAX_PARTICIPATE}}','{{ENTRY_FEES}}'],[$user_name,$sender_name,$pool_name,$starting_at,$ending_at,$type,$pass,$max_participants,$entry_fees],$email_template->template);
+
+        $data  = ['message1'=>$message1];
+
+// prr($message1);
         foreach ($users as $key => $user) {
             // Mail::to($user)->send(new UserEmail($user));
-            Mail::send('mail', $data, function($message) use ($user)  {
+            Mail::send('mail', $data, function($message) use ($user,$subject)  {
                 $message->to($user, 'Allstar User')->subject
-                ('All Star Invite');
+                ($subject);
                 
             });
         }

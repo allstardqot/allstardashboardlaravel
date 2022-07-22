@@ -196,28 +196,45 @@ class HomeController extends Controller
         $userPoolData=UserPool::find($request->pool_id)->toArray();
         if(!empty($userPoolData)){
             
-                $type=($userPoolData['pool_type']==0)?"Public":"Private";
-                $weekData=Week::find($userPoolData['week_id'])->toArray();
-                $starting_at=$ending_at='';
+                $type     = ($userPoolData['pool_type']==0)?"Public":"Private";
+                $weekData = Week::find($userPoolData['week_id'])->toArray();
+                $starting_at = $ending_at='';
                 if(!empty($weekData)){
                     $starting_at=$weekData['starting_at'];
                     $ending_at=$weekData['ending_at'];
 
                 }
-                $data = ['name'=>!empty($request->name)?$request->name:'User','email'=>$request->email,'pool_name'=>$userPoolData['pool_name'],'type'=>$type,'max_participants'=>$userPoolData['max_participants'],'entry_fees'=>$userPoolData['entry_fees'],'starting_at'=>$starting_at,'ending_at'=>$ending_at];
-                $email = $request->email;
+
+                $email      = $request->email;
+                $pool_name  = $userPoolData['pool_name'];
+                $max_participants = $userPoolData['max_participants'];
+                $entry_fees  = $userPoolData['entry_fees'];
+                $user_name   = !empty($request->name)?$request->name:'User';
+                $pass        =  !empty($userPoolData['decrypt_pass']) ? '<tr><td>Password </td><td>'.$userPoolData['decrypt_pass'].'</td></tr>' : '';
+                $sender_name = Auth::user()->user_name;
+                // prr($pass);
+
+                $email_name     = 'INVITE POOL';
+                $email_template =  emailTemplate($email_name);
+                $subject = $email_template->subject;
+
+                $message1	=	str_replace(['{{USER_NAME}}','{{SENDER_NAME}}','{{POOL_NAME}}','{{START_DATE}}','{{END_DATE}}','{{TYPE}}','{{PASSWORD}}','{{MAX_PARTICIPATE}}','{{ENTRY_FEES}}'],[$user_name,$sender_name,$pool_name,$starting_at,$ending_at,$type,$pass,$max_participants,$entry_fees],$email_template->template);
+
+                $data  = ['message1'=>$message1];
+
+                
                 if(is_array($email)){
                     foreach($email as $emailValue){
-                        Mail::send('mail', $data, function($message) use ($emailValue)  {
+                        Mail::send('mail', $data, function($message) use ($emailValue,$subject)  {
                             $message->to($emailValue, 'Tutorials Point')->subject
-                            ('All Star Invite');
+                            ($subject);
                             
                         });
                     }
                 }else{
-                    Mail::send('mail', $data, function($message) use ($email)  {
+                    Mail::send('mail', $data, function($message) use ($email,$subject)  {
                     $message->to($email, 'Tutorials Point')->subject
-                        ('All Star Invite');
+                        ($subject);
                     
                     });
                 }
